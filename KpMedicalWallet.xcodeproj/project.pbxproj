@@ -18,6 +18,11 @@
 		1E38D37B2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D37A2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift */; };
 		1E38D38A2C902D7D00BB344E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D3892C902D7D00BB344E /* LoginView.swift */; };
 		1EAD506F2C9038720010F705 /* TextFildModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD506E2C9038720010F705 /* TextFildModifier.swift */; };
+		1EAD50772C903E560010F705 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50762C903E560010F705 /* LoginViewModel.swift */; };
+		1EAD507A2C903FF60010F705 /* LoginModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50792C903FF60010F705 /* LoginModelProtocol.swift */; };
+		1EAD507C2C9042520010F705 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD507B2C9042520010F705 /* LoginController.swift */; };
+		1EAD507F2C90436D0010F705 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD507E2C90436D0010F705 /* HttpRequest.swift */; };
+		1EAD50822C90439A0010F705 /* HttpRequestModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50812C90439A0010F705 /* HttpRequestModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +57,12 @@
 		1E38D37A2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KpMedicalWalletUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1E38D3892C902D7D00BB344E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1EAD506E2C9038720010F705 /* TextFildModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFildModifier.swift; sourceTree = "<group>"; };
+		1EAD50762C903E560010F705 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		1EAD50792C903FF60010F705 /* LoginModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModelProtocol.swift; sourceTree = "<group>"; };
+		1EAD507B2C9042520010F705 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		1EAD507E2C90436D0010F705 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
+		1EAD50812C90439A0010F705 /* HttpRequestModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestModels.swift; sourceTree = "<group>"; };
+		1EAD50832C9043E10010F705 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +113,7 @@
 		1E38D3572C90271D00BB344E /* KpMedicalWallet */ = {
 			isa = PBXGroup;
 			children = (
+				1EAD507D2C9043210010F705 /* HttpRequestFunctionSet */,
 				1EAD50742C903A560010F705 /* ViewModels */,
 				1EAD50732C903A270010F705 /* Models */,
 				1EAD50712C9039FA0010F705 /* Views */,
@@ -111,6 +123,7 @@
 				1E38D3612C90271D00BB344E /* Persistence.swift */,
 				1E38D3632C90271D00BB344E /* KpMedicalWallet.xcdatamodeld */,
 				1E38D35E2C90271D00BB344E /* Preview Content */,
+				1EAD50832C9043E10010F705 /* Config.xcconfig */,
 			);
 			path = KpMedicalWallet;
 			sourceTree = "<group>";
@@ -175,16 +188,44 @@
 		1EAD50742C903A560010F705 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				1EAD50752C903C370010F705 /* User */,
+				1EAD50752C903C370010F705 /* Login */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		1EAD50752C903C370010F705 /* User */ = {
+		1EAD50752C903C370010F705 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				1EAD50782C903FE10010F705 /* LoginProtocols */,
+				1EAD50762C903E560010F705 /* LoginViewModel.swift */,
+				1EAD507B2C9042520010F705 /* LoginController.swift */,
 			);
-			path = User;
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1EAD50782C903FE10010F705 /* LoginProtocols */ = {
+			isa = PBXGroup;
+			children = (
+				1EAD50792C903FF60010F705 /* LoginModelProtocol.swift */,
+			);
+			path = LoginProtocols;
+			sourceTree = "<group>";
+		};
+		1EAD507D2C9043210010F705 /* HttpRequestFunctionSet */ = {
+			isa = PBXGroup;
+			children = (
+				1EAD50802C90438E0010F705 /* Model */,
+				1EAD507E2C90436D0010F705 /* HttpRequest.swift */,
+			);
+			path = HttpRequestFunctionSet;
+			sourceTree = "<group>";
+		};
+		1EAD50802C90438E0010F705 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1EAD50812C90439A0010F705 /* HttpRequestModels.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,11 +359,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E38D3622C90271D00BB344E /* Persistence.swift in Sources */,
+				1EAD50822C90439A0010F705 /* HttpRequestModels.swift in Sources */,
+				1EAD507F2C90436D0010F705 /* HttpRequest.swift in Sources */,
 				1E38D35B2C90271D00BB344E /* ContentView.swift in Sources */,
 				1EAD506F2C9038720010F705 /* TextFildModifier.swift in Sources */,
 				1E38D3592C90271D00BB344E /* KpMedicalWalletApp.swift in Sources */,
+				1EAD507C2C9042520010F705 /* LoginController.swift in Sources */,
 				1E38D38A2C902D7D00BB344E /* LoginView.swift in Sources */,
 				1E38D3652C90271D00BB344E /* KpMedicalWallet.xcdatamodeld in Sources */,
+				1EAD50772C903E560010F705 /* LoginViewModel.swift in Sources */,
+				1EAD507A2C903FF60010F705 /* LoginModelProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

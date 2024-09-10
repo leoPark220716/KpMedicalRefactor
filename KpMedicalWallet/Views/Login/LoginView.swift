@@ -1,8 +1,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var id: String = ""
-    @State private var password: String = ""
+    @StateObject var loginModel = LoginViewModel()
     @State private var checkBool: Bool = true
     @FocusState private var focus: Bool
     var body: some View {
@@ -12,7 +11,7 @@ struct LoginView: View {
                 .font(.system(size: 34, weight: .bold))
                 .foregroundColor(Color("AccentColor"))
             //                 아이디 입력 필드
-            TextField("아이디", text: $id)
+            TextField("아이디", text: $loginModel.id)
                 .focused($focus)
                 .modifier(IDFildModifier())
                 .overlay(
@@ -21,7 +20,7 @@ struct LoginView: View {
                 )
                 .padding(.horizontal)
             // 비밀번호 입력 필드
-            SecureField("비밀번호", text: $password)
+            SecureField("비밀번호", text: $loginModel.password)
                 .modifier(IDFildModifier())
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)

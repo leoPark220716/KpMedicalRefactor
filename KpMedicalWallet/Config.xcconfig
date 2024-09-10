@@ -1,0 +1,16 @@
+//
+//  Config.xcconfig
+//  KpMedicalWallet
+//
+//  Created by Junsung Park on 9/10/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+BLOCKCHAIN_DOMAIN = https:/$()/kp-medicals-test.online:9443
+WEB_SOCKET = wss:/$()/kp-medicals-test.online:1443
+API_SERVER = https:/$()/kp-medicals-test.online:1443
+URL_LOCATION_WALLET = /api/medical-wallet/
+URL_LOCATION_COMMON = /api/common/
+
