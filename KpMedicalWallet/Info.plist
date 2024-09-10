@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Config</key>
+	<dict>
+		<key>APP_IDENTIFY</key>
+		<string>$(APP_IDENTIFY)</string>
+		<key>API_SERVER</key>
+		<string>$(API_SERVER)</string>
+		<key>BLOCKCHAIN_DOMAIN</key>
+		<string>$(BLOCKCHAIN_DOMAIN)</string>
+		<key>URL_LOCATION_COMMON</key>
+		<string>$(URL_LOCATION_COMMON)</string>
+		<key>URL_LOCATION_WALLET</key>
+		<string>$(URL_LOCATION_WALLET)</string>
+		<key>WEB_SOCKET</key>
+		<string>$(WEB_SOCKET)</string>
+	</dict>
+</dict>
+</plist>

@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject var loginModel = LoginViewModel()
-    @State private var checkBool: Bool = true
+    @StateObject var controller = LoginController()
     @FocusState private var focus: Bool
+    @EnvironmentObject private var router: NavigationRouter
     var body: some View {
         VStack(spacing: 20) {
             // 헤더
@@ -11,20 +11,20 @@ struct LoginView: View {
                 .font(.system(size: 34, weight: .bold))
                 .foregroundColor(Color("AccentColor"))
             //                 아이디 입력 필드
-            TextField("아이디", text: $loginModel.id)
+            TextField("아이디", text: $controller.id)
                 .focused($focus)
                 .modifier(IDFildModifier())
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(checkBool ? Color.gray : Color.red, lineWidth: 1)
+                        .stroke(controller.checked ? Color.gray : Color.red, lineWidth: 1)
                 )
                 .padding(.horizontal)
             // 비밀번호 입력 필드
-            SecureField("비밀번호", text: $loginModel.password)
+            SecureField("비밀번호", text: $controller.password)
                 .modifier(IDFildModifier())
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(checkBool ? Color.gray : Color.red, lineWidth: 1)
+                        .stroke(controller.checked ? Color.gray : Color.red, lineWidth: 1)
                 )
                 .padding(.horizontal)
             
@@ -38,7 +38,15 @@ struct LoginView: View {
             }
             // 로그인 버튼
             Button(action: {
-                // 로그인 액션
+                Task{
+                    let result = await controller.LoginCheck()
+                    if result.error{
+                        guard let data = result.token else {
+                            return
+                        }
+                        router.SetInfo(datas: data)
+                    }
+                }
             }) {
                 Text("로그인")
                     .font(.headline)
@@ -57,14 +65,14 @@ struct LoginView: View {
                     .font(.footnote)
                     .foregroundColor(.blue)
             }
-            
             Spacer()
         }
+        .normalToastView(toast: $controller.toast)
+        .padding()
+        .background(Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all))
         .onAppear{
             focus = true
         }
-        .padding()
-        .background(Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all))
         
     }
 }

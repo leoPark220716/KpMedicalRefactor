@@ -9,9 +9,11 @@ import Foundation
 
 class LoginViewModel: ObservableObject, LoginDataSet{
     
-    @Published var checked: Bool = false
+
+    @Published var checked: Bool = true
     @Published var id: String = ""
     @Published var password: String = ""
+    @Published var toast: normal_Toast?
     
 
 }

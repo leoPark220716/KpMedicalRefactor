@@ -23,6 +23,21 @@
 		1EAD507C2C9042520010F705 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD507B2C9042520010F705 /* LoginController.swift */; };
 		1EAD507F2C90436D0010F705 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD507E2C90436D0010F705 /* HttpRequest.swift */; };
 		1EAD50822C90439A0010F705 /* HttpRequestModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50812C90439A0010F705 /* HttpRequestModels.swift */; };
+		1EAD50872C9051750010F705 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50862C9051750010F705 /* Router.swift */; };
+		1EAD50892C9056FB0010F705 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50882C9056FB0010F705 /* NavigationRouter.swift */; };
+		1EAD508B2C9057610010F705 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD508A2C9057610010F705 /* MainView.swift */; };
+		1EAD508E2C9058580010F705 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD508D2C9058580010F705 /* SignUpView.swift */; };
+		1EAD50902C9058710010F705 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD508F2C9058710010F705 /* HomeView.swift */; };
+		1EAD50922C905C400010F705 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50912C905C400010F705 /* SplashView.swift */; };
+		1EAD50942C905F080010F705 /* UserNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50932C905F080010F705 /* UserNavigation.swift */; };
+		1EAD50962C9060FB0010F705 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50952C9060FB0010F705 /* TabView.swift */; };
+		1EAD50992C9066290010F705 /* UserCacheImages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50972C9066290010F705 /* UserCacheImages.xcdatamodeld */; };
+		1EAD509C2C90681A0010F705 /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD509B2C90681A0010F705 /* UserAuth.swift */; };
+		1EAD509F2C9069090010F705 /* UrlRetrun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD509E2C9069090010F705 /* UrlRetrun.swift */; };
+		1EAD50A12C9078450010F705 /* UserInfomationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50A02C9078450010F705 /* UserInfomationManager.swift */; };
+		1EAD50A32C9078C60010F705 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50A22C9078C60010F705 /* Protocols.swift */; };
+		1EAD50A52C9085410010F705 /* LoginSignupModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50A42C9085410010F705 /* LoginSignupModels.swift */; };
+		1EAD50A72C908E780010F705 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50A62C908E780010F705 /* ToastView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +78,22 @@
 		1EAD507E2C90436D0010F705 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
 		1EAD50812C90439A0010F705 /* HttpRequestModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestModels.swift; sourceTree = "<group>"; };
 		1EAD50832C9043E10010F705 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		1EAD50842C904E5C0010F705 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1EAD50862C9051750010F705 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		1EAD50882C9056FB0010F705 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
+		1EAD508A2C9057610010F705 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		1EAD508D2C9058580010F705 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		1EAD508F2C9058710010F705 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		1EAD50912C905C400010F705 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		1EAD50932C905F080010F705 /* UserNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNavigation.swift; sourceTree = "<group>"; };
+		1EAD50952C9060FB0010F705 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		1EAD50982C9066290010F705 /* UserAuth.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserAuth.xcdatamodel; sourceTree = "<group>"; };
+		1EAD509B2C90681A0010F705 /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
+		1EAD509E2C9069090010F705 /* UrlRetrun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlRetrun.swift; sourceTree = "<group>"; };
+		1EAD50A02C9078450010F705 /* UserInfomationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfomationManager.swift; sourceTree = "<group>"; };
+		1EAD50A22C9078C60010F705 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		1EAD50A42C9085410010F705 /* LoginSignupModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupModels.swift; sourceTree = "<group>"; };
+		1EAD50A62C908E780010F705 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +144,8 @@
 		1E38D3572C90271D00BB344E /* KpMedicalWallet */ = {
 			isa = PBXGroup;
 			children = (
+				1EAD509A2C9067FE0010F705 /* KeyChain */,
+				1EAD50852C9051150010F705 /* Router */,
 				1EAD507D2C9043210010F705 /* HttpRequestFunctionSet */,
 				1EAD50742C903A560010F705 /* ViewModels */,
 				1EAD50732C903A270010F705 /* Models */,
@@ -124,6 +157,8 @@
 				1E38D3632C90271D00BB344E /* KpMedicalWallet.xcdatamodeld */,
 				1E38D35E2C90271D00BB344E /* Preview Content */,
 				1EAD50832C9043E10010F705 /* Config.xcconfig */,
+				1EAD50842C904E5C0010F705 /* Info.plist */,
+				1EAD50972C9066290010F705 /* UserCacheImages.xcdatamodeld */,
 			);
 			path = KpMedicalWallet;
 			sourceTree = "<group>";
@@ -164,7 +199,13 @@
 		1EAD50712C9039FA0010F705 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1EAD508C2C9058470010F705 /* SignUp */,
 				1EAD50722C903A190010F705 /* Login */,
+				1EAD508A2C9057610010F705 /* MainView.swift */,
+				1EAD508F2C9058710010F705 /* HomeView.swift */,
+				1EAD50912C905C400010F705 /* SplashView.swift */,
+				1EAD50952C9060FB0010F705 /* TabView.swift */,
+				1EAD50A62C908E780010F705 /* ToastView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -181,6 +222,7 @@
 		1EAD50732C903A270010F705 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1EAD50A42C9085410010F705 /* LoginSignupModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -189,6 +231,8 @@
 			isa = PBXGroup;
 			children = (
 				1EAD50752C903C370010F705 /* Login */,
+				1EAD50A02C9078450010F705 /* UserInfomationManager.swift */,
+				1EAD50A22C9078C60010F705 /* Protocols.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -216,6 +260,7 @@
 			children = (
 				1EAD50802C90438E0010F705 /* Model */,
 				1EAD507E2C90436D0010F705 /* HttpRequest.swift */,
+				1EAD509E2C9069090010F705 /* UrlRetrun.swift */,
 			);
 			path = HttpRequestFunctionSet;
 			sourceTree = "<group>";
@@ -226,6 +271,32 @@
 				1EAD50812C90439A0010F705 /* HttpRequestModels.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1EAD50852C9051150010F705 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				1EAD50862C9051750010F705 /* Router.swift */,
+				1EAD50882C9056FB0010F705 /* NavigationRouter.swift */,
+				1EAD50932C905F080010F705 /* UserNavigation.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		1EAD508C2C9058470010F705 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				1EAD508D2C9058580010F705 /* SignUpView.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		1EAD509A2C9067FE0010F705 /* KeyChain */ = {
+			isa = PBXGroup;
+			children = (
+				1EAD509B2C90681A0010F705 /* UserAuth.swift */,
+			);
+			path = KeyChain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,16 +430,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E38D3622C90271D00BB344E /* Persistence.swift in Sources */,
+				1EAD508E2C9058580010F705 /* SignUpView.swift in Sources */,
+				1EAD50922C905C400010F705 /* SplashView.swift in Sources */,
+				1EAD50A52C9085410010F705 /* LoginSignupModels.swift in Sources */,
+				1EAD508B2C9057610010F705 /* MainView.swift in Sources */,
 				1EAD50822C90439A0010F705 /* HttpRequestModels.swift in Sources */,
 				1EAD507F2C90436D0010F705 /* HttpRequest.swift in Sources */,
+				1EAD509C2C90681A0010F705 /* UserAuth.swift in Sources */,
 				1E38D35B2C90271D00BB344E /* ContentView.swift in Sources */,
+				1EAD50872C9051750010F705 /* Router.swift in Sources */,
+				1EAD509F2C9069090010F705 /* UrlRetrun.swift in Sources */,
+				1EAD50942C905F080010F705 /* UserNavigation.swift in Sources */,
 				1EAD506F2C9038720010F705 /* TextFildModifier.swift in Sources */,
+				1EAD50992C9066290010F705 /* UserCacheImages.xcdatamodeld in Sources */,
 				1E38D3592C90271D00BB344E /* KpMedicalWalletApp.swift in Sources */,
 				1EAD507C2C9042520010F705 /* LoginController.swift in Sources */,
+				1EAD50A32C9078C60010F705 /* Protocols.swift in Sources */,
 				1E38D38A2C902D7D00BB344E /* LoginView.swift in Sources */,
 				1E38D3652C90271D00BB344E /* KpMedicalWallet.xcdatamodeld in Sources */,
+				1EAD50892C9056FB0010F705 /* NavigationRouter.swift in Sources */,
+				1EAD50A72C908E780010F705 /* ToastView.swift in Sources */,
+				1EAD50902C9058710010F705 /* HomeView.swift in Sources */,
 				1EAD50772C903E560010F705 /* LoginViewModel.swift in Sources */,
 				1EAD507A2C903FF60010F705 /* LoginModelProtocol.swift in Sources */,
+				1EAD50962C9060FB0010F705 /* TabView.swift in Sources */,
+				1EAD50A12C9078450010F705 /* UserInfomationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +493,7 @@
 /* Begin XCBuildConfiguration section */
 		1E38D37C2C90271E00BB344E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EAD50832C9043E10010F705 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -470,6 +557,7 @@
 		};
 		1E38D37D2C90271E00BB344E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EAD50832C9043E10010F705 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -535,6 +623,7 @@
 				DEVELOPMENT_TEAM = N762C9YWP9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KpMedicalWallet/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -564,6 +653,7 @@
 				DEVELOPMENT_TEAM = N762C9YWP9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KpMedicalWallet/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -707,6 +797,16 @@
 			);
 			currentVersion = 1E38D3642C90271D00BB344E /* KpMedicalWallet.xcdatamodel */;
 			path = KpMedicalWallet.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		1EAD50972C9066290010F705 /* UserCacheImages.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1EAD50982C9066290010F705 /* UserAuth.xcdatamodel */,
+			);
+			currentVersion = 1EAD50982C9066290010F705 /* UserAuth.xcdatamodel */;
+			path = UserCacheImages.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

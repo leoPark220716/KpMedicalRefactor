@@ -12,8 +12,9 @@ struct KPWalletAPIManager<RequestType: Codable, ReturnType: Codable> {
     private let httpStructs: http<RequestType?, ReturnType>
     private let URLLocations: Int
     
-    init(httpStructs: http<RequestType?, ReturnType>) {
+    init(httpStructs: http<RequestType?, ReturnType>,URLLocations: Int) {
         self.httpStructs = httpStructs
+        self.URLLocations = URLLocations
     }
     
 //    해당 함수 호출로 Request 코드 호출
@@ -36,7 +37,7 @@ struct KPWalletAPIManager<RequestType: Codable, ReturnType: Codable> {
 //    URL 생성
     private func constructURL() -> URL? {
         let query = httpStructs.urlParse
-        let baseURL = fetchBaseURL()
+        let baseURL = UtilityURLReturn.API_SERVER()
         let location = fetchLocationURL(LocationStatus: URLLocations)
         guard let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return nil
@@ -44,32 +45,18 @@ struct KPWalletAPIManager<RequestType: Codable, ReturnType: Codable> {
         let stringURL = "\(baseURL)\(location)\(encodedQuery)"
         return URL(string: stringURL)
     }
-//    URL Config 에서 추출
-    private func fetchBaseURL() -> String {
-        if let config = Bundle.main.object(forInfoDictionaryKey: "Config") as? [String: String],
-           let apiDomain = config["API_SERVER"] {
-            return apiDomain
-        } else {
-            return "api_domain"
-        }
-    }
 //    경로 관련 URL 추출
     private func fetchLocationURL(LocationStatus: Int) -> String {
-        var configName = ""
+        var locationName = ""
         switch LocationStatus{
         case 1:
-            configName = "URL_LOCATION_WALLET"
+            locationName = UtilityURLReturn.LOCATION_WALLET()
         case 2:
-            configName = "URL_LOCATION_COMMON"
+            locationName = UtilityURLReturn.LOCATION_COMMON()
         default:
-            configName = ""
+            locationName = ""
         }
-        if let config = Bundle.main.object(forInfoDictionaryKey: "Config") as? [String: String],
-           let apiDomain = config[configName] {
-            return apiDomain
-        } else {
-            return "api_domain"
-        }
+        return locationName
     }
 //    HTTP 메소드 별로 Body 데이터 세팅
     private func configureRequest(_ request: inout URLRequest) {

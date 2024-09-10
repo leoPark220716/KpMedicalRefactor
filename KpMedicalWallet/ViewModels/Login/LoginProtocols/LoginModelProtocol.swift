@@ -8,10 +8,11 @@
 import Foundation
 
 protocol LoginRequest{
-    func LoginCheck() -> (error: Bool, token: String)
+    func LoginCheck() async -> (error: Bool, token: LoginResponse?)
 }
 protocol LoginDataSet{
     var id: String { get }
     var password: String { get }
     var checked: Bool { get }
+    var toast: normal_Toast? { get }
 }

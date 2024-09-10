@@ -1,2 +1,2 @@
-/KpMedicalWallet/**/*.xcconfig
+*.xcconfig
 /Podfile
