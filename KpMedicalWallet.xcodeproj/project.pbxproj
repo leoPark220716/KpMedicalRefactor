@@ -16,6 +16,8 @@
 		1E38D36F2C90271E00BB344E /* KpMedicalWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D36E2C90271E00BB344E /* KpMedicalWalletTests.swift */; };
 		1E38D3792C90271E00BB344E /* KpMedicalWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D3782C90271E00BB344E /* KpMedicalWalletUITests.swift */; };
 		1E38D37B2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D37A2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift */; };
+		1E38D38A2C902D7D00BB344E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D3892C902D7D00BB344E /* LoginView.swift */; };
+		1EAD506F2C9038720010F705 /* TextFildModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD506E2C9038720010F705 /* TextFildModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		1E38D3742C90271E00BB344E /* KpMedicalWalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KpMedicalWalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E38D3782C90271E00BB344E /* KpMedicalWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KpMedicalWalletUITests.swift; sourceTree = "<group>"; };
 		1E38D37A2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KpMedicalWalletUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1E38D3892C902D7D00BB344E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1EAD506E2C9038720010F705 /* TextFildModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFildModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,9 @@
 		1E38D3572C90271D00BB344E /* KpMedicalWallet */ = {
 			isa = PBXGroup;
 			children = (
+				1EAD50742C903A560010F705 /* ViewModels */,
+				1EAD50732C903A270010F705 /* Models */,
+				1EAD50712C9039FA0010F705 /* Views */,
 				1E38D3582C90271D00BB344E /* KpMedicalWalletApp.swift */,
 				1E38D35A2C90271D00BB344E /* ContentView.swift */,
 				1E38D35C2C90271D00BB344E /* Assets.xcassets */,
@@ -131,6 +138,53 @@
 				1E38D37A2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift */,
 			);
 			path = KpMedicalWalletUITests;
+			sourceTree = "<group>";
+		};
+		1EAD506D2C9037C50010F705 /* LoginViewModifier */ = {
+			isa = PBXGroup;
+			children = (
+				1EAD506E2C9038720010F705 /* TextFildModifier.swift */,
+			);
+			path = LoginViewModifier;
+			sourceTree = "<group>";
+		};
+		1EAD50712C9039FA0010F705 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1EAD50722C903A190010F705 /* Login */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1EAD50722C903A190010F705 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1EAD506D2C9037C50010F705 /* LoginViewModifier */,
+				1E38D3892C902D7D00BB344E /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1EAD50732C903A270010F705 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1EAD50742C903A560010F705 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				1EAD50752C903C370010F705 /* User */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1EAD50752C903C370010F705 /* User */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,7 +319,9 @@
 			files = (
 				1E38D3622C90271D00BB344E /* Persistence.swift in Sources */,
 				1E38D35B2C90271D00BB344E /* ContentView.swift in Sources */,
+				1EAD506F2C9038720010F705 /* TextFildModifier.swift in Sources */,
 				1E38D3592C90271D00BB344E /* KpMedicalWalletApp.swift in Sources */,
+				1E38D38A2C902D7D00BB344E /* LoginView.swift in Sources */,
 				1E38D3652C90271D00BB344E /* KpMedicalWallet.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,7 +499,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Teamnova.KpMedicalWallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Kpm.KpMedicalWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -472,7 +528,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Teamnova.KpMedicalWallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Kpm.KpMedicalWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
