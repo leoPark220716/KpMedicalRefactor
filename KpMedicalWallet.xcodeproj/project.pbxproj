@@ -1,0 +1,614 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1E38D3592C90271D00BB344E /* KpMedicalWalletApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D3582C90271D00BB344E /* KpMedicalWalletApp.swift */; };
+		1E38D35B2C90271D00BB344E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D35A2C90271D00BB344E /* ContentView.swift */; };
+		1E38D35D2C90271D00BB344E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E38D35C2C90271D00BB344E /* Assets.xcassets */; };
+		1E38D3602C90271D00BB344E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E38D35F2C90271D00BB344E /* Preview Assets.xcassets */; };
+		1E38D3622C90271D00BB344E /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D3612C90271D00BB344E /* Persistence.swift */; };
+		1E38D3652C90271D00BB344E /* KpMedicalWallet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D3632C90271D00BB344E /* KpMedicalWallet.xcdatamodeld */; };
+		1E38D36F2C90271E00BB344E /* KpMedicalWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D36E2C90271E00BB344E /* KpMedicalWalletTests.swift */; };
+		1E38D3792C90271E00BB344E /* KpMedicalWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D3782C90271E00BB344E /* KpMedicalWalletUITests.swift */; };
+		1E38D37B2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D37A2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1E38D36B2C90271E00BB344E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E38D34D2C90271D00BB344E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1E38D3542C90271D00BB344E;
+			remoteInfo = KpMedicalWallet;
+		};
+		1E38D3752C90271E00BB344E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E38D34D2C90271D00BB344E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1E38D3542C90271D00BB344E;
+			remoteInfo = KpMedicalWallet;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1E38D3552C90271D00BB344E /* KpMedicalWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KpMedicalWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E38D3582C90271D00BB344E /* KpMedicalWalletApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KpMedicalWalletApp.swift; sourceTree = "<group>"; };
+		1E38D35A2C90271D00BB344E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1E38D35C2C90271D00BB344E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1E38D35F2C90271D00BB344E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1E38D3612C90271D00BB344E /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		1E38D3642C90271D00BB344E /* KpMedicalWallet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KpMedicalWallet.xcdatamodel; sourceTree = "<group>"; };
+		1E38D36A2C90271E00BB344E /* KpMedicalWalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KpMedicalWalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E38D36E2C90271E00BB344E /* KpMedicalWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KpMedicalWalletTests.swift; sourceTree = "<group>"; };
+		1E38D3742C90271E00BB344E /* KpMedicalWalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KpMedicalWalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E38D3782C90271E00BB344E /* KpMedicalWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KpMedicalWalletUITests.swift; sourceTree = "<group>"; };
+		1E38D37A2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KpMedicalWalletUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1E38D3522C90271D00BB344E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E38D3672C90271E00BB344E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E38D3712C90271E00BB344E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1E38D34C2C90271D00BB344E = {
+			isa = PBXGroup;
+			children = (
+				1E38D3572C90271D00BB344E /* KpMedicalWallet */,
+				1E38D36D2C90271E00BB344E /* KpMedicalWalletTests */,
+				1E38D3772C90271E00BB344E /* KpMedicalWalletUITests */,
+				1E38D3562C90271D00BB344E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1E38D3562C90271D00BB344E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1E38D3552C90271D00BB344E /* KpMedicalWallet.app */,
+				1E38D36A2C90271E00BB344E /* KpMedicalWalletTests.xctest */,
+				1E38D3742C90271E00BB344E /* KpMedicalWalletUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1E38D3572C90271D00BB344E /* KpMedicalWallet */ = {
+			isa = PBXGroup;
+			children = (
+				1E38D3582C90271D00BB344E /* KpMedicalWalletApp.swift */,
+				1E38D35A2C90271D00BB344E /* ContentView.swift */,
+				1E38D35C2C90271D00BB344E /* Assets.xcassets */,
+				1E38D3612C90271D00BB344E /* Persistence.swift */,
+				1E38D3632C90271D00BB344E /* KpMedicalWallet.xcdatamodeld */,
+				1E38D35E2C90271D00BB344E /* Preview Content */,
+			);
+			path = KpMedicalWallet;
+			sourceTree = "<group>";
+		};
+		1E38D35E2C90271D00BB344E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				1E38D35F2C90271D00BB344E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1E38D36D2C90271E00BB344E /* KpMedicalWalletTests */ = {
+			isa = PBXGroup;
+			children = (
+				1E38D36E2C90271E00BB344E /* KpMedicalWalletTests.swift */,
+			);
+			path = KpMedicalWalletTests;
+			sourceTree = "<group>";
+		};
+		1E38D3772C90271E00BB344E /* KpMedicalWalletUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1E38D3782C90271E00BB344E /* KpMedicalWalletUITests.swift */,
+				1E38D37A2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift */,
+			);
+			path = KpMedicalWalletUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1E38D3542C90271D00BB344E /* KpMedicalWallet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E38D37E2C90271E00BB344E /* Build configuration list for PBXNativeTarget "KpMedicalWallet" */;
+			buildPhases = (
+				1E38D3512C90271D00BB344E /* Sources */,
+				1E38D3522C90271D00BB344E /* Frameworks */,
+				1E38D3532C90271D00BB344E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KpMedicalWallet;
+			productName = KpMedicalWallet;
+			productReference = 1E38D3552C90271D00BB344E /* KpMedicalWallet.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1E38D3692C90271E00BB344E /* KpMedicalWalletTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E38D3812C90271E00BB344E /* Build configuration list for PBXNativeTarget "KpMedicalWalletTests" */;
+			buildPhases = (
+				1E38D3662C90271E00BB344E /* Sources */,
+				1E38D3672C90271E00BB344E /* Frameworks */,
+				1E38D3682C90271E00BB344E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1E38D36C2C90271E00BB344E /* PBXTargetDependency */,
+			);
+			name = KpMedicalWalletTests;
+			productName = KpMedicalWalletTests;
+			productReference = 1E38D36A2C90271E00BB344E /* KpMedicalWalletTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1E38D3732C90271E00BB344E /* KpMedicalWalletUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E38D3842C90271E00BB344E /* Build configuration list for PBXNativeTarget "KpMedicalWalletUITests" */;
+			buildPhases = (
+				1E38D3702C90271E00BB344E /* Sources */,
+				1E38D3712C90271E00BB344E /* Frameworks */,
+				1E38D3722C90271E00BB344E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1E38D3762C90271E00BB344E /* PBXTargetDependency */,
+			);
+			name = KpMedicalWalletUITests;
+			productName = KpMedicalWalletUITests;
+			productReference = 1E38D3742C90271E00BB344E /* KpMedicalWalletUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1E38D34D2C90271D00BB344E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					1E38D3542C90271D00BB344E = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					1E38D3692C90271E00BB344E = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 1E38D3542C90271D00BB344E;
+					};
+					1E38D3732C90271E00BB344E = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 1E38D3542C90271D00BB344E;
+					};
+				};
+			};
+			buildConfigurationList = 1E38D3502C90271D00BB344E /* Build configuration list for PBXProject "KpMedicalWallet" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1E38D34C2C90271D00BB344E;
+			productRefGroup = 1E38D3562C90271D00BB344E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1E38D3542C90271D00BB344E /* KpMedicalWallet */,
+				1E38D3692C90271E00BB344E /* KpMedicalWalletTests */,
+				1E38D3732C90271E00BB344E /* KpMedicalWalletUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1E38D3532C90271D00BB344E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E38D3602C90271D00BB344E /* Preview Assets.xcassets in Resources */,
+				1E38D35D2C90271D00BB344E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E38D3682C90271E00BB344E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E38D3722C90271E00BB344E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1E38D3512C90271D00BB344E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E38D3622C90271D00BB344E /* Persistence.swift in Sources */,
+				1E38D35B2C90271D00BB344E /* ContentView.swift in Sources */,
+				1E38D3592C90271D00BB344E /* KpMedicalWalletApp.swift in Sources */,
+				1E38D3652C90271D00BB344E /* KpMedicalWallet.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E38D3662C90271E00BB344E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E38D36F2C90271E00BB344E /* KpMedicalWalletTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E38D3702C90271E00BB344E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E38D37B2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift in Sources */,
+				1E38D3792C90271E00BB344E /* KpMedicalWalletUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1E38D36C2C90271E00BB344E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1E38D3542C90271D00BB344E /* KpMedicalWallet */;
+			targetProxy = 1E38D36B2C90271E00BB344E /* PBXContainerItemProxy */;
+		};
+		1E38D3762C90271E00BB344E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1E38D3542C90271D00BB344E /* KpMedicalWallet */;
+			targetProxy = 1E38D3752C90271E00BB344E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1E38D37C2C90271E00BB344E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1E38D37D2C90271E00BB344E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1E38D37F2C90271E00BB344E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"KpMedicalWallet/Preview Content\"";
+				DEVELOPMENT_TEAM = N762C9YWP9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Teamnova.KpMedicalWallet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1E38D3802C90271E00BB344E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"KpMedicalWallet/Preview Content\"";
+				DEVELOPMENT_TEAM = N762C9YWP9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Teamnova.KpMedicalWallet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1E38D3822C90271E00BB344E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N762C9YWP9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Teamnova.KpMedicalWalletTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KpMedicalWallet.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KpMedicalWallet";
+			};
+			name = Debug;
+		};
+		1E38D3832C90271E00BB344E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N762C9YWP9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Teamnova.KpMedicalWalletTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KpMedicalWallet.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KpMedicalWallet";
+			};
+			name = Release;
+		};
+		1E38D3852C90271E00BB344E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N762C9YWP9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Teamnova.KpMedicalWalletUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KpMedicalWallet;
+			};
+			name = Debug;
+		};
+		1E38D3862C90271E00BB344E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N762C9YWP9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Teamnova.KpMedicalWalletUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KpMedicalWallet;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1E38D3502C90271D00BB344E /* Build configuration list for PBXProject "KpMedicalWallet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E38D37C2C90271E00BB344E /* Debug */,
+				1E38D37D2C90271E00BB344E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1E38D37E2C90271E00BB344E /* Build configuration list for PBXNativeTarget "KpMedicalWallet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E38D37F2C90271E00BB344E /* Debug */,
+				1E38D3802C90271E00BB344E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1E38D3812C90271E00BB344E /* Build configuration list for PBXNativeTarget "KpMedicalWalletTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E38D3822C90271E00BB344E /* Debug */,
+				1E38D3832C90271E00BB344E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1E38D3842C90271E00BB344E /* Build configuration list for PBXNativeTarget "KpMedicalWalletUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E38D3852C90271E00BB344E /* Debug */,
+				1E38D3862C90271E00BB344E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1E38D3632C90271D00BB344E /* KpMedicalWallet.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1E38D3642C90271D00BB344E /* KpMedicalWallet.xcdatamodel */,
+			);
+			currentVersion = 1E38D3642C90271D00BB344E /* KpMedicalWallet.xcdatamodel */;
+			path = KpMedicalWallet.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1E38D34D2C90271D00BB344E /* Project object */;
+}
