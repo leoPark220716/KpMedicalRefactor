@@ -20,6 +20,10 @@
 		1E9136FA2C91667C004F647E /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1E9136F92C91667C004F647E /* FirebaseMessaging */; };
 		1E9136FC2C91669D004F647E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E9136FB2C91669D004F647E /* GoogleService-Info.plist */; };
 		1E9136FF2C9166F8004F647E /* FCMDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9136FE2C9166F8004F647E /* FCMDelegate.swift */; };
+		1E9137012C918E2A004F647E /* UserConfigVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9137002C918E2A004F647E /* UserConfigVariable.swift */; };
+		1E9137052C91999B004F647E /* ErrorDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9137042C91999B004F647E /* ErrorDefine.swift */; };
+		1E9137092C91D828004F647E /* GlobalErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9137082C91D828004F647E /* GlobalErrorHandler.swift */; };
+		1E91370B2C91DDAA004F647E /* UrlConfigVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD509E2C9069090010F705 /* UrlConfigVariable.swift */; };
 		1EAD506F2C9038720010F705 /* LoginViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD506E2C9038720010F705 /* LoginViewModifier.swift */; };
 		1EAD50772C903E560010F705 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50762C903E560010F705 /* LoginModel.swift */; };
 		1EAD507A2C903FF60010F705 /* LoginModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50792C903FF60010F705 /* LoginModelProtocol.swift */; };
@@ -36,7 +40,6 @@
 		1EAD50962C9060FB0010F705 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50952C9060FB0010F705 /* TabView.swift */; };
 		1EAD50992C9066290010F705 /* UserCacheImages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50972C9066290010F705 /* UserCacheImages.xcdatamodeld */; };
 		1EAD509C2C90681A0010F705 /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD509B2C90681A0010F705 /* UserAuth.swift */; };
-		1EAD509F2C9069090010F705 /* UrlRetrun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD509E2C9069090010F705 /* UrlRetrun.swift */; };
 		1EAD50A12C9078450010F705 /* UserInfomationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50A02C9078450010F705 /* UserInfomationManager.swift */; };
 		1EAD50A32C9078C60010F705 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50A22C9078C60010F705 /* Protocols.swift */; };
 		1EAD50A52C9085410010F705 /* LoginSignupModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50A42C9085410010F705 /* LoginSignupModels.swift */; };
@@ -77,6 +80,9 @@
 		1E9136F72C91654C004F647E /* KpMedicalWallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KpMedicalWallet.entitlements; sourceTree = "<group>"; };
 		1E9136FB2C91669D004F647E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1E9136FE2C9166F8004F647E /* FCMDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMDelegate.swift; sourceTree = "<group>"; };
+		1E9137002C918E2A004F647E /* UserConfigVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigVariable.swift; sourceTree = "<group>"; };
+		1E9137042C91999B004F647E /* ErrorDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDefine.swift; sourceTree = "<group>"; };
+		1E9137082C91D828004F647E /* GlobalErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalErrorHandler.swift; sourceTree = "<group>"; };
 		1EAD506E2C9038720010F705 /* LoginViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModifier.swift; sourceTree = "<group>"; };
 		1EAD50762C903E560010F705 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		1EAD50792C903FF60010F705 /* LoginModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModelProtocol.swift; sourceTree = "<group>"; };
@@ -95,7 +101,7 @@
 		1EAD50952C9060FB0010F705 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		1EAD50982C9066290010F705 /* UserAuth.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserAuth.xcdatamodel; sourceTree = "<group>"; };
 		1EAD509B2C90681A0010F705 /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
-		1EAD509E2C9069090010F705 /* UrlRetrun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlRetrun.swift; sourceTree = "<group>"; };
+		1EAD509E2C9069090010F705 /* UrlConfigVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlConfigVariable.swift; sourceTree = "<group>"; };
 		1EAD50A02C9078450010F705 /* UserInfomationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfomationManager.swift; sourceTree = "<group>"; };
 		1EAD50A22C9078C60010F705 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		1EAD50A42C9085410010F705 /* LoginSignupModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupModels.swift; sourceTree = "<group>"; };
@@ -151,6 +157,9 @@
 		1E38D3572C90271D00BB344E /* KpMedicalWallet */ = {
 			isa = PBXGroup;
 			children = (
+				1EAD50A22C9078C60010F705 /* Protocols.swift */,
+				1E9137062C91D795004F647E /* EnvClass */,
+				1E9137032C91997F004F647E /* Error */,
 				1E9136FD2C9166CE004F647E /* FCM */,
 				1E9136FB2C91669D004F647E /* GoogleService-Info.plist */,
 				1E9136F72C91654C004F647E /* KpMedicalWallet.entitlements */,
@@ -169,6 +178,8 @@
 				1EAD50832C9043E10010F705 /* Config.xcconfig */,
 				1EAD50842C904E5C0010F705 /* Info.plist */,
 				1EAD50972C9066290010F705 /* UserCacheImages.xcdatamodeld */,
+				1E9137002C918E2A004F647E /* UserConfigVariable.swift */,
+				1EAD509E2C9069090010F705 /* UrlConfigVariable.swift */,
 			);
 			path = KpMedicalWallet;
 			sourceTree = "<group>";
@@ -204,6 +215,24 @@
 				1E9136FE2C9166F8004F647E /* FCMDelegate.swift */,
 			);
 			path = FCM;
+			sourceTree = "<group>";
+		};
+		1E9137032C91997F004F647E /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				1E9137042C91999B004F647E /* ErrorDefine.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		1E9137062C91D795004F647E /* EnvClass */ = {
+			isa = PBXGroup;
+			children = (
+				1EAD50882C9056FB0010F705 /* NavigationRouter.swift */,
+				1EAD50A02C9078450010F705 /* UserInfomationManager.swift */,
+				1E9137082C91D828004F647E /* GlobalErrorHandler.swift */,
+			);
+			path = EnvClass;
 			sourceTree = "<group>";
 		};
 		1EAD506D2C9037C50010F705 /* LoginViewModifier */ = {
@@ -249,8 +278,6 @@
 			isa = PBXGroup;
 			children = (
 				1EAD50752C903C370010F705 /* Login */,
-				1EAD50A02C9078450010F705 /* UserInfomationManager.swift */,
-				1EAD50A22C9078C60010F705 /* Protocols.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -278,7 +305,6 @@
 			children = (
 				1EAD50802C90438E0010F705 /* Model */,
 				1EAD507E2C90436D0010F705 /* HttpRequest.swift */,
-				1EAD509E2C9069090010F705 /* UrlRetrun.swift */,
 			);
 			path = HttpRequestFunctionSet;
 			sourceTree = "<group>";
@@ -295,7 +321,6 @@
 			isa = PBXGroup;
 			children = (
 				1EAD50862C9051750010F705 /* Router.swift */,
-				1EAD50882C9056FB0010F705 /* NavigationRouter.swift */,
 				1EAD50932C905F080010F705 /* UserNavigation.swift */,
 			);
 			path = Router;
@@ -456,22 +481,25 @@
 			files = (
 				1E38D3622C90271D00BB344E /* Persistence.swift in Sources */,
 				1EAD508E2C9058580010F705 /* SignUpView.swift in Sources */,
+				1E9137092C91D828004F647E /* GlobalErrorHandler.swift in Sources */,
 				1EAD50922C905C400010F705 /* SplashView.swift in Sources */,
 				1EAD50A52C9085410010F705 /* LoginSignupModels.swift in Sources */,
 				1EAD508B2C9057610010F705 /* MainView.swift in Sources */,
 				1EAD50822C90439A0010F705 /* HttpRequestModels.swift in Sources */,
+				1E9137012C918E2A004F647E /* UserConfigVariable.swift in Sources */,
 				1EAD507F2C90436D0010F705 /* HttpRequest.swift in Sources */,
 				1EAD509C2C90681A0010F705 /* UserAuth.swift in Sources */,
 				1E9136FF2C9166F8004F647E /* FCMDelegate.swift in Sources */,
 				1E38D35B2C90271D00BB344E /* ContentView.swift in Sources */,
 				1EAD50872C9051750010F705 /* Router.swift in Sources */,
-				1EAD509F2C9069090010F705 /* UrlRetrun.swift in Sources */,
 				1EAD50942C905F080010F705 /* UserNavigation.swift in Sources */,
 				1EAD506F2C9038720010F705 /* LoginViewModifier.swift in Sources */,
+				1E91370B2C91DDAA004F647E /* UrlConfigVariable.swift in Sources */,
 				1EAD50992C9066290010F705 /* UserCacheImages.xcdatamodeld in Sources */,
 				1E38D3592C90271D00BB344E /* KpMedicalWalletApp.swift in Sources */,
 				1EAD507C2C9042520010F705 /* LoginController.swift in Sources */,
 				1EAD50A32C9078C60010F705 /* Protocols.swift in Sources */,
+				1E9137052C91999B004F647E /* ErrorDefine.swift in Sources */,
 				1E38D38A2C902D7D00BB344E /* LoginView.swift in Sources */,
 				1E38D3652C90271D00BB344E /* KpMedicalWallet.xcdatamodeld in Sources */,
 				1EAD50892C9056FB0010F705 /* NavigationRouter.swift in Sources */,

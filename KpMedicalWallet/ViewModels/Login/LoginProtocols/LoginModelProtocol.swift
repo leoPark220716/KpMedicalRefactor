@@ -8,7 +8,10 @@
 import Foundation
 
 protocol LoginRequest{
-    func LoginCheck() async -> (error: Bool, token: LoginResponse?)
+    func searchPasswordAction()
+    func actionLoginAction()
+    func actionSignUpAction()
+    
 }
 protocol LoginDataSet{
     var id: String { get }

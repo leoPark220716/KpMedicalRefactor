@@ -16,3 +16,9 @@ protocol UserManager{
     var fcmToken: String { get }
     var loginStatus: Bool { get }
 }
+protocol UserAuthData{
+    var name: String { get }
+    var dob: String { get }
+    var sex: String { get }
+    var token: String { get }
+}

@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct MainView: View {
-    @EnvironmentObject private var router: NavigationRouter
+    @EnvironmentObject private var appManager: NavigationRouter
+    @EnvironmentObject private var errorHandler: GlobalErrorHandler
     
     var body: some View {
-        NavigationStack(path: $router.routes){
+        NavigationStack(path: $appManager.routes){
             ZStack{
-                switch router.RootView {
+                switch appManager.RootView {
                 case .login:
-                    LoginView(router: router)
+                    LoginView(appManager: appManager, errorHandler: errorHandler)
                 case .tab:
                     DefaultTabView()
                 case .splash:

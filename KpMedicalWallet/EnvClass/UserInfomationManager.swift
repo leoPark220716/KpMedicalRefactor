@@ -8,30 +8,12 @@
 import Foundation
 import Firebase
 
-class UserInfomationManager: UserManager{
-    
-    init() {
-        let auth = AuthData()
-        guard let userData = auth.loadFromKeyChain() else {
-            return
-        }
-        name = userData.name
-        dob = userData.dob
-        sex = userData.sex
-        token = userData.token
-        fcmToken = userData.fcmToken
-    }
-    
+class UserInfomationManager: UserManager,ObservableObject{
     @Published var name: String = ""
-    
     @Published var dob: String = ""
-    
     @Published var sex: String = ""
-    
     @Published var token: String = ""
-    
     var fcmToken: String = ""
-    
     var loginStatus: Bool = false
     
     @MainActor
@@ -40,6 +22,30 @@ class UserInfomationManager: UserManager{
         dob = datas.dob
         sex = datas.sex_code
         token = datas.access_token
+    }
+    
+    @MainActor
+    func Logout(){
+        name = ""
+        dob = ""
+        sex = ""
+        token = ""
+        fcmToken = ""
+        loginStatus = false
+    }
+    init() {
+        do{
+            let auth = AuthData()
+            guard let userData = try auth.userLoadAuthData() else {
+                return
+            }
+            name = userData.name
+            dob = userData.dob
+            sex = userData.sex
+            token = userData.token
+        }catch{
+            
+        }
     }
     
 //    유저 Account 추출
@@ -84,5 +90,12 @@ class UserInfomationManager: UserManager{
                 self.fcmToken = token
             }
         }
+    }
+    //    FCM Token 삭제
+    func deleteFCMToken(){
+        Messaging.messaging().deleteToken { error in
+            print("❌FCMToken delete Error \(String(describing: error))")
+        }
+        print("✅FCM Token DeleteToken Method Call")
     }
 }

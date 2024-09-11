@@ -9,6 +9,7 @@ import Foundation
 
 
 import SwiftUI
+
 enum Route:View, Hashable {
     
     case userPage(item: pages)
@@ -29,7 +30,11 @@ enum Route:View, Hashable {
         case .userPage(let item):
             switch item.page{
             case .SearchHospital:
-                EmptyView()   
+                EmptyView()
+            case .SignUp:
+                SignUpView()
+            case .SearchPassword:
+                EmptyView()
             }
         }
     }

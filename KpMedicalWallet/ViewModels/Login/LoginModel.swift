@@ -14,6 +14,5 @@ class LoginModel: ObservableObject, LoginDataSet{
     @Published var id: String = ""
     @Published var password: String = ""
     @Published var toast: normal_Toast?
-    
 
 }

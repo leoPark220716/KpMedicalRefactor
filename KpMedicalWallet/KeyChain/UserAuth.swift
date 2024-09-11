@@ -7,27 +7,25 @@
 
 import Foundation
 
-struct UserData: Codable, UserManager {
+struct UserData: Codable, UserAuthData {
     
     var name: String
     var dob: String
     var sex: String
     var token: String
-    var fcmToken: String
-    var loginStatus: Bool
+    
 }
 
 struct AuthData {
-    
-    func saveToKeyChain(userData: UserData) -> OSStatus {
+    func userAuthSave(userData: UserData) throws -> OSStatus {
         do {
             let encoder = JSONEncoder()
             let data = try encoder.encode(userData)
             
             let query: [String: Any] = [
                 kSecClass as String: kSecClassInternetPassword,
-                kSecAttrServer as String: UtilityURLReturn.API_SERVER(),
-                kSecAttrAccount as String: UserVariable.FOR_USER_AUTH(),
+                kSecAttrServer as String: try UtilityURLReturn.API_SERVER(),
+                kSecAttrAccount as String: try UserVariable.FOR_USER_AUTH(),
                 kSecValueData as String: data
             ]
             
@@ -35,34 +33,51 @@ struct AuthData {
             SecItemDelete(query as CFDictionary)
             // 새로운 Keychain 추가.
             return SecItemAdd(query as CFDictionary, nil)
-        } catch {
-            print("Failed to encode user data: \(error)")
-            return errSecDecode
+        }catch {
+            throw TraceUserError.configError("\(MyErrorDomain.authData) \(error)")
         }
     }
     
-    func loadFromKeyChain() -> UserData? {
-        let query: [String: Any] = [
-            kSecClass as String: kSecClassInternetPassword,
-            kSecAttrServer as String: UtilityURLReturn.API_SERVER(),
-            kSecAttrAccount as String: UserVariable.FOR_USER_AUTH(),
-            kSecReturnData as String: kCFBooleanTrue!,
-            kSecMatchLimit as String: kSecMatchLimitOne
-        ]
-        
-        var dataTypeRef: AnyObject?
-        let status = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
-        
-        if status == errSecSuccess, let data = dataTypeRef as? Data {
-            do {
+    func userLoadAuthData() throws -> UserData? {
+        do{
+            let query: [String: Any] = [
+                kSecClass as String: kSecClassInternetPassword,
+                kSecAttrServer as String: try UtilityURLReturn.API_SERVER(),
+                kSecAttrAccount as String: try UserVariable.FOR_USER_AUTH(),
+                kSecReturnData as String: kCFBooleanTrue!,
+                kSecMatchLimit as String: kSecMatchLimitOne
+            ]
+            var dataTypeRef: AnyObject?
+            let status = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
+            
+            if status == errSecSuccess, let data = dataTypeRef as? Data {
                 let decoder = JSONDecoder()
                 let userData = try decoder.decode(UserData.self, from: data)
                 return userData
-            } catch {
-                print("Failed to decode user data: \(error)")
+            }else{
+                throw TraceUserError.authData("\(MyErrorDomain.userLoadAuthData) \(status)")
             }
         }
-        return nil
+        catch {
+            throw TraceUserError.authData("\(MyErrorDomain.userLoadAuthData) \(error)")
+        }
+    }
+    
+    func deleteAllKeyChainItems(){
+        let secItemClasses = [kSecClassGenericPassword, kSecClassInternetPassword, kSecClassCertificate, kSecClassKey, kSecClassIdentity]
+        for secItemClass in secItemClasses {
+            let dictionary = [kSecClass as String: secItemClass]
+            let status = SecItemDelete(dictionary as CFDictionary)
+            
+            switch status {
+            case errSecSuccess:
+                print("\(secItemClass) items deleted successfully.")
+            case errSecItemNotFound:
+                print("No items were found to delete for \(secItemClass).")
+            default:
+                print("An error occurred while deleting items for \(secItemClass): \(status)")
+            }
+        }
     }
 }
 

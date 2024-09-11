@@ -3,11 +3,11 @@ import SwiftUI
 struct LoginView: View {
     @StateObject var viewModel: LoginController
     @FocusState private var focus: Bool
-    
-    init(router: NavigationRouter){
-    _viewModel = StateObject(wrappedValue: LoginController(router: router))
+    @EnvironmentObject var errorHandler: GlobalErrorHandler
+    init(appManager: NavigationRouter,errorHandler: GlobalErrorHandler){
+        //        _ 는 StateObject 와 같은 속성 래퍼로 선언된 변수를 가리키는 것이다.
+        _viewModel = StateObject(wrappedValue: LoginController(appManager: appManager, errorHandler: errorHandler))
     }
-    
     var body: some View {
         VStack(spacing: 20) {
             // 헤더
@@ -44,19 +44,27 @@ struct LoginView: View {
             }
             .padding(.horizontal)
             // 회원가입
-            Button(action: viewModel.actionLoginAction) {
+            Button(action: viewModel.actionSignUpAction) {
                 Text("아직 회원이 아니신가요? 가입하기")
                     .modifier(LoginSubText())
             }
             .padding(.horizontal)
-            
             Spacer()
         }
         .normalToastView(toast: $viewModel.toast)
         .padding()
-        .background(Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all))
         .onAppear{
             focus = true
+        }
+        .alert(isPresented: $errorHandler.showError, error: errorHandler.ServiceError){ error in
+            Button("취소") {
+                print(error)
+            }
+            Button("확인") {
+                print(error)
+            }
+        } message: { error in
+            Text(error.recoverySuggestion ?? "Try again later.")
         }
         
     }
@@ -65,7 +73,9 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
+        @StateObject var errorHandler = GlobalErrorHandler()
         @StateObject var router = NavigationRouter()
-        LoginView(router: router)
+        LoginView(appManager: router, errorHandler: errorHandler)
+            .environmentObject(errorHandler)
     }
 }

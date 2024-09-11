@@ -8,11 +8,27 @@
 import SwiftUI
 
 struct DefaultTabView: View {
+    
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Spacer()
+            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                .onTapGesture {
+                    let AuteData = AuthData()
+                    AuteData.deleteAllKeyChainItems()
+                }
+            Spacer()
+            Text("Check")
+                .onTapGesture {
+//                    print(viewModel.appManager.fcmToken)
+                }
+            Spacer()
+        }
     }
 }
 
-#Preview {
-    DefaultTabView()
-}
+//#Preview {
+//    DefaultTabView()
+//}

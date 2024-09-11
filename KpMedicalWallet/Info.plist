@@ -10,6 +10,8 @@
 		<string>$(APP_IDENTIFY)</string>
 		<key>BLOCKCHAIN_DOMAIN</key>
 		<string>$(BLOCKCHAIN_DOMAIN)</string>
+		<key>LOGIN_FAIL</key>
+		<string>$(LOGIN_FAIL)</string>
 		<key>URL_LOCATION_COMMON</key>
 		<string>$(URL_LOCATION_COMMON)</string>
 		<key>URL_LOCATION_WALLET</key>

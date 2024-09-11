@@ -8,11 +8,10 @@
 import Foundation
 import SwiftUI
 
-final class NavigationRouter: UserInfomationManager, ObservableObject {
+final class NavigationRouter: UserInfomationManager {
     
     @Published var routes = NavigationPath()
     @Published var RootView: DefaultPage = .splash
-    
     
     override init() {
         super.init()
