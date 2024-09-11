@@ -7,8 +7,14 @@
 
 import Foundation
 
-class LoginController: LoginViewModel, LoginRequest {
-     
+class LoginController: LoginModel, LoginRequest {
+    
+    private var router: NavigationRouter
+    
+    init(router: NavigationRouter) {
+        self.router = router
+    }
+    
     func LoginCheck() async -> (error: Bool, token: LoginResponse?){
         //        요청 구조체 객체 생성
         let requestData: LoginModul = .init(account: id, password: password, uid: UserVariable.GET_UUID())
@@ -29,6 +35,26 @@ class LoginController: LoginViewModel, LoginRequest {
             }
         }
         return (error: response.success, token: response.data?.data)
+    }
+    
+    func actionLoginAction(){
+        Task{
+            let result = await LoginCheck()
+            if result.error{
+                guard let data = result.token else {
+                    return
+                }
+                await router.SetInfo(datas: data)
+                await router.rootView(change: .tab)
+                router.refreshFCMToken()
+            }
+        }
+    }
+    func actionSignUpAction(){
+        
+    }
+    func searchPasswordAction(){
+        
     }
     
 }

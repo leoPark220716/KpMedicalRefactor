@@ -28,14 +28,9 @@ enum Route:View, Hashable {
         switch self {
         case .userPage(let item):
             switch item.page{
-            case .home:
-                LoginView()
-            case .login:
-                LoginView()
-            case .signup:
-                LoginView()
+            case .SearchHospital:
+                EmptyView()   
             }
-            
         }
     }
 }

@@ -14,7 +14,7 @@ struct UserData: Codable, UserManager {
     var sex: String
     var token: String
     var fcmToken: String
-    
+    var loginStatus: Bool
 }
 
 struct AuthData {

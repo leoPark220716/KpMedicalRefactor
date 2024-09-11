@@ -8,10 +8,7 @@
 import Foundation
 // 페이지 관리 enum
 enum UserViewPage{
-    case home
-    case login
-    case signup
-
+    case SearchHospital
 }
 enum DefaultPage{
     case login

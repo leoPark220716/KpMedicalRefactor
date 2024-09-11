@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 class UserInfomationManager: UserManager{
     
@@ -29,7 +30,9 @@ class UserInfomationManager: UserManager{
     
     @Published var token: String = ""
     
-    @Published var fcmToken: String = ""
+    var fcmToken: String = ""
+    
+    var loginStatus: Bool = false
     
     @MainActor
     func SetInfo(datas: LoginResponse){
@@ -39,6 +42,7 @@ class UserInfomationManager: UserManager{
         token = datas.access_token
     }
     
+//    유저 Account 추출
     func GetUserAccountString() -> (status: Bool, account: String) {
         print("✅GetUserAccountString \(token)")
         let sections = token.components(separatedBy: ".")
@@ -69,4 +73,16 @@ class UserInfomationManager: UserManager{
         }
     }
     
+    
+    //    FCM Token 발급
+    func refreshFCMToken() {
+        Messaging.messaging().token { token, error in
+            if let error = error {
+                print("❌Error fetching FCM token: \(error)")
+            } else if let token = token {
+                print("✅New FCM token: \(token)")
+                self.fcmToken = token
+            }
+        }
+    }
 }

@@ -13,6 +13,7 @@ final class NavigationRouter: UserInfomationManager, ObservableObject {
     @Published var routes = NavigationPath()
     @Published var RootView: DefaultPage = .splash
     
+    
     override init() {
         super.init()
         if token == "" {
@@ -22,10 +23,15 @@ final class NavigationRouter: UserInfomationManager, ObservableObject {
         }
     }
     
-    override func SetInfo(datas: LoginResponse) {
-        super.SetInfo(datas: datas)
-        RootView = .tab
+    @MainActor
+    func push(to: Route){
+        routes.append(to)
     }
     
+    @MainActor
+    func rootView(change: DefaultPage){
+        RootView = change
+    }
     
+
 }

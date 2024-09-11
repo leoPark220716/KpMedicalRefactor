@@ -4,10 +4,10 @@
 <dict>
 	<key>Config</key>
 	<dict>
-		<key>APP_IDENTIFY</key>
-		<string>$(APP_IDENTIFY)</string>
 		<key>API_SERVER</key>
 		<string>$(API_SERVER)</string>
+		<key>APP_IDENTIFY</key>
+		<string>$(APP_IDENTIFY)</string>
 		<key>BLOCKCHAIN_DOMAIN</key>
 		<string>$(BLOCKCHAIN_DOMAIN)</string>
 		<key>URL_LOCATION_COMMON</key>
@@ -17,5 +17,11 @@
 		<key>WEB_SOCKET</key>
 		<string>$(WEB_SOCKET)</string>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>processing</string>
+		<string>remote-notification</string>
+	</array>
 </dict>
 </plist>

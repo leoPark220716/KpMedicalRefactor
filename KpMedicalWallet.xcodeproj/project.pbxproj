@@ -17,8 +17,11 @@
 		1E38D3792C90271E00BB344E /* KpMedicalWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D3782C90271E00BB344E /* KpMedicalWalletUITests.swift */; };
 		1E38D37B2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D37A2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift */; };
 		1E38D38A2C902D7D00BB344E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D3892C902D7D00BB344E /* LoginView.swift */; };
-		1EAD506F2C9038720010F705 /* TextFildModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD506E2C9038720010F705 /* TextFildModifier.swift */; };
-		1EAD50772C903E560010F705 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50762C903E560010F705 /* LoginViewModel.swift */; };
+		1E9136FA2C91667C004F647E /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1E9136F92C91667C004F647E /* FirebaseMessaging */; };
+		1E9136FC2C91669D004F647E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E9136FB2C91669D004F647E /* GoogleService-Info.plist */; };
+		1E9136FF2C9166F8004F647E /* FCMDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9136FE2C9166F8004F647E /* FCMDelegate.swift */; };
+		1EAD506F2C9038720010F705 /* LoginViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD506E2C9038720010F705 /* LoginViewModifier.swift */; };
+		1EAD50772C903E560010F705 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50762C903E560010F705 /* LoginModel.swift */; };
 		1EAD507A2C903FF60010F705 /* LoginModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50792C903FF60010F705 /* LoginModelProtocol.swift */; };
 		1EAD507C2C9042520010F705 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD507B2C9042520010F705 /* LoginController.swift */; };
 		1EAD507F2C90436D0010F705 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD507E2C90436D0010F705 /* HttpRequest.swift */; };
@@ -71,8 +74,11 @@
 		1E38D3782C90271E00BB344E /* KpMedicalWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KpMedicalWalletUITests.swift; sourceTree = "<group>"; };
 		1E38D37A2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KpMedicalWalletUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1E38D3892C902D7D00BB344E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		1EAD506E2C9038720010F705 /* TextFildModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFildModifier.swift; sourceTree = "<group>"; };
-		1EAD50762C903E560010F705 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		1E9136F72C91654C004F647E /* KpMedicalWallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KpMedicalWallet.entitlements; sourceTree = "<group>"; };
+		1E9136FB2C91669D004F647E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1E9136FE2C9166F8004F647E /* FCMDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMDelegate.swift; sourceTree = "<group>"; };
+		1EAD506E2C9038720010F705 /* LoginViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModifier.swift; sourceTree = "<group>"; };
+		1EAD50762C903E560010F705 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		1EAD50792C903FF60010F705 /* LoginModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModelProtocol.swift; sourceTree = "<group>"; };
 		1EAD507B2C9042520010F705 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1EAD507E2C90436D0010F705 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
@@ -101,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E9136FA2C91667C004F647E /* FirebaseMessaging in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +151,9 @@
 		1E38D3572C90271D00BB344E /* KpMedicalWallet */ = {
 			isa = PBXGroup;
 			children = (
+				1E9136FD2C9166CE004F647E /* FCM */,
+				1E9136FB2C91669D004F647E /* GoogleService-Info.plist */,
+				1E9136F72C91654C004F647E /* KpMedicalWallet.entitlements */,
 				1EAD509A2C9067FE0010F705 /* KeyChain */,
 				1EAD50852C9051150010F705 /* Router */,
 				1EAD507D2C9043210010F705 /* HttpRequestFunctionSet */,
@@ -188,10 +198,18 @@
 			path = KpMedicalWalletUITests;
 			sourceTree = "<group>";
 		};
+		1E9136FD2C9166CE004F647E /* FCM */ = {
+			isa = PBXGroup;
+			children = (
+				1E9136FE2C9166F8004F647E /* FCMDelegate.swift */,
+			);
+			path = FCM;
+			sourceTree = "<group>";
+		};
 		1EAD506D2C9037C50010F705 /* LoginViewModifier */ = {
 			isa = PBXGroup;
 			children = (
-				1EAD506E2C9038720010F705 /* TextFildModifier.swift */,
+				1EAD506E2C9038720010F705 /* LoginViewModifier.swift */,
 			);
 			path = LoginViewModifier;
 			sourceTree = "<group>";
@@ -241,7 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				1EAD50782C903FE10010F705 /* LoginProtocols */,
-				1EAD50762C903E560010F705 /* LoginViewModel.swift */,
+				1EAD50762C903E560010F705 /* LoginModel.swift */,
 				1EAD507B2C9042520010F705 /* LoginController.swift */,
 			);
 			path = Login;
@@ -315,6 +333,9 @@
 			dependencies = (
 			);
 			name = KpMedicalWallet;
+			packageProductDependencies = (
+				1E9136F92C91667C004F647E /* FirebaseMessaging */,
+			);
 			productName = KpMedicalWallet;
 			productReference = 1E38D3552C90271D00BB344E /* KpMedicalWallet.app */;
 			productType = "com.apple.product-type.application";
@@ -387,6 +408,9 @@
 				Base,
 			);
 			mainGroup = 1E38D34C2C90271D00BB344E;
+			packageReferences = (
+				1E9136F82C91667C004F647E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 1E38D3562C90271D00BB344E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -404,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E38D3602C90271D00BB344E /* Preview Assets.xcassets in Resources */,
+				1E9136FC2C91669D004F647E /* GoogleService-Info.plist in Resources */,
 				1E38D35D2C90271D00BB344E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,11 +462,12 @@
 				1EAD50822C90439A0010F705 /* HttpRequestModels.swift in Sources */,
 				1EAD507F2C90436D0010F705 /* HttpRequest.swift in Sources */,
 				1EAD509C2C90681A0010F705 /* UserAuth.swift in Sources */,
+				1E9136FF2C9166F8004F647E /* FCMDelegate.swift in Sources */,
 				1E38D35B2C90271D00BB344E /* ContentView.swift in Sources */,
 				1EAD50872C9051750010F705 /* Router.swift in Sources */,
 				1EAD509F2C9069090010F705 /* UrlRetrun.swift in Sources */,
 				1EAD50942C905F080010F705 /* UserNavigation.swift in Sources */,
-				1EAD506F2C9038720010F705 /* TextFildModifier.swift in Sources */,
+				1EAD506F2C9038720010F705 /* LoginViewModifier.swift in Sources */,
 				1EAD50992C9066290010F705 /* UserCacheImages.xcdatamodeld in Sources */,
 				1E38D3592C90271D00BB344E /* KpMedicalWalletApp.swift in Sources */,
 				1EAD507C2C9042520010F705 /* LoginController.swift in Sources */,
@@ -451,7 +477,7 @@
 				1EAD50892C9056FB0010F705 /* NavigationRouter.swift in Sources */,
 				1EAD50A72C908E780010F705 /* ToastView.swift in Sources */,
 				1EAD50902C9058710010F705 /* HomeView.swift in Sources */,
-				1EAD50772C903E560010F705 /* LoginViewModel.swift in Sources */,
+				1EAD50772C903E560010F705 /* LoginModel.swift in Sources */,
 				1EAD507A2C903FF60010F705 /* LoginModelProtocol.swift in Sources */,
 				1EAD50962C9060FB0010F705 /* TabView.swift in Sources */,
 				1EAD50A12C9078450010F705 /* UserInfomationManager.swift in Sources */,
@@ -617,6 +643,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = KpMedicalWallet/KpMedicalWallet.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"KpMedicalWallet/Preview Content\"";
@@ -647,6 +674,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = KpMedicalWallet/KpMedicalWallet.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"KpMedicalWallet/Preview Content\"";
@@ -788,6 +816,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1E9136F82C91667C004F647E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1E9136F92C91667C004F647E /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E9136F82C91667C004F647E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		1E38D3632C90271D00BB344E /* KpMedicalWallet.xcdatamodeld */ = {

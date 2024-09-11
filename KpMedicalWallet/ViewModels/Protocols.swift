@@ -14,4 +14,5 @@ protocol UserManager{
     var sex: String { get }
     var token: String { get }
     var fcmToken: String { get }
+    var loginStatus: Bool { get }
 }

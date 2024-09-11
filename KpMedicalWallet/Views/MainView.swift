@@ -15,7 +15,7 @@ struct MainView: View {
             ZStack{
                 switch router.RootView {
                 case .login:
-                    LoginView()
+                    LoginView(router: router)
                 case .tab:
                     DefaultTabView()
                 case .splash:

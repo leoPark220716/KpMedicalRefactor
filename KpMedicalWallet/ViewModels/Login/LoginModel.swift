@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LoginViewModel: ObservableObject, LoginDataSet{
+class LoginModel: ObservableObject, LoginDataSet{
     
 
     @Published var checked: Bool = true
