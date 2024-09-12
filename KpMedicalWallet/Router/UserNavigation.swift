@@ -9,10 +9,13 @@ import Foundation
 // 페이지 관리 enum
 enum UserViewPage{
     case SearchHospital
-    case SignUp
-    case Agreement
     case SearchPassword
-    
+    case IdCreate
+    case Agreement
+    case PasswordCreate
+    case DobCreate
+    case PhoneCreate
+    case OtpCreate
 }
 enum DefaultPage{
     case login

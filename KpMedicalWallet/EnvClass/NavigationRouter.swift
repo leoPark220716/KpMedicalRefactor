@@ -31,6 +31,10 @@ final class NavigationRouter: UserInfomationManager {
     func rootView(change: DefaultPage){
         RootView = change
     }
+    @MainActor
+    func goToRootView(){
+        routes = NavigationPath()
+    }
     
 
 }

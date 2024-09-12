@@ -12,6 +12,7 @@ class LoginController: LoginModel, LoginRequest {
     var appManager: NavigationRouter
     var errorHandler: GlobalErrorHandler
     
+    
     init(appManager: NavigationRouter,errorHandler: GlobalErrorHandler) {
         self.appManager = appManager
         self.errorHandler = errorHandler
@@ -46,7 +47,7 @@ class LoginController: LoginModel, LoginRequest {
         }
     }
     
-    
+    //    회원가입 페이지 이동
     @MainActor
     func actionSignUpAction(){
         appManager.push(to: .userPage(item: UserPage(page: .Agreement), appManager: appManager))
@@ -117,6 +118,7 @@ class LoginController: LoginModel, LoginRequest {
             appManager.rootView(change: .splash)
         }
     }
+    
     
     //    Catch 문 왔을 때 사용자 알림을 위한 MainActor
     @MainActor 

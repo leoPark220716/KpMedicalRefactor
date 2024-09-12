@@ -33,17 +33,30 @@ protocol SignUpData: User{
     var account: String { get }
     var password: String { get }
     var otp: String { get }
+    var router: NavigationRouter { get }
+    
 }
 
 protocol UserAccountHandle: SignUpData{
     var idCheck: Bool { get }
+    var IdFieldStatus: Bool { get }
 }
 
 protocol passwordCheck: SignUpData{
     var passwordCheck: Bool { get }
     var passwordSecond: String { get }
+    var PassFieldStatus: Bool { get }
+    var SecondPassFieldStatus: Bool { get }
 }
 protocol dobCheckAndSex: SignUpData{
+    var nameCheck: Bool { get }
     var dobCheck: Bool { get }
-    var sex: Bool { get }
+    var sexCheck: Bool { get }
+}
+
+protocol PhonNumberCheck: SignUpData{
+    var numberCheck: Bool { get }
+}
+protocol OtpCheck: SignUpData{
+    var otpCheck: Bool { get }
 }

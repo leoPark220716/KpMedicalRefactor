@@ -10,6 +10,7 @@ import UIKit
 
 class AgreementViewModel: ObservableObject{
     var appManager: NavigationRouter
+    var signUpManager: IdControl? = nil
     //    전체 동의
     @Published var agreeToAll = false
     //    서비스 이용약관
@@ -35,8 +36,14 @@ class AgreementViewModel: ObservableObject{
         active = agreeToServiceTerms && agreeToPrivacyPolicy
     }
     @MainActor
-    func actionAgreeButton(){
-        appManager.push(to: .userPage(item: UserPage(page: .SignUp)))
+    func routeToSignupView(){
+        appManager.push(to: .userPage(item: UserPage(page: .IdCreate), signUpManager: signUpManager))
+    }
+    func actionAgreeButton() {
+        Task{
+            signUpManager = IdControl(router: appManager)
+            await routeToSignupView()
+        }
     }
     
     func openURL(_ urlString: String) {

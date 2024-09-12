@@ -1,37 +1,32 @@
 //
-//  SignUpView.swift
+//  SwiftUIView.swift
 //  KpMedicalWallet
 //
-//  Created by Junsung Park on 9/10/24.
+//  Created by Junsung Park on 9/12/24.
 //
 
 import SwiftUI
 
-struct SignupIdView: View {
+struct SignupPasswordView: View {
     @EnvironmentObject var viewModel: IdControl
     @EnvironmentObject var errorHandler: GlobalErrorHandler
-    @State private var firstPart: String = ""
-    @State private var secondPart: String = ""
-    @State private var id: String = ""
-    
     var body: some View {
         VStack {
             Button {
-                print(viewModel.$account)
+                print(viewModel.$password)
             } label: {
                 Text("viewModelTest")
             }
             Button {
-                viewModel.movePasswordView()
+                viewModel.moveDobView()
             } label: {
                 Text("Next")
             }
         }
-        .navigationTitle("아이디")
-        
+        .navigationTitle("비밀번호")
     }
 }
 
 #Preview {
-    SignupIdView()
+    SignupPasswordView()
 }
