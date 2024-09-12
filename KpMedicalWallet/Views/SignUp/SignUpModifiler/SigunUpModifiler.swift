@@ -42,3 +42,54 @@ struct CheckboxToggleStyle: ToggleStyle {
         .disabled(!isEnabled)
     }
 }
+struct CheckIDFiledButton: ViewModifier{
+    @Binding var active: Bool
+    func body(content: Content) -> some View {
+        content
+            .font(.footnote)
+            .foregroundColor(.white)
+            .padding(.horizontal,10)
+            .padding(.vertical)
+            .background(active ? Color("AccentColor") : Color.gray.opacity(0.6) )
+            .cornerRadius(10)
+            
+    }
+}
+
+struct SinupIDFildModifier: ViewModifier {
+    @Binding var check: Bool
+    func body(content: Content) -> some View {
+        content
+            .textCase(.lowercase)
+            .padding()
+            .background(Color(UIColor.systemGray6))
+            .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(check ? Color.clear : Color.red, lineWidth: 1)
+            )
+    }
+}
+struct SinupPASSWORDFildModifier: ViewModifier {
+    @Binding var check: Bool
+    func body(content: Content) -> some View {
+        content
+            .textCase(.lowercase)
+            .padding()
+            .background(Color(UIColor.systemGray6))
+            .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(check ? Color.clear : Color.red, lineWidth: 1)
+            )
+    }
+}
+
+struct SignupErrorMessageText: ViewModifier{
+    @Binding var check: Bool
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 13))
+            .foregroundStyle(check ? Color("AccentColor") : Color.red)
+    }
+}

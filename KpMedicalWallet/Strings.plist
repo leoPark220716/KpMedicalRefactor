@@ -98,6 +98,8 @@ Copyright (c) 2024 ___ORGANIZATIONNAME___. All rights reserved.
         <string>User Auth Save</string>
         <key>userLoadAuthData</key>
         <string>User Load Auth Data</string>
+        <key>SingUp_idCheckRequest</key>
+        <string>SignUp Process Error in idCheckRequest</string>
         
         
         <!-- 로그인 화면 사용 String -->
@@ -134,6 +136,49 @@ Copyright (c) 2024 ___ORGANIZATIONNAME___. All rights reserved.
         <key>agree_nav_title</key>
         <string>약관동의</string>
         
+        <!-- 회원 가입 아이디 사용 String  제시어 밑 Hint -->
+        <key>signup_id_navigation_title</key>
+        <string>아이디</string>
+        
+        <key>signup_id_hint</key>
+        <string>아이디</string>
+        
+        <key>signup_id_field_title</key>
+        <string>아이디</string>
+        
+        <key>signup_id_check_button</key>
+        <string>확인</string>
+        
+        <key>signup_id_access_button</key>
+        <string>다음</string>
+        
+        <key>singup_id_field_error_formet</key>
+        <string>6자 이상 30자리 이하의 숫자, 영문자 조합으로 가능합니다.</string>
+        
+        <key>singup_id_field_error_not_match</key>
+        <string>중복된 아이디가 있습니다.</string>
+        
+        <key>singup_id_field_error_match_didnt_done</key>
+        <string>확인 버튼을 눌러주세요.</string>
+        
+        <key>singup_id_success</key>
+        <string>사용가능한 아이디 입니다.</string>
+        
+        <!-- 회원 가입 비밀번호 사용 String  제시어 밑 Hint -->
+        <key>signup_password_navigation_title</key>
+        <string>비밀번호</string>
+        
+        <key>signup_password_hint</key>
+        <string>비밀번호</string>
+        
+        <key>signup_password_navigation_title2</key>
+        <string>비밀번호 확인</string>
+        
+        <key>signup_password_hint2</key>
+        <string>비밀번호 확인</string>
+        
+        <key>signup_password_access_button</key>
+        <string>다음</string>
         
     </dict>
 </plist>

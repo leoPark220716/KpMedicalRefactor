@@ -9,7 +9,7 @@ import Foundation
 
 class OtpControl: SignUpDataModel,OtpCheck{
     @Published var otpCheck: Bool = false
-    override init(router: NavigationRouter) {
-        super.init(router: router)
+    override init(router: NavigationRouter,errorHandler: GlobalErrorHandler) {
+        super.init(router: router, errorHandler: errorHandler)
     }
 }

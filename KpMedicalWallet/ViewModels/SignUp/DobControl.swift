@@ -13,8 +13,8 @@ class DobControl: PasswordControl,dobCheckAndSex{
     @Published var dobCheck: Bool = false
     
     @Published var sexCheck: Bool = false
-    override init(router: NavigationRouter) {
-        super.init(router: router)
+    override init(router: NavigationRouter,errorHandler: GlobalErrorHandler) {
+        super.init(router: router, errorHandler: errorHandler)
     }
     
 }

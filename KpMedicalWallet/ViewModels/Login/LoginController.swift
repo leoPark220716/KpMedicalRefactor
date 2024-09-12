@@ -50,7 +50,7 @@ class LoginController: LoginModel, LoginRequest {
     //    회원가입 페이지 이동
     @MainActor
     func actionSignUpAction(){
-        appManager.push(to: .userPage(item: UserPage(page: .Agreement), appManager: appManager))
+        appManager.push(to: .userPage(item: UserPage(page: .Agreement), appManager: appManager,errorHandler: errorHandler))
     }
     
     func searchPasswordAction(){
@@ -88,7 +88,7 @@ class LoginController: LoginModel, LoginRequest {
     private func createLoginRequestData() -> LoginModul {
         return LoginModul(account: id, password: password, uid: UserVariable.GET_UUID())
     }
-    // 응답 객체 생성
+    // 응답 및 요청 객체 생성
     private func createHttpRequest(with requestData: LoginModul) -> http<LoginModul?, KPApiStructFrom<LoginResponse>> {
         return http<LoginModul?, KPApiStructFrom<LoginResponse>>(
             method: "POST",
@@ -121,7 +121,7 @@ class LoginController: LoginModel, LoginRequest {
     
     
     //    Catch 문 왔을 때 사용자 알림을 위한 MainActor
-    @MainActor 
+    @MainActor
     private func LoginProcessCatch(processError: TraceUserError){
         if appManager.RootView != .login{
             appManager.rootView(change: .login)

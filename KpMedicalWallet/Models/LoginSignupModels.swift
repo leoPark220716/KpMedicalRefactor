@@ -26,3 +26,6 @@ struct normal_Toast: Equatable {
     var message: String
     var duration: Double = 3
 }
+struct IDCheckResponse: Codable {
+    let account: String
+}
