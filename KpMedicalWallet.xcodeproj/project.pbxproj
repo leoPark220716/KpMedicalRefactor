@@ -24,6 +24,12 @@
 		1E9137052C91999B004F647E /* ErrorDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9137042C91999B004F647E /* ErrorDefine.swift */; };
 		1E9137092C91D828004F647E /* GlobalErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9137082C91D828004F647E /* GlobalErrorHandler.swift */; };
 		1E91370B2C91DDAA004F647E /* UrlConfigVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD509E2C9069090010F705 /* UrlConfigVariable.swift */; };
+		1EAC112D2C92BA1E008FFE43 /* AgreementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAC112C2C92BA1E008FFE43 /* AgreementView.swift */; };
+		1EAC11302C92BB8D008FFE43 /* SigunUpModifiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAC112F2C92BB8D008FFE43 /* SigunUpModifiler.swift */; };
+		1EAC11332C92CE62008FFE43 /* AgreementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAC11322C92CE62008FFE43 /* AgreementViewModel.swift */; };
+		1EAC11352C92D201008FFE43 /* Strings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EAC11342C92D201008FFE43 /* Strings.plist */; };
+		1EAC11372C92D2FE008FFE43 /* PlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAC11362C92D2FE008FFE43 /* PlistManager.swift */; };
+		1EAC11392C92E8D6008FFE43 /* SignUpDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAC11382C92E8D6008FFE43 /* SignUpDataModel.swift */; };
 		1EAD506F2C9038720010F705 /* LoginViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD506E2C9038720010F705 /* LoginViewModifier.swift */; };
 		1EAD50772C903E560010F705 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50762C903E560010F705 /* LoginModel.swift */; };
 		1EAD507A2C903FF60010F705 /* LoginModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50792C903FF60010F705 /* LoginModelProtocol.swift */; };
@@ -33,7 +39,7 @@
 		1EAD50872C9051750010F705 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50862C9051750010F705 /* Router.swift */; };
 		1EAD50892C9056FB0010F705 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50882C9056FB0010F705 /* NavigationRouter.swift */; };
 		1EAD508B2C9057610010F705 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD508A2C9057610010F705 /* MainView.swift */; };
-		1EAD508E2C9058580010F705 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD508D2C9058580010F705 /* SignUpView.swift */; };
+		1EAD508E2C9058580010F705 /* SignupIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD508D2C9058580010F705 /* SignupIdView.swift */; };
 		1EAD50902C9058710010F705 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD508F2C9058710010F705 /* HomeView.swift */; };
 		1EAD50922C905C400010F705 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50912C905C400010F705 /* SplashView.swift */; };
 		1EAD50942C905F080010F705 /* UserNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50932C905F080010F705 /* UserNavigation.swift */; };
@@ -83,6 +89,12 @@
 		1E9137002C918E2A004F647E /* UserConfigVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigVariable.swift; sourceTree = "<group>"; };
 		1E9137042C91999B004F647E /* ErrorDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDefine.swift; sourceTree = "<group>"; };
 		1E9137082C91D828004F647E /* GlobalErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalErrorHandler.swift; sourceTree = "<group>"; };
+		1EAC112C2C92BA1E008FFE43 /* AgreementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementView.swift; sourceTree = "<group>"; };
+		1EAC112F2C92BB8D008FFE43 /* SigunUpModifiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigunUpModifiler.swift; sourceTree = "<group>"; };
+		1EAC11322C92CE62008FFE43 /* AgreementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewModel.swift; sourceTree = "<group>"; };
+		1EAC11342C92D201008FFE43 /* Strings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Strings.plist; sourceTree = "<group>"; };
+		1EAC11362C92D2FE008FFE43 /* PlistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistManager.swift; sourceTree = "<group>"; };
+		1EAC11382C92E8D6008FFE43 /* SignUpDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDataModel.swift; sourceTree = "<group>"; };
 		1EAD506E2C9038720010F705 /* LoginViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModifier.swift; sourceTree = "<group>"; };
 		1EAD50762C903E560010F705 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		1EAD50792C903FF60010F705 /* LoginModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModelProtocol.swift; sourceTree = "<group>"; };
@@ -94,7 +106,7 @@
 		1EAD50862C9051750010F705 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		1EAD50882C9056FB0010F705 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		1EAD508A2C9057610010F705 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		1EAD508D2C9058580010F705 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		1EAD508D2C9058580010F705 /* SignupIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupIdView.swift; sourceTree = "<group>"; };
 		1EAD508F2C9058710010F705 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1EAD50912C905C400010F705 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		1EAD50932C905F080010F705 /* UserNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNavigation.swift; sourceTree = "<group>"; };
@@ -157,12 +169,11 @@
 		1E38D3572C90271D00BB344E /* KpMedicalWallet */ = {
 			isa = PBXGroup;
 			children = (
-				1EAD50A22C9078C60010F705 /* Protocols.swift */,
+				1E9136FB2C91669D004F647E /* GoogleService-Info.plist */,
+				1E9136F72C91654C004F647E /* KpMedicalWallet.entitlements */,
 				1E9137062C91D795004F647E /* EnvClass */,
 				1E9137032C91997F004F647E /* Error */,
 				1E9136FD2C9166CE004F647E /* FCM */,
-				1E9136FB2C91669D004F647E /* GoogleService-Info.plist */,
-				1E9136F72C91654C004F647E /* KpMedicalWallet.entitlements */,
 				1EAD509A2C9067FE0010F705 /* KeyChain */,
 				1EAD50852C9051150010F705 /* Router */,
 				1EAD507D2C9043210010F705 /* HttpRequestFunctionSet */,
@@ -180,6 +191,9 @@
 				1EAD50972C9066290010F705 /* UserCacheImages.xcdatamodeld */,
 				1E9137002C918E2A004F647E /* UserConfigVariable.swift */,
 				1EAD509E2C9069090010F705 /* UrlConfigVariable.swift */,
+				1EAD50A22C9078C60010F705 /* Protocols.swift */,
+				1EAC11362C92D2FE008FFE43 /* PlistManager.swift */,
+				1EAC11342C92D201008FFE43 /* Strings.plist */,
 			);
 			path = KpMedicalWallet;
 			sourceTree = "<group>";
@@ -235,6 +249,23 @@
 			path = EnvClass;
 			sourceTree = "<group>";
 		};
+		1EAC112E2C92BB76008FFE43 /* SignUpModifiler */ = {
+			isa = PBXGroup;
+			children = (
+				1EAC112F2C92BB8D008FFE43 /* SigunUpModifiler.swift */,
+			);
+			path = SignUpModifiler;
+			sourceTree = "<group>";
+		};
+		1EAC11312C92CE29008FFE43 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				1EAC11322C92CE62008FFE43 /* AgreementViewModel.swift */,
+				1EAC11382C92E8D6008FFE43 /* SignUpDataModel.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
 		1EAD506D2C9037C50010F705 /* LoginViewModifier */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +308,7 @@
 		1EAD50742C903A560010F705 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				1EAC11312C92CE29008FFE43 /* SignUp */,
 				1EAD50752C903C370010F705 /* Login */,
 			);
 			path = ViewModels;
@@ -329,7 +361,9 @@
 		1EAD508C2C9058470010F705 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				1EAD508D2C9058580010F705 /* SignUpView.swift */,
+				1EAC112E2C92BB76008FFE43 /* SignUpModifiler */,
+				1EAD508D2C9058580010F705 /* SignupIdView.swift */,
+				1EAC112C2C92BA1E008FFE43 /* AgreementView.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -454,6 +488,7 @@
 			files = (
 				1E38D3602C90271D00BB344E /* Preview Assets.xcassets in Resources */,
 				1E9136FC2C91669D004F647E /* GoogleService-Info.plist in Resources */,
+				1EAC11352C92D201008FFE43 /* Strings.plist in Resources */,
 				1E38D35D2C90271D00BB344E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,22 +515,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E38D3622C90271D00BB344E /* Persistence.swift in Sources */,
-				1EAD508E2C9058580010F705 /* SignUpView.swift in Sources */,
+				1EAC112D2C92BA1E008FFE43 /* AgreementView.swift in Sources */,
+				1EAD508E2C9058580010F705 /* SignupIdView.swift in Sources */,
 				1E9137092C91D828004F647E /* GlobalErrorHandler.swift in Sources */,
 				1EAD50922C905C400010F705 /* SplashView.swift in Sources */,
 				1EAD50A52C9085410010F705 /* LoginSignupModels.swift in Sources */,
+				1EAC11372C92D2FE008FFE43 /* PlistManager.swift in Sources */,
 				1EAD508B2C9057610010F705 /* MainView.swift in Sources */,
 				1EAD50822C90439A0010F705 /* HttpRequestModels.swift in Sources */,
 				1E9137012C918E2A004F647E /* UserConfigVariable.swift in Sources */,
 				1EAD507F2C90436D0010F705 /* HttpRequest.swift in Sources */,
 				1EAD509C2C90681A0010F705 /* UserAuth.swift in Sources */,
 				1E9136FF2C9166F8004F647E /* FCMDelegate.swift in Sources */,
+				1EAC11332C92CE62008FFE43 /* AgreementViewModel.swift in Sources */,
 				1E38D35B2C90271D00BB344E /* ContentView.swift in Sources */,
 				1EAD50872C9051750010F705 /* Router.swift in Sources */,
 				1EAD50942C905F080010F705 /* UserNavigation.swift in Sources */,
 				1EAD506F2C9038720010F705 /* LoginViewModifier.swift in Sources */,
 				1E91370B2C91DDAA004F647E /* UrlConfigVariable.swift in Sources */,
 				1EAD50992C9066290010F705 /* UserCacheImages.xcdatamodeld in Sources */,
+				1EAC11302C92BB8D008FFE43 /* SigunUpModifiler.swift in Sources */,
 				1E38D3592C90271D00BB344E /* KpMedicalWalletApp.swift in Sources */,
 				1EAD507C2C9042520010F705 /* LoginController.swift in Sources */,
 				1EAD50A32C9078C60010F705 /* Protocols.swift in Sources */,
@@ -504,6 +543,7 @@
 				1E38D3652C90271D00BB344E /* KpMedicalWallet.xcdatamodeld in Sources */,
 				1EAD50892C9056FB0010F705 /* NavigationRouter.swift in Sources */,
 				1EAD50A72C908E780010F705 /* ToastView.swift in Sources */,
+				1EAC11392C92E8D6008FFE43 /* SignUpDataModel.swift in Sources */,
 				1EAD50902C9058710010F705 /* HomeView.swift in Sources */,
 				1EAD50772C903E560010F705 /* LoginModel.swift in Sources */,
 				1EAD507A2C903FF60010F705 /* LoginModelProtocol.swift in Sources */,

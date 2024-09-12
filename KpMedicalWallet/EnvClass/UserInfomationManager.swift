@@ -8,11 +8,11 @@
 import Foundation
 import Firebase
 
-class UserInfomationManager: UserManager,ObservableObject{
+class UserInfomationManager: UserManager,HaveJWT,HaveFCMToken,ObservableObject{
     @Published var name: String = ""
     @Published var dob: String = ""
     @Published var sex: String = ""
-    @Published var token: String = ""
+    @Published var jwtToken: String = ""
     var fcmToken: String = ""
     var loginStatus: Bool = false
     
@@ -21,7 +21,7 @@ class UserInfomationManager: UserManager,ObservableObject{
         name = datas.name
         dob = datas.dob
         sex = datas.sex_code
-        token = datas.access_token
+        jwtToken = datas.access_token
     }
     
     @MainActor
@@ -29,7 +29,7 @@ class UserInfomationManager: UserManager,ObservableObject{
         name = ""
         dob = ""
         sex = ""
-        token = ""
+        jwtToken = ""
         fcmToken = ""
         loginStatus = false
     }
@@ -42,7 +42,7 @@ class UserInfomationManager: UserManager,ObservableObject{
             name = userData.name
             dob = userData.dob
             sex = userData.sex
-            token = userData.token
+            jwtToken = userData.jwtToken
         }catch{
             
         }
@@ -50,8 +50,8 @@ class UserInfomationManager: UserManager,ObservableObject{
     
 //    유저 Account 추출
     func GetUserAccountString() -> (status: Bool, account: String) {
-        print("✅GetUserAccountString \(token)")
-        let sections = token.components(separatedBy: ".")
+        print("✅GetUserAccountString \(jwtToken)")
+        let sections = jwtToken.components(separatedBy: ".")
         if sections.count > 2 {
             var base64String = sections[1]
             

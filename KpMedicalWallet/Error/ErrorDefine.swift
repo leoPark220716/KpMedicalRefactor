@@ -26,79 +26,59 @@ extension TraceUserError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .noConnection(_):
-            return "No connection"
+            return PlistManager.shared.string(forKey: "error_no_connection")
         case .serverError(_):
-            return "Server error"
+            return PlistManager.shared.string(forKey: "error_server")
         case .clientError(_):
-            return "Client error"
+            return PlistManager.shared.string(forKey: "error_client")
         case .jsonParseError(_):
-            return "JSON parse error"
+            return PlistManager.shared.string(forKey: "error_json_parse")
         case .userError(_):
-            return "User error"
+            return PlistManager.shared.string(forKey: "error_user")
         case .blockChainError(_):
-            return "Blockchain error"
+            return PlistManager.shared.string(forKey: "error_blockchain")
         case .configError(_):
-            return "Configuration error"
+            return PlistManager.shared.string(forKey: "error_config")
         case .authData(_):
-            return "Authentication data error"
+            return PlistManager.shared.string(forKey: "error_auth_data")
         case .unowned(_):
-            return "Unowned error"
+            return PlistManager.shared.string(forKey: "error_unowned")
         case .managerFunction(_):
-            return "Manager function error"
+            return PlistManager.shared.string(forKey: "error_manager_function")
         case .httpRequestError(_):
-            return "HTTP request error"
+            return PlistManager.shared.string(forKey: "error_http_request")
         }
     }
     var recoverySuggestion: String? {
         switch self {
         case .noConnection(_):
-            return "인터넷에 연결해주세요"
+            return PlistManager.shared.string(forKey: "suggestion_no_connection")
         case .serverError(_):
-            return "불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?r"
+            return PlistManager.shared.string(forKey: "suggestion_server_error")
         case .clientError(_):
-            return "불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?"
+            return PlistManager.shared.string(forKey: "suggestion_client_error")
         case .jsonParseError(_):
-            return "JSON 불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?"
+            return PlistManager.shared.string(forKey: "suggestion_json_parse_error")
         case .userError(let detailError):
-            return "\(detailError)"
+            return detailError // 사용자 정의 오류 메시지는 그대로 사용
         case .blockChainError(_):
-            return "불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?"
+            return PlistManager.shared.string(forKey: "suggestion_blockchain_error")
         case .configError(_):
-            return "불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?"
+            return PlistManager.shared.string(forKey: "suggestion_config_error")
         case .authData(_):
-            return "불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?"
+            return PlistManager.shared.string(forKey: "suggestion_auth_data_error")
         case .unowned(_):
-            return "불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?"
+            return PlistManager.shared.string(forKey: "suggestion_unowned_error")
         case .managerFunction(_):
-            return "불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?"
+            return PlistManager.shared.string(forKey: "suggestion_manager_function_error")
         case .httpRequestError(_):
-            return "불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?"
+            return PlistManager.shared.string(forKey: "suggestion_http_request_error")
         }
     }
-}
-enum MyErrorDomain: String {
-    case constructURL = "constructURL"
-    case configureRequest = "configureRequest"
-    case performRequest = "performRequest"
-    case handleResponse = "handleResponse"
-    case jsonParseError = "jsonParseError"
-    case authData = "keyChain authData"
     
-    case noConnection = "noConnection"
-    case serverError = "serverError"
-    case clientError = "clientError"
-    case userError = "userError"
-    case LoginCheck = "LoginCheck"
-    case blockChainError = "blockChainError"
-    case urlFail = "Create URL Fail"
-    case configError = "Config String Error"
-    case ErrorUnknown = "An unknown error occurre"
-    case userAuthSave = "userAuthSave"
-    case userLoadAuthData = "userLoadAuthData"
 }
 
 
 
 
 
-//return NSLocalizedString("불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?", comment: "")

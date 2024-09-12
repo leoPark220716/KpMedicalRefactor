@@ -12,29 +12,35 @@ import SwiftUI
 
 enum Route:View, Hashable {
     
-    case userPage(item: pages)
+    case userPage(item: pages, appManager: NavigationRouter? = nil)
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.hashValue)
     }
     
     static func == (lhs: Route, rhs: Route) -> Bool {
-        switch(lhs, rhs){
-        case (.userPage(let lhsItem),.userPage(let rhsItem)):
-            return lhsItem.page == rhsItem.page
-        }
+            switch (lhs, rhs) {
+            case (.userPage(let lhsItem, _), .userPage(let rhsItem, _)):
+                return lhsItem.page == rhsItem.page
+            }
     }
-    
     var body: some View{
         switch self {
-        case .userPage(let item):
+        case .userPage(let item, let appManager):
             switch item.page{
             case .SearchHospital:
                 EmptyView()
             case .SignUp:
-                SignUpView()
+                SignupIdView()
+                    .environmentObject(appManager!)
             case .SearchPassword:
                 EmptyView()
+            case .Agreement:
+                if let manager = appManager{
+                    AgreementView(appManager: manager)
+                }else{
+                    EmptyView()
+                }
             }
         }
     }

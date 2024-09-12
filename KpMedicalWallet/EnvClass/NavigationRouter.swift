@@ -15,7 +15,7 @@ final class NavigationRouter: UserInfomationManager {
     
     override init() {
         super.init()
-        if token == "" {
+        if jwtToken == "" {
             RootView = .login
         }else{
             RootView = .tab

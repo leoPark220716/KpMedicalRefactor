@@ -49,7 +49,7 @@ class LoginController: LoginModel, LoginRequest {
     
     @MainActor
     func actionSignUpAction(){
-        appManager.push(to: .userPage(item: UserPage(page: .SignUp)))
+        appManager.push(to: .userPage(item: UserPage(page: .Agreement), appManager: appManager))
     }
     
     func searchPasswordAction(){
@@ -58,7 +58,7 @@ class LoginController: LoginModel, LoginRequest {
     private func SaveUserData(name: String, dob: String, sex: String, token: String) throws -> (Bool) {
         do{
             let authData = AuthData()
-            let status = try authData.userAuthSave(userData: UserData(name: name, dob: dob, sex: sex, token: token))
+            let status = try authData.userAuthSave(userData: UserData(name: name, dob: dob, sex: sex, jwtToken: token))
             return status != errSecDecode
         }catch{
             throw error

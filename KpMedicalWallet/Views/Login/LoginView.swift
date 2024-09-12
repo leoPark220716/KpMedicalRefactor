@@ -11,11 +11,11 @@ struct LoginView: View {
     var body: some View {
         VStack(spacing: 20) {
             // 헤더
-            Text("Medical Wallet")
+            Text(PlistManager.shared.string(forKey: "app_title"))
                 .font(.system(size: 34, weight: .bold))
                 .foregroundColor(Color("AccentColor"))
             //                 아이디 입력 필드
-            TextField("아이디", text: $viewModel.id)
+            TextField(PlistManager.shared.string(forKey: "login_hint"), text: $viewModel.id)
                 .focused($focus)
                 .modifier(IDFildModifier())
                 .overlay(
@@ -24,7 +24,7 @@ struct LoginView: View {
                 )
                 .padding(.horizontal)
             // 비밀번호 입력 필드
-            SecureField("비밀번호", text: $viewModel.password)
+            SecureField(PlistManager.shared.string(forKey: "password_hint"), text: $viewModel.password)
                 .modifier(IDFildModifier())
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
@@ -34,18 +34,18 @@ struct LoginView: View {
             
             // 비밀번호 찾기
             Button(action:viewModel.searchPasswordAction){
-                Text("비밀번호를 잊으셨나요?")
+                Text(PlistManager.shared.string(forKey: "search_password_button"))
                     .modifier(LoginSubText())
             }
             
             Button(action: viewModel.actionLoginAction) {
-                Text("로그인")
+                Text(PlistManager.shared.string(forKey: "login_button"))
                     .modifier(LoginButton())
             }
             .padding(.horizontal)
             // 회원가입
             Button(action: viewModel.actionSignUpAction) {
-                Text("아직 회원이 아니신가요? 가입하기")
+                Text(PlistManager.shared.string(forKey: "sign_up_button"))
                     .modifier(LoginSubText())
             }
             .padding(.horizontal)
@@ -57,18 +57,16 @@ struct LoginView: View {
             focus = true
         }
         .alert(isPresented: $errorHandler.showError, error: errorHandler.ServiceError){ error in
-            Button("취소") {
+            Button(PlistManager.shared.string(forKey: "cancel")) {
                 print(error)
             }
-            Button("확인") {
+            Button(PlistManager.shared.string(forKey: "ok")) {
                 print(error)
             }
         } message: { error in
-            Text(error.recoverySuggestion ?? "Try again later.")
+            Text(error.recoverySuggestion ?? PlistManager.shared.string(forKey: "error_notcatch"))
         }
-        
     }
-    
 }
 
 struct LoginView_Previews: PreviewProvider {

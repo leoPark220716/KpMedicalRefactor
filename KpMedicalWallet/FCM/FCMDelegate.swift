@@ -221,7 +221,7 @@ extension FCMDelegate: MessagingDelegate{
             return
         }
 //        로그인 유효성 검사.
-        if app.router.token != "" {
+        if app.router.jwtToken != "" {
             // Store this token to firebase and retrieve when to send message to someone...
             let dataDict: [String: String] = ["token": fcmToken ?? ""]
             if fcmToken != ""{

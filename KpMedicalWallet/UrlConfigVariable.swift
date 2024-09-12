@@ -13,7 +13,7 @@ enum UtilityURLReturn {
            let apiDomain = config[key] {
             return apiDomain
         } else {
-            throw TraceUserError.configError("\(MyErrorDomain.configError) \(key)")
+            throw TraceUserError.configError("\(PlistManager.shared.string(forKey: "configError")) \(key)")
         }
     }
     static func API_SERVER() throws -> String {

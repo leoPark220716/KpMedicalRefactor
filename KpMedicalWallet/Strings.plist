@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+Property List.plist
+KpMedicalWallet
+
+Created by Junsung Park on 9/12/24.
+Copyright (c) 2024 ___ORGANIZATIONNAME___. All rights reserved.
+-->
+<plist version="1.0">
+    <dict>
+        <key>app_title</key>
+        <string>Medical Wallet</string>
+        <key>ok</key>
+        <string>확인</string>
+        <key>cancel</key>
+        <string>취소</string>
+        <!-- 에러 정의 빈값일 때 기본값 -->
+        <key>error_notcatch</key>
+        <string>조금있다 다시 시도해주세요.</string>
+        <!-- 에러 출력값 -->
+        <key>error_no_connection</key>
+        <string>No connection</string>
+        <key>error_server</key>
+        <string>Server error</string>
+        <key>error_client</key>
+        <string>Client error</string>
+        <key>error_json_parse</key>
+        <string>JSON parse error</string>
+        <key>error_user</key>
+        <string>User error</string>
+        <key>error_blockchain</key>
+        <string>Blockchain error</string>
+        <key>error_config</key>
+        <string>Configuration error</string>
+        <key>error_auth_data</key>
+        <string>Authentication data error</string>
+        <key>error_unowned</key>
+        <string>Unowned error</string>
+        <key>error_manager_function</key>
+        <string>Manager function error</string>
+        <key>error_http_request</key>
+        <string>HTTP request error</string>
+        
+        <key>suggestion_no_connection</key>
+        <string>인터넷에 연결해주세요</string>
+        <key>suggestion_server_error</key>
+        <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
+        <key>suggestion_client_error</key>
+        <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
+        <key>suggestion_json_parse_error</key>
+        <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
+        <key>suggestion_blockchain_error</key>
+        <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
+        <key>suggestion_config_error</key>
+        <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
+        <key>suggestion_auth_data_error</key>
+        <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
+        <key>suggestion_unowned_error</key>
+        <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
+        <key>suggestion_manager_function_error</key>
+        <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
+        <key>suggestion_http_request_error</key>
+        <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
+        
+        
+        <key>constructURL</key>
+        <string>Construct URL</string>
+        <key>configureRequest</key>
+        <string>Configure Request</string>
+        <key>performRequest</key>
+        <string>Perform Request</string>
+        <key>handleResponse</key>
+        <string>Handle Response</string>
+        <key>jsonParseError</key>
+        <string>JSON Parse Error</string>
+        <key>authData</key>
+        <string>KeyChain Auth Data</string>
+        <key>noConnection</key>
+        <string>No Connection</string>
+        <key>serverError</key>
+        <string>Server Error</string>
+        <key>clientError</key>
+        <string>Client Error</string>
+        <key>userError</key>
+        <string>User Error</string>
+        <key>LoginCheck</key>
+        <string>Login Check</string>
+        <key>blockChainError</key>
+        <string>Blockchain Error</string>
+        <key>urlFail</key>
+        <string>Create URL Fail</string>
+        <key>configError</key>
+        <string>Config String Error</string>
+        <key>ErrorUnknown</key>
+        <string>An Unknown Error Occurred</string>
+        <key>userAuthSave</key>
+        <string>User Auth Save</string>
+        <key>userLoadAuthData</key>
+        <string>User Load Auth Data</string>
+        
+        
+        <!-- 로그인 화면 사용 String -->
+        <key>login_hint</key>
+        <string>아이디</string>
+        <key>password_hint</key>
+        <string>비밀번호</string>
+        <key>login_button</key>
+        <string>로그인</string>
+        <key>search_password_button</key>
+        <string>비밀번호를 잊으셨나요?</string>
+        <key>sign_up_button</key>
+        <string>아직 회원이 아니신가요? 가입하기</string>
+        <!-- 약관동의 화면 사용 String -->
+        <key>agree_all_service</key>
+        <string>모든 약관에 동의합니다.</string>
+        <key>agree_terms</key>
+        <string>서비스 이용 약관 동의 (필수)</string>
+        <key>privacy_policy</key>
+        <string>개인정보 수집 및 이용 동의 (필수)</string>
+        <key>push_notifications</key>
+        <string>서비스 푸시 알림 동의</string>
+        
+        <key>agree_terms_url</key>
+        <string>https://docs.google.com/document/d/1sNSzc_d43q5IcJc9CBgy06Or1_Mijyy3fFVMHNdyEy8</string>
+        <key>privacy_policy_url</key>
+        <string>https://docs.google.com/document/d/1xDkus4KIcmOm9xj5Meddd8ZFS04AUh-eIaNflKZnpfk</string>
+        <key>push_notifications_url</key>
+        <string>https://docs.google.com/document/d/1BXBhX1vGOFSTOepUQjvQrQ25oapASlQ8qxBXPxMD_To</string>
+        
+        <key>agree_button</key>
+        <string>계속하기</string>
+        
+        <key>agree_nav_title</key>
+        <string>약관동의</string>
+        
+        
+    </dict>
+</plist>

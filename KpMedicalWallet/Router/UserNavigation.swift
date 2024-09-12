@@ -10,7 +10,9 @@ import Foundation
 enum UserViewPage{
     case SearchHospital
     case SignUp
+    case Agreement
     case SearchPassword
+    
 }
 enum DefaultPage{
     case login

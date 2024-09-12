@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct UserData: Codable, UserAuthData {
+struct UserData: Codable, User, HaveJWT {
     
     var name: String
     var dob: String
     var sex: String
-    var token: String
+    var jwtToken: String
     
 }
 
@@ -34,7 +34,7 @@ struct AuthData {
             // 새로운 Keychain 추가.
             return SecItemAdd(query as CFDictionary, nil)
         }catch {
-            throw TraceUserError.configError("\(MyErrorDomain.authData) \(error)")
+            throw TraceUserError.configError("\(PlistManager.shared.string(forKey: "authData")) \(error)")
         }
     }
     
@@ -55,11 +55,11 @@ struct AuthData {
                 let userData = try decoder.decode(UserData.self, from: data)
                 return userData
             }else{
-                throw TraceUserError.authData("\(MyErrorDomain.userLoadAuthData) \(status)")
+                throw TraceUserError.configError("\(PlistManager.shared.string(forKey: "userLoadAuthData")) \(status)")
             }
         }
         catch {
-            throw TraceUserError.authData("\(MyErrorDomain.userLoadAuthData) \(error)")
+            throw TraceUserError.configError("\(PlistManager.shared.string(forKey: "userLoadAuthData")) \(error)")
         }
     }
     

@@ -15,7 +15,7 @@ enum UserVariable {
            let apiDomain = config[key] {
             return "\(apiDomain)_auth_"
         } else {
-            throw TraceUserError.configError("\(MyErrorDomain.configError) \(key)")
+            throw TraceUserError.configError("\(PlistManager.shared.string(forKey: "configError")) \(key)")
         }
     }
     static func ConfigVal(for key: String) throws -> String {
@@ -23,7 +23,7 @@ enum UserVariable {
            let apiDomain = config[key] {
             return apiDomain
         } else {
-            throw TraceUserError.configError("\(MyErrorDomain.configError) \(key)")
+            throw TraceUserError.configError("\(PlistManager.shared.string(forKey: "configError")) \(key)")
         }
     }
     static func FOR_USER_AUTH() throws -> String {

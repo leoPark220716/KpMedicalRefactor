@@ -22,14 +22,14 @@ struct KPWalletAPIManager<RequestType: Codable, ReturnType: Codable> {
         do {
             guard let url = try constructURL() else {
                 print("Invalid URL")
-                throw TraceUserError.clientError("\(MyErrorDomain.clientError.rawValue) \(MyErrorDomain.urlFail.rawValue)")
+                throw TraceUserError.clientError("\(PlistManager.shared.string(forKey: "clientError")) \(PlistManager.shared.string(forKey: "urlFail"))")
             }
             var request = URLRequest(url: url)
             try configureRequest(&request)
             let (data, response) = try await URLSession.shared.data(for: request)
             return try handleResponse(data: data, response: response)
         } catch {
-            throw TraceUserError.httpRequestError("\(MyErrorDomain.performRequest.rawValue) \(error)")
+            throw TraceUserError.httpRequestError("\(PlistManager.shared.string(forKey: "performRequest")) \(error)")
         }
     }
     //    URL 생성
@@ -39,15 +39,15 @@ struct KPWalletAPIManager<RequestType: Codable, ReturnType: Codable> {
             let baseURL = try UtilityURLReturn.API_SERVER()
             let location = try fetchLocationURL(LocationStatus: URLLocations)
             if location == "" || baseURL == ""{
-                throw TraceUserError.clientError("\(MyErrorDomain.constructURL.rawValue) \(MyErrorDomain.configError)")
+                throw TraceUserError.clientError("\(PlistManager.shared.string(forKey: "constructURL")) \(PlistManager.shared.string(forKey: "configError"))")
             }
             guard let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-                throw TraceUserError.clientError("\(MyErrorDomain.constructURL.rawValue) \(MyErrorDomain.urlFail)")
+                throw TraceUserError.clientError("\(PlistManager.shared.string(forKey: "constructURL")) \(PlistManager.shared.string(forKey: "urlFail"))")
             }
             let stringURL = "\(baseURL)\(location)\(encodedQuery)"
             return URL(string: stringURL)
         } catch {
-            throw TraceUserError.clientError("\(MyErrorDomain.constructURL.rawValue) \(error)")
+            throw TraceUserError.clientError("\(PlistManager.shared.string(forKey: "constructURL")) \(error)")
         }
     }
     //    경로 관련 URL 추출
@@ -74,7 +74,7 @@ struct KPWalletAPIManager<RequestType: Codable, ReturnType: Codable> {
                 request.httpBody = postData
                 request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             } catch {
-                throw TraceUserError.clientError("\(MyErrorDomain.clientError.rawValue) \(MyErrorDomain.configureRequest.rawValue) \(error)")
+                throw TraceUserError.clientError("\(PlistManager.shared.string(forKey: "clientError")) \(PlistManager.shared.string(forKey: "configureRequest"))")
             }
         }
     }
@@ -82,17 +82,17 @@ struct KPWalletAPIManager<RequestType: Codable, ReturnType: Codable> {
     private func handleResponse(data: Data, response: URLResponse) throws -> (success: Bool, data: ReturnType?,ErrorMessage: String?) {
         guard let httpResponse = response as? HTTPURLResponse else {
             print("Response is not an HTTPURLResponse")
-            throw TraceUserError.clientError("\(MyErrorDomain.handleResponse.rawValue)") // 적절한 에러 처리
+            throw TraceUserError.clientError("\(PlistManager.shared.string(forKey: "handleResponse"))") // 적절한 에러 처리
         }
         let statusCode = httpResponse.statusCode
         let responseBody = String(data: data, encoding: .utf8) ?? "Unable to decode response body"
         print("✅ response Body \(responseBody)")
         if (400..<500).contains(statusCode) {
             print("HTTP Client Error with status code: \(statusCode) \n \(responseBody))")
-            throw TraceUserError.clientError("\(MyErrorDomain.handleResponse.rawValue) : \(statusCode), \(responseBody)")
+            throw TraceUserError.clientError("\(PlistManager.shared.string(forKey: "handleResponse")) : \(statusCode), \(responseBody)")
         } else if (500..<600).contains(statusCode) {
             print("HTTP Server Error with status code: \(statusCode)")
-            throw TraceUserError.clientError("\(MyErrorDomain.handleResponse.rawValue) : \(statusCode), \(responseBody)")
+            throw TraceUserError.serverError("\(PlistManager.shared.string(forKey: "handleResponse")) : \(statusCode), \(responseBody)")
         }
         do {
             let jsonData = try JSONDecoder().decode(ReturnType.self, from: data)
@@ -100,7 +100,7 @@ struct KPWalletAPIManager<RequestType: Codable, ReturnType: Codable> {
             return (true, jsonData, nil)
         } catch {
             print("JSON Decoding Error: \(error)")
-            throw TraceUserError.jsonParseError("\(MyErrorDomain.handleResponse.rawValue) : \(error)")
+            throw TraceUserError.jsonParseError("\(PlistManager.shared.string(forKey: "handleResponse")) : \(error)")
         }
     }
 }
