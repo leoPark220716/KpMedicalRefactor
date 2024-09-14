@@ -33,7 +33,9 @@ class UserInfomationManager: UserManager,HaveJWT,HaveFCMToken,ObservableObject{
         fcmToken = ""
         loginStatus = false
     }
-    init() {
+    
+    @MainActor
+    func checkAutoLogin(){
         do{
             let auth = AuthData()
             guard let userData = try auth.userLoadAuthData() else {
@@ -44,9 +46,10 @@ class UserInfomationManager: UserManager,HaveJWT,HaveFCMToken,ObservableObject{
             sex = userData.sex
             jwtToken = userData.jwtToken
         }catch{
-            
+            print(error)
         }
     }
+    
     
 //    유저 Account 추출
     func GetUserAccountString() -> (status: Bool, account: String) {
@@ -98,4 +101,6 @@ class UserInfomationManager: UserManager,HaveJWT,HaveFCMToken,ObservableObject{
         }
         print("✅FCM Token DeleteToken Method Call")
     }
+    
+    // 자동 로그인
 }

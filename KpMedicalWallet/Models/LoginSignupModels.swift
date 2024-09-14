@@ -13,7 +13,14 @@ struct LoginModul: Codable {
     let password: String
     let uid: String
 }
-
+struct SingupRequestModul: Codable {
+    let account: String
+    let password: String
+    let mobile: String
+    let name: String
+    let dob: String
+    let sex_code: String
+}
 
 struct LoginResponse: Codable {
     let access_token: String
@@ -28,4 +35,13 @@ struct normal_Toast: Equatable {
 }
 struct IDCheckResponse: Codable {
     let account: String
+}
+struct MobileResponse: Codable {
+    let verify_token: String
+}
+struct OtpResponse: Codable {
+    let mobile: String
+    let service_id: Int
+    let iat: Int
+    let exp: Int
 }

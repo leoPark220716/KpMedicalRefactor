@@ -36,14 +36,14 @@ class IdControl: DobControl,UserAccountHandle{
         }
     }
     
-    func actonCheckButton() {
+    func SignUpIdActonCheckButton() {
         Task{
             do{
                 try await idCheckRequest()
             }catch let error as TraceUserError {
-                await ProcessErrorCatch(processError: error)
+                await errorHandler.displayError(ServiceError: error)
             }catch{
-                await ProcessErrorCatch(processError: .unowned("감지 못한 에러 \(error.localizedDescription)"))
+                await errorHandler.displayError(ServiceError: .unowned("감지 못한 에러 \(error.localizedDescription)"))
             }
         }
     }
@@ -60,10 +60,9 @@ class IdControl: DobControl,UserAccountHandle{
     func movePhonView(){
         router.push(to: .userPage(item: UserPage(page: .PhoneCreate), signUpManager: self,errorHandler: errorHandler))
     }
-    @MainActor
-    func moveOtpView(){
-        router.push(to: .userPage(item: UserPage(page: .OtpCreate), signUpManager: self,errorHandler: errorHandler))
-    }
+    
+    
+    
     @MainActor
     func goBackLoginView(){
         router.goToRootView()
@@ -109,8 +108,5 @@ class IdControl: DobControl,UserAccountHandle{
             UUID: UserVariable.GET_UUID()
         )
     }
-    @MainActor
-    func ProcessErrorCatch(processError: TraceUserError){
-        errorHandler.displayError(ServiceError: processError)
-    }
+    
 }

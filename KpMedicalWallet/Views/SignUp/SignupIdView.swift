@@ -11,33 +11,36 @@ struct SignupIdView: View {
     @EnvironmentObject var viewModel: IdControl
     @EnvironmentObject var errorHandler: GlobalErrorHandler
     @FocusState private var focus: Bool
+    init() {
+        focus = true
+    }
     var body: some View {
         VStack {
             HStack{
                 //                아이디 입력 가이드라인 Text
                 Text(PlistManager.shared.string(forKey: "signup_id_field_title"))
+                    .modifier(SignupTitldGuaidLine())
                     .padding(.leading)
                 Spacer()
             }
             HStack{
                 TextField(PlistManager.shared.string(forKey: "login_hint"), text: $viewModel.account)
-                    .focused($focus)
-                    .modifier(SinupIDFildModifier(check: $viewModel.IdFieldStatus))
+                    .modifier(SinupTextFildModifier(check: $viewModel.IdFieldStatus,focus: _focus))
                     .padding(viewModel.account != "" ? .leading : .horizontal)
                     .onChange(of: viewModel.account) {
                         viewModel.detechIdFild(text: viewModel.account)
                         viewModel.IdresetStatus(text: viewModel.account)
-                        
                     }
                 //                    중복 확인 버튼
                 if viewModel.account != ""{
                     Button {
-                        viewModel.actonCheckButton()
+                        viewModel.SignUpIdActonCheckButton()
                     } label: {
                         Text(PlistManager.shared.string(forKey: "signup_id_check_button"))
                             .modifier(CheckIDFiledButton(active: $viewModel.IdFieldStatus))
                     }
                     .disabled(!viewModel.IdFieldStatus)
+                    .padding(.trailing)
                 }
             }
             // 유효성 검사 메시지 가이드라인 Text
@@ -75,10 +78,7 @@ struct SignupIdView: View {
             .padding([.horizontal, .bottom])
             .disabled(!viewModel.idCheck)
         }
-        .padding()
-        .onAppear{
-            focus = true
-        }
+        .modifier(ErrorAlertModifier(errorHandler: errorHandler))
         .navigationTitle(PlistManager.shared.string(forKey: "signup_id_navigation_title"))
         .navigationBarTitleDisplayMode(.large)
         

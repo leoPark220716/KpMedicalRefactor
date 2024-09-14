@@ -56,16 +56,7 @@ struct LoginView: View {
         .onAppear{
             focus = true
         }
-        .alert(isPresented: $errorHandler.showError, error: errorHandler.ServiceError){ error in
-            Button(PlistManager.shared.string(forKey: "cancel")) {
-                print(error)
-            }
-            Button(PlistManager.shared.string(forKey: "ok")) {
-                print(error)
-            }
-        } message: { error in
-            Text(error.recoverySuggestion ?? PlistManager.shared.string(forKey: "error_notcatch"))
-        }
+        .modifier(ErrorAlertModifier(errorHandler: errorHandler))
     }
 }
 

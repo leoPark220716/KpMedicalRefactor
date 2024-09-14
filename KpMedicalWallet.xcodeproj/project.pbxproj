@@ -17,6 +17,8 @@
 		1E38D3792C90271E00BB344E /* KpMedicalWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D3782C90271E00BB344E /* KpMedicalWalletUITests.swift */; };
 		1E38D37B2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D37A2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift */; };
 		1E38D38A2C902D7D00BB344E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D3892C902D7D00BB344E /* LoginView.swift */; };
+		1E8FBC6A2C94267900B00909 /* DatePickerDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FBC692C94267900B00909 /* DatePickerDialogView.swift */; };
+		1E8FBC6C2C94835700B00909 /* SignupFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FBC6B2C94835700B00909 /* SignupFinalView.swift */; };
 		1E9136FA2C91667C004F647E /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1E9136F92C91667C004F647E /* FirebaseMessaging */; };
 		1E9136FC2C91669D004F647E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E9136FB2C91669D004F647E /* GoogleService-Info.plist */; };
 		1E9136FF2C9166F8004F647E /* FCMDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9136FE2C9166F8004F647E /* FCMDelegate.swift */; };
@@ -60,6 +62,13 @@
 		1EAD50A32C9078C60010F705 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50A22C9078C60010F705 /* Protocols.swift */; };
 		1EAD50A52C9085410010F705 /* LoginSignupModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50A42C9085410010F705 /* LoginSignupModels.swift */; };
 		1EAD50A72C908E780010F705 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50A62C908E780010F705 /* ToastView.swift */; };
+		1ED5B2932C958535000DE60B /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5B2922C958535000DE60B /* AccountView.swift */; };
+		1ED5B2952C958543000DE60B /* MyHospitalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5B2942C958543000DE60B /* MyHospitalView.swift */; };
+		1ED5B2982C9585E1000DE60B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5B2972C9585E1000DE60B /* HomeViewModel.swift */; };
+		1ED5B29C2C958A05000DE60B /* CommonViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5B29B2C958A05000DE60B /* CommonViewModifier.swift */; };
+		1ED5B29F2C95A6CD000DE60B /* HomViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5B29E2C95A6CD000DE60B /* HomViewModifier.swift */; };
+		1ED5B2A22C95A893000DE60B /* HospitalListMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5B2A12C95A893000DE60B /* HospitalListMain.swift */; };
+		1ED5B2A42C95A9DF000DE60B /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5B2A32C95A9DF000DE60B /* ErrorAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +102,8 @@
 		1E38D3782C90271E00BB344E /* KpMedicalWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KpMedicalWalletUITests.swift; sourceTree = "<group>"; };
 		1E38D37A2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KpMedicalWalletUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1E38D3892C902D7D00BB344E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1E8FBC692C94267900B00909 /* DatePickerDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerDialogView.swift; sourceTree = "<group>"; };
+		1E8FBC6B2C94835700B00909 /* SignupFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFinalView.swift; sourceTree = "<group>"; };
 		1E9136F72C91654C004F647E /* KpMedicalWallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KpMedicalWallet.entitlements; sourceTree = "<group>"; };
 		1E9136FB2C91669D004F647E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1E9136FE2C9166F8004F647E /* FCMDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +149,13 @@
 		1EAD50A22C9078C60010F705 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		1EAD50A42C9085410010F705 /* LoginSignupModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupModels.swift; sourceTree = "<group>"; };
 		1EAD50A62C908E780010F705 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		1ED5B2922C958535000DE60B /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		1ED5B2942C958543000DE60B /* MyHospitalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHospitalView.swift; sourceTree = "<group>"; };
+		1ED5B2972C9585E1000DE60B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		1ED5B29B2C958A05000DE60B /* CommonViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModifier.swift; sourceTree = "<group>"; };
+		1ED5B29E2C95A6CD000DE60B /* HomViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomViewModifier.swift; sourceTree = "<group>"; };
+		1ED5B2A12C95A893000DE60B /* HospitalListMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalListMain.swift; sourceTree = "<group>"; };
+		1ED5B2A32C95A9DF000DE60B /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,10 +321,12 @@
 		1EAD50712C9039FA0010F705 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1ED5B2A02C95A869000DE60B /* HospitalList */,
+				1ED5B2992C9589D9000DE60B /* ViewModifier */,
+				1ED5B2912C9579C3000DE60B /* Tap */,
 				1EAD508C2C9058470010F705 /* SignUp */,
 				1EAD50722C903A190010F705 /* Login */,
 				1EAD508A2C9057610010F705 /* MainView.swift */,
-				1EAD508F2C9058710010F705 /* HomeView.swift */,
 				1EAD50912C905C400010F705 /* SplashView.swift */,
 				1EAD50952C9060FB0010F705 /* TabView.swift */,
 				1EAD50A62C908E780010F705 /* ToastView.swift */,
@@ -334,6 +354,7 @@
 		1EAD50742C903A560010F705 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				1ED5B2962C9585CC000DE60B /* Home */,
 				1EAC11312C92CE29008FFE43 /* SignUp */,
 				1EAD50752C903C370010F705 /* Login */,
 			);
@@ -387,13 +408,14 @@
 		1EAD508C2C9058470010F705 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				1EAC112E2C92BB76008FFE43 /* SignUpModifiler */,
 				1EAC112C2C92BA1E008FFE43 /* SginupAgreementView.swift */,
 				1EAD508D2C9058580010F705 /* SignupIdView.swift */,
 				1EAC11442C9303F7008FFE43 /* SignupPasswordView.swift */,
 				1EAC11482C930432008FFE43 /* SignupDobView.swift */,
 				1EAC114A2C93044D008FFE43 /* SignUpMobileView.swift */,
 				1EAC114C2C93045D008FFE43 /* SignupOtpView.swift */,
+				1E8FBC692C94267900B00909 /* DatePickerDialogView.swift */,
+				1E8FBC6B2C94835700B00909 /* SignupFinalView.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -404,6 +426,59 @@
 				1EAD509B2C90681A0010F705 /* UserAuth.swift */,
 			);
 			path = KeyChain;
+			sourceTree = "<group>";
+		};
+		1ED5B2912C9579C3000DE60B /* Tap */ = {
+			isa = PBXGroup;
+			children = (
+				1EAD508F2C9058710010F705 /* HomeView.swift */,
+				1ED5B2922C958535000DE60B /* AccountView.swift */,
+				1ED5B2942C958543000DE60B /* MyHospitalView.swift */,
+			);
+			path = Tap;
+			sourceTree = "<group>";
+		};
+		1ED5B2962C9585CC000DE60B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1ED5B2972C9585E1000DE60B /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		1ED5B2992C9589D9000DE60B /* ViewModifier */ = {
+			isa = PBXGroup;
+			children = (
+				1ED5B29D2C95A6B6000DE60B /* HomeViewModifier */,
+				1ED5B29A2C9589F2000DE60B /* Common */,
+				1EAC112E2C92BB76008FFE43 /* SignUpModifiler */,
+				1ED5B2A32C95A9DF000DE60B /* ErrorAlert.swift */,
+			);
+			path = ViewModifier;
+			sourceTree = "<group>";
+		};
+		1ED5B29A2C9589F2000DE60B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1ED5B29B2C958A05000DE60B /* CommonViewModifier.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		1ED5B29D2C95A6B6000DE60B /* HomeViewModifier */ = {
+			isa = PBXGroup;
+			children = (
+				1ED5B29E2C95A6CD000DE60B /* HomViewModifier.swift */,
+			);
+			path = HomeViewModifier;
+			sourceTree = "<group>";
+		};
+		1ED5B2A02C95A869000DE60B /* HospitalList */ = {
+			isa = PBXGroup;
+			children = (
+				1ED5B2A12C95A893000DE60B /* HospitalListMain.swift */,
+			);
+			path = HospitalList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -547,13 +622,17 @@
 				1E38D3622C90271D00BB344E /* Persistence.swift in Sources */,
 				1EAC112D2C92BA1E008FFE43 /* SginupAgreementView.swift in Sources */,
 				1EAD508E2C9058580010F705 /* SignupIdView.swift in Sources */,
+				1ED5B2982C9585E1000DE60B /* HomeViewModel.swift in Sources */,
 				1E9137092C91D828004F647E /* GlobalErrorHandler.swift in Sources */,
 				1EAD50922C905C400010F705 /* SplashView.swift in Sources */,
+				1ED5B2A22C95A893000DE60B /* HospitalListMain.swift in Sources */,
 				1EAD50A52C9085410010F705 /* LoginSignupModels.swift in Sources */,
 				1EAC11372C92D2FE008FFE43 /* PlistManager.swift in Sources */,
 				1EAD508B2C9057610010F705 /* MainView.swift in Sources */,
 				1EAD50822C90439A0010F705 /* HttpRequestModels.swift in Sources */,
 				1E9137012C918E2A004F647E /* UserConfigVariable.swift in Sources */,
+				1E8FBC6A2C94267900B00909 /* DatePickerDialogView.swift in Sources */,
+				1ED5B2A42C95A9DF000DE60B /* ErrorAlert.swift in Sources */,
 				1EAD507F2C90436D0010F705 /* HttpRequest.swift in Sources */,
 				1EAD509C2C90681A0010F705 /* UserAuth.swift in Sources */,
 				1E9136FF2C9166F8004F647E /* FCMDelegate.swift in Sources */,
@@ -575,20 +654,25 @@
 				1EAC11412C92F459008FFE43 /* DobControl.swift in Sources */,
 				1E38D38A2C902D7D00BB344E /* LoginView.swift in Sources */,
 				1E38D3652C90271D00BB344E /* KpMedicalWallet.xcdatamodeld in Sources */,
+				1E8FBC6C2C94835700B00909 /* SignupFinalView.swift in Sources */,
 				1EAC113F2C92F41A008FFE43 /* OtpControl.swift in Sources */,
 				1EAD50892C9056FB0010F705 /* NavigationRouter.swift in Sources */,
 				1EAD50A72C908E780010F705 /* ToastView.swift in Sources */,
+				1ED5B2932C958535000DE60B /* AccountView.swift in Sources */,
 				1EAC113D2C92F3F8008FFE43 /* IdControl.swift in Sources */,
 				1EAC11392C92E8D6008FFE43 /* SignUpDataModel.swift in Sources */,
 				1EAC11492C930432008FFE43 /* SignupDobView.swift in Sources */,
 				1EAD50902C9058710010F705 /* HomeView.swift in Sources */,
+				1ED5B29F2C95A6CD000DE60B /* HomViewModifier.swift in Sources */,
 				1EAD50772C903E560010F705 /* LoginModel.swift in Sources */,
 				1EAC113B2C92F3D6008FFE43 /* PasswordControl.swift in Sources */,
 				1EAD507A2C903FF60010F705 /* LoginModelProtocol.swift in Sources */,
 				1EAD50962C9060FB0010F705 /* TabView.swift in Sources */,
 				1EAD50A12C9078450010F705 /* UserInfomationManager.swift in Sources */,
 				1EAC114D2C93045E008FFE43 /* SignupOtpView.swift in Sources */,
+				1ED5B29C2C958A05000DE60B /* CommonViewModifier.swift in Sources */,
 				1EAC11432C92F4AB008FFE43 /* PhoneNumberControl.swift in Sources */,
+				1ED5B2952C958543000DE60B /* MyHospitalView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -49,8 +49,6 @@ protocol passwordCheck: SignUpData{
     var SecondPassFieldStatus: Bool { get }
 }
 protocol dobCheckAndSex: SignUpData{
-    var nameCheck: Bool { get }
-    var dobCheck: Bool { get }
     var sexCheck: Bool { get }
 }
 
@@ -59,4 +57,6 @@ protocol PhonNumberCheck: SignUpData{
 }
 protocol OtpCheck: SignUpData{
     var otpCheck: Bool { get }
+    var verifyToken: String { get }
+    var otpViewShow: Bool { get }
 }

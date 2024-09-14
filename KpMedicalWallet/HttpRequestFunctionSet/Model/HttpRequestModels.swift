@@ -12,6 +12,7 @@ struct http<RequestType: Codable, ReturnType: Codable> : Codable{
     var urlParse: String
     var token: String
     var UUID: String
+    var verify_token: String?
     var requestVal: RequestType?
 }
 
@@ -26,6 +27,12 @@ struct KPApiStructFromGetArray<T: Codable>: Codable {
     let success: String
     let message: String
     let data: [T]
+}
+struct KPApiStructFromDataInt : Codable {
+    let status: Int
+    let success: String
+    let message: String
+    let data: Int
 }
 struct Empty: Codable {}
 

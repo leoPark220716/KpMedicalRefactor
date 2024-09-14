@@ -100,6 +100,12 @@ Copyright (c) 2024 ___ORGANIZATIONNAME___. All rights reserved.
         <string>User Load Auth Data</string>
         <key>SingUp_idCheckRequest</key>
         <string>SignUp Process Error in idCheckRequest</string>
+        <key>SignUp_Verify_token_getotp</key>
+        <string>SignUp Process Error in getOtpNumberByMobile</string>
+        <key>SignUp_request_make_body</key>
+        <string>SignUp Process Error in createLoginRequestData</string>
+        <key>SignUp_request_unkownError</key>
+        <string>SignUp Process Error in createLoginRequestData</string>
         
         
         <!-- 로그인 화면 사용 String -->
@@ -179,6 +185,69 @@ Copyright (c) 2024 ___ORGANIZATIONNAME___. All rights reserved.
         
         <key>signup_password_access_button</key>
         <string>다음</string>
+        
+        <key>signup_password_error_formet</key>
+        <string>8자 이상 30자리 이하의 숫자, 영문자, 특수문자를 포함한 조합으로 가능합니다.</string>
+        
+        <key>signup_password_error_not_match</key>
+        <string>비밀번호가 일치하지 않습니다.</string>
+        <!--     회원 가입 생년월일 및 이름 입력 Stirng   -->
+        <key>signup_dob_name_guaidline</key>
+        <string>이름</string>
+        
+        <key>signup_dob_name_hint</key>
+        <string>이름</string>
+        
+        <key>signup_dob_dob_guaidline</key>
+        <string>생년월일</string>
+        
+        <key>signup_dob_dob_hint</key>
+        <string>생년월일</string>
+        
+        <key>signup_dob_ssx_guaidline</key>
+        <string>성별</string>
+        
+        <key>signup_dob_sex_1</key>
+        <string>MEN</string>
+        
+        <key>signup_dob_sex_2</key>
+        <string>WOMEN</string>
+        
+        <key>signup_dob_access_button</key>
+        <string>다음</string>
+        
+        
+        <!--     휴대폰 번호 입력 String   -->
+        <key>signup_mobile_guaidline</key>
+        <string>휴대폰 번호</string>
+        
+        <key>signup_mobile_hint</key>
+        <string>휴대폰 번호</string>
+        
+        <key>signup_mobile_access_button</key>
+        <string>인증번호 입력</string>
+        
+        
+        <!--  인증번호 입력 String       -->
+        <key>signup_otp_guaidline1</key>
+        <string>인증번호</string>
+        
+        <key>signup_otp_guaidline2</key>
+        <string>로 전송됐습니다.</string>
+        
+        <key>signup_otp_error_not_match</key>
+        <string>일치하지 않습니다.</string>
+        
+        <key>signup_otp_access_button</key>
+        <string>확인</string>
+        
+        <key>signup_otp_singup_error_202</key>
+        <string>이미 아이디가 존재합니다.</string>
+        
+        <!-- 회원가입 마지막 뷰 성공여부 알림  -->
+        <key>signup_final_go_root</key>
+        <string>로그인</string>
+        
         
     </dict>
 </plist>

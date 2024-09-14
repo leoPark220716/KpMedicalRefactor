@@ -10,7 +10,11 @@ import SwiftUI
 import Combine
 
 class GlobalErrorHandler: ObservableObject {
-    @Published var showError: Bool = false
+    @Published var showError: Bool = false{
+        didSet {
+               print("showError changed to \(showError)")
+           }
+    }
     var ServiceError : TraceUserError? = nil
     
     @MainActor

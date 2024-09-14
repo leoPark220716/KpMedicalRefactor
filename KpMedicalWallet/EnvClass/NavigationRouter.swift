@@ -12,15 +12,20 @@ final class NavigationRouter: UserInfomationManager {
     
     @Published var routes = NavigationPath()
     @Published var RootView: DefaultPage = .splash
+    @Published var TabViewSelection: TabViewTabs = .home
     
-    override init() {
-        super.init()
+
+    @MainActor
+    override func checkAutoLogin() {
+        super.checkAutoLogin()
         if jwtToken == "" {
             RootView = .login
         }else{
             RootView = .tab
         }
     }
+    
+    
     
     @MainActor
     func push(to: Route){

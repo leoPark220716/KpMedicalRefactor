@@ -16,7 +16,7 @@ class PasswordControl: PhoneNumberControl, passwordCheck{
     
     @Published var PassFieldStatus: Bool = true
     
-    @Published var SecondPassFieldStatus: Bool = false
+    @Published var SecondPassFieldStatus: Bool = true
     
     @Published var PasswordPermission: Bool = false
     
@@ -29,6 +29,7 @@ class PasswordControl: PhoneNumberControl, passwordCheck{
         let regex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{8,30}$"
         let isMatchingRegex = NSPredicate(format:"SELF MATCHES %@", regex).evaluate(with: text)
         PassFieldStatus = isMatchingRegex
+        passwordSecond = ""
     }
     @MainActor
     func PasswordResetStatus(text: String){
@@ -38,24 +39,22 @@ class PasswordControl: PhoneNumberControl, passwordCheck{
     }
     @MainActor
     func detechPasswordFieldSecond(text: String){
-        let regex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{8,30}$"
-        let isMatchingRegex = NSPredicate(format:"SELF MATCHES %@", regex).evaluate(with: text)
-        SecondPassFieldStatus = isMatchingRegex
-        PasswordPermission = false
-        matchPassword()
-    }
-    
-    @MainActor
-    func PasswordResetStatusSecond(text: String){
+        if text == password{
+            PasswordPermission = true
+            SecondPassFieldStatus = true
+        }else{
+            PasswordPermission = false
+            SecondPassFieldStatus = false
+        }
         if text == "" {
             SecondPassFieldStatus = true
         }
     }
     
     @MainActor
-    private func matchPassword(){
-        if passwordSecond == password{
-            PasswordPermission = true
+    func PasswordResetStatusSecond(text: String){
+        if text == "" {
+            SecondPassFieldStatus = true
         }
     }
 }

@@ -12,7 +12,7 @@ import SwiftUI
 
 enum Route:View, Hashable {
     
-    case userPage(item: pages, appManager: NavigationRouter? = nil, signUpManager: IdControl? = nil, errorHandler: GlobalErrorHandler? = nil)
+    case userPage(item: pages, appManager: NavigationRouter? = nil, signUpManager: IdControl? = nil, errorHandler: GlobalErrorHandler? = nil,pageStatus: Bool? = nil,name: String? = nil)
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.hashValue)
@@ -20,19 +20,19 @@ enum Route:View, Hashable {
     
     static func == (lhs: Route, rhs: Route) -> Bool {
             switch (lhs, rhs) {
-            case (.userPage(let lhsItem, _,_,_), .userPage(let rhsItem, _,_,_)):
+            case (.userPage(let lhsItem, _,_,_,_,_), .userPage(let rhsItem, _,_,_,_,_)):
                 return lhsItem.page == rhsItem.page
             }
     }
     var body: some View{
         switch self {
-        case .userPage(let item, let appManager, let signUpManager, let errorHandler):
+        case .userPage(let item, let appManager, let signUpManager, let errorHandler,let pageStatus, let name):
             switch item.page{
             case .SearchHospital:
-                EmptyView()
+                HospitalListMain()
             case .SearchPassword:
                 EmptyView()
-//                회원가입 섹션
+                //                회원가입 섹션
             case .Agreement:
                 if let manager = appManager, let errors = errorHandler{
                     AgreementView(appManager: manager,errorHandler: errors)
@@ -40,45 +40,43 @@ enum Route:View, Hashable {
                     ErrorView()
                 }
             case .IdCreate:
-                if let manager = signUpManager, let errors = errorHandler{
+                if let manager = signUpManager{
                     SignupIdView()
                         .environmentObject(manager)
-                        .environmentObject(errors)
                 }else{
                     ErrorView()
                 }
             case .PasswordCreate:
-                if let manager = signUpManager, let errors = errorHandler{
+                if let manager = signUpManager{
                     SignupPasswordView()
                         .environmentObject(manager)
-                        .environmentObject(errors)
                 }else{
                     ErrorView()
                 }
             case .DobCreate:
-                if let manager = signUpManager, let errors = errorHandler{
+                if let manager = signUpManager{
                     SignupDobView()
                         .environmentObject(manager)
-                        .environmentObject(errors)
                 }else{
                     ErrorView()
                 }
             case .PhoneCreate:
-                if let manager = signUpManager, let errors = errorHandler{
+                if let manager = signUpManager{
                     SignUpMobileView()
                         .environmentObject(manager)
-                        .environmentObject(errors)
                 }else{
                     ErrorView()
                 }
-            case .OtpCreate:
-                if let manager = signUpManager, let errors = errorHandler{
-                    SignupOtpView()
-                        .environmentObject(manager)
-                        .environmentObject(errors)
+            
+            case .SignUpFinal:
+                if let pageStatus = pageStatus, let name = name{
+                    SignupFinalView(pageStatus:pageStatus,name: name)
                 }else{
                     ErrorView()
                 }
+                
+                
+                //
             }
             
             

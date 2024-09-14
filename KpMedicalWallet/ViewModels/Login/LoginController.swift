@@ -73,13 +73,17 @@ class LoginController: LoginModel, LoginRequest {
             let request = createHttpRequest(with: requestData)
             let call = KPWalletAPIManager.init(httpStructs: request, URLLocations: 1)
             let response = try await call.performRequest()
-            if response.data?.status == 202 {
-                await handleVersionCheckFailure()
-                return (success: false, token: nil, errorMessage: response.ErrorMessage)
-            } else {
-                await navigateToSplashScreen()
-                return (success: response.success, token: response.data?.data, errorMessage: nil)
+            if response.success{
+                if response.data?.status == 202 {
+                    await handleVersionCheckFailure()
+                    return (success: false, token: nil, errorMessage: response.ErrorMessage)
+                } else {
+                    await navigateToSplashScreen()
+                    return (success: response.success, token: response.data?.data, errorMessage: nil)
+                }
             }
+            await handleVersionCheckFailure()
+            return (success: false, token: nil, errorMessage: response.ErrorMessage)
         }catch{
             throw error
         }

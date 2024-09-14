@@ -15,12 +15,19 @@ enum UserViewPage{
     case PasswordCreate
     case DobCreate
     case PhoneCreate
-    case OtpCreate
+    case SignUpFinal
+    
 }
 enum DefaultPage{
     case login
     case tab
     case splash
+}
+
+enum TabViewTabs{
+    case home
+    case hospital
+    case account
 }
 
 protocol pages {
