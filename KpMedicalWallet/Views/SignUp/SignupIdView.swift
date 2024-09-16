@@ -9,11 +9,8 @@ import SwiftUI
 
 struct SignupIdView: View {
     @EnvironmentObject var viewModel: IdControl
-    @EnvironmentObject var errorHandler: GlobalErrorHandler
     @FocusState private var focus: Bool
-    init() {
-        focus = true
-    }
+    
     var body: some View {
         VStack {
             HStack{
@@ -33,14 +30,18 @@ struct SignupIdView: View {
                     }
                 //                    중복 확인 버튼
                 if viewModel.account != ""{
-                    Button {
-                        viewModel.SignUpIdActonCheckButton()
-                    } label: {
+                    
+                    Button(action: 
+                            {
+                        viewModel.SignUpIdActonCheckButton()}
+                    ) {
                         Text(PlistManager.shared.string(forKey: "signup_id_check_button"))
                             .modifier(CheckIDFiledButton(active: $viewModel.IdFieldStatus))
                     }
                     .disabled(!viewModel.IdFieldStatus)
                     .padding(.trailing)
+                    
+                    
                 }
             }
             // 유효성 검사 메시지 가이드라인 Text
@@ -78,7 +79,6 @@ struct SignupIdView: View {
             .padding([.horizontal, .bottom])
             .disabled(!viewModel.idCheck)
         }
-        .modifier(ErrorAlertModifier(errorHandler: errorHandler))
         .navigationTitle(PlistManager.shared.string(forKey: "signup_id_navigation_title"))
         .navigationBarTitleDisplayMode(.large)
         
@@ -90,7 +90,7 @@ struct SignupIdView_Priview: PreviewProvider{
     static var previews: some View {
         @StateObject var errorHandler = GlobalErrorHandler()
         @StateObject var router = NavigationRouter()
-        @StateObject var viewModel = IdControl(router: router, errorHandler: errorHandler)
+        @StateObject var viewModel = IdControl(router: router)
         SignupIdView()
             .environmentObject(viewModel)
     }

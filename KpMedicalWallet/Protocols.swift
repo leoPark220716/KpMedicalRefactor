@@ -33,7 +33,7 @@ protocol SignUpData: User{
     var account: String { get }
     var password: String { get }
     var otp: String { get }
-    var router: NavigationRouter { get }
+    var appManager: NavigationRouter { get }
     
 }
 

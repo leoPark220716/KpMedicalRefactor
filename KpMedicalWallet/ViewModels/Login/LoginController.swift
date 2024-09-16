@@ -7,17 +7,14 @@
 
 import Foundation
 
-class LoginController: LoginModel, LoginRequest {
+// LoginRequest
+class LoginController: LoginModel,LoginRequest {
     
     var appManager: NavigationRouter
-    var errorHandler: GlobalErrorHandler
     
-    
-    init(appManager: NavigationRouter,errorHandler: GlobalErrorHandler) {
+    init(appManager: NavigationRouter) {
         self.appManager = appManager
-        self.errorHandler = errorHandler
     }
-    
     // 로그인 버튼 동작 함수
     func actionLoginAction(){
         Task{
@@ -31,26 +28,33 @@ class LoginController: LoginModel, LoginRequest {
                         return
                     }
                     // 유저 KeyChain 에 해당 데이터 저장.
-                    let status = try SaveUserData(name: data.name, dob: data.dob, sex: data.sex_code, token: data.access_token)
+                    let status = try SaveUserData(name: data.name, dob: data.dob, sex: data.sex, token: data.jwtToken)
                     // 저장 성공시 KeyChain 에 저장
                     if status {
+                        // Env 객체에 저장
                         await appManager.SetInfo(datas: data)
+                        // Env 객체에 FCM 토큰 호출
                         appManager.refreshFCMToken()
+                        // 뷰 텝뷰로 전환
                         await appManager.rootView(change: .tab)
                     }
                 }
             }catch let error as TraceUserError {
-                await LoginProcessCatch(processError: error)
+                await appManager.displayError(ServiceError: error)
             } catch {
-                await LoginProcessCatch(processError: .unowned("감지 못한 에러 \(error.localizedDescription)"))
+                await appManager.displayError(ServiceError:  .unowned(error.localizedDescription))
             }
         }
+    }
+    @MainActor
+    func CheckReturnTrue(){
+        checked = true
     }
     
     //    회원가입 페이지 이동
     @MainActor
     func actionSignUpAction(){
-        appManager.push(to: .userPage(item: UserPage(page: .Agreement), appManager: appManager,errorHandler: errorHandler))
+        appManager.push(to: .userPage(item: UserPage(page: .Agreement), appManager: appManager))
     }
     
     func searchPasswordAction(){
@@ -67,7 +71,7 @@ class LoginController: LoginModel, LoginRequest {
     }
     
     //    로그인 확인
-    private func LoginCheck() async throws -> (success: Bool, token: LoginResponse?, errorMessage: String?) {
+    private func LoginCheck() async throws -> (success: Bool, token: UserData?, errorMessage: String?) {
         do{
             let requestData = createLoginRequestData()
             let request = createHttpRequest(with: requestData)
@@ -93,8 +97,8 @@ class LoginController: LoginModel, LoginRequest {
         return LoginModul(account: id, password: password, uid: UserVariable.GET_UUID())
     }
     // 응답 및 요청 객체 생성
-    private func createHttpRequest(with requestData: LoginModul) -> http<LoginModul?, KPApiStructFrom<LoginResponse>> {
-        return http<LoginModul?, KPApiStructFrom<LoginResponse>>(
+    private func createHttpRequest(with requestData: LoginModul) -> http<LoginModul?, KPApiStructFrom<UserData>> {
+        return http<LoginModul?, KPApiStructFrom<UserData>>(
             method: "POST",
             urlParse: "users/access",
             token: "",
@@ -108,7 +112,7 @@ class LoginController: LoginModel, LoginRequest {
         await MainActor.run {
             checked = false
             do {
-                toast = normal_Toast(message: try UserVariable.TOAST_LOGIN_FAIL())
+                appManager.toast = normal_Toast(message: try UserVariable.TOAST_LOGIN_FAIL())
             } catch TraceUserError.configError(let errorDetail) {
                 print(errorDetail)
             } catch {
@@ -121,15 +125,5 @@ class LoginController: LoginModel, LoginRequest {
         await MainActor.run {
             appManager.rootView(change: .splash)
         }
-    }
-    
-    
-    //    Catch 문 왔을 때 사용자 알림을 위한 MainActor
-    @MainActor
-    private func LoginProcessCatch(processError: TraceUserError){
-        if appManager.RootView != .login{
-            appManager.rootView(change: .login)
-        }
-        errorHandler.displayError(ServiceError: processError)
     }
 }

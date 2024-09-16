@@ -9,8 +9,9 @@ import SwiftUI
 
 struct AgreementView: View {
     @StateObject private var viewModel: AgreementViewModel
-    init(appManager: NavigationRouter,errorHandler: GlobalErrorHandler) {
-        _viewModel = StateObject(wrappedValue: AgreementViewModel(appManager: appManager, errorHandler: errorHandler))
+    
+    init(appManager: NavigationRouter) {
+        _viewModel = StateObject(wrappedValue: AgreementViewModel(appManager: appManager))
     }
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -59,6 +60,7 @@ struct AgreementView: View {
             }
             Spacer()
             Button(action: {
+                
                 viewModel.actionAgreeButton()
             }) {
                 Text(PlistManager.shared.string(forKey: "agree_button"))
@@ -85,7 +87,7 @@ struct AgreementView_Previews: PreviewProvider {
     static var previews: some View {
         @StateObject var router = NavigationRouter()
         @StateObject var errorHandler =  GlobalErrorHandler()
-        AgreementView(appManager: router, errorHandler: errorHandler)
+        AgreementView(appManager: router)
             .environmentObject(router)
             .environmentObject(errorHandler)
     }

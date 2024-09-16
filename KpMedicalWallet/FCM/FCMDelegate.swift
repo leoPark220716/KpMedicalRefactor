@@ -221,13 +221,13 @@ extension FCMDelegate: MessagingDelegate{
             return
         }
 //        로그인 유효성 검사.
-        if app.router.jwtToken != "" {
+        if app.appManager.jwtToken != "" {
             // Store this token to firebase and retrieve when to send message to someone...
             let dataDict: [String: String] = ["token": fcmToken ?? ""]
             if fcmToken != ""{
                 let token = fcmToken
                 if let token = token {
-                    app.router.fcmToken = token
+                    app.appManager.fcmToken = token
                 }
                 NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
             }

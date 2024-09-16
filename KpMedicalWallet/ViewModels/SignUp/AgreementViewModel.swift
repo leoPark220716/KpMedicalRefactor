@@ -10,7 +10,7 @@ import UIKit
 
 class AgreementViewModel: ObservableObject{
     var appManager: NavigationRouter
-    var errorHandler: GlobalErrorHandler
+    
     var signUpManager: IdControl? = nil
     //    전체 동의
     @Published var agreeToAll = false
@@ -23,9 +23,8 @@ class AgreementViewModel: ObservableObject{
     //    버튼 액티브
     @Published var active = false
     
-    init(appManager: NavigationRouter,errorHandler: GlobalErrorHandler) {
+    init(appManager: NavigationRouter) {
         self.appManager = appManager
-        self.errorHandler = errorHandler
     }
     
     @MainActor
@@ -39,11 +38,11 @@ class AgreementViewModel: ObservableObject{
     }
     @MainActor
     func routeToSignupView(){
-        appManager.push(to: .userPage(item: UserPage(page: .IdCreate), signUpManager: signUpManager,errorHandler: errorHandler))
+        appManager.push(to: .userPage(item: UserPage(page: .IdCreate), signUpManager: signUpManager))
     }
     func actionAgreeButton() {
         Task{
-            signUpManager = IdControl(router: appManager, errorHandler: errorHandler)
+            signUpManager = IdControl(router: appManager)
             await routeToSignupView()
         }
     }

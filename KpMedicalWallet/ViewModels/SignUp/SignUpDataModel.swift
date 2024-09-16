@@ -8,8 +8,8 @@
 import Foundation
 
 class SignUpDataModel: SignUpData,ObservableObject {
-    var router: NavigationRouter
-    var errorHandler: GlobalErrorHandler
+    var appManager: NavigationRouter
+    
     
     @Published var phone: String = ""
     @Published var account: String = ""
@@ -19,8 +19,11 @@ class SignUpDataModel: SignUpData,ObservableObject {
     @Published var sex: String = ""
     @Published var otp: String = ""
     
-    init(router: NavigationRouter,errorHandler: GlobalErrorHandler) {
-        self.router = router
-        self.errorHandler = errorHandler
+    init(router: NavigationRouter) {
+        print("✅ Signup Class Init")
+        self.appManager = router
+    }
+    deinit{
+        print("❌ Signup Class DeInit")
     }
 }

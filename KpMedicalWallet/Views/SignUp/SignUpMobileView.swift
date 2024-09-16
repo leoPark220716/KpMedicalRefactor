@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SignUpMobileView: View {
     @EnvironmentObject var viewModel: IdControl
-    @EnvironmentObject var errorHandler: GlobalErrorHandler
     @EnvironmentObject var router: NavigationRouter
     @FocusState private var focus: Bool
     var body: some View {
@@ -40,11 +39,10 @@ struct SignUpMobileView: View {
             .disabled(!viewModel.NumberPermissionCheck)
             .padding([.horizontal, .bottom])
             .sheet(isPresented: $viewModel.otpViewShow, content: {
-                SignupOtpView(viewModel: .constant(viewModel), errorHandler: .constant(errorHandler))
+                SignupOtpView(viewModel: .constant(viewModel))
                     .presentationDetents([.fraction(0.5)])
             })
         }
-        .modifier(ErrorAlertModifier(errorHandler: errorHandler))
         .onAppear{
             focus = true
         }
@@ -56,7 +54,7 @@ struct SignUpMobileView_Priview: PreviewProvider{
     static var previews: some View {
         @StateObject var errorHandler = GlobalErrorHandler()
         @StateObject var router = NavigationRouter()
-        @StateObject var viewModel = IdControl(router: router, errorHandler: errorHandler)
+        @StateObject var viewModel = IdControl(router: router)
         SignUpMobileView()
             .environmentObject(viewModel)
     }

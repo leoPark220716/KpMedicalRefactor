@@ -10,18 +10,17 @@ import SwiftUI
 @main
 struct KpMedicalWalletApp: App {
     let persistenceController = PersistenceController.shared
-    @StateObject var router = NavigationRouter()
-    @StateObject var errorHandler = GlobalErrorHandler()
+    @StateObject var appManager = NavigationRouter()
     @UIApplicationDelegateAdaptor(FCMDelegate.self) var appDelegate
     
     var body: some Scene {
         WindowGroup {
             MainView()
-                .environmentObject(router)
-                .environmentObject(errorHandler)
+                .environmentObject(appManager)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .onAppear{
                     appDelegate.app = self
+                    appManager.RouteViewByAutoLogin()
                 }
         }
     }

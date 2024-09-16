@@ -20,8 +20,8 @@ class PasswordControl: PhoneNumberControl, passwordCheck{
     
     @Published var PasswordPermission: Bool = false
     
-    override init(router: NavigationRouter,errorHandler: GlobalErrorHandler) {
-        super.init(router: router, errorHandler: errorHandler)
+    override init(router: NavigationRouter) {
+        super.init(router: router)
     }
     
     @MainActor

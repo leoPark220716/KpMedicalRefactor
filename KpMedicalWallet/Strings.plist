@@ -106,6 +106,14 @@ Copyright (c) 2024 ___ORGANIZATIONNAME___. All rights reserved.
         <string>SignUp Process Error in createLoginRequestData</string>
         <key>SignUp_request_unkownError</key>
         <string>SignUp Process Error in createLoginRequestData</string>
+        <key>UserInfomation_returnUserData</key>
+        <string>UserInfomation_returnUserData</string>
+        
+        <key>hospitl_list_setup</key>
+        <string>hospitl_list_setup</string>
+        
+        <key>viewModelSetupFalse</key>
+        <string>viewModelSetupFalse</string>
         
         
         <!-- 로그인 화면 사용 String -->
@@ -248,6 +256,32 @@ Copyright (c) 2024 ___ORGANIZATIONNAME___. All rights reserved.
         <key>signup_final_go_root</key>
         <string>로그인</string>
         
+        <!-- 홈화면 텍스트        -->
+        <key>home_hospital_find_line1</key>
+        <string>손쉽게 원하는 병원을</string>
+        <key>home_hospital_find_line2</key>
+        <string>병원찾기</string>
+        <key>home_hospital_find_button</key>
+        <string>병원찾기</string>
+        <key>home_hospital_round_line1</key>
+        <string>둥록된 병원을 구경해보세요</string>
+        <key>home_hospital_round_button</key>
+        <string>둘러보기</string>
+        <!--   HospitalListMain   -->
+        <key>find_hospital_nav_title</key>
+        <string>어떤 병원을 찾고 있으세요?</string>
+        <key>find_hospital_guaid_line</key>
+        <string>찾고 있는 병원을 검색해주세요.</string>
+        <key>find_hospital_address_null</key>
+        <string>주소를 찾을 수 없습니다.</string>
         
+        <key>sorting_criteria1</key>
+        <string>전체</string>
+        
+        <key>sorting_criteria2</key>
+        <string>거리순</string>
+        
+        <key>find_hospital_department_default</key>
+        <string>진료과</string>
     </dict>
 </plist>

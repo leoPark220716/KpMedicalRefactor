@@ -13,6 +13,20 @@ struct LoginModul: Codable {
     let password: String
     let uid: String
 }
+
+struct AutoLoginModel: Codable {
+    let access_token: String
+    let name: String
+    let dob: String
+    let sex_code: String
+    let isHospitalRegistered: String?
+    let staffData: String?
+    let error_code: Int?
+    let error_stack: String?
+}
+
+
+
 struct SingupRequestModul: Codable {
     let account: String
     let password: String
@@ -22,11 +36,19 @@ struct SingupRequestModul: Codable {
     let sex_code: String
 }
 
-struct LoginResponse: Codable {
-    let access_token: String
-    let name: String
-    let dob:String
-    let sex_code: String
+
+struct UserData: Codable, User, HaveJWT {
+    var name: String
+    var dob: String
+    var sex: String
+    var jwtToken: String
+    
+    enum CodingKeys: String, CodingKey {
+            case name
+            case dob
+            case sex = "sex_code"
+            case jwtToken = "access_token"
+        }
 }
 
 struct normal_Toast: Equatable {

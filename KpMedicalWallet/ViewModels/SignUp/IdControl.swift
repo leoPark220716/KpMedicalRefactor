@@ -1,10 +1,3 @@
-//
-//  IdControl.swift
-//  KpMedicalWallet
-//
-//  Created by Junsung Park on 9/12/24.
-//
-
 import Foundation
 import SwiftUI
 
@@ -14,8 +7,8 @@ class IdControl: DobControl,UserAccountHandle{
     @Published var IdFieldStatus: Bool = true
     @Published var permissionCheck: Bool = false
     
-    override init(router: NavigationRouter,errorHandler: GlobalErrorHandler) {
-        super.init(router: router, errorHandler: errorHandler)
+    override init(router: NavigationRouter) {
+        super.init(router: router)
     }
     //    유저 가이드라인
     // 포맷 검사 및 아이디 변경 감지
@@ -41,31 +34,31 @@ class IdControl: DobControl,UserAccountHandle{
             do{
                 try await idCheckRequest()
             }catch let error as TraceUserError {
-                await errorHandler.displayError(ServiceError: error)
+                await appManager.displayError(ServiceError: error)
             }catch{
-                await errorHandler.displayError(ServiceError: .unowned("감지 못한 에러 \(error.localizedDescription)"))
+                await appManager.displayError(ServiceError: .unowned("감지 못한 에러 \(error.localizedDescription)"))
             }
         }
     }
     // 회원가입 유저 이동
     @MainActor
     func movePasswordView(){
-        router.push(to: .userPage(item: UserPage(page: .PasswordCreate), signUpManager: self,errorHandler: errorHandler))
+        appManager.push(to: .userPage(item: UserPage(page: .PasswordCreate), signUpManager: self))
     }
     @MainActor
     func moveDobView(){
-        router.push(to: .userPage(item: UserPage(page: .DobCreate), signUpManager: self,errorHandler: errorHandler))
+        appManager.push(to: .userPage(item: UserPage(page: .DobCreate), signUpManager: self))
     }
     @MainActor
     func movePhonView(){
-        router.push(to: .userPage(item: UserPage(page: .PhoneCreate), signUpManager: self,errorHandler: errorHandler))
+        appManager.push(to: .userPage(item: UserPage(page: .PhoneCreate), signUpManager: self))
     }
     
     
     
     @MainActor
     func goBackLoginView(){
-        router.goToRootView()
+        appManager.goToRootView()
     }
     @MainActor
     private func makeIdCheckTrue(account: String){

@@ -28,7 +28,7 @@ struct DefaultTabView: View {
                 .tag(TabViewTabs .account)
 
         }
-        .navigationTitle("님 안녕하세요")
+        .navigationTitle(appManager.TitleString)
         .navigationBarTitleDisplayMode(.inline)
         .padding(.bottom)
     }

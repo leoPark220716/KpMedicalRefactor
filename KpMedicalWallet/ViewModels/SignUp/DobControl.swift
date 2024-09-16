@@ -21,8 +21,8 @@ class DobControl: PasswordControl,dobCheckAndSex{
     
     @Published var selectedGender: Gender? = nil
     
-    override init(router: NavigationRouter,errorHandler: GlobalErrorHandler) {
-        super.init(router: router, errorHandler: errorHandler)
+    override init(router: NavigationRouter) {
+        super.init(router: router)
     }
     
     @MainActor

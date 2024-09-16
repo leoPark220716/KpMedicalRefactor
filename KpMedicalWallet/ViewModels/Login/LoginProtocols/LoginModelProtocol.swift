@@ -17,5 +17,4 @@ protocol LoginDataSet{
     var id: String { get }
     var password: String { get }
     var checked: Bool { get }
-    var toast: normal_Toast? { get }
 }

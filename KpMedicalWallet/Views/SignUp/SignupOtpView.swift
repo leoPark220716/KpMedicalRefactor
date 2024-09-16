@@ -2,7 +2,6 @@ import SwiftUI
 
 struct SignupOtpView: View {
     @Binding var viewModel: IdControl
-    @Binding var errorHandler: GlobalErrorHandler
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -65,10 +64,10 @@ struct SignupOtpView: View {
 
 struct SignupOtpView_Previews: PreviewProvider {
     static var previews: some View {
-        let errorHandler = GlobalErrorHandler()
-        let router = NavigationRouter()
-        let viewModel = IdControl(router: router, errorHandler: errorHandler)
 
-        SignupOtpView(viewModel: .constant(viewModel), errorHandler: .constant(errorHandler))
+        let router = NavigationRouter()
+        let viewModel = IdControl(router: router)
+
+        SignupOtpView(viewModel: .constant(viewModel))
     }
 }

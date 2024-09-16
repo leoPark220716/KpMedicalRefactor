@@ -9,15 +9,20 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var appManager: NavigationRouter
-    @EnvironmentObject private var errorHandler: GlobalErrorHandler
     @StateObject var viewModel = HomeViewModel()
     
     var body: some View {
         GeometryReader{ geo in
             VStack{
-                HomeViewSuggestHospitals(geo: geo)
-                    .padding(.horizontal)
-                    .padding(.bottom)
+                Button{
+                    let test = AuthData()
+                    test.deleteAllKeyChainItems()
+                } label: {
+                    HomeViewSuggestHospitals(geo: geo)
+                        .padding(.horizontal)
+                        .padding(.bottom)
+                }
+                
                 Button{
                     appManager.push(to: .userPage(item: UserPage(page: .SearchHospital)))
                 } label: {
@@ -33,7 +38,6 @@ struct HomeView: View {
                         .padding(.trailing)
                 }
             }
-            .modifier(ErrorAlertModifier(errorHandler: errorHandler))
             .padding(.bottom)
         }
     }
@@ -42,55 +46,56 @@ struct HomeView: View {
 struct HomeViewSuggestHospitals: View {
     let geo: GeometryProxy
     var body: some View {
-            VStack{
-                HStack {
-                    Text("등록된 병원을 구경해보세요")
-                        .font(.system(size: 18))
-                        .fontWeight(.bold)
-                        .bold()
-                    Spacer()
-                    Image(systemName: "chevron.right")
-                        .foregroundColor(.gray)
-                        .font(.system(size: 18))
-                }
-                .padding([.top,.horizontal])
-                HStack {
-                    AsyncImage(url: URL(string: "https://picsum.photos/200/300")){ image in
-                        image
-                            .suggestImageModifier(geo: geo)
-                    } placeholder: {
-                        ProgressView()
-                            .modifier(SuggestImage(geo: geo))
-                    }
-                    
-                    AsyncImage(url: URL(string: "https://picsum.photos/200/300")){ image in
-                        image
-                            .suggestImageModifier(geo: geo)
-                    } placeholder: {
-                        ProgressView()
-                            .modifier(SuggestImage(geo: geo))
-                    }
-                    .padding(.horizontal)
-                    AsyncImage(url: URL(string: "https://picsum.photos/200/300")){ image in
-                        image
-                            .suggestImageModifier(geo: geo)
-                    } placeholder: {
-                        ProgressView()
-                            .modifier(SuggestImage(geo: geo))
-                    }
-                }
-                .padding(.vertical)
-                Button{
-                } label: {
-                    Text("둘러보기")
-                        .frame(height: geo.size.height * 0.01)
-                        .modifier(ActiveButton())
-                        .padding([.horizontal,.bottom])
-                    
+        VStack{
+            HStack {
+                Text(PlistManager.shared.string(forKey: "home_hospital_round_line1"))
+                    .foregroundStyle(Color.black)
+                    .font(.system(size: 18))
+                    .fontWeight(.bold)
+                    .bold()
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .foregroundColor(.gray)
+                    .font(.system(size: 18))
+            }
+            .padding([.top,.horizontal])
+            HStack {
+                AsyncImage(url: URL(string: "https://picsum.photos/200/300")){ image in
+                    image
+                        .suggestImageModifier(geo: geo)
+                } placeholder: {
+                    ProgressView()
+                        .modifier(SuggestImage(geo: geo))
                 }
                 
+                AsyncImage(url: URL(string: "https://picsum.photos/200/300")){ image in
+                    image
+                        .suggestImageModifier(geo: geo)
+                } placeholder: {
+                    ProgressView()
+                        .modifier(SuggestImage(geo: geo))
+                }
+                .padding(.horizontal)
+                AsyncImage(url: URL(string: "https://picsum.photos/200/300")){ image in
+                    image
+                        .suggestImageModifier(geo: geo)
+                } placeholder: {
+                    ProgressView()
+                        .modifier(SuggestImage(geo: geo))
+                }
             }
-            .modifier(CardViewModifier(coler: Color.white))
+            .padding(.vertical)
+            
+            Text(PlistManager.shared.string(forKey: "home_hospital_round_button"))
+                .frame(height: geo.size.height * 0.01)
+                .modifier(ActiveButton())
+                .padding([.horizontal,.bottom])
+            
+            
+            
+            
+        }
+        .modifier(CardViewModifier(coler: Color.white))
     }
 }
 struct SearchHospitalView: View {
@@ -98,7 +103,7 @@ struct SearchHospitalView: View {
     var body: some View {
         VStack {
             HStack{
-                Text("손쉽게 원하는 병원을")
+                Text(PlistManager.shared.string(forKey: "home_hospital_find_line1"))
                     .font(.subheadline)
                     .fontWeight(.bold)
                     .foregroundColor(.gray)
@@ -107,7 +112,7 @@ struct SearchHospitalView: View {
                 Spacer()
             }
             HStack{
-                Text("병원찾기")
+                Text(PlistManager.shared.string(forKey: "home_hospital_find_line2"))
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.black)
@@ -116,14 +121,12 @@ struct SearchHospitalView: View {
                 Spacer()
             }
             Spacer()
-            Button{
-                
-            } label: {
-                Text("둘러보기")
-                    .frame(height: geo.size.height * 0.01)
-                    .modifier(ActiveButton())
-                    .padding([.horizontal,.bottom])
-            }
+            
+            Text(PlistManager.shared.string(forKey: "home_hospital_find_button"))
+                .frame(height: geo.size.height * 0.01)
+                .modifier(ActiveButton())
+                .padding([.horizontal,.bottom])
+            
             
         }
         .background(

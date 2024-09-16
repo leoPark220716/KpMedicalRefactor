@@ -3,10 +3,10 @@ import SwiftUI
 struct LoginView: View {
     @StateObject var viewModel: LoginController
     @FocusState private var focus: Bool
-    @EnvironmentObject var errorHandler: GlobalErrorHandler
-    init(appManager: NavigationRouter,errorHandler: GlobalErrorHandler){
+    @EnvironmentObject var appManager: NavigationRouter
+    init(appManager: NavigationRouter){
         //        _ 는 StateObject 와 같은 속성 래퍼로 선언된 변수를 가리키는 것이다.
-        _viewModel = StateObject(wrappedValue: LoginController(appManager: appManager, errorHandler: errorHandler))
+        _viewModel = StateObject(wrappedValue: LoginController(appManager: appManager))
     }
     var body: some View {
         VStack(spacing: 20) {
@@ -23,6 +23,9 @@ struct LoginView: View {
                         .stroke(viewModel.checked ? Color.gray : Color.red, lineWidth: 1)
                 )
                 .padding(.horizontal)
+                .onTapGesture {
+                    viewModel.CheckReturnTrue()
+                }
             // 비밀번호 입력 필드
             SecureField(PlistManager.shared.string(forKey: "password_hint"), text: $viewModel.password)
                 .modifier(IDFildModifier())
@@ -31,13 +34,15 @@ struct LoginView: View {
                         .stroke(viewModel.checked ? Color.gray : Color.red, lineWidth: 1)
                 )
                 .padding(.horizontal)
-            
+                .onTapGesture {
+                    viewModel.CheckReturnTrue()
+                }
             // 비밀번호 찾기
             Button(action:viewModel.searchPasswordAction){
                 Text(PlistManager.shared.string(forKey: "search_password_button"))
                     .modifier(LoginSubText())
             }
-            
+            // 로그인 버튼
             Button(action: viewModel.actionLoginAction) {
                 Text(PlistManager.shared.string(forKey: "login_button"))
                     .modifier(LoginButton())
@@ -51,12 +56,10 @@ struct LoginView: View {
             .padding(.horizontal)
             Spacer()
         }
-        .normalToastView(toast: $viewModel.toast)
         .padding()
         .onAppear{
             focus = true
         }
-        .modifier(ErrorAlertModifier(errorHandler: errorHandler))
     }
 }
 
@@ -64,7 +67,7 @@ struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         @StateObject var errorHandler = GlobalErrorHandler()
         @StateObject var router = NavigationRouter()
-        LoginView(appManager: router, errorHandler: errorHandler)
+        LoginView(appManager: router)
             .environmentObject(errorHandler)
     }
 }

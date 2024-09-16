@@ -7,19 +7,14 @@
 
 import Foundation
 import SwiftUI
-import Combine
 
 class GlobalErrorHandler: ObservableObject {
-    @Published var showError: Bool = false{
-        didSet {
-               print("showError changed to \(showError)")
-           }
-    }
-    var ServiceError : TraceUserError? = nil
+    @Published var showError: Bool = false
+    @Published var ServiceError : TraceUserError? = nil
+    
     
     @MainActor
     func displayError( ServiceError: TraceUserError) {
-        print("displayError")
         self.showError = true
         self.ServiceError = ServiceError
     }

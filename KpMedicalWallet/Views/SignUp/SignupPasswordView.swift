@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SignupPasswordView: View {
     @EnvironmentObject var viewModel: IdControl
-    @EnvironmentObject var errorHandler: GlobalErrorHandler
     @FocusState private var focus: Bool
     
     var body: some View {
@@ -74,7 +73,6 @@ struct SignupPasswordView: View {
             .padding([.horizontal, .bottom])
             .disabled(!viewModel.PasswordPermission)
         }
-        .modifier(ErrorAlertModifier(errorHandler: errorHandler))
         .onAppear{
             focus = true
         }
@@ -87,7 +85,7 @@ struct SignupPasswordView_Priview: PreviewProvider{
     static var previews: some View {
         @StateObject var errorHandler = GlobalErrorHandler()
         @StateObject var router = NavigationRouter()
-        @StateObject var viewModel = IdControl(router: router, errorHandler: errorHandler)
+        @StateObject var viewModel = IdControl(router: router)
         SignupPasswordView()
             .environmentObject(viewModel)
     }

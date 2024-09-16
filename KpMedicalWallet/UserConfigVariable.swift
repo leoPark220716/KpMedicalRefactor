@@ -35,12 +35,19 @@ enum UserVariable {
     static func GET_UUID() -> String {
         return UIDevice.current.identifierForVendor!.uuidString
     }
+    static func NAVER_MAP_API() throws -> String {
+        return try ConfigVal(for: "X_NCP_APIGW_API_KEY")
+    }
+    static func NAVER_MAP_API_ID() throws -> String {
+        return try ConfigVal(for: "X_NCP_APIGW_API_KEY_ID")
+    }
     static func APP_VERSION() -> String {
         if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
             return appVersion
         }
         return "No Version"
     }
+    
     
     
 }

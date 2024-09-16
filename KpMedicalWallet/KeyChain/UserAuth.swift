@@ -7,14 +7,6 @@
 
 import Foundation
 
-struct UserData: Codable, User, HaveJWT {
-    
-    var name: String
-    var dob: String
-    var sex: String
-    var jwtToken: String
-    
-}
 
 struct AuthData {
     func userAuthSave(userData: UserData) throws -> OSStatus {
@@ -49,13 +41,12 @@ struct AuthData {
             ]
             var dataTypeRef: AnyObject?
             let status = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
-            
             if status == errSecSuccess, let data = dataTypeRef as? Data {
                 let decoder = JSONDecoder()
                 let userData = try decoder.decode(UserData.self, from: data)
                 return userData
             }else{
-                throw TraceUserError.configError("\(PlistManager.shared.string(forKey: "userLoadAuthData")) \(status)")
+                return nil
             }
         }
         catch {

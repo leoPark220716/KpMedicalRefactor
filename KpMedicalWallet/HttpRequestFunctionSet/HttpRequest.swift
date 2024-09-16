@@ -90,7 +90,7 @@ struct KPWalletAPIManager<RequestType: Codable, ReturnType: Codable> {
         let statusCode = httpResponse.statusCode
         let responseBody = String(data: data, encoding: .utf8) ?? "Unable to decode response body"
         print("✅ response Body \(responseBody)")
-        if 202 == statusCode{
+        if 202 == statusCode || 203 == statusCode{
             return (false, nil, nil)
         }
         else if (400..<500).contains(statusCode) {

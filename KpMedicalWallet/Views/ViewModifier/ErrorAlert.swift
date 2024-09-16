@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ErrorAlertModifier: ViewModifier {
-    @ObservedObject var errorHandler: GlobalErrorHandler
+    @ObservedObject var errorHandler: NavigationRouter
     
     func body(content: Content) -> some View {
         content

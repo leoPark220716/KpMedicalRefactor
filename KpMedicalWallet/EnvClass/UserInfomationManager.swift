@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 
-class UserInfomationManager: UserManager,HaveJWT,HaveFCMToken,ObservableObject{
+class UserInfomationManager: GlobalErrorHandler,UserManager,HaveJWT,HaveFCMToken{
     @Published var name: String = ""
     @Published var dob: String = ""
     @Published var sex: String = ""
@@ -17,15 +17,15 @@ class UserInfomationManager: UserManager,HaveJWT,HaveFCMToken,ObservableObject{
     var loginStatus: Bool = false
     
     @MainActor
-    func SetInfo(datas: LoginResponse){
+    func SetInfo(datas: UserData){
         name = datas.name
         dob = datas.dob
-        sex = datas.sex_code
-        jwtToken = datas.access_token
+        sex = datas.sex
+        jwtToken = datas.jwtToken
     }
     
     @MainActor
-    func Logout(){
+    func setDefautl(){
         name = ""
         dob = ""
         sex = ""
@@ -33,25 +33,66 @@ class UserInfomationManager: UserManager,HaveJWT,HaveFCMToken,ObservableObject{
         fcmToken = ""
         loginStatus = false
     }
+    func logOut(){
+        Task{
+            Authdel()
+            await setDefautl()
+        }
+    }
+    func Authdel(){
+        let auth = AuthData()
+        auth.deleteAllKeyChainItems()
+    }
     
-    @MainActor
-    func checkAutoLogin(){
+    private func retrunUserData() throws -> UserData?{
+        let auth = AuthData()
+        guard let userData = try auth.userLoadAuthData() else {
+            return nil
+        }
+        return userData
+    }
+    
+    func checkAutoLogin() async throws -> DefaultPage{
         do{
-            let auth = AuthData()
-            guard let userData = try auth.userLoadAuthData() else {
-                return
+            let userData = try retrunUserData()
+            guard let datas = userData else{
+                return DefaultPage .login
             }
-            name = userData.name
-            dob = userData.dob
-            sex = userData.sex
-            jwtToken = userData.jwtToken
-        }catch{
-            print(error)
+            return try await AutoLoginRequest(jwtToken: datas.jwtToken)
+        }catch {
+            throw error
         }
     }
     
+    //    자동 로그인 코드
+    private func AutoLoginRequest(jwtToken: String) async throws -> DefaultPage {
+        do{
+            let request = createAutoLoginHttpStruct(jwtToken: jwtToken)
+            let call = KPWalletAPIManager.init(httpStructs: request, URLLocations: 1)
+            let response = try await call.performRequest()
+            if response.success, let data = response.data?.data {
+                await SetInfo(datas: UserData.init(name: data.name, dob: data.dob, sex: data.sex_code, jwtToken: data.access_token))
+                return DefaultPage .tab
+            }
+            return DefaultPage .login
+        }catch{
+            throw error
+        }
+    }
     
-//    유저 Account 추출
+    private func createAutoLoginHttpStruct(jwtToken: String) -> http<Empty?,KPApiStructFrom<AutoLoginModel>>{
+        return http<Empty?,KPApiStructFrom<AutoLoginModel>>(
+            method: "GET",
+            urlParse: "v2/users/access/auto",
+            token: jwtToken,
+            UUID: UserVariable.GET_UUID()
+        )
+    }
+    
+    
+    
+    
+    //    유저 Account 추출
     func GetUserAccountString() -> (status: Bool, account: String) {
         print("✅GetUserAccountString \(jwtToken)")
         let sections = jwtToken.components(separatedBy: ".")

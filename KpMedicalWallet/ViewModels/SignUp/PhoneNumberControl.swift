@@ -11,8 +11,8 @@ class PhoneNumberControl:OtpControl, PhonNumberCheck{
     @Published var numberCheck: Bool = true
     @Published var NumberPermissionCheck: Bool = false
     
-    override init(router: NavigationRouter,errorHandler: GlobalErrorHandler) {
-        super.init(router: router, errorHandler: errorHandler)
+    override init(router: NavigationRouter) {
+        super.init(router: router)
     }
     
     @MainActor
@@ -43,9 +43,9 @@ class PhoneNumberControl:OtpControl, PhonNumberCheck{
             do{
                 try await getOtpNumberByMobile()
             }catch let error as TraceUserError {
-                await errorHandler.displayError(ServiceError: error)
+                await appManager.displayError(ServiceError: error)
             }catch{
-                await errorHandler.displayError(ServiceError: .unowned("감지 못한 에러 \(error.localizedDescription)"))
+                await appManager.displayError(ServiceError: .unowned("감지 못한 에러 \(error.localizedDescription)"))
             }
         }
     }

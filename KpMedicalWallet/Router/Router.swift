@@ -12,7 +12,7 @@ import SwiftUI
 
 enum Route:View, Hashable {
     
-    case userPage(item: pages, appManager: NavigationRouter? = nil, signUpManager: IdControl? = nil, errorHandler: GlobalErrorHandler? = nil,pageStatus: Bool? = nil,name: String? = nil)
+    case userPage(item: pages, appManager: NavigationRouter? = nil, signUpManager: IdControl? = nil, pageStatus: Bool? = nil,name: String? = nil)
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.hashValue)
@@ -20,13 +20,13 @@ enum Route:View, Hashable {
     
     static func == (lhs: Route, rhs: Route) -> Bool {
             switch (lhs, rhs) {
-            case (.userPage(let lhsItem, _,_,_,_,_), .userPage(let rhsItem, _,_,_,_,_)):
+            case (.userPage(let lhsItem, _,_,_,_), .userPage(let rhsItem, _,_,_,_)):
                 return lhsItem.page == rhsItem.page
             }
     }
     var body: some View{
         switch self {
-        case .userPage(let item, let appManager, let signUpManager, let errorHandler,let pageStatus, let name):
+        case .userPage(let item, let appManager, let signUpManager,let pageStatus, let name):
             switch item.page{
             case .SearchHospital:
                 HospitalListMain()
@@ -34,8 +34,8 @@ enum Route:View, Hashable {
                 EmptyView()
                 //                회원가입 섹션
             case .Agreement:
-                if let manager = appManager, let errors = errorHandler{
-                    AgreementView(appManager: manager,errorHandler: errors)
+                if let manager = appManager {
+                    AgreementView(appManager: manager)
                 }else{
                     ErrorView()
                 }

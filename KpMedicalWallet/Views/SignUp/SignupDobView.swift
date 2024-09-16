@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SignupDobView: View {
     @EnvironmentObject var viewModel: IdControl
-    @EnvironmentObject var errorHandler: GlobalErrorHandler
     @State private var showDataPicker = false
     @FocusState private var focus: Bool
     var body: some View {
@@ -96,7 +95,6 @@ struct SignupDobView: View {
             .padding([.horizontal, .bottom])
             .disabled(!viewModel.DobSexPermission)
         }
-        .modifier(ErrorAlertModifier(errorHandler: errorHandler))
         .onAppear{
             focus = true
         }
@@ -109,7 +107,7 @@ struct SignupDobView_Priview: PreviewProvider{
     static var previews: some View {
         @StateObject var errorHandler = GlobalErrorHandler()
         @StateObject var router = NavigationRouter()
-        @StateObject var viewModel = IdControl(router: router, errorHandler: errorHandler)
+        @StateObject var viewModel = IdControl(router: router)
         SignupDobView()
             .environmentObject(viewModel)
     }

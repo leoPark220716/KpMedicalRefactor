@@ -62,6 +62,15 @@
 		1EAD50A32C9078C60010F705 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50A22C9078C60010F705 /* Protocols.swift */; };
 		1EAD50A52C9085410010F705 /* LoginSignupModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50A42C9085410010F705 /* LoginSignupModels.swift */; };
 		1EAD50A72C908E780010F705 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50A62C908E780010F705 /* ToastView.swift */; };
+		1ED18CB62C982BA900C5EE2E /* HospitalsViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED18CB52C982BA900C5EE2E /* HospitalsViewModifier.swift */; };
+		1ED18CB82C982CDF00C5EE2E /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED18CB72C982CDF00C5EE2E /* LocationService.swift */; };
+		1ED18CBA2C982D2700C5EE2E /* NeverGeocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED18CB92C982D2700C5EE2E /* NeverGeocoder.swift */; };
+		1ED18CBD2C98320D00C5EE2E /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED18CBC2C98320D00C5EE2E /* Department.swift */; };
+		1ED18CBF2C9832EB00C5EE2E /* HospitalListMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED18CBE2C9832EB00C5EE2E /* HospitalListMainViewModel.swift */; };
+		1ED18CC12C9833D500C5EE2E /* departmentChooseSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED18CC02C9833D500C5EE2E /* departmentChooseSheetView.swift */; };
+		1ED18CC32C98463700C5EE2E /* HospitalListControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED18CC22C98463700C5EE2E /* HospitalListControlView.swift */; };
+		1ED18CC52C9850E200C5EE2E /* Hospitals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED18CC42C9850E200C5EE2E /* Hospitals.swift */; };
+		1ED18CC72C98655C00C5EE2E /* HospitalListCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED18CC62C98655C00C5EE2E /* HospitalListCache.swift */; };
 		1ED5B2932C958535000DE60B /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5B2922C958535000DE60B /* AccountView.swift */; };
 		1ED5B2952C958543000DE60B /* MyHospitalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5B2942C958543000DE60B /* MyHospitalView.swift */; };
 		1ED5B2982C9585E1000DE60B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5B2972C9585E1000DE60B /* HomeViewModel.swift */; };
@@ -149,6 +158,15 @@
 		1EAD50A22C9078C60010F705 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		1EAD50A42C9085410010F705 /* LoginSignupModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupModels.swift; sourceTree = "<group>"; };
 		1EAD50A62C908E780010F705 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		1ED18CB52C982BA900C5EE2E /* HospitalsViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalsViewModifier.swift; sourceTree = "<group>"; };
+		1ED18CB72C982CDF00C5EE2E /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		1ED18CB92C982D2700C5EE2E /* NeverGeocoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeverGeocoder.swift; sourceTree = "<group>"; };
+		1ED18CBC2C98320D00C5EE2E /* Department.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
+		1ED18CBE2C9832EB00C5EE2E /* HospitalListMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalListMainViewModel.swift; sourceTree = "<group>"; };
+		1ED18CC02C9833D500C5EE2E /* departmentChooseSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = departmentChooseSheetView.swift; sourceTree = "<group>"; };
+		1ED18CC22C98463700C5EE2E /* HospitalListControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalListControlView.swift; sourceTree = "<group>"; };
+		1ED18CC42C9850E200C5EE2E /* Hospitals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hospitals.swift; sourceTree = "<group>"; };
+		1ED18CC62C98655C00C5EE2E /* HospitalListCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalListCache.swift; sourceTree = "<group>"; };
 		1ED5B2922C958535000DE60B /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		1ED5B2942C958543000DE60B /* MyHospitalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHospitalView.swift; sourceTree = "<group>"; };
 		1ED5B2972C9585E1000DE60B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -229,6 +247,7 @@
 				1EAD50972C9066290010F705 /* UserCacheImages.xcdatamodeld */,
 				1E9137002C918E2A004F647E /* UserConfigVariable.swift */,
 				1EAD509E2C9069090010F705 /* UrlConfigVariable.swift */,
+				1ED18CBC2C98320D00C5EE2E /* Department.swift */,
 				1EAD50A22C9078C60010F705 /* Protocols.swift */,
 				1EAC11362C92D2FE008FFE43 /* PlistManager.swift */,
 				1EAC11342C92D201008FFE43 /* Strings.plist */,
@@ -321,8 +340,8 @@
 		1EAD50712C9039FA0010F705 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1ED5B2A02C95A869000DE60B /* HospitalList */,
 				1ED5B2992C9589D9000DE60B /* ViewModifier */,
+				1ED5B2A02C95A869000DE60B /* HospitalList */,
 				1ED5B2912C9579C3000DE60B /* Tap */,
 				1EAD508C2C9058470010F705 /* SignUp */,
 				1EAD50722C903A190010F705 /* Login */,
@@ -347,6 +366,7 @@
 			isa = PBXGroup;
 			children = (
 				1EAD50A42C9085410010F705 /* LoginSignupModels.swift */,
+				1ED18CC42C9850E200C5EE2E /* Hospitals.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -354,9 +374,11 @@
 		1EAD50742C903A560010F705 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				1ED18CBB2C982F7400C5EE2E /* Hospitals */,
 				1ED5B2962C9585CC000DE60B /* Home */,
 				1EAC11312C92CE29008FFE43 /* SignUp */,
 				1EAD50752C903C370010F705 /* Login */,
+				1ED18CB72C982CDF00C5EE2E /* LocationService.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -428,6 +450,24 @@
 			path = KeyChain;
 			sourceTree = "<group>";
 		};
+		1ED18CB42C982B8800C5EE2E /* Hospital */ = {
+			isa = PBXGroup;
+			children = (
+				1ED18CB52C982BA900C5EE2E /* HospitalsViewModifier.swift */,
+			);
+			path = Hospital;
+			sourceTree = "<group>";
+		};
+		1ED18CBB2C982F7400C5EE2E /* Hospitals */ = {
+			isa = PBXGroup;
+			children = (
+				1ED18CB92C982D2700C5EE2E /* NeverGeocoder.swift */,
+				1ED18CBE2C9832EB00C5EE2E /* HospitalListMainViewModel.swift */,
+				1ED18CC62C98655C00C5EE2E /* HospitalListCache.swift */,
+			);
+			path = Hospitals;
+			sourceTree = "<group>";
+		};
 		1ED5B2912C9579C3000DE60B /* Tap */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,6 +489,7 @@
 		1ED5B2992C9589D9000DE60B /* ViewModifier */ = {
 			isa = PBXGroup;
 			children = (
+				1ED18CB42C982B8800C5EE2E /* Hospital */,
 				1ED5B29D2C95A6B6000DE60B /* HomeViewModifier */,
 				1ED5B29A2C9589F2000DE60B /* Common */,
 				1EAC112E2C92BB76008FFE43 /* SignUpModifiler */,
@@ -477,6 +518,8 @@
 			isa = PBXGroup;
 			children = (
 				1ED5B2A12C95A893000DE60B /* HospitalListMain.swift */,
+				1ED18CC02C9833D500C5EE2E /* departmentChooseSheetView.swift */,
+				1ED18CC22C98463700C5EE2E /* HospitalListControlView.swift */,
 			);
 			path = HospitalList;
 			sourceTree = "<group>";
@@ -621,6 +664,7 @@
 			files = (
 				1E38D3622C90271D00BB344E /* Persistence.swift in Sources */,
 				1EAC112D2C92BA1E008FFE43 /* SginupAgreementView.swift in Sources */,
+				1ED18CBD2C98320D00C5EE2E /* Department.swift in Sources */,
 				1EAD508E2C9058580010F705 /* SignupIdView.swift in Sources */,
 				1ED5B2982C9585E1000DE60B /* HomeViewModel.swift in Sources */,
 				1E9137092C91D828004F647E /* GlobalErrorHandler.swift in Sources */,
@@ -641,12 +685,15 @@
 				1EAD50872C9051750010F705 /* Router.swift in Sources */,
 				1EAD50942C905F080010F705 /* UserNavigation.swift in Sources */,
 				1EAC11452C9303F7008FFE43 /* SignupPasswordView.swift in Sources */,
+				1ED18CC52C9850E200C5EE2E /* Hospitals.swift in Sources */,
+				1ED18CBF2C9832EB00C5EE2E /* HospitalListMainViewModel.swift in Sources */,
 				1EAD506F2C9038720010F705 /* LoginViewModifier.swift in Sources */,
 				1E91370B2C91DDAA004F647E /* UrlConfigVariable.swift in Sources */,
 				1EAD50992C9066290010F705 /* UserCacheImages.xcdatamodeld in Sources */,
 				1EAC11302C92BB8D008FFE43 /* SigunUpModifiler.swift in Sources */,
 				1E38D3592C90271D00BB344E /* KpMedicalWalletApp.swift in Sources */,
 				1EAC114B2C93044D008FFE43 /* SignUpMobileView.swift in Sources */,
+				1ED18CBA2C982D2700C5EE2E /* NeverGeocoder.swift in Sources */,
 				1EAD507C2C9042520010F705 /* LoginController.swift in Sources */,
 				1EAC114F2C930661008FFE43 /* ErrorView.swift in Sources */,
 				1EAD50A32C9078C60010F705 /* Protocols.swift in Sources */,
@@ -656,23 +703,28 @@
 				1E38D3652C90271D00BB344E /* KpMedicalWallet.xcdatamodeld in Sources */,
 				1E8FBC6C2C94835700B00909 /* SignupFinalView.swift in Sources */,
 				1EAC113F2C92F41A008FFE43 /* OtpControl.swift in Sources */,
+				1ED18CC32C98463700C5EE2E /* HospitalListControlView.swift in Sources */,
 				1EAD50892C9056FB0010F705 /* NavigationRouter.swift in Sources */,
 				1EAD50A72C908E780010F705 /* ToastView.swift in Sources */,
 				1ED5B2932C958535000DE60B /* AccountView.swift in Sources */,
+				1ED18CC12C9833D500C5EE2E /* departmentChooseSheetView.swift in Sources */,
 				1EAC113D2C92F3F8008FFE43 /* IdControl.swift in Sources */,
 				1EAC11392C92E8D6008FFE43 /* SignUpDataModel.swift in Sources */,
+				1ED18CB82C982CDF00C5EE2E /* LocationService.swift in Sources */,
 				1EAC11492C930432008FFE43 /* SignupDobView.swift in Sources */,
 				1EAD50902C9058710010F705 /* HomeView.swift in Sources */,
 				1ED5B29F2C95A6CD000DE60B /* HomViewModifier.swift in Sources */,
 				1EAD50772C903E560010F705 /* LoginModel.swift in Sources */,
 				1EAC113B2C92F3D6008FFE43 /* PasswordControl.swift in Sources */,
 				1EAD507A2C903FF60010F705 /* LoginModelProtocol.swift in Sources */,
+				1ED18CB62C982BA900C5EE2E /* HospitalsViewModifier.swift in Sources */,
 				1EAD50962C9060FB0010F705 /* TabView.swift in Sources */,
 				1EAD50A12C9078450010F705 /* UserInfomationManager.swift in Sources */,
 				1EAC114D2C93045E008FFE43 /* SignupOtpView.swift in Sources */,
 				1ED5B29C2C958A05000DE60B /* CommonViewModifier.swift in Sources */,
 				1EAC11432C92F4AB008FFE43 /* PhoneNumberControl.swift in Sources */,
 				1ED5B2952C958543000DE60B /* MyHospitalView.swift in Sources */,
+				1ED18CC72C98655C00C5EE2E /* HospitalListCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -843,6 +895,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KpMedicalWallet/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 권한 요청";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 권한 요청";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -874,6 +929,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KpMedicalWallet/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 권한 요청";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 권한 요청";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

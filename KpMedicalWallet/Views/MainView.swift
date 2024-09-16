@@ -9,20 +9,21 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject private var appManager: NavigationRouter
-    @EnvironmentObject private var errorHandler: GlobalErrorHandler
     
     var body: some View {
         NavigationStack(path: $appManager.routes){
             ZStack{
                 switch appManager.RootView {
                 case .login:
-                    LoginView(appManager: appManager, errorHandler: errorHandler)
+                    LoginView(appManager: appManager)
                 case .tab:
                     DefaultTabView()
                 case .splash:
                     SplashView()
                 }
             }
+            .normalToastView(toast: $appManager.toast)
+            .modifier(ErrorAlertModifier(errorHandler: appManager))
             .navigationDestination(for: Route.self) { route in
                 route
             }

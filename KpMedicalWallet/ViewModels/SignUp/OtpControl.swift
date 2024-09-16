@@ -20,8 +20,8 @@ class OtpControl: SignUpDataModel,OtpCheck{
     private var timerSubscription: AnyCancellable?
     
     
-    override init(router: NavigationRouter,errorHandler: GlobalErrorHandler) {
-        super.init(router: router, errorHandler: errorHandler)
+    override init(router: NavigationRouter) {
+        super.init(router: router)
     }
     @MainActor
     func showOtpView(token: String){
@@ -67,7 +67,7 @@ class OtpControl: SignUpDataModel,OtpCheck{
     @MainActor
     func finalRequestForLastView(check: Bool){
         otpCloseView = true
-        router.push(to: .userPage(item: UserPage(page: .SignUpFinal), pageStatus: check ,name: name))
+        appManager.push(to: .userPage(item: UserPage(page: .SignUpFinal), pageStatus: check ,name: name))
     }
     
     func SignUpOtpCheckButton(){
@@ -84,9 +84,9 @@ class OtpControl: SignUpDataModel,OtpCheck{
                 }
                 await finalRequestForLastView(check: true)
             }catch let error as TraceUserError {
-                await errorHandler.displayError(ServiceError: error)
+                await appManager.displayError(ServiceError: error)
             }catch{
-                await errorHandler.displayError(ServiceError: .unowned("감지 못한 에러 \(error.localizedDescription)"))
+                await appManager.displayError(ServiceError: .unowned("감지 못한 에러 \(error.localizedDescription)"))
             }
             
         }
