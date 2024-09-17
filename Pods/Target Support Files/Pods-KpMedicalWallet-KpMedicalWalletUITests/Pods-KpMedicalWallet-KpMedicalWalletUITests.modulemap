@@ -1,0 +1,6 @@
+framework module Pods_KpMedicalWallet_KpMedicalWalletUITests {
+  umbrella header "Pods-KpMedicalWallet-KpMedicalWalletUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

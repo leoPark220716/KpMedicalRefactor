@@ -4,12 +4,12 @@ import CoreLocation
 class LocationService: NSObject, CLLocationManagerDelegate, ObservableObject {
     private let locationManager = CLLocationManager()
     private let geocoder = CLGeocoder()
-    @Published var currentLocation: CLLocationCoordinate2D?
-    @Published var address: String?
+    var currentLocation: CLLocationCoordinate2D?
+    var address: String?
     @Published var address_Naver: String?
-    @Published var latitude: String?
-    @Published var longitude: String?
-    @Published var isAuthorized: Bool = false
+    var latitude: String?
+    var longitude: String?
+    var isAuthorized: Bool = false
     private let Navergeo = NaverGeocoder()
     
     override init() {
@@ -18,10 +18,10 @@ class LocationService: NSObject, CLLocationManagerDelegate, ObservableObject {
     }
     func getRequestPermission(){
         print("✅request")
-        
         locationManager.requestWhenInUseAuthorization() // 위치 서비스 사용 동의 요청
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
+    
     
     func requestLocation() {
         if CLLocationManager.locationServicesEnabled() {
@@ -54,15 +54,10 @@ class LocationService: NSObject, CLLocationManagerDelegate, ObservableObject {
     // CLLocationManagerDelegate 메소드
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-        DispatchQueue.main.async {
-            print("Call Location")
-            self.currentLocation = location.coordinate // 현재 위치 업데이트
-            self.lookupAddress(location: location)
-            self.longitude = String(location.coordinate.longitude)
-            self.latitude = String(location.coordinate.latitude)
-            print(self.longitude)
-            print(self.latitude)
-        }
+        self.currentLocation = location.coordinate // 현재 위치 업데이트
+        self.longitude = String(location.coordinate.longitude)
+        self.latitude = String(location.coordinate.latitude)
+        self.lookupAddress(location: location)
         self.Navergeo.callNaverAddress(longitude: location.coordinate.longitude, latitude: location.coordinate.latitude) { address in
             DispatchQueue.main.async {
                 self.address_Naver = address

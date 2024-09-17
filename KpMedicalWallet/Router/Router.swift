@@ -30,6 +30,8 @@ enum Route:View, Hashable {
             switch item.page{
             case .SearchHospital:
                 HospitalListMain()
+            case .HospitalDetail:
+                HospitalDetailView()
             case .SearchPassword:
                 EmptyView()
                 //                회원가입 섹션
@@ -77,6 +79,7 @@ enum Route:View, Hashable {
                 
                 
                 //
+            
             }
             
             

@@ -18,12 +18,13 @@ struct KPWalletAPIManager<RequestType: Codable, ReturnType: Codable> {
     }
     
     //    해당 함수 호출로 Request 코드 호출
-    func performRequest() async throws -> (success: Bool, data: ReturnType?, ErrorMessage: String?) {
+    func performRequest(encoded: Bool? = false) async throws -> (success: Bool, data: ReturnType?, ErrorMessage: String?) {
         do {
-            guard let url = try constructURL() else {
+            guard let url = try constructURL(encoded: encoded) else {
                 print("Invalid URL")
                 throw TraceUserError.clientError("\(PlistManager.shared.string(forKey: "clientError")) \(PlistManager.shared.string(forKey: "urlFail"))")
             }
+            print("✅ urlCheck\(url)")
             var request = URLRequest(url: url)
             try configureRequest(&request)
             let (data, response) = try await URLSession.shared.data(for: request)
@@ -33,23 +34,37 @@ struct KPWalletAPIManager<RequestType: Codable, ReturnType: Codable> {
         }
     }
     //    URL 생성
-    private func constructURL() throws -> URL? {
-        do{
+    private func constructURL(encoded: Bool? = false) throws -> URL? {
+        do {
             let query = httpStructs.urlParse
             let baseURL = try UtilityURLReturn.API_SERVER()
             let location = try fetchLocationURL(LocationStatus: URLLocations)
-            if location == "" || baseURL == ""{
+            
+            if location.isEmpty || baseURL.isEmpty {
                 throw TraceUserError.clientError("\(PlistManager.shared.string(forKey: "constructURL")) \(PlistManager.shared.string(forKey: "configError"))")
             }
-            guard let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-                throw TraceUserError.clientError("\(PlistManager.shared.string(forKey: "constructURL")) \(PlistManager.shared.string(forKey: "urlFail"))")
+            
+            // encoded가 nil일 경우 기본값 false 사용
+            let shouldEncode = encoded ?? false
+            
+            let finalQuery: String
+            if !shouldEncode {
+                guard let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+                    throw TraceUserError.clientError("\(PlistManager.shared.string(forKey: "constructURL")) \(PlistManager.shared.string(forKey: "urlFail"))")
+                }
+                finalQuery = encodedQuery
+            } else {
+                finalQuery = query
             }
-            let stringURL = "\(baseURL)\(location)\(encodedQuery)"
+            
+            let stringURL = "\(baseURL)\(location)\(finalQuery)"
             return URL(string: stringURL)
         } catch {
             throw TraceUserError.clientError("\(PlistManager.shared.string(forKey: "constructURL")) \(error)")
         }
     }
+
+    
     //    경로 관련 URL 추출
     private func fetchLocationURL(LocationStatus: Int) throws -> String {
         var locationName = ""

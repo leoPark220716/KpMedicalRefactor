@@ -18,13 +18,18 @@ struct HospitalListMain: View {
                 .background(Color("backColor"))
             List{
                 ForEach(viewModel.hospitalList.indices, id: \.self){ index in
-                    HospitalListItemView(hospital: $viewModel.hospitalList[index])
-                        .onAppear{
-                            if index == viewModel.hospitalList.endIndex-1{
-                                viewModel.addHospitalList()
-                                print("✅PageNation \(viewModel.requestQuery.start)")
-                            }
+                    Button{
+                        viewModel.goHospitalDetailView()
+                    } label: {
+                        HospitalListItemView(hospital: $viewModel.hospitalList[index])
+                    }
+                    .onAppear{
+                        if index == viewModel.hospitalList.endIndex-1{
+                            viewModel.addHospitalList()
+                            print("✅PageNation \(viewModel.requestQuery.start)")
                         }
+                    }
+                    
                 }
             }
             .listStyle(InsetListStyle())

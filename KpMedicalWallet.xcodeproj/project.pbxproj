@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E0D79C92C99C6E50010B767 /* NaverMapTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D79C82C99C6E50010B767 /* NaverMapTestView.swift */; };
+		1E0D79CB2C99C8AD0010B767 /* HospitalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D79CA2C99C8AD0010B767 /* HospitalDetailView.swift */; };
 		1E38D3592C90271D00BB344E /* KpMedicalWalletApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D3582C90271D00BB344E /* KpMedicalWalletApp.swift */; };
 		1E38D35B2C90271D00BB344E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D35A2C90271D00BB344E /* ContentView.swift */; };
 		1E38D35D2C90271D00BB344E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E38D35C2C90271D00BB344E /* Assets.xcassets */; };
@@ -78,6 +80,10 @@
 		1ED5B29F2C95A6CD000DE60B /* HomViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5B29E2C95A6CD000DE60B /* HomViewModifier.swift */; };
 		1ED5B2A22C95A893000DE60B /* HospitalListMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5B2A12C95A893000DE60B /* HospitalListMain.swift */; };
 		1ED5B2A42C95A9DF000DE60B /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5B2A32C95A9DF000DE60B /* ErrorAlert.swift */; };
+		1EDD18202C99AF7700FDD7FD /* HospitalListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD181F2C99AF7700FDD7FD /* HospitalListItemView.swift */; };
+		2EA6E30F9CA85C6430914320 /* Pods_KpMedicalWalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB57ACDFF7AC9C3D108B78F1 /* Pods_KpMedicalWalletTests.framework */; };
+		4F0BFB68AF1F20A451D4FF3A /* Pods_KpMedicalWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C24B252144808B44ED976DD /* Pods_KpMedicalWallet.framework */; };
+		7AAC775A487F4921AD14008C /* Pods_KpMedicalWallet_KpMedicalWalletUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F8BC6729464F28617688E2 /* Pods_KpMedicalWallet_KpMedicalWalletUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +104,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C746A78ED4E24CFE74DD99B /* Pods-KpMedicalWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KpMedicalWallet.release.xcconfig"; path = "Target Support Files/Pods-KpMedicalWallet/Pods-KpMedicalWallet.release.xcconfig"; sourceTree = "<group>"; };
+		11C2FBE657A20EE39F2DB0D2 /* Pods-KpMedicalWalletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KpMedicalWalletTests.release.xcconfig"; path = "Target Support Files/Pods-KpMedicalWalletTests/Pods-KpMedicalWalletTests.release.xcconfig"; sourceTree = "<group>"; };
+		1C24B252144808B44ED976DD /* Pods_KpMedicalWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KpMedicalWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E0D79C82C99C6E50010B767 /* NaverMapTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMapTestView.swift; sourceTree = "<group>"; };
+		1E0D79CA2C99C8AD0010B767 /* HospitalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalDetailView.swift; sourceTree = "<group>"; };
 		1E38D3552C90271D00BB344E /* KpMedicalWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KpMedicalWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E38D3582C90271D00BB344E /* KpMedicalWalletApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KpMedicalWalletApp.swift; sourceTree = "<group>"; };
 		1E38D35A2C90271D00BB344E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -174,6 +185,13 @@
 		1ED5B29E2C95A6CD000DE60B /* HomViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomViewModifier.swift; sourceTree = "<group>"; };
 		1ED5B2A12C95A893000DE60B /* HospitalListMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalListMain.swift; sourceTree = "<group>"; };
 		1ED5B2A32C95A9DF000DE60B /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
+		1EDD181F2C99AF7700FDD7FD /* HospitalListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalListItemView.swift; sourceTree = "<group>"; };
+		7D4D685523A70D981FE47159 /* Pods-KpMedicalWalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KpMedicalWalletTests.debug.xcconfig"; path = "Target Support Files/Pods-KpMedicalWalletTests/Pods-KpMedicalWalletTests.debug.xcconfig"; sourceTree = "<group>"; };
+		84F8BC6729464F28617688E2 /* Pods_KpMedicalWallet_KpMedicalWalletUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KpMedicalWallet_KpMedicalWalletUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		94C606332DD4087908D840C0 /* Pods-KpMedicalWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KpMedicalWallet.debug.xcconfig"; path = "Target Support Files/Pods-KpMedicalWallet/Pods-KpMedicalWallet.debug.xcconfig"; sourceTree = "<group>"; };
+		9A5D7F1873438E1799D745BC /* Pods-KpMedicalWallet-KpMedicalWalletUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KpMedicalWallet-KpMedicalWalletUITests.release.xcconfig"; path = "Target Support Files/Pods-KpMedicalWallet-KpMedicalWalletUITests/Pods-KpMedicalWallet-KpMedicalWalletUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CB57ACDFF7AC9C3D108B78F1 /* Pods_KpMedicalWalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KpMedicalWalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1775C229AA384965455EE2B /* Pods-KpMedicalWallet-KpMedicalWalletUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KpMedicalWallet-KpMedicalWalletUITests.debug.xcconfig"; path = "Target Support Files/Pods-KpMedicalWallet-KpMedicalWalletUITests/Pods-KpMedicalWallet-KpMedicalWalletUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E9136FA2C91667C004F647E /* FirebaseMessaging in Frameworks */,
+				4F0BFB68AF1F20A451D4FF3A /* Pods_KpMedicalWallet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +208,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EA6E30F9CA85C6430914320 /* Pods_KpMedicalWalletTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,12 +216,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AAC775A487F4921AD14008C /* Pods_KpMedicalWallet_KpMedicalWalletUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F3E99CBF0CB6AA7B54890B2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				94C606332DD4087908D840C0 /* Pods-KpMedicalWallet.debug.xcconfig */,
+				0C746A78ED4E24CFE74DD99B /* Pods-KpMedicalWallet.release.xcconfig */,
+				D1775C229AA384965455EE2B /* Pods-KpMedicalWallet-KpMedicalWalletUITests.debug.xcconfig */,
+				9A5D7F1873438E1799D745BC /* Pods-KpMedicalWallet-KpMedicalWalletUITests.release.xcconfig */,
+				7D4D685523A70D981FE47159 /* Pods-KpMedicalWalletTests.debug.xcconfig */,
+				11C2FBE657A20EE39F2DB0D2 /* Pods-KpMedicalWalletTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		1E0D79C72C99C6CA0010B767 /* HospitalDetail */ = {
+			isa = PBXGroup;
+			children = (
+				1E0D79C82C99C6E50010B767 /* NaverMapTestView.swift */,
+				1E0D79CA2C99C8AD0010B767 /* HospitalDetailView.swift */,
+			);
+			path = HospitalDetail;
+			sourceTree = "<group>";
+		};
 		1E38D34C2C90271D00BB344E = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +252,8 @@
 				1E38D36D2C90271E00BB344E /* KpMedicalWalletTests */,
 				1E38D3772C90271E00BB344E /* KpMedicalWalletUITests */,
 				1E38D3562C90271D00BB344E /* Products */,
+				0F3E99CBF0CB6AA7B54890B2 /* Pods */,
+				243670DBF47F7097B1838A3C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -341,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				1ED5B2992C9589D9000DE60B /* ViewModifier */,
+				1E0D79C72C99C6CA0010B767 /* HospitalDetail */,
 				1ED5B2A02C95A869000DE60B /* HospitalList */,
 				1ED5B2912C9579C3000DE60B /* Tap */,
 				1EAD508C2C9058470010F705 /* SignUp */,
@@ -520,8 +566,19 @@
 				1ED5B2A12C95A893000DE60B /* HospitalListMain.swift */,
 				1ED18CC02C9833D500C5EE2E /* departmentChooseSheetView.swift */,
 				1ED18CC22C98463700C5EE2E /* HospitalListControlView.swift */,
+				1EDD181F2C99AF7700FDD7FD /* HospitalListItemView.swift */,
 			);
 			path = HospitalList;
+			sourceTree = "<group>";
+		};
+		243670DBF47F7097B1838A3C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1C24B252144808B44ED976DD /* Pods_KpMedicalWallet.framework */,
+				84F8BC6729464F28617688E2 /* Pods_KpMedicalWallet_KpMedicalWalletUITests.framework */,
+				CB57ACDFF7AC9C3D108B78F1 /* Pods_KpMedicalWalletTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -531,9 +588,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E38D37E2C90271E00BB344E /* Build configuration list for PBXNativeTarget "KpMedicalWallet" */;
 			buildPhases = (
+				6E19310FA188670A568A6C5B /* [CP] Check Pods Manifest.lock */,
 				1E38D3512C90271D00BB344E /* Sources */,
 				1E38D3522C90271D00BB344E /* Frameworks */,
 				1E38D3532C90271D00BB344E /* Resources */,
+				BA1EC96086BE4008FB1D5EEE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -551,6 +610,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E38D3812C90271E00BB344E /* Build configuration list for PBXNativeTarget "KpMedicalWalletTests" */;
 			buildPhases = (
+				73C775A1C02090B94F4363FC /* [CP] Check Pods Manifest.lock */,
 				1E38D3662C90271E00BB344E /* Sources */,
 				1E38D3672C90271E00BB344E /* Frameworks */,
 				1E38D3682C90271E00BB344E /* Resources */,
@@ -569,9 +629,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E38D3842C90271E00BB344E /* Build configuration list for PBXNativeTarget "KpMedicalWalletUITests" */;
 			buildPhases = (
+				3F5EBCC158BCCB08E5AD0CFE /* [CP] Check Pods Manifest.lock */,
 				1E38D3702C90271E00BB344E /* Sources */,
 				1E38D3712C90271E00BB344E /* Frameworks */,
 				1E38D3722C90271E00BB344E /* Resources */,
+				6FC789D4B420F1BE1C85F160 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -657,6 +719,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3F5EBCC158BCCB08E5AD0CFE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KpMedicalWallet-KpMedicalWalletUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6E19310FA188670A568A6C5B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KpMedicalWallet-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6FC789D4B420F1BE1C85F160 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KpMedicalWallet-KpMedicalWalletUITests/Pods-KpMedicalWallet-KpMedicalWalletUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KpMedicalWallet-KpMedicalWalletUITests/Pods-KpMedicalWallet-KpMedicalWalletUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KpMedicalWallet-KpMedicalWalletUITests/Pods-KpMedicalWallet-KpMedicalWalletUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73C775A1C02090B94F4363FC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KpMedicalWalletTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA1EC96086BE4008FB1D5EEE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KpMedicalWallet/Pods-KpMedicalWallet-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KpMedicalWallet/Pods-KpMedicalWallet-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KpMedicalWallet/Pods-KpMedicalWallet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1E38D3512C90271D00BB344E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -711,6 +876,7 @@
 				1EAC113D2C92F3F8008FFE43 /* IdControl.swift in Sources */,
 				1EAC11392C92E8D6008FFE43 /* SignUpDataModel.swift in Sources */,
 				1ED18CB82C982CDF00C5EE2E /* LocationService.swift in Sources */,
+				1E0D79CB2C99C8AD0010B767 /* HospitalDetailView.swift in Sources */,
 				1EAC11492C930432008FFE43 /* SignupDobView.swift in Sources */,
 				1EAD50902C9058710010F705 /* HomeView.swift in Sources */,
 				1ED5B29F2C95A6CD000DE60B /* HomViewModifier.swift in Sources */,
@@ -718,7 +884,9 @@
 				1EAC113B2C92F3D6008FFE43 /* PasswordControl.swift in Sources */,
 				1EAD507A2C903FF60010F705 /* LoginModelProtocol.swift in Sources */,
 				1ED18CB62C982BA900C5EE2E /* HospitalsViewModifier.swift in Sources */,
+				1E0D79C92C99C6E50010B767 /* NaverMapTestView.swift in Sources */,
 				1EAD50962C9060FB0010F705 /* TabView.swift in Sources */,
+				1EDD18202C99AF7700FDD7FD /* HospitalListItemView.swift in Sources */,
 				1EAD50A12C9078450010F705 /* UserInfomationManager.swift in Sources */,
 				1EAC114D2C93045E008FFE43 /* SignupOtpView.swift in Sources */,
 				1ED5B29C2C958A05000DE60B /* CommonViewModifier.swift in Sources */,
@@ -799,7 +967,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -863,7 +1031,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -884,6 +1052,7 @@
 		};
 		1E38D37F2C90271E00BB344E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94C606332DD4087908D840C0 /* Pods-KpMedicalWallet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -908,6 +1077,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = NMFCilentId;
+				"NEW_SETTING[arch=*]" = wngp66h40u;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Kpm.KpMedicalWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -918,6 +1089,7 @@
 		};
 		1E38D3802C90271E00BB344E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C746A78ED4E24CFE74DD99B /* Pods-KpMedicalWallet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -942,6 +1114,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = NMFCilentId;
+				"NEW_SETTING[arch=*]" = wngp66h40u;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Kpm.KpMedicalWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -952,6 +1126,7 @@
 		};
 		1E38D3822C90271E00BB344E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D4D685523A70D981FE47159 /* Pods-KpMedicalWalletTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -972,6 +1147,7 @@
 		};
 		1E38D3832C90271E00BB344E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11C2FBE657A20EE39F2DB0D2 /* Pods-KpMedicalWalletTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -992,6 +1168,7 @@
 		};
 		1E38D3852C90271E00BB344E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1775C229AA384965455EE2B /* Pods-KpMedicalWallet-KpMedicalWalletUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1010,6 +1187,7 @@
 		};
 		1E38D3862C90271E00BB344E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A5D7F1873438E1799D745BC /* Pods-KpMedicalWallet-KpMedicalWalletUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
