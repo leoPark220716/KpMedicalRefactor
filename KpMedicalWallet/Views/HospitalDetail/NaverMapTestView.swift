@@ -30,19 +30,14 @@ struct NMFMapViewRepresentable: UIViewRepresentable {
 }
 
 struct NaverMapTestView: View {
-    @State private var mapCoord = NMGLatLng(lat: 0.0, lng: 0.0)
+    @Binding var mapCoord: NMGLatLng
     var body: some View {
         VStack{
             NMFMapViewRepresentable(coord: $mapCoord)
             
-        }.onAppear{
-            mapCoord = NMGLatLng(lat:37.5866,lng: 126.9748)
         }
     }
 }
 
-#Preview {
-    NaverMapTestView()
-}
 
 

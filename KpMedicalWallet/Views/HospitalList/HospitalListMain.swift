@@ -16,23 +16,7 @@ struct HospitalListMain: View {
             HospitalListControlView(locationService: locationService, viewModel: viewModel)
                 .padding(.vertical)
                 .background(Color("backColor"))
-            List{
-                ForEach(viewModel.hospitalList.indices, id: \.self){ index in
-                    Button{
-                        viewModel.goHospitalDetailView()
-                    } label: {
-                        HospitalListItemView(hospital: $viewModel.hospitalList[index])
-                    }
-                    .onAppear{
-                        if index == viewModel.hospitalList.endIndex-1{
-                            viewModel.addHospitalList()
-                            print("✅PageNation \(viewModel.requestQuery.start)")
-                        }
-                    }
-                    
-                }
-            }
-            .listStyle(InsetListStyle())
+            HospitalViewMainListContent(viewModel: viewModel)
         }
         .onAppear{
             locationService.getRequestPermission()

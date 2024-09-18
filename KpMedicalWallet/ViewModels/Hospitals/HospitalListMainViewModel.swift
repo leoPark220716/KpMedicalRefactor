@@ -13,14 +13,16 @@ class HospitalListMainViewModel:HospitalListCache, ObservableObject{
             OrderByUpdate()
         }
     }
-    @Published var selectedDepartment: Department?
-    @Published var departSheetShow: Bool = false
-    @Published var hospitalList: [Hospitals] = []
     @Published var searchText: String = "" {
         didSet{
             KeyWordUpdate()
         }
     }
+    @Published var isLoading = false
+    @Published var selectedDepartment: Department?
+    @Published var departSheetShow: Bool = false
+    @Published var hospitalList: [Hospitals] = []
+    
     var requestQuery = HospitalRequestQuery()
     var appManager: NavigationRouter?
     var changedQuery = false
@@ -47,13 +49,16 @@ class HospitalListMainViewModel:HospitalListCache, ObservableObject{
     func resetHospitalListArray(){
         hospitalList = []
     }
-    
-    
+    @MainActor
+    func loadingChange(status: Bool){
+        isLoading = status
+    }
     func seachByCategoryAction(){
-        print(requestQuery)
         Task{
             do{
+                await loadingChange(status: true)
                 try await getHospitalList()
+                await loadingChange(status: false)
             }catch let error as TraceUserError{
                 await appManager?.displayError(ServiceError: error)
             }catch{
@@ -95,14 +100,17 @@ class HospitalListMainViewModel:HospitalListCache, ObservableObject{
     func hospitalListSetUp(){
         print("✅hospitalListSetUp")
         Task{
+            await loadingChange(status: true)
             //            기간이 지난 캐시파일 삭제
             clearExpiredCacheFiles()
             if let cacheHospitals = loadHospitalListFromCache(){
                 await MainActor.run {
                     hospitalList = cacheHospitals
                 }
+                await loadingChange(status: false)
                 return
             }
+            await loadingChange(status: false)
             do{
                 try await getHospitalList()
             }catch let error as TraceUserError{
@@ -174,8 +182,9 @@ class HospitalListMainViewModel:HospitalListCache, ObservableObject{
     }
     
     @MainActor
-    func goHospitalDetailView(){
-        appManager?.push(to: .userPage(item: UserPage(page: .HospitalDetail)))
+    func goHospitalDetailView(index: Int){
+        appManager?.push(to: .userPage(item: UserPage(page: .HospitalDetail),Hospital: hospitalList[index]))
     }
 }
+
 

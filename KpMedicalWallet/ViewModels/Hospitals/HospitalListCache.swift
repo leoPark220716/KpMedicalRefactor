@@ -57,15 +57,15 @@ class HospitalListCache{
     
     // 만료된 캐시파일 삭제
     func clearExpiredCacheFiles() {
-        let fileManager = FileManager.default
         let cacheDirectory = getDocumentsDirectory()
         let expirationInterval: TimeInterval = 12 * 60 * 60 // 24시간
-        
+
         DispatchQueue.global(qos: .background).async {
+            let fileManager = FileManager.default
             do {
                 let files = try fileManager.contentsOfDirectory(at: cacheDirectory, includingPropertiesForKeys: nil)
                 let now = Date().timeIntervalSince1970
-                
+
                 for file in files {
                     if let timestampString = file.lastPathComponent.split(separator: "_").last?.split(separator: ".").first,
                        let timestamp = TimeInterval(timestampString),
@@ -79,4 +79,5 @@ class HospitalListCache{
             }
         }
     }
+
 }

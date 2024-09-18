@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1E0D79C92C99C6E50010B767 /* NaverMapTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D79C82C99C6E50010B767 /* NaverMapTestView.swift */; };
 		1E0D79CB2C99C8AD0010B767 /* HospitalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D79CA2C99C8AD0010B767 /* HospitalDetailView.swift */; };
+		1E213CB92C9B02ED00A8312D /* HospitalDetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E213CB82C9B02ED00A8312D /* HospitalDetailContentView.swift */; };
+		1E213CBB2C9B068800A8312D /* HospitalDetailScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E213CBA2C9B068800A8312D /* HospitalDetailScheduleView.swift */; };
+		1E213CBD2C9B169C00A8312D /* DoctorListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E213CBC2C9B169C00A8312D /* DoctorListItemView.swift */; };
 		1E38D3592C90271D00BB344E /* KpMedicalWalletApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D3582C90271D00BB344E /* KpMedicalWalletApp.swift */; };
 		1E38D35B2C90271D00BB344E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D35A2C90271D00BB344E /* ContentView.swift */; };
 		1E38D35D2C90271D00BB344E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E38D35C2C90271D00BB344E /* Assets.xcassets */; };
@@ -19,6 +22,7 @@
 		1E38D3792C90271E00BB344E /* KpMedicalWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D3782C90271E00BB344E /* KpMedicalWalletUITests.swift */; };
 		1E38D37B2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D37A2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift */; };
 		1E38D38A2C902D7D00BB344E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D3892C902D7D00BB344E /* LoginView.swift */; };
+		1E5D33CA2C9AAED800067004 /* web3swift in Frameworks */ = {isa = PBXBuildFile; productRef = 1E5D33C92C9AAED800067004 /* web3swift */; };
 		1E8FBC6A2C94267900B00909 /* DatePickerDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FBC692C94267900B00909 /* DatePickerDialogView.swift */; };
 		1E8FBC6C2C94835700B00909 /* SignupFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FBC6B2C94835700B00909 /* SignupFinalView.swift */; };
 		1E9136FA2C91667C004F647E /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1E9136F92C91667C004F647E /* FirebaseMessaging */; };
@@ -64,6 +68,13 @@
 		1EAD50A32C9078C60010F705 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50A22C9078C60010F705 /* Protocols.swift */; };
 		1EAD50A52C9085410010F705 /* LoginSignupModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50A42C9085410010F705 /* LoginSignupModels.swift */; };
 		1EAD50A72C908E780010F705 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50A62C908E780010F705 /* ToastView.swift */; };
+		1EBDD0D62C9AB728002DE858 /* HospitalViewMainListContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBDD0D52C9AB728002DE858 /* HospitalViewMainListContent.swift */; };
+		1EBDD0D82C9ABDAA002DE858 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBDD0D72C9ABDAA002DE858 /* ScheduleViewModel.swift */; };
+		1EBDD0DA2C9ABDC4002DE858 /* HospitalDetailViewDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBDD0D92C9ABDC4002DE858 /* HospitalDetailViewDataClass.swift */; };
+		1EBDD0DC2C9AC146002DE858 /* HospitalReservationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBDD0DB2C9AC146002DE858 /* HospitalReservationModel.swift */; };
+		1EBDD0DF2C9AC220002DE858 /* HospitalDoctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBDD0DE2C9AC220002DE858 /* HospitalDoctor.swift */; };
+		1EBDD0E12C9AC233002DE858 /* HospitalSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBDD0E02C9AC233002DE858 /* HospitalSchedule.swift */; };
+		1EBDD0E32C9AC248002DE858 /* HospitalReservationEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBDD0E22C9AC248002DE858 /* HospitalReservationEditor.swift */; };
 		1ED18CB62C982BA900C5EE2E /* HospitalsViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED18CB52C982BA900C5EE2E /* HospitalsViewModifier.swift */; };
 		1ED18CB82C982CDF00C5EE2E /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED18CB72C982CDF00C5EE2E /* LocationService.swift */; };
 		1ED18CBA2C982D2700C5EE2E /* NeverGeocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED18CB92C982D2700C5EE2E /* NeverGeocoder.swift */; };
@@ -109,6 +120,9 @@
 		1C24B252144808B44ED976DD /* Pods_KpMedicalWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KpMedicalWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E0D79C82C99C6E50010B767 /* NaverMapTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMapTestView.swift; sourceTree = "<group>"; };
 		1E0D79CA2C99C8AD0010B767 /* HospitalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalDetailView.swift; sourceTree = "<group>"; };
+		1E213CB82C9B02ED00A8312D /* HospitalDetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalDetailContentView.swift; sourceTree = "<group>"; };
+		1E213CBA2C9B068800A8312D /* HospitalDetailScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalDetailScheduleView.swift; sourceTree = "<group>"; };
+		1E213CBC2C9B169C00A8312D /* DoctorListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorListItemView.swift; sourceTree = "<group>"; };
 		1E38D3552C90271D00BB344E /* KpMedicalWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KpMedicalWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E38D3582C90271D00BB344E /* KpMedicalWalletApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KpMedicalWalletApp.swift; sourceTree = "<group>"; };
 		1E38D35A2C90271D00BB344E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -169,6 +183,13 @@
 		1EAD50A22C9078C60010F705 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		1EAD50A42C9085410010F705 /* LoginSignupModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupModels.swift; sourceTree = "<group>"; };
 		1EAD50A62C908E780010F705 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		1EBDD0D52C9AB728002DE858 /* HospitalViewMainListContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalViewMainListContent.swift; sourceTree = "<group>"; };
+		1EBDD0D72C9ABDAA002DE858 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
+		1EBDD0D92C9ABDC4002DE858 /* HospitalDetailViewDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalDetailViewDataClass.swift; sourceTree = "<group>"; };
+		1EBDD0DB2C9AC146002DE858 /* HospitalReservationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalReservationModel.swift; sourceTree = "<group>"; };
+		1EBDD0DE2C9AC220002DE858 /* HospitalDoctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalDoctor.swift; sourceTree = "<group>"; };
+		1EBDD0E02C9AC233002DE858 /* HospitalSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalSchedule.swift; sourceTree = "<group>"; };
+		1EBDD0E22C9AC248002DE858 /* HospitalReservationEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalReservationEditor.swift; sourceTree = "<group>"; };
 		1ED18CB52C982BA900C5EE2E /* HospitalsViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalsViewModifier.swift; sourceTree = "<group>"; };
 		1ED18CB72C982CDF00C5EE2E /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		1ED18CB92C982D2700C5EE2E /* NeverGeocoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeverGeocoder.swift; sourceTree = "<group>"; };
@@ -201,6 +222,7 @@
 			files = (
 				1E9136FA2C91667C004F647E /* FirebaseMessaging in Frameworks */,
 				4F0BFB68AF1F20A451D4FF3A /* Pods_KpMedicalWallet.framework in Frameworks */,
+				1E5D33CA2C9AAED800067004 /* web3swift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +263,9 @@
 			children = (
 				1E0D79C82C99C6E50010B767 /* NaverMapTestView.swift */,
 				1E0D79CA2C99C8AD0010B767 /* HospitalDetailView.swift */,
+				1E213CB82C9B02ED00A8312D /* HospitalDetailContentView.swift */,
+				1E213CBA2C9B068800A8312D /* HospitalDetailScheduleView.swift */,
+				1E213CBC2C9B169C00A8312D /* DoctorListItemView.swift */,
 			);
 			path = HospitalDetail;
 			sourceTree = "<group>";
@@ -496,6 +521,18 @@
 			path = KeyChain;
 			sourceTree = "<group>";
 		};
+		1EBDD0DD2C9AC207002DE858 /* Reservation */ = {
+			isa = PBXGroup;
+			children = (
+				1EBDD0D92C9ABDC4002DE858 /* HospitalDetailViewDataClass.swift */,
+				1EBDD0DB2C9AC146002DE858 /* HospitalReservationModel.swift */,
+				1EBDD0DE2C9AC220002DE858 /* HospitalDoctor.swift */,
+				1EBDD0E02C9AC233002DE858 /* HospitalSchedule.swift */,
+				1EBDD0E22C9AC248002DE858 /* HospitalReservationEditor.swift */,
+			);
+			path = Reservation;
+			sourceTree = "<group>";
+		};
 		1ED18CB42C982B8800C5EE2E /* Hospital */ = {
 			isa = PBXGroup;
 			children = (
@@ -507,6 +544,8 @@
 		1ED18CBB2C982F7400C5EE2E /* Hospitals */ = {
 			isa = PBXGroup;
 			children = (
+				1EBDD0DD2C9AC207002DE858 /* Reservation */,
+				1EBDD0D72C9ABDAA002DE858 /* ScheduleViewModel.swift */,
 				1ED18CB92C982D2700C5EE2E /* NeverGeocoder.swift */,
 				1ED18CBE2C9832EB00C5EE2E /* HospitalListMainViewModel.swift */,
 				1ED18CC62C98655C00C5EE2E /* HospitalListCache.swift */,
@@ -567,6 +606,7 @@
 				1ED18CC02C9833D500C5EE2E /* departmentChooseSheetView.swift */,
 				1ED18CC22C98463700C5EE2E /* HospitalListControlView.swift */,
 				1EDD181F2C99AF7700FDD7FD /* HospitalListItemView.swift */,
+				1EBDD0D52C9AB728002DE858 /* HospitalViewMainListContent.swift */,
 			);
 			path = HospitalList;
 			sourceTree = "<group>";
@@ -601,6 +641,7 @@
 			name = KpMedicalWallet;
 			packageProductDependencies = (
 				1E9136F92C91667C004F647E /* FirebaseMessaging */,
+				1E5D33C92C9AAED800067004 /* web3swift */,
 			);
 			productName = KpMedicalWallet;
 			productReference = 1E38D3552C90271D00BB344E /* KpMedicalWallet.app */;
@@ -653,7 +694,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					1E38D3542C90271D00BB344E = {
 						CreatedOnToolsVersion = 15.4;
@@ -679,6 +720,7 @@
 			mainGroup = 1E38D34C2C90271D00BB344E;
 			packageReferences = (
 				1E9136F82C91667C004F647E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				1E5D33C82C9AAED800067004 /* XCRemoteSwiftPackageReference "web3swift" */,
 			);
 			productRefGroup = 1E38D3562C90271D00BB344E /* Products */;
 			projectDirPath = "";
@@ -829,28 +871,35 @@
 			files = (
 				1E38D3622C90271D00BB344E /* Persistence.swift in Sources */,
 				1EAC112D2C92BA1E008FFE43 /* SginupAgreementView.swift in Sources */,
+				1EBDD0E12C9AC233002DE858 /* HospitalSchedule.swift in Sources */,
 				1ED18CBD2C98320D00C5EE2E /* Department.swift in Sources */,
 				1EAD508E2C9058580010F705 /* SignupIdView.swift in Sources */,
 				1ED5B2982C9585E1000DE60B /* HomeViewModel.swift in Sources */,
+				1EBDD0E32C9AC248002DE858 /* HospitalReservationEditor.swift in Sources */,
 				1E9137092C91D828004F647E /* GlobalErrorHandler.swift in Sources */,
 				1EAD50922C905C400010F705 /* SplashView.swift in Sources */,
 				1ED5B2A22C95A893000DE60B /* HospitalListMain.swift in Sources */,
 				1EAD50A52C9085410010F705 /* LoginSignupModels.swift in Sources */,
+				1EBDD0D62C9AB728002DE858 /* HospitalViewMainListContent.swift in Sources */,
 				1EAC11372C92D2FE008FFE43 /* PlistManager.swift in Sources */,
 				1EAD508B2C9057610010F705 /* MainView.swift in Sources */,
 				1EAD50822C90439A0010F705 /* HttpRequestModels.swift in Sources */,
 				1E9137012C918E2A004F647E /* UserConfigVariable.swift in Sources */,
 				1E8FBC6A2C94267900B00909 /* DatePickerDialogView.swift in Sources */,
+				1E213CB92C9B02ED00A8312D /* HospitalDetailContentView.swift in Sources */,
 				1ED5B2A42C95A9DF000DE60B /* ErrorAlert.swift in Sources */,
 				1EAD507F2C90436D0010F705 /* HttpRequest.swift in Sources */,
 				1EAD509C2C90681A0010F705 /* UserAuth.swift in Sources */,
+				1EBDD0DA2C9ABDC4002DE858 /* HospitalDetailViewDataClass.swift in Sources */,
 				1E9136FF2C9166F8004F647E /* FCMDelegate.swift in Sources */,
 				1EAC11332C92CE62008FFE43 /* AgreementViewModel.swift in Sources */,
 				1E38D35B2C90271D00BB344E /* ContentView.swift in Sources */,
 				1EAD50872C9051750010F705 /* Router.swift in Sources */,
 				1EAD50942C905F080010F705 /* UserNavigation.swift in Sources */,
 				1EAC11452C9303F7008FFE43 /* SignupPasswordView.swift in Sources */,
+				1E213CBD2C9B169C00A8312D /* DoctorListItemView.swift in Sources */,
 				1ED18CC52C9850E200C5EE2E /* Hospitals.swift in Sources */,
+				1EBDD0DC2C9AC146002DE858 /* HospitalReservationModel.swift in Sources */,
 				1ED18CBF2C9832EB00C5EE2E /* HospitalListMainViewModel.swift in Sources */,
 				1EAD506F2C9038720010F705 /* LoginViewModifier.swift in Sources */,
 				1E91370B2C91DDAA004F647E /* UrlConfigVariable.swift in Sources */,
@@ -868,6 +917,7 @@
 				1E38D3652C90271D00BB344E /* KpMedicalWallet.xcdatamodeld in Sources */,
 				1E8FBC6C2C94835700B00909 /* SignupFinalView.swift in Sources */,
 				1EAC113F2C92F41A008FFE43 /* OtpControl.swift in Sources */,
+				1EBDD0DF2C9AC220002DE858 /* HospitalDoctor.swift in Sources */,
 				1ED18CC32C98463700C5EE2E /* HospitalListControlView.swift in Sources */,
 				1EAD50892C9056FB0010F705 /* NavigationRouter.swift in Sources */,
 				1EAD50A72C908E780010F705 /* ToastView.swift in Sources */,
@@ -893,6 +943,8 @@
 				1EAC11432C92F4AB008FFE43 /* PhoneNumberControl.swift in Sources */,
 				1ED5B2952C958543000DE60B /* MyHospitalView.swift in Sources */,
 				1ED18CC72C98655C00C5EE2E /* HospitalListCache.swift in Sources */,
+				1EBDD0D82C9ABDAA002DE858 /* ScheduleViewModel.swift in Sources */,
+				1E213CBB2C9B068800A8312D /* HospitalDetailScheduleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1128,7 +1180,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7D4D685523A70D981FE47159 /* Pods-KpMedicalWalletTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1149,7 +1200,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 11C2FBE657A20EE39F2DB0D2 /* Pods-KpMedicalWalletTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1170,7 +1220,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D1775C229AA384965455EE2B /* Pods-KpMedicalWallet-KpMedicalWalletUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N762C9YWP9;
@@ -1189,7 +1238,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9A5D7F1873438E1799D745BC /* Pods-KpMedicalWallet-KpMedicalWalletUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N762C9YWP9;
@@ -1246,6 +1294,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1E5D33C82C9AAED800067004 /* XCRemoteSwiftPackageReference "web3swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/leoPark220716/web3swift.git";
+			requirement = {
+				branch = latest;
+				kind = branch;
+			};
+		};
 		1E9136F82C91667C004F647E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1257,6 +1313,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1E5D33C92C9AAED800067004 /* web3swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E5D33C82C9AAED800067004 /* XCRemoteSwiftPackageReference "web3swift" */;
+			productName = web3swift;
+		};
 		1E9136F92C91667C004F647E /* FirebaseMessaging */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1E9136F82C91667C004F647E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

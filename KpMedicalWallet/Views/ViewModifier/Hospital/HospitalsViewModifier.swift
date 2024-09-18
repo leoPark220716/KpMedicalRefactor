@@ -71,3 +71,81 @@ struct HospitalsDepartmentTexts: ViewModifier{
             .lineLimit(1)
     }
 }
+struct HospitalDetailPickerText: ViewModifier{
+    @Binding var selection: HospitalDetailContent.Selection
+    let set: HospitalDetailContent.Selection
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 15))
+            .frame(maxWidth: .infinity,alignment: .center)
+            .foregroundColor(selection == set ? .black : .gray)
+            .padding(.vertical,4)
+    }
+}
+struct HospitalDetailPickerUnderBar: ViewModifier{
+    @Binding var selection: HospitalDetailContent.Selection
+    let set: HospitalDetailContent.Selection
+    func body(content: Content) -> some View {
+        content
+            .frame(height: 2) // 전체 너비의 40%로 설정
+            .foregroundColor(selection == set ? Color("AccentColor").opacity(0.4) : .clear)
+            .cornerRadius(10)
+            .padding(.horizontal)
+    }
+}
+struct HospitalDetailScheduleModify: ViewModifier{
+    let schedule: String
+    let width: Double
+    let aligment: Alignment
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 13))
+            .foregroundColor(schedule == "일요일" ? .red : .black)
+            .frame(width: width, alignment: aligment)
+    }
+}
+struct HospitalDetailEmptyScheduleModify: ViewModifier{
+    let schedule: String
+    let width: Double
+    let aligment: Alignment
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 13))
+            .foregroundColor(schedule == "일요일" ? .red : .black)
+            .frame(width: width, alignment: aligment)
+    }
+}
+struct HospitalDetailButtonModify: ViewModifier{
+    let back: Color
+    let fore: Color
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .font(.system(size: 14))
+            .frame(maxWidth: .infinity)
+            .foregroundStyle(fore)
+            .background(back)
+            .cornerRadius(5)
+            .bold()
+            .overlay(
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(Color.blue.opacity(0.5), lineWidth: 1)
+            )
+    }
+}
+struct HospitalDetailDoctorImageModify: ViewModifier{
+    func body(content: Content) -> some View {
+        content
+            .frame(width: 100, height: 100)
+            .clipShape(Circle())
+            .shadow(radius: 10, x: 5, y: 5)
+            .padding()
+    }
+}
+struct HospitalDetailDoctorProfileText: ViewModifier{
+    func body(content: Content) -> some View {
+        content
+            .font(.subheadline)
+            .bold()
+    }
+}

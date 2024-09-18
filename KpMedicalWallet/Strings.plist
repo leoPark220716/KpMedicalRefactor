@@ -58,10 +58,13 @@ Copyright (c) 2024 ___ORGANIZATIONNAME___. All rights reserved.
         <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
         <key>suggestion_unowned_error</key>
         <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
+        <!-- 서비스 부족 -->
         <key>suggestion_manager_function_error</key>
-        <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
+        <string>현재 해당 서비스를 진행하실 수 없습니다.</string>
         <key>suggestion_http_request_error</key>
         <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
+        <key>unknownsError</key>
+        <string>찾지 못한 에러</string>
         
         
         <key>constructURL</key>
@@ -114,6 +117,12 @@ Copyright (c) 2024 ___ORGANIZATIONNAME___. All rights reserved.
         
         <key>viewModelSetupFalse</key>
         <string>viewModelSetupFalse</string>
+        
+        <key>createRequestStructHospitalDetailView</key>
+        <string>createRequestStructHospitalDetailView_optionalValuenil</string>
+        
+        <key>getHospitalInfomation</key>
+        <string>getHospitalInfomation_optionalValuenil</string>
         
         
         <!-- 로그인 화면 사용 String -->
@@ -283,5 +292,12 @@ Copyright (c) 2024 ___ORGANIZATIONNAME___. All rights reserved.
         
         <key>find_hospital_department_default</key>
         <string>진료과</string>
+        
+        <!--HospitalDetailView        -->
+        <key>hospital_detail_department_show_all</key>
+        <string>전체보기</string>
+        
+        <key>hospital_detail_user_guaid</key>
+        <string>해당 병원 및 의사가 존재하지 않습니다.</string>
     </dict>
 </plist>

@@ -8,7 +8,7 @@
 import Foundation
 
 // LoginRequest
-class LoginController: LoginModel,LoginRequest {
+class LoginController: LoginModel, LoginRequest {
     
     var appManager: NavigationRouter
     

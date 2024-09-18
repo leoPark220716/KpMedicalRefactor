@@ -10,7 +10,7 @@ import Foundation
 protocol LoginRequest{
     func searchPasswordAction()
     func actionLoginAction()
-    func actionSignUpAction()
+    @MainActor func actionSignUpAction()
     
 }
 protocol LoginDataSet{
