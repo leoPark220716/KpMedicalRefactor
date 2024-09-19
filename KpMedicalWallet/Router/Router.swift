@@ -12,7 +12,7 @@ import SwiftUI
 
 enum Route:View, Hashable {
     
-    case userPage(item: pages, appManager: NavigationRouter? = nil, signUpManager: IdControl? = nil, pageStatus: Bool? = nil,name: String? = nil,Hospital: Hospitals? = nil)
+    case userPage(item: pages, appManager: NavigationRouter? = nil, signUpManager: IdControl? = nil, pageStatus: Bool? = nil,name: String? = nil,Hospital: Hospitals? = nil, reservationModel: HospitalReservationModel? = nil)
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.hashValue)
@@ -20,13 +20,13 @@ enum Route:View, Hashable {
     
     static func == (lhs: Route, rhs: Route) -> Bool {
             switch (lhs, rhs) {
-            case (.userPage(let lhsItem, _,_,_,_,_), .userPage(let rhsItem, _,_,_,_,_)):
+            case (.userPage(let lhsItem, _,_,_,_,_,_), .userPage(let rhsItem, _,_,_,_,_,_)):
                 return lhsItem.page == rhsItem.page
             }
     }
     var body: some View{
         switch self {
-        case .userPage(let item, let appManager, let signUpManager,let pageStatus, let name,let hospital):
+        case .userPage(let item, let appManager, let signUpManager,let pageStatus, let name,let hospital, let reservationModel):
             switch item.page{
             case .SearchHospital:
                 HospitalListMain()
@@ -36,6 +36,51 @@ enum Route:View, Hashable {
                 }else{
                     ErrorView()
                 }
+                
+            case .chooseDepartment:
+                if let reservationModel = reservationModel{
+                    ReservationDepartmentView()
+                        .environmentObject(reservationModel)
+                }else{
+                    ErrorView()
+                }
+            case .chooseDoctor:
+                if let reservationModel = reservationModel{
+                    ReservationDoctorChooseView()
+                        .environmentObject(reservationModel)
+                }else{
+                    ErrorView()
+                }
+            case .chooseDate:
+                if let reservationModel = reservationModel{
+                    ReservationDateChooseView()
+                        .environmentObject(reservationModel)
+                }else{
+                    ErrorView()
+                }
+            case .chooseTime:
+                if let reservationModel = reservationModel{
+                    ReservationTimeChooseView()
+                        .environmentObject(reservationModel)
+                }else{
+                    ErrorView()
+                }
+            case .reservationSymptom:
+                if let reservationModel = reservationModel{
+                    ReservationSymptomView()
+                        .environmentObject(reservationModel)
+                }else{
+                    ErrorView()
+                }
+            case .reservationFinal:
+                if let reservationModel = reservationModel{
+                    ReservationFinalView()
+                        .environmentObject(reservationModel)
+                }else{
+                    ErrorView()
+                }
+            case .myReservationView:
+                MyReservationView()
             case .SearchPassword:
                 EmptyView()
                 //                회원가입 섹션
@@ -80,6 +125,7 @@ enum Route:View, Hashable {
                 }else{
                     ErrorView()
                 }
+            
             }
             
             

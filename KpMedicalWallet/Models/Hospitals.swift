@@ -138,8 +138,6 @@ struct reservationResponse: Codable{
     var error_stack: String
 }
 struct reservationRequest: Codable{
-    var access_token: String
-    var uid: String
     var hospital_id: Int
     var staff_id: Int
     var date: String

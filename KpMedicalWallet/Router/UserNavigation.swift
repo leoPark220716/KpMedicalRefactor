@@ -10,6 +10,15 @@ import Foundation
 enum UserViewPage{
     case SearchHospital
     case HospitalDetail
+    
+    case chooseDepartment
+    case chooseDoctor
+    case chooseDate
+    case chooseTime
+    case reservationSymptom
+    case reservationFinal
+    case myReservationView
+    
     case SearchPassword
     case IdCreate
     case Agreement

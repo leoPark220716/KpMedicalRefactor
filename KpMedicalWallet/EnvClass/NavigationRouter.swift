@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 final class NavigationRouter: UserInfomationManager {
-    @Published var routes = NavigationPath()
+    @Published var routes = [Route]()
     @Published var RootView: DefaultPage = .splash
     @Published var TabViewSelection: TabViewTabs = .home
     @Published var toast: normal_Toast?
@@ -54,7 +54,7 @@ final class NavigationRouter: UserInfomationManager {
     }
     @MainActor
     func goToRootView(){
-        routes = NavigationPath()
+        routes = []
     }
     
 

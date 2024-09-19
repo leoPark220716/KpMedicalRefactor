@@ -149,3 +149,71 @@ struct HospitalDetailDoctorProfileText: ViewModifier{
             .bold()
     }
 }
+struct ReservationButtonStyleModifier: ViewModifier {
+    @Binding var State: Bool
+    func body(content: Content) -> some View {
+        content
+            .padding(13)
+            .font(.system(size: 20))
+            .bold()
+            .frame(maxWidth: .infinity)
+            .foregroundColor(Color.white)
+            .background(State ? Color.blue.opacity(0.5) : Color.gray.opacity(0.5))
+            .cornerRadius(5)
+            .overlay(
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(State ? Color.blue.opacity(0.5) : Color.gray.opacity(0.5), lineWidth: 1)
+            )
+    }
+}
+struct ReservationStateButtonStyleModifier: ViewModifier {
+    @Binding var State: Bool
+    func body(content: Content) -> some View {
+        content
+            .bold()
+            .padding()
+            .font(.system(size: 20))
+            .frame(width: 150)
+            .foregroundColor(Color.white)
+            .background(State ? Color.blue.opacity(0.5) : Color.gray.opacity(0.5))
+            .cornerRadius(5)
+            .overlay(
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(State ? Color.blue.opacity(0.5) : Color.gray.opacity(0.5), lineWidth: 1)
+            )
+    }
+}
+struct ReservationGuaidLineStyleModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 14))
+            .padding(.leading)
+            
+    }
+}
+struct ReservationDividerStyleModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .frame(height: 1)
+            .foregroundColor(Color(.init(white: 0, alpha: 0.2)))
+            .cornerRadius(10)
+            .padding()
+    }
+}
+struct ReservationSuccessViewGuaidText: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 15))
+            .foregroundStyle(Color.gray)
+            .bold()
+            .padding(.leading,23)
+    }
+}
+struct ReservationSuccessViewInfoText: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 15))
+            .bold()
+            .padding(.trailing,23)
+    }
+}

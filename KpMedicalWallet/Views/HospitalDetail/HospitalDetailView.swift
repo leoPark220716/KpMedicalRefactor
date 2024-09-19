@@ -25,10 +25,18 @@ struct HospitalDetailView: View {
                 }
                 HStack{
                     Spacer()
-                    Text("상담하기")
-                        .modifier(HospitalDetailButtonModify(back: Color.white, fore: Color.blue.opacity(0.5)))
-                    Text("예약하기")
-                        .modifier(HospitalDetailButtonModify(back: Color.blue.opacity(0.5), fore: Color.white))
+                    Button{
+                        
+                    }label: {
+                        Text("상담하기")
+                            .modifier(HospitalDetailButtonModify(back: Color.white, fore: Color.blue.opacity(0.5)))
+                    }
+                    Button{
+                        viewModel.goToChooseDepartmentView()
+                    }label: {
+                        Text("예약하기")
+                            .modifier(HospitalDetailButtonModify(back: Color.blue.opacity(0.5), fore: Color.white))
+                    }
                     Spacer()
                 }
                 .padding(.bottom)

@@ -29,6 +29,7 @@ class PlistManager {
         }
     }
     func string(forKey key: String) -> String {
+        print("✅ errorMessageKey : \(key)")
         return strings[key] ?? "Key not found"
     }
 }

@@ -65,6 +65,7 @@ class HospitalReservationModel: HospitalSchedule{
             throw TraceUserError.clientError(PlistManager.shared.string(forKey: "createRequestStructHospitalDetailView"))
         }
     }
+    
     @MainActor
     private func setHospitalInfomation(info: HospitalDataClass){
         mapCoord = NMGLatLng(lat: info.hospital.y, lng: info.hospital.x)
@@ -73,6 +74,11 @@ class HospitalReservationModel: HospitalSchedule{
         hospitalIamges = info.hospital.img_url
         telephone = info.hospital.phone
         address = info.hospital.location
+        let department: [Int] = info.hospital.department_id.compactMap{Int($0)}
+        hospitalDepartments = department
+        HospitalSubSchedules = info.doctors.flatMap{$0.sub_schedules}
+        reservationData.hospital_id = info.hospital.hospital_id
+        
     }
     
     
@@ -98,5 +104,52 @@ class HospitalReservationModel: HospitalSchedule{
             return numberString // 원본 번호를 그대로 반환
         }
     }
+    // 뷰 이동 핸들 객체
+    @MainActor
+    func goToChooseDepartmentView(){
+        appManager?.push(to: .userPage(item: UserPage(page: .chooseDepartment),reservationModel: self))
+    }
+    @MainActor
+    func goToChooseDoctorView(){
+        appManager?.push(to: .userPage(item: UserPage(page: .chooseDoctor),reservationModel: self))
+    }
+    @MainActor
+    func goToChooseDateView(){
+        appManager?.push(to: .userPage(item: UserPage(page: .chooseDate),reservationModel: self))
+    }
+    @MainActor
+    func goToChooseTimeView(){
+        appManager?.push(to: .userPage(item: UserPage(page: .chooseTime),reservationModel: self))
+    }
+    @MainActor
+    func goToReservationFinalView(){
+        appManager?.push(to: .userPage(item: UserPage(page: .reservationFinal),reservationModel: self))
+    }
+    @MainActor
+    func goToSymptomEditorView(){
+        appManager?.push(to: .userPage(item: UserPage(page: .reservationSymptom),reservationModel: self))
+    }
     
+    @MainActor
+    func DateViewGoToNextView(){
+        if isSetDoctor{
+            goToChooseTimeView()
+        }else{
+            goToChooseDoctorView()
+        }
+    }
+    
+    @MainActor
+    func DoctorViewGoToNextView(){
+        if isSetDate{
+            goToChooseTimeView()
+        }else{
+            goToChooseDateView()
+        }
+    }
+    @MainActor
+    func goToMyReservationView(){
+        appManager?.goToRootView()
+        appManager?.push(to: .userPage(item: UserPage(page: .myReservationView)))
+    }
 }

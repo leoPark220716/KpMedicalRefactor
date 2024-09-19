@@ -44,7 +44,7 @@ extension TraceUserError: LocalizedError {
         case .unowned(_):
             return PlistManager.shared.string(forKey: "error_unowned")
         case .managerFunction(_):
-            return PlistManager.shared.string(forKey: "현재 해당 서비스는 사용하실 수 없습니다.")
+            return PlistManager.shared.string(forKey: "managerFunction")
         case .httpRequestError(_):
             return PlistManager.shared.string(forKey: "error_http_request")
         }
@@ -70,7 +70,7 @@ extension TraceUserError: LocalizedError {
         case .unowned(_):
             return PlistManager.shared.string(forKey: "suggestion_unowned_error")
         case .managerFunction(let detailError):
-            return PlistManager.shared.string(forKey: "\(detailError)")
+            return detailError
         case .httpRequestError(_):
             return PlistManager.shared.string(forKey: "suggestion_http_request_error")
         }

@@ -64,10 +64,7 @@ struct DoctorListView: View{
         ForEach(doctorProfile.indices, id: \.self){ index in
             DoctorListItemView(DoctorProfile: doctorProfile[index])
             Divider()
-                .frame(height: 1)
-                .foregroundColor(Color(.init(white: 0, alpha: 0.2)))
-                .cornerRadius(10)
-                .padding(.horizontal)
+                .modifier(ReservationDividerStyleModifier())
         }
     }
 }
@@ -81,10 +78,7 @@ struct HospitalDetailViewIntro:View {
             .padding(.top,8)
         HospitalScheduleView(HospitalSchedules: $viewModel.HospitalSchedules)
         Divider()
-            .frame(height: 1)
-            .foregroundColor(Color(.init(white: 0, alpha: 0.2)))
-            .cornerRadius(10)
-            .padding()
+            .modifier(ReservationDividerStyleModifier())
         Text("전화번호")
             .bold()
             .padding(.leading,30)
@@ -110,10 +104,7 @@ struct HospitalDetailViewIntro:View {
                 .padding(.trailing,30)
         }
         Divider()
-            .frame(height: 1)
-            .foregroundColor(Color(.init(white: 0, alpha: 0.2)))
-            .cornerRadius(10)
-            .padding()
+            .modifier(ReservationDividerStyleModifier())
         Text("위치")
             .bold()
             .padding(.leading,30)

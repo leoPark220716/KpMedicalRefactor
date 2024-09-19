@@ -12,7 +12,12 @@ struct DoctorListItemView: View {
     @State var WorkingState: Bool?
     init(DoctorProfile: Doctor) {
         self.DoctorProfile = DoctorProfile
-        WorkingState = checkTimeIn(startTime: DoctorProfile.main_schedules[0].startTime1, endTime: DoctorProfile.main_schedules[0].endTime2)
+        if DoctorProfile.main_schedules.isEmpty{
+            WorkingState = false
+        }else{
+            WorkingState = checkTimeIn(startTime: DoctorProfile.main_schedules[0].startTime1, endTime: DoctorProfile.main_schedules[0].endTime2)
+        }
+        
     }
     var body: some View{
         VStack {

@@ -68,6 +68,14 @@
 		1EAD50A32C9078C60010F705 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50A22C9078C60010F705 /* Protocols.swift */; };
 		1EAD50A52C9085410010F705 /* LoginSignupModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50A42C9085410010F705 /* LoginSignupModels.swift */; };
 		1EAD50A72C908E780010F705 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD50A62C908E780010F705 /* ToastView.swift */; };
+		1EAE13502C9C1A0C0031C58C /* ReservationDepartmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAE134F2C9C1A0C0031C58C /* ReservationDepartmentView.swift */; };
+		1EAE13522C9C1A2D0031C58C /* ReservationDoctorChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAE13512C9C1A2D0031C58C /* ReservationDoctorChooseView.swift */; };
+		1EAE13542C9C1A410031C58C /* ReservationDateChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAE13532C9C1A410031C58C /* ReservationDateChooseView.swift */; };
+		1EAE13562C9C1A510031C58C /* ReservationTimeChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAE13552C9C1A510031C58C /* ReservationTimeChooseView.swift */; };
+		1EAE13582C9C1A660031C58C /* ReservationFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAE13572C9C1A660031C58C /* ReservationFinalView.swift */; };
+		1EAE135A2C9C49F60031C58C /* HospitalReservationTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAE13592C9C49F60031C58C /* HospitalReservationTime.swift */; };
+		1EAE135C2C9C5C540031C58C /* ReservationSymptomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAE135B2C9C5C540031C58C /* ReservationSymptomView.swift */; };
+		1EAE135E2C9C77A90031C58C /* MyReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAE135D2C9C77A90031C58C /* MyReservationView.swift */; };
 		1EBDD0D62C9AB728002DE858 /* HospitalViewMainListContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBDD0D52C9AB728002DE858 /* HospitalViewMainListContent.swift */; };
 		1EBDD0D82C9ABDAA002DE858 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBDD0D72C9ABDAA002DE858 /* ScheduleViewModel.swift */; };
 		1EBDD0DA2C9ABDC4002DE858 /* HospitalDetailViewDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBDD0D92C9ABDC4002DE858 /* HospitalDetailViewDataClass.swift */; };
@@ -183,6 +191,14 @@
 		1EAD50A22C9078C60010F705 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		1EAD50A42C9085410010F705 /* LoginSignupModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupModels.swift; sourceTree = "<group>"; };
 		1EAD50A62C908E780010F705 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		1EAE134F2C9C1A0C0031C58C /* ReservationDepartmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationDepartmentView.swift; sourceTree = "<group>"; };
+		1EAE13512C9C1A2D0031C58C /* ReservationDoctorChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationDoctorChooseView.swift; sourceTree = "<group>"; };
+		1EAE13532C9C1A410031C58C /* ReservationDateChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationDateChooseView.swift; sourceTree = "<group>"; };
+		1EAE13552C9C1A510031C58C /* ReservationTimeChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationTimeChooseView.swift; sourceTree = "<group>"; };
+		1EAE13572C9C1A660031C58C /* ReservationFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationFinalView.swift; sourceTree = "<group>"; };
+		1EAE13592C9C49F60031C58C /* HospitalReservationTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalReservationTime.swift; sourceTree = "<group>"; };
+		1EAE135B2C9C5C540031C58C /* ReservationSymptomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationSymptomView.swift; sourceTree = "<group>"; };
+		1EAE135D2C9C77A90031C58C /* MyReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReservationView.swift; sourceTree = "<group>"; };
 		1EBDD0D52C9AB728002DE858 /* HospitalViewMainListContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalViewMainListContent.swift; sourceTree = "<group>"; };
 		1EBDD0D72C9ABDAA002DE858 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		1EBDD0D92C9ABDC4002DE858 /* HospitalDetailViewDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalDetailViewDataClass.swift; sourceTree = "<group>"; };
@@ -411,8 +427,9 @@
 			isa = PBXGroup;
 			children = (
 				1ED5B2992C9589D9000DE60B /* ViewModifier */,
-				1E0D79C72C99C6CA0010B767 /* HospitalDetail */,
 				1ED5B2A02C95A869000DE60B /* HospitalList */,
+				1E0D79C72C99C6CA0010B767 /* HospitalDetail */,
+				1EAE134E2C9C19910031C58C /* Reservation */,
 				1ED5B2912C9579C3000DE60B /* Tap */,
 				1EAD508C2C9058470010F705 /* SignUp */,
 				1EAD50722C903A190010F705 /* Login */,
@@ -521,14 +538,28 @@
 			path = KeyChain;
 			sourceTree = "<group>";
 		};
+		1EAE134E2C9C19910031C58C /* Reservation */ = {
+			isa = PBXGroup;
+			children = (
+				1EAE134F2C9C1A0C0031C58C /* ReservationDepartmentView.swift */,
+				1EAE13512C9C1A2D0031C58C /* ReservationDoctorChooseView.swift */,
+				1EAE13532C9C1A410031C58C /* ReservationDateChooseView.swift */,
+				1EAE13552C9C1A510031C58C /* ReservationTimeChooseView.swift */,
+				1EAE13572C9C1A660031C58C /* ReservationFinalView.swift */,
+				1EAE135B2C9C5C540031C58C /* ReservationSymptomView.swift */,
+				1EAE135D2C9C77A90031C58C /* MyReservationView.swift */,
+			);
+			path = Reservation;
+			sourceTree = "<group>";
+		};
 		1EBDD0DD2C9AC207002DE858 /* Reservation */ = {
 			isa = PBXGroup;
 			children = (
-				1EBDD0D92C9ABDC4002DE858 /* HospitalDetailViewDataClass.swift */,
 				1EBDD0DB2C9AC146002DE858 /* HospitalReservationModel.swift */,
 				1EBDD0DE2C9AC220002DE858 /* HospitalDoctor.swift */,
 				1EBDD0E02C9AC233002DE858 /* HospitalSchedule.swift */,
 				1EBDD0E22C9AC248002DE858 /* HospitalReservationEditor.swift */,
+				1EAE13592C9C49F60031C58C /* HospitalReservationTime.swift */,
 			);
 			path = Reservation;
 			sourceTree = "<group>";
@@ -549,6 +580,7 @@
 				1ED18CB92C982D2700C5EE2E /* NeverGeocoder.swift */,
 				1ED18CBE2C9832EB00C5EE2E /* HospitalListMainViewModel.swift */,
 				1ED18CC62C98655C00C5EE2E /* HospitalListCache.swift */,
+				1EBDD0D92C9ABDC4002DE858 /* HospitalDetailViewDataClass.swift */,
 			);
 			path = Hospitals;
 			sourceTree = "<group>";
@@ -602,11 +634,11 @@
 		1ED5B2A02C95A869000DE60B /* HospitalList */ = {
 			isa = PBXGroup;
 			children = (
+				1EBDD0D52C9AB728002DE858 /* HospitalViewMainListContent.swift */,
 				1ED5B2A12C95A893000DE60B /* HospitalListMain.swift */,
 				1ED18CC02C9833D500C5EE2E /* departmentChooseSheetView.swift */,
 				1ED18CC22C98463700C5EE2E /* HospitalListControlView.swift */,
 				1EDD181F2C99AF7700FDD7FD /* HospitalListItemView.swift */,
-				1EBDD0D52C9AB728002DE858 /* HospitalViewMainListContent.swift */,
 			);
 			path = HospitalList;
 			sourceTree = "<group>";
@@ -869,10 +901,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EAE135C2C9C5C540031C58C /* ReservationSymptomView.swift in Sources */,
 				1E38D3622C90271D00BB344E /* Persistence.swift in Sources */,
 				1EAC112D2C92BA1E008FFE43 /* SginupAgreementView.swift in Sources */,
 				1EBDD0E12C9AC233002DE858 /* HospitalSchedule.swift in Sources */,
 				1ED18CBD2C98320D00C5EE2E /* Department.swift in Sources */,
+				1EAE135E2C9C77A90031C58C /* MyReservationView.swift in Sources */,
+				1EAE13582C9C1A660031C58C /* ReservationFinalView.swift in Sources */,
 				1EAD508E2C9058580010F705 /* SignupIdView.swift in Sources */,
 				1ED5B2982C9585E1000DE60B /* HomeViewModel.swift in Sources */,
 				1EBDD0E32C9AC248002DE858 /* HospitalReservationEditor.swift in Sources */,
@@ -884,6 +919,7 @@
 				1EAC11372C92D2FE008FFE43 /* PlistManager.swift in Sources */,
 				1EAD508B2C9057610010F705 /* MainView.swift in Sources */,
 				1EAD50822C90439A0010F705 /* HttpRequestModels.swift in Sources */,
+				1EAE13522C9C1A2D0031C58C /* ReservationDoctorChooseView.swift in Sources */,
 				1E9137012C918E2A004F647E /* UserConfigVariable.swift in Sources */,
 				1E8FBC6A2C94267900B00909 /* DatePickerDialogView.swift in Sources */,
 				1E213CB92C9B02ED00A8312D /* HospitalDetailContentView.swift in Sources */,
@@ -908,6 +944,7 @@
 				1E38D3592C90271D00BB344E /* KpMedicalWalletApp.swift in Sources */,
 				1EAC114B2C93044D008FFE43 /* SignUpMobileView.swift in Sources */,
 				1ED18CBA2C982D2700C5EE2E /* NeverGeocoder.swift in Sources */,
+				1EAE13502C9C1A0C0031C58C /* ReservationDepartmentView.swift in Sources */,
 				1EAD507C2C9042520010F705 /* LoginController.swift in Sources */,
 				1EAC114F2C930661008FFE43 /* ErrorView.swift in Sources */,
 				1EAD50A32C9078C60010F705 /* Protocols.swift in Sources */,
@@ -921,6 +958,7 @@
 				1ED18CC32C98463700C5EE2E /* HospitalListControlView.swift in Sources */,
 				1EAD50892C9056FB0010F705 /* NavigationRouter.swift in Sources */,
 				1EAD50A72C908E780010F705 /* ToastView.swift in Sources */,
+				1EAE135A2C9C49F60031C58C /* HospitalReservationTime.swift in Sources */,
 				1ED5B2932C958535000DE60B /* AccountView.swift in Sources */,
 				1ED18CC12C9833D500C5EE2E /* departmentChooseSheetView.swift in Sources */,
 				1EAC113D2C92F3F8008FFE43 /* IdControl.swift in Sources */,
@@ -938,9 +976,11 @@
 				1EAD50962C9060FB0010F705 /* TabView.swift in Sources */,
 				1EDD18202C99AF7700FDD7FD /* HospitalListItemView.swift in Sources */,
 				1EAD50A12C9078450010F705 /* UserInfomationManager.swift in Sources */,
+				1EAE13562C9C1A510031C58C /* ReservationTimeChooseView.swift in Sources */,
 				1EAC114D2C93045E008FFE43 /* SignupOtpView.swift in Sources */,
 				1ED5B29C2C958A05000DE60B /* CommonViewModifier.swift in Sources */,
 				1EAC11432C92F4AB008FFE43 /* PhoneNumberControl.swift in Sources */,
+				1EAE13542C9C1A410031C58C /* ReservationDateChooseView.swift in Sources */,
 				1ED5B2952C958543000DE60B /* MyHospitalView.swift in Sources */,
 				1ED18CC72C98655C00C5EE2E /* HospitalListCache.swift in Sources */,
 				1EBDD0D82C9ABDAA002DE858 /* ScheduleViewModel.swift in Sources */,
