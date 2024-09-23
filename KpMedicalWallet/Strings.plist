@@ -1,313 +1,252 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!--
-Property List.plist
-KpMedicalWallet
-
-Created by Junsung Park on 9/12/24.
-Copyright (c) 2024 ___ORGANIZATIONNAME___. All rights reserved.
--->
 <plist version="1.0">
-    <dict>
-        <key>app_title</key>
-        <string>Medical Wallet</string>
-        <key>ok</key>
-        <string>확인</string>
-        <key>cancel</key>
-        <string>취소</string>
-        <!-- 에러 정의 빈값일 때 기본값 -->
-        <key>error_notcatch</key>
-        <string>조금있다 다시 시도해주세요.</string>
-        <!-- 에러 출력값 -->
-        <key>error_no_connection</key>
-        <string>No connection</string>
-        <key>error_server</key>
-        <string>Server error</string>
-        <key>error_client</key>
-        <string>Client error</string>
-        <key>error_json_parse</key>
-        <string>JSON parse error</string>
-        <key>error_user</key>
-        <string>User error</string>
-        <key>error_blockchain</key>
-        <string>Blockchain error</string>
-        <key>error_config</key>
-        <string>Configuration error</string>
-        <key>error_auth_data</key>
-        <string>Authentication data error</string>
-        <key>error_unowned</key>
-        <string>Unowned error</string>
-        <key>error_manager_function</key>
-        <string>Manager function error</string>
-        <key>error_http_request</key>
-        <string>HTTP request error</string>
-        <key>managerFunction</key>
-        <string>서비스 이용 불가</string>
-        
-        <key>suggestion_no_connection</key>
-        <string>인터넷에 연결해주세요</string>
-        <key>suggestion_server_error</key>
-        <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
-        <key>suggestion_client_error</key>
-        <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
-        <key>suggestion_json_parse_error</key>
-        <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
-        <key>suggestion_blockchain_error</key>
-        <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
-        <key>suggestion_config_error</key>
-        <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
-        <key>suggestion_auth_data_error</key>
-        <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
-        <key>suggestion_unowned_error</key>
-        <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
-        <!-- 서비스 부족 -->
-        <key>suggestion_manager_function_error</key>
-        <string>현재 해당 서비스를 진행하실 수 없습니다.</string>
-        <key>suggestion_http_request_error</key>
-        <string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
-        <key>unknownsError</key>
-        <string>찾지 못한 에러</string>
-        <key>doctor_schedules_isEmpty</key>
-        <string>현재 등록된 의사의 스캐줄이 없습니다. 다른 병원을 이용해주세요</string>
-        
-        
-        
-        <key>constructURL</key>
-        <string>Construct URL</string>
-        <key>configureRequest</key>
-        <string>Configure Request</string>
-        <key>performRequest</key>
-        <string>Perform Request</string>
-        <key>handleResponse</key>
-        <string>Handle Response</string>
-        <key>jsonParseError</key>
-        <string>JSON Parse Error</string>
-        <key>authData</key>
-        <string>KeyChain Auth Data</string>
-        <key>noConnection</key>
-        <string>No Connection</string>
-        <key>serverError</key>
-        <string>Server Error</string>
-        <key>clientError</key>
-        <string>Client Error</string>
-        <key>userError</key>
-        <string>User Error</string>
-        <key>LoginCheck</key>
-        <string>Login Check</string>
-        <key>blockChainError</key>
-        <string>Blockchain Error</string>
-        <key>urlFail</key>
-        <string>Create URL Fail</string>
-        <key>configError</key>
-        <string>Config String Error</string>
-        <key>ErrorUnknown</key>
-        <string>An Unknown Error Occurred</string>
-        <key>userAuthSave</key>
-        <string>User Auth Save</string>
-        <key>userLoadAuthData</key>
-        <string>User Load Auth Data</string>
-        <key>SingUp_idCheckRequest</key>
-        <string>SignUp Process Error in idCheckRequest</string>
-        <key>SignUp_Verify_token_getotp</key>
-        <string>SignUp Process Error in getOtpNumberByMobile</string>
-        <key>SignUp_request_make_body</key>
-        <string>SignUp Process Error in createLoginRequestData</string>
-        <key>SignUp_request_unkownError</key>
-        <string>SignUp Process Error in createLoginRequestData</string>
-        <key>UserInfomation_returnUserData</key>
-        <string>UserInfomation_returnUserData</string>
-        
-        <key>hospitl_list_setup</key>
-        <string>hospitl_list_setup</string>
-        
-        <key>viewModelSetupFalse</key>
-        <string>viewModelSetupFalse</string>
-        
-        <key>createRequestStructHospitalDetailView</key>
-        <string>createRequestStructHospitalDetailView_optionalValuenil</string>
-        
-        <key>getHospitalInfomation</key>
-        <string>getHospitalInfomation_optionalValuenil</string>
-        <key>createRequestStructReservationTimeView</key>
-        <string>createRequestStructReservationTimeView_optionalValuenil</string>
-        <key>fetchReservations</key>
-        <string>fetchReservations jwt token Error</string>
-        
-        
-        
-        <!-- 로그인 화면 사용 String -->
-        <key>login_hint</key>
-        <string>아이디</string>
-        <key>password_hint</key>
-        <string>비밀번호</string>
-        <key>login_button</key>
-        <string>로그인</string>
-        <key>search_password_button</key>
-        <string>비밀번호를 잊으셨나요?</string>
-        <key>sign_up_button</key>
-        <string>아직 회원이 아니신가요? 가입하기</string>
-        <!-- 약관동의 화면 사용 String -->
-        <key>agree_all_service</key>
-        <string>모든 약관에 동의합니다.</string>
-        <key>agree_terms</key>
-        <string>서비스 이용 약관 동의 (필수)</string>
-        <key>privacy_policy</key>
-        <string>개인정보 수집 및 이용 동의 (필수)</string>
-        <key>push_notifications</key>
-        <string>서비스 푸시 알림 동의</string>
-        
-        <key>agree_terms_url</key>
-        <string>https://docs.google.com/document/d/1sNSzc_d43q5IcJc9CBgy06Or1_Mijyy3fFVMHNdyEy8</string>
-        <key>privacy_policy_url</key>
-        <string>https://docs.google.com/document/d/1xDkus4KIcmOm9xj5Meddd8ZFS04AUh-eIaNflKZnpfk</string>
-        <key>push_notifications_url</key>
-        <string>https://docs.google.com/document/d/1BXBhX1vGOFSTOepUQjvQrQ25oapASlQ8qxBXPxMD_To</string>
-        
-        <key>agree_button</key>
-        <string>계속하기</string>
-        
-        <key>agree_nav_title</key>
-        <string>약관동의</string>
-        
-        <!-- 회원 가입 아이디 사용 String  제시어 밑 Hint -->
-        <key>signup_id_navigation_title</key>
-        <string>아이디</string>
-        
-        <key>signup_id_hint</key>
-        <string>아이디</string>
-        
-        <key>signup_id_field_title</key>
-        <string>아이디</string>
-        
-        <key>signup_id_check_button</key>
-        <string>확인</string>
-        
-        <key>signup_id_access_button</key>
-        <string>다음</string>
-        
-        <key>singup_id_field_error_formet</key>
-        <string>6자 이상 30자리 이하의 숫자, 영문자 조합으로 가능합니다.</string>
-        
-        <key>singup_id_field_error_not_match</key>
-        <string>중복된 아이디가 있습니다.</string>
-        
-        <key>singup_id_field_error_match_didnt_done</key>
-        <string>확인 버튼을 눌러주세요.</string>
-        
-        <key>singup_id_success</key>
-        <string>사용가능한 아이디 입니다.</string>
-        
-        <!-- 회원 가입 비밀번호 사용 String  제시어 밑 Hint -->
-        <key>signup_password_navigation_title</key>
-        <string>비밀번호</string>
-        
-        <key>signup_password_hint</key>
-        <string>비밀번호</string>
-        
-        <key>signup_password_navigation_title2</key>
-        <string>비밀번호 확인</string>
-        
-        <key>signup_password_hint2</key>
-        <string>비밀번호 확인</string>
-        
-        <key>signup_password_access_button</key>
-        <string>다음</string>
-        
-        <key>signup_password_error_formet</key>
-        <string>8자 이상 30자리 이하의 숫자, 영문자, 특수문자를 포함한 조합으로 가능합니다.</string>
-        
-        <key>signup_password_error_not_match</key>
-        <string>비밀번호가 일치하지 않습니다.</string>
-        <!--     회원 가입 생년월일 및 이름 입력 Stirng   -->
-        <key>signup_dob_name_guaidline</key>
-        <string>이름</string>
-        
-        <key>signup_dob_name_hint</key>
-        <string>이름</string>
-        
-        <key>signup_dob_dob_guaidline</key>
-        <string>생년월일</string>
-        
-        <key>signup_dob_dob_hint</key>
-        <string>생년월일</string>
-        
-        <key>signup_dob_ssx_guaidline</key>
-        <string>성별</string>
-        
-        <key>signup_dob_sex_1</key>
-        <string>MEN</string>
-        
-        <key>signup_dob_sex_2</key>
-        <string>WOMEN</string>
-        
-        <key>signup_dob_access_button</key>
-        <string>다음</string>
-        
-        
-        <!--     휴대폰 번호 입력 String   -->
-        <key>signup_mobile_guaidline</key>
-        <string>휴대폰 번호</string>
-        
-        <key>signup_mobile_hint</key>
-        <string>휴대폰 번호</string>
-        
-        <key>signup_mobile_access_button</key>
-        <string>인증번호 입력</string>
-        
-        
-        <!--  인증번호 입력 String       -->
-        <key>signup_otp_guaidline1</key>
-        <string>인증번호</string>
-        
-        <key>signup_otp_guaidline2</key>
-        <string>로 전송됐습니다.</string>
-        
-        <key>signup_otp_error_not_match</key>
-        <string>일치하지 않습니다.</string>
-        
-        <key>signup_otp_access_button</key>
-        <string>확인</string>
-        
-        <key>signup_otp_singup_error_202</key>
-        <string>이미 아이디가 존재합니다.</string>
-        
-        <!-- 회원가입 마지막 뷰 성공여부 알림  -->
-        <key>signup_final_go_root</key>
-        <string>로그인</string>
-        
-        <!-- 홈화면 텍스트        -->
-        <key>home_hospital_find_line1</key>
-        <string>손쉽게 원하는 병원을</string>
-        <key>home_hospital_find_line2</key>
-        <string>병원찾기</string>
-        <key>home_hospital_find_button</key>
-        <string>병원찾기</string>
-        <key>home_hospital_round_line1</key>
-        <string>둥록된 병원을 구경해보세요</string>
-        <key>home_hospital_round_button</key>
-        <string>둘러보기</string>
-        <!--   HospitalListMain   -->
-        <key>find_hospital_nav_title</key>
-        <string>어떤 병원을 찾고 있으세요?</string>
-        <key>find_hospital_guaid_line</key>
-        <string>찾고 있는 병원을 검색해주세요.</string>
-        <key>find_hospital_address_null</key>
-        <string>주소를 찾을 수 없습니다.</string>
-        
-        <key>sorting_criteria1</key>
-        <string>전체</string>
-        
-        <key>sorting_criteria2</key>
-        <string>거리순</string>
-        
-        <key>find_hospital_department_default</key>
-        <string>진료과</string>
-        
-        <!--HospitalDetailView        -->
-        <key>hospital_detail_department_show_all</key>
-        <string>전체보기</string>
-        
-        <key>hospital_detail_user_guaid</key>
-        <string>해당 병원 및 의사가 존재하지 않습니다.</string>
-    </dict>
+<dict>
+	<key>app_title</key>
+	<string>Medical Wallet</string>
+	<key>ok</key>
+	<string>확인</string>
+	<key>cancel</key>
+	<string>취소</string>
+	<key>error_notcatch</key>
+	<string>조금있다 다시 시도해주세요.</string>
+	<key>error_no_connection</key>
+	<string>No connection</string>
+	<key>error_server</key>
+	<string>Server error</string>
+	<key>error_client</key>
+	<string>Client error</string>
+	<key>error_json_parse</key>
+	<string>JSON parse error</string>
+	<key>error_user</key>
+	<string>User error</string>
+	<key>error_blockchain</key>
+	<string>Blockchain error</string>
+	<key>error_config</key>
+	<string>Configuration error</string>
+	<key>error_auth_data</key>
+	<string>Authentication data error</string>
+	<key>error_unowned</key>
+	<string>Unowned error</string>
+	<key>error_manager_function</key>
+	<string>Manager function error</string>
+	<key>error_http_request</key>
+	<string>HTTP request error</string>
+	<key>managerFunction</key>
+	<string>서비스 이용 불가</string>
+	<key>suggestion_no_connection</key>
+	<string>인터넷에 연결해주세요</string>
+	<key>suggestion_server_error</key>
+	<string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
+	<key>suggestion_client_error</key>
+	<string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
+	<key>suggestion_json_parse_error</key>
+	<string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
+	<key>suggestion_blockchain_error</key>
+	<string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
+	<key>suggestion_config_error</key>
+	<string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
+	<key>suggestion_auth_data_error</key>
+	<string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
+	<key>suggestion_unowned_error</key>
+	<string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
+	<key>suggestion_manager_function_error</key>
+	<string>현재 해당 서비스를 진행하실 수 없습니다.</string>
+	<key>suggestion_http_request_error</key>
+	<string>불편을 끼쳐드려서 죄송합니다. 해당 내용을 보고하기 위해 서비스 이용 기록을 저장하는 것에 동의하십니까?</string>
+	<key>unknownsError</key>
+	<string>찾지 못한 에러</string>
+	<key>doctor_schedules_isEmpty</key>
+	<string>현재 등록된 의사의 스캐줄이 없습니다. 다른 병원을 이용해주세요</string>
+	<key>constructURL</key>
+	<string>Construct URL</string>
+	<key>configureRequest</key>
+	<string>Configure Request</string>
+	<key>performRequest</key>
+	<string>Perform Request</string>
+	<key>handleResponse</key>
+	<string>Handle Response</string>
+	<key>jsonParseError</key>
+	<string>JSON Parse Error</string>
+	<key>authData</key>
+	<string>KeyChain Auth Data</string>
+	<key>noConnection</key>
+	<string>No Connection</string>
+	<key>serverError</key>
+	<string>Server Error</string>
+	<key>clientError</key>
+	<string>Client Error</string>
+	<key>userError</key>
+	<string>User Error</string>
+	<key>LoginCheck</key>
+	<string>Login Check</string>
+	<key>blockChainError</key>
+	<string>Blockchain Error</string>
+	<key>urlFail</key>
+	<string>Create URL Fail</string>
+	<key>configError</key>
+	<string>Config String Error</string>
+	<key>ErrorUnknown</key>
+	<string>An Unknown Error Occurred</string>
+	<key>userAuthSave</key>
+	<string>User Auth Save</string>
+	<key>userLoadAuthData</key>
+	<string>User Load Auth Data</string>
+	<key>SingUp_idCheckRequest</key>
+	<string>SignUp Process Error in idCheckRequest</string>
+	<key>SignUp_Verify_token_getotp</key>
+	<string>SignUp Process Error in getOtpNumberByMobile</string>
+	<key>SignUp_request_make_body</key>
+	<string>SignUp Process Error in createLoginRequestData</string>
+	<key>SignUp_request_unkownError</key>
+	<string>SignUp Process Error in createLoginRequestData</string>
+	<key>UserInfomation_returnUserData</key>
+	<string>UserInfomation_returnUserData</string>
+	<key>hospitl_list_setup</key>
+	<string>hospitl_list_setup</string>
+	<key>viewModelSetupFalse</key>
+	<string>viewModelSetupFalse</string>
+	<key>createRequestStructHospitalDetailView</key>
+	<string>createRequestStructHospitalDetailView_optionalValuenil</string>
+	<key>getHospitalInfomation</key>
+	<string>getHospitalInfomation_optionalValuenil</string>
+	<key>createRequestStructReservationTimeView</key>
+	<string>createRequestStructReservationTimeView_optionalValuenil</string>
+	<key>fetchReservations</key>
+	<string>fetchReservations jwt token Error</string>
+	<key>login_hint</key>
+	<string>아이디</string>
+	<key>password_hint</key>
+	<string>비밀번호</string>
+	<key>login_button</key>
+	<string>로그인</string>
+	<key>search_password_button</key>
+	<string>비밀번호를 잊으셨나요?</string>
+	<key>sign_up_button</key>
+	<string>아직 회원이 아니신가요? 가입하기</string>
+	<key>agree_all_service</key>
+	<string>모든 약관에 동의합니다.</string>
+	<key>agree_terms</key>
+	<string>서비스 이용 약관 동의 (필수)</string>
+	<key>privacy_policy</key>
+	<string>개인정보 수집 및 이용 동의 (필수)</string>
+	<key>push_notifications</key>
+	<string>서비스 푸시 알림 동의</string>
+	<key>agree_terms_url</key>
+	<string>https://docs.google.com/document/d/1sNSzc_d43q5IcJc9CBgy06Or1_Mijyy3fFVMHNdyEy8</string>
+	<key>privacy_policy_url</key>
+	<string>https://docs.google.com/document/d/1xDkus4KIcmOm9xj5Meddd8ZFS04AUh-eIaNflKZnpfk</string>
+	<key>push_notifications_url</key>
+	<string>https://docs.google.com/document/d/1BXBhX1vGOFSTOepUQjvQrQ25oapASlQ8qxBXPxMD_To</string>
+	<key>agree_button</key>
+	<string>계속하기</string>
+	<key>agree_nav_title</key>
+	<string>약관동의</string>
+	<key>signup_id_navigation_title</key>
+	<string>아이디</string>
+	<key>signup_id_hint</key>
+	<string>아이디</string>
+	<key>signup_id_field_title</key>
+	<string>아이디</string>
+	<key>signup_id_check_button</key>
+	<string>확인</string>
+	<key>signup_id_access_button</key>
+	<string>다음</string>
+	<key>singup_id_field_error_formet</key>
+	<string>6자 이상 30자리 이하의 숫자, 영문자 조합으로 가능합니다.</string>
+	<key>singup_id_field_error_not_match</key>
+	<string>중복된 아이디가 있습니다.</string>
+	<key>singup_id_field_error_match_didnt_done</key>
+	<string>확인 버튼을 눌러주세요.</string>
+	<key>singup_id_success</key>
+	<string>사용가능한 아이디 입니다.</string>
+	<key>signup_password_navigation_title</key>
+	<string>비밀번호</string>
+	<key>signup_password_hint</key>
+	<string>비밀번호</string>
+	<key>signup_password_navigation_title2</key>
+	<string>비밀번호 확인</string>
+	<key>signup_password_hint2</key>
+	<string>비밀번호 확인</string>
+	<key>signup_password_access_button</key>
+	<string>다음</string>
+	<key>signup_password_error_formet</key>
+	<string>8자 이상 30자리 이하의 숫자, 영문자, 특수문자를 포함한 조합으로 가능합니다.</string>
+	<key>signup_password_error_not_match</key>
+	<string>비밀번호가 일치하지 않습니다.</string>
+	<key>signup_dob_name_guaidline</key>
+	<string>이름</string>
+	<key>signup_dob_name_hint</key>
+	<string>이름</string>
+	<key>signup_dob_dob_guaidline</key>
+	<string>생년월일</string>
+	<key>signup_dob_dob_hint</key>
+	<string>생년월일</string>
+	<key>signup_dob_ssx_guaidline</key>
+	<string>성별</string>
+	<key>signup_dob_sex_1</key>
+	<string>MEN</string>
+	<key>signup_dob_sex_2</key>
+	<string>WOMEN</string>
+	<key>signup_dob_access_button</key>
+	<string>다음</string>
+	<key>signup_mobile_guaidline</key>
+	<string>휴대폰 번호</string>
+	<key>signup_mobile_hint</key>
+	<string>휴대폰 번호</string>
+	<key>signup_mobile_access_button</key>
+	<string>인증번호 입력</string>
+	<key>signup_otp_guaidline1</key>
+	<string>인증번호</string>
+	<key>signup_otp_guaidline2</key>
+	<string>로 전송됐습니다.</string>
+	<key>signup_otp_error_not_match</key>
+	<string>일치하지 않습니다.</string>
+	<key>signup_otp_access_button</key>
+	<string>확인</string>
+	<key>signup_otp_singup_error_202</key>
+	<string>이미 아이디가 존재합니다.</string>
+	<key>signup_final_go_root</key>
+	<string>로그인</string>
+	<key>home_hospital_find_line1</key>
+	<string>손쉽게 원하는 병원을</string>
+	<key>home_hospital_find_line2</key>
+	<string>병원찾기</string>
+	<key>home_hospital_find_button</key>
+	<string>병원찾기</string>
+	<key>home_hospital_round_line1</key>
+	<string>둥록된 병원을 구경해보세요</string>
+	<key>home_hospital_round_button</key>
+	<string>둘러보기</string>
+	<key>find_hospital_nav_title</key>
+	<string>어떤 병원을 찾고 있으세요?</string>
+	<key>find_hospital_guaid_line</key>
+	<string>찾고 있는 병원을 검색해주세요.</string>
+	<key>find_hospital_address_null</key>
+	<string>주소를 찾을 수 없습니다.</string>
+	<key>sorting_criteria1</key>
+	<string>전체</string>
+	<key>sorting_criteria2</key>
+	<string>거리순</string>
+	<key>find_hospital_department_default</key>
+	<string>진료과</string>
+	<key>hospital_detail_department_show_all</key>
+	<string>전체보기</string>
+	<key>hospital_detail_user_guaid</key>
+	<string>해당 병원 및 의사가 존재하지 않습니다.</string>
+	<key>success_cancle_reservation</key>
+	<string>예약이 취소되었습니다.</string>
+	<key>reservation_cancle_error</key>
+	<string>예약 취소 에러 서버 확인필요</string>
+	<key>createRequestLikedChange_hospitalId</key>
+	<string>Hospital Id optional value check</string>
+	<key>requestLikedMyHospital</key>
+	<string>unkownErrorCatch</string>
+	<key>requestLikedMyHospitalServerError</key>
+	<string>requestLikedMyHospitalServerError</string>
+	<key>KeyChainWalletService</key>
+	<string>com.knp.KpMadical_Wallet</string>
+	<key>mnemonic_create_guaidLine</key>
+	<string>니모닉 문구는 귀하의 의료 데이터 정보를 안전하게 보호하는 열쇠입니다. 이 문구는 지갑 복구에 필수적이며, 분실 시 자산을 영구적으로 잃을 수 있습니다. 따라서 니모닉 문구를 안전한 곳에 기록해두고, 절대로 타인과 공유되지 않도록 주의해주시기 바랍니다.</string>
+</dict>
 </plist>

@@ -33,11 +33,9 @@ class UserInfomationManager: GlobalErrorHandler,UserManager,HaveJWT,HaveFCMToken
         fcmToken = ""
         loginStatus = false
     }
-    func logOut(){
-        Task{
+    func logOut() async {
             Authdel()
             await setDefautl()
-        }
     }
     func Authdel(){
         let auth = AuthData()

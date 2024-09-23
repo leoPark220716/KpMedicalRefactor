@@ -146,3 +146,45 @@ struct reservationRequest: Codable{
     var time_slot: String
 }
 
+struct reservation: Codable{
+    var access_token: String
+    var reservations: [reservationArray]
+    var error_code: Int
+    var error_stack: String
+}
+struct reservationArray : Codable,Equatable,Hashable{
+    var reservation_id: Int
+    var hospital_id: Int
+    var hospital_name: String
+    var icon: String
+    var staff_id: Int
+    var staff_name: String
+    var department_id: [String]
+    var patient_name: String
+    var date: String
+    var time: String
+}
+struct cancelReservation: Codable{
+    var access_token: String
+    var uid: String
+    var reservation_id: Int
+}
+
+struct ReservationParseParam{
+    let item: reservationArray
+    let HospitalId: Int
+    let reservation_id: Int
+}
+struct ReservationCencle: Codable{
+    let reservation_id: Int
+}
+
+struct requestLikedHospitalBody: Codable{
+    let hospital_id: String
+}
+struct requestLikedHospitalResponseBody: Codable{
+    var access_token: String
+    var mark_id: Int
+    var error_code: Int
+    var error_stack: String
+}

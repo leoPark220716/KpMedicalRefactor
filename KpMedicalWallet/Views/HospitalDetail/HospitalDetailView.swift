@@ -41,6 +41,17 @@ struct HospitalDetailView: View {
                 }
                 .padding(.bottom)
             }
+            .toolbar{
+                ToolbarItem(placement: .navigation){
+                    Button{
+                        viewModel.requestLikedMyHospital()
+                    }label: {
+                        Image(systemName: viewModel.liked ? "heart.fill" : "heart")
+                            .foregroundStyle(viewModel.liked ? Color.red : Color.gray)
+                    }
+                }
+            }
+            .navigationTitle(hospitalInfo.hospital_name)
             .onAppear{
                 viewModel.setManagerHospitalId(hospitalId: hospitalInfo.hospital_id, appManager: appManager)
                 viewModel.setUpDetailView()

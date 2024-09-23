@@ -17,48 +17,50 @@ struct HospitalViewMainListContent: View{
         if viewModel.isLoading {
             loadingView()
         } else if viewModel.hospitalList.isEmpty {
-            emptyListView()
+            if !viewModel.isMyHospital{
+                emptyListView()
+            }else{
+                emptyMyListView()
+            }
         } else {
             hospitalListView()
         }
     }
     
     private func loadingView() -> some View {
-        VStack {
-            Spacer()
-            ProgressView()
-                .progressViewStyle(CircularProgressViewStyle())
-                .padding()
-            Spacer()
-        }
+        SomeThingLoading()
     }
     
     private func emptyListView() -> some View {
-        VStack {
-            Spacer()
-            Text("해당 병원이 존재하지 않습니다.")
-                .foregroundColor(.gray)
-            Spacer()
-        }
+        SomethingEmpty(text: "해당 병원이 존재하지 않습니다.")
+    }
+    private func emptyMyListView() -> some View {
+        SomethingEmpty(text: "등록된 내 병원이 존재하지 않습니다.")
     }
     private func hospitalListView() -> some View {
         List {
             ForEach(viewModel.hospitalList.indices, id: \.self) { index in
-                Button {
-                    viewModel.goHospitalDetailView(index: index)
-                } label: {
-                    if index < viewModel.hospitalList.count {
-                        HospitalListItemView(hospital: $viewModel.hospitalList[index])
+                if index < viewModel.hospitalList.count {
+                    Button {
+                        viewModel.goHospitalDetailView(index: index)
+                    } label: {
+                        HospitalListItemView(hospital: viewModel.hospitalList[index])
+                    }
+                    .onAppear {
+                        if index == viewModel.hospitalList.endIndex - 1 {
+                            switch viewModel.isMyHospital{
+                            case true:
+                                viewModel.addMyHospitalList()
+                            case false:
+                                viewModel.addHospitalList()
+                            }
+                            print("✅PageNation \(viewModel.requestQuery.start)")
+                        }
                     }
                 }
-                .onAppear {
-                    if index == viewModel.hospitalList.endIndex - 1 {
-                        viewModel.addHospitalList()
-                        print("✅PageNation \(viewModel.requestQuery.start)")
-                    }
-                }
+                
             }
         }
-        .listStyle(InsetListStyle())
+        .listStyle(viewModel.isMyHospital ? .inset : InsetListStyle())
     }
 }

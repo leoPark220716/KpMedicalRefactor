@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct HospitalListItemView: View {
-    @Binding var hospital: Hospitals
+    let hospital: Hospitals
     private func checkTimeIn(startTime: String, endTime: String) -> Bool {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
@@ -28,9 +28,11 @@ struct HospitalListItemView: View {
             HStack{
                 VStack(alignment: .leading){
                     Text(hospital.hospital_name)
+                        .foregroundStyle(Color.black)
                         .font(.headline)
                         .bold()
                     Text(hospital.location)
+                        .foregroundStyle(Color.black)
                         .font(.subheadline)
                         .bold()
                     HStack{

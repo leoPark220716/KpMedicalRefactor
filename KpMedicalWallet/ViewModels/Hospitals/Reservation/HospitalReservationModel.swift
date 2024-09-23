@@ -9,6 +9,7 @@ import Foundation
 import NMapsMap
 
 class HospitalReservationModel: HospitalSchedule{
+    @Published var nameHospital = ""
     
     @Published var telephone = "" {
         didSet{
@@ -19,7 +20,7 @@ class HospitalReservationModel: HospitalSchedule{
         }
     }
     @Published var address = ""
-    
+    @Published var liked = false
     func setUpDetailView(){
         Task{
             do{
@@ -78,7 +79,8 @@ class HospitalReservationModel: HospitalSchedule{
         hospitalDepartments = department
         HospitalSubSchedules = info.doctors.flatMap{$0.sub_schedules}
         reservationData.hospital_id = info.hospital.hospital_id
-        
+        nameHospital = info.hospital.hospital_name
+        liked = info.hospital.marked == 1
     }
     
     
@@ -130,6 +132,7 @@ class HospitalReservationModel: HospitalSchedule{
         appManager?.push(to: .userPage(item: UserPage(page: .reservationSymptom),reservationModel: self))
     }
     
+    
     @MainActor
     func DateViewGoToNextView(){
         if isSetDoctor{
@@ -151,5 +154,89 @@ class HospitalReservationModel: HospitalSchedule{
     func goToMyReservationView(){
         appManager?.goToRootView()
         appManager?.push(to: .userPage(item: UserPage(page: .myReservationView)))
+    }
+    
+    
+    //   에약 취소 호출
+    func requestCencleReservation(reservationId: Int) throws {
+        Task{
+            do{
+                let request = try createRequestReservationDelete(reservationId: reservationId)
+                let call = KPWalletAPIManager(httpStructs: request, URLLocations: 1)
+                let response = try await call.performRequest()
+                if response.success{
+                    await MainActor.run {
+                        appManager?.goBack()
+                        appManager?.toast = normal_Toast(message: PlistManager.shared.string(forKey: "success_cancle_reservation"))
+                    }
+                    
+                }else{
+                    throw TraceUserError.serverError(PlistManager.shared.string(forKey: "reservation_cancle_error"))
+                }
+            }catch{
+                throw error
+            }
+        }
+    }
+    
+    // 예약 취소
+    private func createRequestReservationDelete(reservationId: Int) throws ->
+    http<ReservationCencle?,KPApiStructFrom<reservationResponse>>{
+        do{
+            guard let token = appManager?.jwtToken else{
+                throw TraceUserError.clientError("appManagerNil")
+            }
+            let body  = ReservationCencle(reservation_id: reservationId)
+            return http(
+                method: "DELETE",
+                urlParse: "v2/hospitals/reservations/back",
+                token: token,
+                UUID: UserVariable.GET_UUID(),
+                requestVal: body
+            )
+        }catch{
+            throw error
+        }
+    }
+    
+    func requestLikedMyHospital() {
+        Task{
+            do{
+                let request = try createRequestLikedChange()
+                let call = KPWalletAPIManager(httpStructs: request, URLLocations: 1)
+                let response = try await call.performRequest()
+                if response.success{
+                    await changeLiked(like: response.data?.data.mark_id != -1 ? true : false)
+                }else{
+                    await appManager?.displayError(ServiceError: .serverError(PlistManager.shared.string(forKey: "requestLikedMyHospitalServerError")))
+                }
+            }catch let error as TraceUserError{
+                await appManager?.displayError(ServiceError: error)
+            }catch{
+                await appManager?.displayError(ServiceError: .unowned(PlistManager.shared.string(forKey: "requestLikedMyHospital")))
+            }
+        }
+    }
+    @MainActor
+    private func changeLiked(like: Bool){
+        liked = like
+    }
+    
+    // 내병원 등록 및 취소 request
+    func createRequestLikedChange() throws -> http<requestLikedHospitalBody?, KPApiStructFrom<requestLikedHospitalResponseBody>> {
+        guard let hospitalId = hospitalId else{
+            throw TraceUserError.clientError(PlistManager.shared.string(forKey: "createRequestLikedChange_hospitalId"))
+        }
+        guard let token = appManager?.jwtToken else{
+            throw TraceUserError.clientError(PlistManager.shared.string(forKey: "createRequestLikedChange_hospitalId"))
+        }
+        let body = requestLikedHospitalBody(hospital_id: hospitalId)
+        return http(
+            method: "POST",
+            urlParse: "v2/users/marks",
+            token: token,
+            UUID: UserVariable.GET_UUID(),
+            requestVal: body
+        )
     }
 }

@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		1E0D79C92C99C6E50010B767 /* NaverMapTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D79C82C99C6E50010B767 /* NaverMapTestView.swift */; };
 		1E0D79CB2C99C8AD0010B767 /* HospitalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D79CA2C99C8AD0010B767 /* HospitalDetailView.swift */; };
+		1E19A7042C9DB3D80060E4AF /* MyReservationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E19A7032C9DB3D80060E4AF /* MyReservationViewModel.swift */; };
+		1E19A7082C9DD0EF0060E4AF /* SomethingEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E19A7072C9DD0EF0060E4AF /* SomethingEmpty.swift */; };
+		1E19A70A2C9DD23D0060E4AF /* SomeThingLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E19A7092C9DD23D0060E4AF /* SomeThingLoading.swift */; };
+		1E19A70D2C9DD5050060E4AF /* ReservationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E19A70C2C9DD5050060E4AF /* ReservationModifier.swift */; };
+		1E19A70F2C9DD9320060E4AF /* ReservationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E19A70E2C9DD9320060E4AF /* ReservationDetailView.swift */; };
 		1E213CB92C9B02ED00A8312D /* HospitalDetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E213CB82C9B02ED00A8312D /* HospitalDetailContentView.swift */; };
 		1E213CBB2C9B068800A8312D /* HospitalDetailScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E213CBA2C9B068800A8312D /* HospitalDetailScheduleView.swift */; };
 		1E213CBD2C9B169C00A8312D /* DoctorListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E213CBC2C9B169C00A8312D /* DoctorListItemView.swift */; };
@@ -23,6 +28,23 @@
 		1E38D37B2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D37A2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift */; };
 		1E38D38A2C902D7D00BB344E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38D3892C902D7D00BB344E /* LoginView.swift */; };
 		1E5D33CA2C9AAED800067004 /* web3swift in Frameworks */ = {isa = PBXBuildFile; productRef = 1E5D33C92C9AAED800067004 /* web3swift */; };
+		1E66DBE02CA127500093A74F /* AppOtpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66DBDF2CA127500093A74F /* AppOtpView.swift */; };
+		1E66DBE32CA12E6B0093A74F /* OtpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66DBE22CA12E6B0093A74F /* OtpViewModel.swift */; };
+		1E66DBE62CA141E70093A74F /* WalletMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66DBE52CA141E70093A74F /* WalletMainView.swift */; };
+		1E66DBE82CA14A940093A74F /* WalletKeyStoreKeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66DBE72CA14A940093A74F /* WalletKeyStoreKeyChain.swift */; };
+		1E66DBEB2CA14B4C0093A74F /* KPHWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66DBEA2CA14B4C0093A74F /* KPHWallet.swift */; };
+		1E66DBEE2CA14B960093A74F /* KPHWalletContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66DBED2CA14B960093A74F /* KPHWalletContract.swift */; };
+		1E66DBF02CA14BFB0093A74F /* WalletDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66DBEF2CA14BFB0093A74F /* WalletDataSet.swift */; };
+		1E66DBF22CA14F8B0093A74F /* WalletHttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66DBF12CA14F8B0093A74F /* WalletHttpRequest.swift */; };
+		1E66DBF52CA15CFA0093A74F /* WalletViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66DBF42CA15CFA0093A74F /* WalletViewModifier.swift */; };
+		1E66DBF72CA15FD50093A74F /* WalletPasswordEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66DBF62CA15FD50093A74F /* WalletPasswordEditor.swift */; };
+		1E66DBF92CA164950093A74F /* WalletMnemonicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66DBF82CA164950093A74F /* WalletMnemonicView.swift */; };
+		1E66DBFB2CA171FC0093A74F /* SomeThingLoadingWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66DBFA2CA171FC0093A74F /* SomeThingLoadingWithText.swift */; };
+		1E66DBFF2CA176D80093A74F /* PersonalRecords_sol_PersonalRecords.bin in Resources */ = {isa = PBXBuildFile; fileRef = 1E66DBFD2CA176D80093A74F /* PersonalRecords_sol_PersonalRecords.bin */; };
+		1E66DC002CA176D80093A74F /* PersonalRecords_sol_PersonalRecords.json in Resources */ = {isa = PBXBuildFile; fileRef = 1E66DBFC2CA176D80093A74F /* PersonalRecords_sol_PersonalRecords.json */; };
+		1E66DC022CA1796A0093A74F /* RSAKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66DC012CA1796A0093A74F /* RSAKeyManager.swift */; };
+		1E66DC052CA1799A0093A74F /* stringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66DC042CA179960093A74F /* stringExtension.swift */; };
+		1E66DC072CA18A120093A74F /* WalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E66DC062CA18A0D0093A74F /* WalletModel.swift */; };
 		1E8FBC6A2C94267900B00909 /* DatePickerDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FBC692C94267900B00909 /* DatePickerDialogView.swift */; };
 		1E8FBC6C2C94835700B00909 /* SignupFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FBC6B2C94835700B00909 /* SignupFinalView.swift */; };
 		1E9136FA2C91667C004F647E /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1E9136F92C91667C004F647E /* FirebaseMessaging */; };
@@ -100,6 +122,8 @@
 		1ED5B2A22C95A893000DE60B /* HospitalListMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5B2A12C95A893000DE60B /* HospitalListMain.swift */; };
 		1ED5B2A42C95A9DF000DE60B /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5B2A32C95A9DF000DE60B /* ErrorAlert.swift */; };
 		1EDD18202C99AF7700FDD7FD /* HospitalListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDD181F2C99AF7700FDD7FD /* HospitalListItemView.swift */; };
+		1EEEC7202C9EB40700B9B690 /* tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEC71F2C9EB40700B9B690 /* tests.swift */; };
+		1EEEC7222C9EC87500B9B690 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEC7212C9EC87500B9B690 /* Tab.swift */; };
 		2EA6E30F9CA85C6430914320 /* Pods_KpMedicalWalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB57ACDFF7AC9C3D108B78F1 /* Pods_KpMedicalWalletTests.framework */; };
 		4F0BFB68AF1F20A451D4FF3A /* Pods_KpMedicalWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C24B252144808B44ED976DD /* Pods_KpMedicalWallet.framework */; };
 		7AAC775A487F4921AD14008C /* Pods_KpMedicalWallet_KpMedicalWalletUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F8BC6729464F28617688E2 /* Pods_KpMedicalWallet_KpMedicalWalletUITests.framework */; };
@@ -128,6 +152,11 @@
 		1C24B252144808B44ED976DD /* Pods_KpMedicalWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KpMedicalWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E0D79C82C99C6E50010B767 /* NaverMapTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMapTestView.swift; sourceTree = "<group>"; };
 		1E0D79CA2C99C8AD0010B767 /* HospitalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalDetailView.swift; sourceTree = "<group>"; };
+		1E19A7032C9DB3D80060E4AF /* MyReservationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReservationViewModel.swift; sourceTree = "<group>"; };
+		1E19A7072C9DD0EF0060E4AF /* SomethingEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomethingEmpty.swift; sourceTree = "<group>"; };
+		1E19A7092C9DD23D0060E4AF /* SomeThingLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeThingLoading.swift; sourceTree = "<group>"; };
+		1E19A70C2C9DD5050060E4AF /* ReservationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationModifier.swift; sourceTree = "<group>"; };
+		1E19A70E2C9DD9320060E4AF /* ReservationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationDetailView.swift; sourceTree = "<group>"; };
 		1E213CB82C9B02ED00A8312D /* HospitalDetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalDetailContentView.swift; sourceTree = "<group>"; };
 		1E213CBA2C9B068800A8312D /* HospitalDetailScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalDetailScheduleView.swift; sourceTree = "<group>"; };
 		1E213CBC2C9B169C00A8312D /* DoctorListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorListItemView.swift; sourceTree = "<group>"; };
@@ -144,6 +173,23 @@
 		1E38D3782C90271E00BB344E /* KpMedicalWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KpMedicalWalletUITests.swift; sourceTree = "<group>"; };
 		1E38D37A2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KpMedicalWalletUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1E38D3892C902D7D00BB344E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1E66DBDF2CA127500093A74F /* AppOtpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOtpView.swift; sourceTree = "<group>"; };
+		1E66DBE22CA12E6B0093A74F /* OtpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpViewModel.swift; sourceTree = "<group>"; };
+		1E66DBE52CA141E70093A74F /* WalletMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletMainView.swift; sourceTree = "<group>"; };
+		1E66DBE72CA14A940093A74F /* WalletKeyStoreKeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletKeyStoreKeyChain.swift; sourceTree = "<group>"; };
+		1E66DBEA2CA14B4C0093A74F /* KPHWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPHWallet.swift; sourceTree = "<group>"; };
+		1E66DBED2CA14B960093A74F /* KPHWalletContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPHWalletContract.swift; sourceTree = "<group>"; };
+		1E66DBEF2CA14BFB0093A74F /* WalletDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDataSet.swift; sourceTree = "<group>"; };
+		1E66DBF12CA14F8B0093A74F /* WalletHttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletHttpRequest.swift; sourceTree = "<group>"; };
+		1E66DBF42CA15CFA0093A74F /* WalletViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewModifier.swift; sourceTree = "<group>"; };
+		1E66DBF62CA15FD50093A74F /* WalletPasswordEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPasswordEditor.swift; sourceTree = "<group>"; };
+		1E66DBF82CA164950093A74F /* WalletMnemonicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletMnemonicView.swift; sourceTree = "<group>"; };
+		1E66DBFA2CA171FC0093A74F /* SomeThingLoadingWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeThingLoadingWithText.swift; sourceTree = "<group>"; };
+		1E66DBFC2CA176D80093A74F /* PersonalRecords_sol_PersonalRecords.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PersonalRecords_sol_PersonalRecords.json; sourceTree = "<group>"; };
+		1E66DBFD2CA176D80093A74F /* PersonalRecords_sol_PersonalRecords.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = PersonalRecords_sol_PersonalRecords.bin; sourceTree = "<group>"; };
+		1E66DC012CA1796A0093A74F /* RSAKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSAKeyManager.swift; sourceTree = "<group>"; };
+		1E66DC042CA179960093A74F /* stringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stringExtension.swift; sourceTree = "<group>"; };
+		1E66DC062CA18A0D0093A74F /* WalletModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletModel.swift; sourceTree = "<group>"; };
 		1E8FBC692C94267900B00909 /* DatePickerDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerDialogView.swift; sourceTree = "<group>"; };
 		1E8FBC6B2C94835700B00909 /* SignupFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFinalView.swift; sourceTree = "<group>"; };
 		1E9136F72C91654C004F647E /* KpMedicalWallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KpMedicalWallet.entitlements; sourceTree = "<group>"; };
@@ -223,6 +269,8 @@
 		1ED5B2A12C95A893000DE60B /* HospitalListMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalListMain.swift; sourceTree = "<group>"; };
 		1ED5B2A32C95A9DF000DE60B /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
 		1EDD181F2C99AF7700FDD7FD /* HospitalListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalListItemView.swift; sourceTree = "<group>"; };
+		1EEEC71F2C9EB40700B9B690 /* tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tests.swift; sourceTree = "<group>"; };
+		1EEEC7212C9EC87500B9B690 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		7D4D685523A70D981FE47159 /* Pods-KpMedicalWalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KpMedicalWalletTests.debug.xcconfig"; path = "Target Support Files/Pods-KpMedicalWalletTests/Pods-KpMedicalWalletTests.debug.xcconfig"; sourceTree = "<group>"; };
 		84F8BC6729464F28617688E2 /* Pods_KpMedicalWallet_KpMedicalWalletUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KpMedicalWallet_KpMedicalWalletUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94C606332DD4087908D840C0 /* Pods-KpMedicalWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KpMedicalWallet.debug.xcconfig"; path = "Target Support Files/Pods-KpMedicalWallet/Pods-KpMedicalWallet.debug.xcconfig"; sourceTree = "<group>"; };
@@ -286,6 +334,14 @@
 			path = HospitalDetail;
 			sourceTree = "<group>";
 		};
+		1E19A70B2C9DD4EC0060E4AF /* Reservation */ = {
+			isa = PBXGroup;
+			children = (
+				1E19A70C2C9DD5050060E4AF /* ReservationModifier.swift */,
+			);
+			path = Reservation;
+			sourceTree = "<group>";
+		};
 		1E38D34C2C90271D00BB344E = {
 			isa = PBXGroup;
 			children = (
@@ -311,6 +367,8 @@
 		1E38D3572C90271D00BB344E /* KpMedicalWallet */ = {
 			isa = PBXGroup;
 			children = (
+				1E66DC032CA179880093A74F /* extension */,
+				1E66DBFE2CA176D80093A74F /* SmartContract */,
 				1E9136FB2C91669D004F647E /* GoogleService-Info.plist */,
 				1E9136F72C91654C004F647E /* KpMedicalWallet.entitlements */,
 				1E9137062C91D795004F647E /* EnvClass */,
@@ -364,6 +422,69 @@
 				1E38D37A2C90271E00BB344E /* KpMedicalWalletUITestsLaunchTests.swift */,
 			);
 			path = KpMedicalWalletUITests;
+			sourceTree = "<group>";
+		};
+		1E66DBDE2CA127100093A74F /* AccessSheet */ = {
+			isa = PBXGroup;
+			children = (
+				1E66DBDF2CA127500093A74F /* AppOtpView.swift */,
+			);
+			path = AccessSheet;
+			sourceTree = "<group>";
+		};
+		1E66DBE12CA12E3B0093A74F /* AppOTP */ = {
+			isa = PBXGroup;
+			children = (
+				1E66DBE22CA12E6B0093A74F /* OtpViewModel.swift */,
+			);
+			path = AppOTP;
+			sourceTree = "<group>";
+		};
+		1E66DBE42CA141D50093A74F /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				1E66DBF62CA15FD50093A74F /* WalletPasswordEditor.swift */,
+				1E66DBF82CA164950093A74F /* WalletMnemonicView.swift */,
+				1E66DBE52CA141E70093A74F /* WalletMainView.swift */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		1E66DBE92CA14B3C0093A74F /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				1E66DBEA2CA14B4C0093A74F /* KPHWallet.swift */,
+				1E66DBED2CA14B960093A74F /* KPHWalletContract.swift */,
+				1E66DBEF2CA14BFB0093A74F /* WalletDataSet.swift */,
+				1E66DBF12CA14F8B0093A74F /* WalletHttpRequest.swift */,
+				1E66DC012CA1796A0093A74F /* RSAKeyManager.swift */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		1E66DBF32CA15CE10093A74F /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				1E66DBF42CA15CFA0093A74F /* WalletViewModifier.swift */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		1E66DBFE2CA176D80093A74F /* SmartContract */ = {
+			isa = PBXGroup;
+			children = (
+				1E66DBFC2CA176D80093A74F /* PersonalRecords_sol_PersonalRecords.json */,
+				1E66DBFD2CA176D80093A74F /* PersonalRecords_sol_PersonalRecords.bin */,
+			);
+			path = SmartContract;
+			sourceTree = "<group>";
+		};
+		1E66DC032CA179880093A74F /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				1E66DC042CA179960093A74F /* stringExtension.swift */,
+			);
+			path = extension;
 			sourceTree = "<group>";
 		};
 		1E9136FD2C9166CE004F647E /* FCM */ = {
@@ -427,6 +548,8 @@
 			isa = PBXGroup;
 			children = (
 				1ED5B2992C9589D9000DE60B /* ViewModifier */,
+				1E66DBE42CA141D50093A74F /* Wallet */,
+				1E66DBDE2CA127100093A74F /* AccessSheet */,
 				1ED5B2A02C95A869000DE60B /* HospitalList */,
 				1E0D79C72C99C6CA0010B767 /* HospitalDetail */,
 				1EAE134E2C9C19910031C58C /* Reservation */,
@@ -437,6 +560,9 @@
 				1EAD50912C905C400010F705 /* SplashView.swift */,
 				1EAD50952C9060FB0010F705 /* TabView.swift */,
 				1EAD50A62C908E780010F705 /* ToastView.swift */,
+				1E19A7072C9DD0EF0060E4AF /* SomethingEmpty.swift */,
+				1E19A7092C9DD23D0060E4AF /* SomeThingLoading.swift */,
+				1E66DBFA2CA171FC0093A74F /* SomeThingLoadingWithText.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -453,8 +579,10 @@
 		1EAD50732C903A270010F705 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1E66DC062CA18A0D0093A74F /* WalletModel.swift */,
 				1EAD50A42C9085410010F705 /* LoginSignupModels.swift */,
 				1ED18CC42C9850E200C5EE2E /* Hospitals.swift */,
+				1EEEC7212C9EC87500B9B690 /* Tab.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -463,10 +591,13 @@
 			isa = PBXGroup;
 			children = (
 				1ED18CBB2C982F7400C5EE2E /* Hospitals */,
+				1E66DBE92CA14B3C0093A74F /* Wallet */,
+				1E66DBE12CA12E3B0093A74F /* AppOTP */,
 				1ED5B2962C9585CC000DE60B /* Home */,
 				1EAC11312C92CE29008FFE43 /* SignUp */,
 				1EAD50752C903C370010F705 /* Login */,
 				1ED18CB72C982CDF00C5EE2E /* LocationService.swift */,
+				1EEEC71F2C9EB40700B9B690 /* tests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -534,6 +665,7 @@
 			isa = PBXGroup;
 			children = (
 				1EAD509B2C90681A0010F705 /* UserAuth.swift */,
+				1E66DBE72CA14A940093A74F /* WalletKeyStoreKeyChain.swift */,
 			);
 			path = KeyChain;
 			sourceTree = "<group>";
@@ -548,6 +680,7 @@
 				1EAE13572C9C1A660031C58C /* ReservationFinalView.swift */,
 				1EAE135B2C9C5C540031C58C /* ReservationSymptomView.swift */,
 				1EAE135D2C9C77A90031C58C /* MyReservationView.swift */,
+				1E19A70E2C9DD9320060E4AF /* ReservationDetailView.swift */,
 			);
 			path = Reservation;
 			sourceTree = "<group>";
@@ -560,6 +693,7 @@
 				1EBDD0E02C9AC233002DE858 /* HospitalSchedule.swift */,
 				1EBDD0E22C9AC248002DE858 /* HospitalReservationEditor.swift */,
 				1EAE13592C9C49F60031C58C /* HospitalReservationTime.swift */,
+				1E19A7032C9DB3D80060E4AF /* MyReservationViewModel.swift */,
 			);
 			path = Reservation;
 			sourceTree = "<group>";
@@ -606,6 +740,8 @@
 		1ED5B2992C9589D9000DE60B /* ViewModifier */ = {
 			isa = PBXGroup;
 			children = (
+				1E66DBF32CA15CE10093A74F /* Wallet */,
+				1E19A70B2C9DD4EC0060E4AF /* Reservation */,
 				1ED18CB42C982B8800C5EE2E /* Hospital */,
 				1ED5B29D2C95A6B6000DE60B /* HomeViewModifier */,
 				1ED5B29A2C9589F2000DE60B /* Common */,
@@ -770,6 +906,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E66DBFF2CA176D80093A74F /* PersonalRecords_sol_PersonalRecords.bin in Resources */,
+				1E66DC002CA176D80093A74F /* PersonalRecords_sol_PersonalRecords.json in Resources */,
 				1E38D3602C90271D00BB344E /* Preview Assets.xcassets in Resources */,
 				1E9136FC2C91669D004F647E /* GoogleService-Info.plist in Resources */,
 				1EAC11352C92D201008FFE43 /* Strings.plist in Resources */,
@@ -907,10 +1045,13 @@
 				1EBDD0E12C9AC233002DE858 /* HospitalSchedule.swift in Sources */,
 				1ED18CBD2C98320D00C5EE2E /* Department.swift in Sources */,
 				1EAE135E2C9C77A90031C58C /* MyReservationView.swift in Sources */,
+				1E66DBF52CA15CFA0093A74F /* WalletViewModifier.swift in Sources */,
 				1EAE13582C9C1A660031C58C /* ReservationFinalView.swift in Sources */,
 				1EAD508E2C9058580010F705 /* SignupIdView.swift in Sources */,
 				1ED5B2982C9585E1000DE60B /* HomeViewModel.swift in Sources */,
 				1EBDD0E32C9AC248002DE858 /* HospitalReservationEditor.swift in Sources */,
+				1E66DBEE2CA14B960093A74F /* KPHWalletContract.swift in Sources */,
+				1E66DBF72CA15FD50093A74F /* WalletPasswordEditor.swift in Sources */,
 				1E9137092C91D828004F647E /* GlobalErrorHandler.swift in Sources */,
 				1EAD50922C905C400010F705 /* SplashView.swift in Sources */,
 				1ED5B2A22C95A893000DE60B /* HospitalListMain.swift in Sources */,
@@ -921,11 +1062,15 @@
 				1EAD50822C90439A0010F705 /* HttpRequestModels.swift in Sources */,
 				1EAE13522C9C1A2D0031C58C /* ReservationDoctorChooseView.swift in Sources */,
 				1E9137012C918E2A004F647E /* UserConfigVariable.swift in Sources */,
+				1EEEC7222C9EC87500B9B690 /* Tab.swift in Sources */,
 				1E8FBC6A2C94267900B00909 /* DatePickerDialogView.swift in Sources */,
+				1E66DBEB2CA14B4C0093A74F /* KPHWallet.swift in Sources */,
 				1E213CB92C9B02ED00A8312D /* HospitalDetailContentView.swift in Sources */,
 				1ED5B2A42C95A9DF000DE60B /* ErrorAlert.swift in Sources */,
 				1EAD507F2C90436D0010F705 /* HttpRequest.swift in Sources */,
+				1E66DBF22CA14F8B0093A74F /* WalletHttpRequest.swift in Sources */,
 				1EAD509C2C90681A0010F705 /* UserAuth.swift in Sources */,
+				1E19A7082C9DD0EF0060E4AF /* SomethingEmpty.swift in Sources */,
 				1EBDD0DA2C9ABDC4002DE858 /* HospitalDetailViewDataClass.swift in Sources */,
 				1E9136FF2C9166F8004F647E /* FCMDelegate.swift in Sources */,
 				1EAC11332C92CE62008FFE43 /* AgreementViewModel.swift in Sources */,
@@ -944,6 +1089,8 @@
 				1E38D3592C90271D00BB344E /* KpMedicalWalletApp.swift in Sources */,
 				1EAC114B2C93044D008FFE43 /* SignUpMobileView.swift in Sources */,
 				1ED18CBA2C982D2700C5EE2E /* NeverGeocoder.swift in Sources */,
+				1E19A70A2C9DD23D0060E4AF /* SomeThingLoading.swift in Sources */,
+				1E66DC052CA1799A0093A74F /* stringExtension.swift in Sources */,
 				1EAE13502C9C1A0C0031C58C /* ReservationDepartmentView.swift in Sources */,
 				1EAD507C2C9042520010F705 /* LoginController.swift in Sources */,
 				1EAC114F2C930661008FFE43 /* ErrorView.swift in Sources */,
@@ -952,9 +1099,12 @@
 				1EAC11412C92F459008FFE43 /* DobControl.swift in Sources */,
 				1E38D38A2C902D7D00BB344E /* LoginView.swift in Sources */,
 				1E38D3652C90271D00BB344E /* KpMedicalWallet.xcdatamodeld in Sources */,
+				1E19A70D2C9DD5050060E4AF /* ReservationModifier.swift in Sources */,
 				1E8FBC6C2C94835700B00909 /* SignupFinalView.swift in Sources */,
 				1EAC113F2C92F41A008FFE43 /* OtpControl.swift in Sources */,
+				1E66DBFB2CA171FC0093A74F /* SomeThingLoadingWithText.swift in Sources */,
 				1EBDD0DF2C9AC220002DE858 /* HospitalDoctor.swift in Sources */,
+				1E66DBE62CA141E70093A74F /* WalletMainView.swift in Sources */,
 				1ED18CC32C98463700C5EE2E /* HospitalListControlView.swift in Sources */,
 				1EAD50892C9056FB0010F705 /* NavigationRouter.swift in Sources */,
 				1EAD50A72C908E780010F705 /* ToastView.swift in Sources */,
@@ -962,20 +1112,29 @@
 				1ED5B2932C958535000DE60B /* AccountView.swift in Sources */,
 				1ED18CC12C9833D500C5EE2E /* departmentChooseSheetView.swift in Sources */,
 				1EAC113D2C92F3F8008FFE43 /* IdControl.swift in Sources */,
+				1E66DC022CA1796A0093A74F /* RSAKeyManager.swift in Sources */,
 				1EAC11392C92E8D6008FFE43 /* SignUpDataModel.swift in Sources */,
 				1ED18CB82C982CDF00C5EE2E /* LocationService.swift in Sources */,
 				1E0D79CB2C99C8AD0010B767 /* HospitalDetailView.swift in Sources */,
 				1EAC11492C930432008FFE43 /* SignupDobView.swift in Sources */,
+				1E19A7042C9DB3D80060E4AF /* MyReservationViewModel.swift in Sources */,
 				1EAD50902C9058710010F705 /* HomeView.swift in Sources */,
 				1ED5B29F2C95A6CD000DE60B /* HomViewModifier.swift in Sources */,
+				1EEEC7202C9EB40700B9B690 /* tests.swift in Sources */,
 				1EAD50772C903E560010F705 /* LoginModel.swift in Sources */,
 				1EAC113B2C92F3D6008FFE43 /* PasswordControl.swift in Sources */,
 				1EAD507A2C903FF60010F705 /* LoginModelProtocol.swift in Sources */,
 				1ED18CB62C982BA900C5EE2E /* HospitalsViewModifier.swift in Sources */,
 				1E0D79C92C99C6E50010B767 /* NaverMapTestView.swift in Sources */,
 				1EAD50962C9060FB0010F705 /* TabView.swift in Sources */,
+				1E66DBF92CA164950093A74F /* WalletMnemonicView.swift in Sources */,
+				1E19A70F2C9DD9320060E4AF /* ReservationDetailView.swift in Sources */,
 				1EDD18202C99AF7700FDD7FD /* HospitalListItemView.swift in Sources */,
 				1EAD50A12C9078450010F705 /* UserInfomationManager.swift in Sources */,
+				1E66DBE02CA127500093A74F /* AppOtpView.swift in Sources */,
+				1E66DBE82CA14A940093A74F /* WalletKeyStoreKeyChain.swift in Sources */,
+				1E66DC072CA18A120093A74F /* WalletModel.swift in Sources */,
+				1E66DBF02CA14BFB0093A74F /* WalletDataSet.swift in Sources */,
 				1EAE13562C9C1A510031C58C /* ReservationTimeChooseView.swift in Sources */,
 				1EAC114D2C93045E008FFE43 /* SignupOtpView.swift in Sources */,
 				1ED5B29C2C958A05000DE60B /* CommonViewModifier.swift in Sources */,
@@ -983,6 +1142,7 @@
 				1EAE13542C9C1A410031C58C /* ReservationDateChooseView.swift in Sources */,
 				1ED5B2952C958543000DE60B /* MyHospitalView.swift in Sources */,
 				1ED18CC72C98655C00C5EE2E /* HospitalListCache.swift in Sources */,
+				1E66DBE32CA12E6B0093A74F /* OtpViewModel.swift in Sources */,
 				1EBDD0D82C9ABDAA002DE858 /* ScheduleViewModel.swift in Sources */,
 				1E213CBB2C9B068800A8312D /* HospitalDetailScheduleView.swift in Sources */,
 			);
@@ -1078,7 +1238,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1120,7 +1280,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1136,6 +1296,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
@@ -1148,6 +1309,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = KpMedicalWallet/KpMedicalWallet.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1185,6 +1347,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = KpMedicalWallet/KpMedicalWallet.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

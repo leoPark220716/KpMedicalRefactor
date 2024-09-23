@@ -20,10 +20,10 @@ struct ReservationDoctorChooseView: View {
                                 viewModel.DoctorViewGoToNextView()
                             }
                         } label: {
-                            DoctorListItemView(DoctorProfile: viewModel.DoctorProfileInChooseView[index])
-                            Divider()
-                                .modifier(ReservationDividerStyleModifier())
+                            DoctorListItemViewForReservation(DoctorProfile: viewModel.DoctorProfileInChooseView[index])
                         }
+                        Divider()
+                            .modifier(ReservationDividerStyleModifier())
                     }
                 }
             }

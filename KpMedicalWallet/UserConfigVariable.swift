@@ -41,13 +41,13 @@ enum UserVariable {
     static func NAVER_MAP_API_ID() throws -> String {
         return try ConfigVal(for: "X_NCP_APIGW_API_KEY_ID")
     }
+    static func CBC_NONCE() throws -> String {
+        return try ConfigVal(for: "CBC_NONCE")
+    }
     static func APP_VERSION() -> String {
         if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
             return appVersion
         }
         return "No Version"
     }
-    
-    
-    
 }

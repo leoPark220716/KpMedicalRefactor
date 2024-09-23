@@ -9,7 +9,9 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject private var appManager: NavigationRouter
-    
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor.white
+    }
     var body: some View {
         NavigationStack(path: $appManager.routes){
             ZStack{

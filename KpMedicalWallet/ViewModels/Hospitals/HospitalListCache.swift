@@ -9,6 +9,13 @@ import Foundation
 
 class HospitalListCache{
     
+    init(){
+        print("👀HospitalListInit")
+    }
+    deinit{
+        print("👀HospitalListDeInit")
+    }
+    
     private func getDocumentsDirectory() -> URL {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }

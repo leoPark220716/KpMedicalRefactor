@@ -49,7 +49,7 @@ struct AgreementView: View {
                 }
             }
             HStack{
-                Toggle(PlistManager.shared.string(forKey: "privacy_policy"), isOn: $viewModel.agreeToPushNotifications)
+                Toggle(PlistManager.shared.string(forKey: "push_notifications"), isOn: $viewModel.agreeToPushNotifications)
                     .toggleStyle(CheckboxToggleStyle(isTitle: false))
                     .foregroundStyle(.blue)
                 Button(action:{

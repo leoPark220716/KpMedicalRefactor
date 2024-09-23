@@ -12,7 +12,7 @@ import SwiftUI
 
 enum Route:View, Hashable {
     
-    case userPage(item: pages, appManager: NavigationRouter? = nil, signUpManager: IdControl? = nil, pageStatus: Bool? = nil,name: String? = nil,Hospital: Hospitals? = nil, reservationModel: HospitalReservationModel? = nil)
+    case userPage(item: pages, appManager: NavigationRouter? = nil, signUpManager: IdControl? = nil, pageStatus: Bool? = nil,name: String? = nil,Hospital: Hospitals? = nil, reservationModel: HospitalReservationModel? = nil, reservation: reservationArray? = nil, walletModel: KPHWallet? = nil)
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.hashValue)
@@ -20,13 +20,13 @@ enum Route:View, Hashable {
     
     static func == (lhs: Route, rhs: Route) -> Bool {
             switch (lhs, rhs) {
-            case (.userPage(let lhsItem, _,_,_,_,_,_), .userPage(let rhsItem, _,_,_,_,_,_)):
+            case (.userPage(let lhsItem, _,_,_,_,_,_,_,_), .userPage(let rhsItem, _,_,_,_,_,_,_,_)):
                 return lhsItem.page == rhsItem.page
             }
     }
     var body: some View{
         switch self {
-        case .userPage(let item, let appManager, let signUpManager,let pageStatus, let name,let hospital, let reservationModel):
+        case .userPage(let item, let appManager, let signUpManager,let pageStatus, let name,let hospital, let reservationModel, let reservation,let walletModel):
             switch item.page{
             case .SearchHospital:
                 HospitalListMain()
@@ -81,6 +81,33 @@ enum Route:View, Hashable {
                 }
             case .myReservationView:
                 MyReservationView()
+                
+            case .reservationDetail:
+                if let reservation = reservation{
+                    ReservationDetailView(data: reservation)
+                }else{
+                    ErrorView()
+                }
+                // 지갑뷰
+            case .walletMain:
+                WalletMainView()
+            
+            case .walletPassword:
+                if let appManager = appManager, let walletModel = walletModel{
+                    WalletPasswordEditor(appManager: appManager)
+                        .environmentObject(walletModel)
+                }else{
+                    ErrorView()
+                }
+                
+            case .walletMnemonic:
+                if let walletModel = walletModel{
+                    WalletMnemonicView()
+                        .environmentObject(walletModel)
+                }else{
+                    ErrorView()
+                }
+                
             case .SearchPassword:
                 EmptyView()
                 //                회원가입 섹션

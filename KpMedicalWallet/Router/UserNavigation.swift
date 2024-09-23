@@ -17,7 +17,13 @@ enum UserViewPage{
     case chooseTime
     case reservationSymptom
     case reservationFinal
+    
     case myReservationView
+    case reservationDetail
+    
+    case walletMain
+    case walletPassword
+    case walletMnemonic
     
     case SearchPassword
     case IdCreate

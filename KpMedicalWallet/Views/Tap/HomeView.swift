@@ -10,7 +10,6 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject private var appManager: NavigationRouter
     @StateObject var viewModel = HomeViewModel()
-    
     var body: some View {
         GeometryReader{ geo in
             VStack{
@@ -18,11 +17,10 @@ struct HomeView: View {
                     let test = AuthData()
                     test.deleteAllKeyChainItems()
                 } label: {
-                    HomeViewSuggestHospitals(geo: geo)
+                    HomeViewSuggestHospitals(geo: geo,viewModel:viewModel)
                         .padding(.horizontal)
                         .padding(.bottom)
                 }
-                
                 Button{
                     appManager.push(to: .userPage(item: UserPage(page: .SearchHospital)))
                 } label: {
@@ -34,17 +32,33 @@ struct HomeView: View {
                     PillView(geo: geo)
                         .padding(.leading)
                     Spacer()
-                    calendarView(geo: geo)
-                        .padding(.trailing)
+                    Button{
+                        appManager.push(to: .userPage(item: UserPage(page: .myReservationView)))
+                    } label: {
+                        calendarView(geo: geo)
+                            .padding(.trailing)
+                    }
                 }
             }
             .padding(.bottom)
+            .onAppear{
+                viewModel.token = appManager.jwtToken
+                do{
+                    try viewModel.requestRecomendHospitalImages()
+                }catch let error as TraceUserError{
+                    appManager.displayError(ServiceError: error)
+                }catch{
+                    appManager.displayError(ServiceError: .unowned(""))
+                }
+                
+            }
         }
     }
 }
 
 struct HomeViewSuggestHospitals: View {
     let geo: GeometryProxy
+    @ObservedObject var viewModel: HomeViewModel
     var body: some View {
         VStack{
             HStack {
@@ -60,7 +74,7 @@ struct HomeViewSuggestHospitals: View {
             }
             .padding([.top,.horizontal])
             HStack {
-                AsyncImage(url: URL(string: "https://picsum.photos/200/300")){ image in
+                AsyncImage(url: URL(string: viewModel.recomendImage1)){ image in
                     image
                         .suggestImageModifier(geo: geo)
                 } placeholder: {
@@ -68,7 +82,7 @@ struct HomeViewSuggestHospitals: View {
                         .modifier(SuggestImage(geo: geo))
                 }
                 
-                AsyncImage(url: URL(string: "https://picsum.photos/200/300")){ image in
+                AsyncImage(url: URL(string: viewModel.recomendImage2)){ image in
                     image
                         .suggestImageModifier(geo: geo)
                 } placeholder: {
@@ -76,7 +90,7 @@ struct HomeViewSuggestHospitals: View {
                         .modifier(SuggestImage(geo: geo))
                 }
                 .padding(.horizontal)
-                AsyncImage(url: URL(string: "https://picsum.photos/200/300")){ image in
+                AsyncImage(url: URL(string: viewModel.recomendImage3)){ image in
                     image
                         .suggestImageModifier(geo: geo)
                 } placeholder: {

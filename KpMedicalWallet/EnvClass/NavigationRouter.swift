@@ -13,6 +13,10 @@ final class NavigationRouter: UserInfomationManager {
     @Published var RootView: DefaultPage = .splash
     @Published var TabViewSelection: TabViewTabs = .home
     @Published var toast: normal_Toast?
+    
+    //    탭 뷰에 객체 관리
+    @Published var myHospitalView: HospitalListMainViewModel?
+    
     // TabView NavigationTitle
     var TitleString: String {
         switch TabViewSelection{
@@ -41,8 +45,6 @@ final class NavigationRouter: UserInfomationManager {
             
         }
     }
-    
-    
     @MainActor
     func push(to: Route){
         routes.append(to)
@@ -56,6 +58,28 @@ final class NavigationRouter: UserInfomationManager {
     func goToRootView(){
         routes = []
     }
+    @MainActor
+    func goBack(){
+        _ = routes.popLast()
+    }
     
-
+    @MainActor
+    func myHospitalViewInit() {
+        if myHospitalView == nil {
+            myHospitalView = HospitalListMainViewModel()
+        }
+    }
+    
+    
+    func myHospitalViewDeInit(){
+        myHospitalView = nil
+    }
+    
+    @MainActor
+    override func logOut() async {
+        await super.logOut()
+        goToRootView()
+        TabViewSelection = .home
+        RootView = .splash
+    }
 }

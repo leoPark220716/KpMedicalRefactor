@@ -20,7 +20,6 @@ struct KpMedicalWalletApp: App {
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .onAppear{
                     appDelegate.app = self
-                    appManager.RouteViewByAutoLogin()
                 }
         }
     }

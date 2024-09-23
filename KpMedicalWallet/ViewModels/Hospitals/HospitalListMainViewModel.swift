@@ -23,6 +23,7 @@ class HospitalListMainViewModel:HospitalListCache, ObservableObject{
     @Published var departSheetShow: Bool = false
     @Published var hospitalList: [Hospitals] = []
     
+    var isMyHospital = false
     var requestQuery = HospitalRequestQuery()
     var appManager: NavigationRouter?
     var changedQuery = false
@@ -40,6 +41,15 @@ class HospitalListMainViewModel:HospitalListCache, ObservableObject{
         // URLComponents를 통해 안전하게 URL 생성
         return components.url?.query ?? ""
     }
+    var myHospitalStringURL: String {
+        var components = URLComponents()
+        components.queryItems = [
+            URLQueryItem(name: "start", value: "\(requestQuery.start)"),
+            URLQueryItem(name: "limit", value: "\(requestQuery.limit)")
+        ].filter { $0.value != nil } // nil 값 필터링
+        // URLComponents를 통해 안전하게 URL 생성
+        return components.url?.query ?? ""
+    }
     
     @MainActor
     func setDepartment(department: Department){
@@ -48,6 +58,21 @@ class HospitalListMainViewModel:HospitalListCache, ObservableObject{
     @MainActor
     func resetHospitalListArray(){
         hospitalList = []
+    }
+    @MainActor
+    func disappearViewModel(){
+        searchText = ""
+        selectedTab = 0
+        selectedDepartment = nil
+    }
+    func setQuaryReSet(){
+        requestQuery.start = 0
+        requestQuery.orderby = "name"
+        requestQuery.x_tude = nil
+        requestQuery.y_tude = nil
+        requestQuery.key_word = nil
+        requestQuery.department = nil
+        requestQuery.limit = 30
     }
     @MainActor
     func loadingChange(status: Bool){
@@ -99,20 +124,39 @@ class HospitalListMainViewModel:HospitalListCache, ObservableObject{
     // onAppear 호출 함수
     func hospitalListSetUp(){
         print("✅hospitalListSetUp")
-        Task{
-            await loadingChange(status: true)
-            //            기간이 지난 캐시파일 삭제
-            clearExpiredCacheFiles()
-            if let cacheHospitals = loadHospitalListFromCache(){
-                await MainActor.run {
-                    hospitalList = cacheHospitals
+        if hospitalList.isEmpty{
+            Task{
+                await loadingChange(status: true)
+                //            기간이 지난 캐시파일 삭제
+                clearExpiredCacheFiles()
+                if let cacheHospitals = loadHospitalListFromCache(){
+                    await MainActor.run {
+                        hospitalList = cacheHospitals
+                    }
+                    await loadingChange(status: false)
+                    return
                 }
-                await loadingChange(status: false)
-                return
+                do{
+                    try await getHospitalList()
+                    await loadingChange(status: false)
+                }catch let error as TraceUserError{
+                    await appManager?.displayError(ServiceError: error)
+                }catch{
+                    await appManager?.displayError(ServiceError: .unowned(PlistManager.shared.string(forKey: "hospitl_list_setup")))
+                }
             }
-            await loadingChange(status: false)
+        }
+        
+    }
+    
+    func myHospitalListSetUp(){
+        Task{
             do{
-                try await getHospitalList()
+                isMyHospital = true
+                await loadingChange(status: true)
+                try await getMyHospitalList()
+                print("Hospital list on Appear: \(hospitalList)")
+                await loadingChange(status: false)
             }catch let error as TraceUserError{
                 await appManager?.displayError(ServiceError: error)
             }catch{
@@ -138,7 +182,7 @@ class HospitalListMainViewModel:HospitalListCache, ObservableObject{
         print("✅addHospitalList")
         Task{
             do{
-                requestQuery.start += hospitalList.count
+                requestQuery.start = hospitalList.count
                 try await getHospitalList()
             }catch let error as TraceUserError{
                 await appManager?.displayError(ServiceError: error)
@@ -146,7 +190,20 @@ class HospitalListMainViewModel:HospitalListCache, ObservableObject{
                 await appManager?.displayError(ServiceError: .unowned(PlistManager.shared.string(forKey: "hospitl_list_setup")))
             }
         }
-        
+    }
+    // 페이지네이션 시 불러오는 내 병원 리스트
+    func addMyHospitalList(){
+        print("✅addHospitalList")
+        Task{
+            do{
+                requestQuery.start = hospitalList.count
+                try await getMyHospitalList()
+            }catch let error as TraceUserError{
+                await appManager?.displayError(ServiceError: error)
+            }catch{
+                await appManager?.displayError(ServiceError: .unowned(PlistManager.shared.string(forKey: "hospitl_list_setup")))
+            }
+        }
     }
     // 병원 리스트 Http 요청
     private func getHospitalList() async throws{
@@ -167,6 +224,24 @@ class HospitalListMainViewModel:HospitalListCache, ObservableObject{
             throw error
         }
     }
+    // http 내 병원 리스트 요청
+    private func getMyHospitalList() async throws{
+        print("✅getHospitalList")
+        do{
+            let request = try MyHospitalListRequestStruct()
+            let call = KPWalletAPIManager.init(httpStructs: request, URLLocations: 1)
+            let response = try await call.performRequest(encoded: true)
+            if response.success, let data = response.data?.data{
+                await MainActor.run {
+                    hospitalList.append(contentsOf: data.hospitals)
+                }
+            }
+        }catch{
+            throw error
+        }
+    }
+    
+    
     // http 요청 객체
     private func hospitalListRequestStruct() throws -> http<Empty?,KPApiStructFrom<Hospital_Data>>{
         print("✅hospitalListRequestStruct")
@@ -176,6 +251,19 @@ class HospitalListMainViewModel:HospitalListCache, ObservableObject{
         return http<Empty?,KPApiStructFrom<Hospital_Data>>(
             method: "GET",
             urlParse: "hospitals?\(returnStringURL)",
+            token: token,
+            UUID: UserVariable.GET_UUID()
+        )
+    }
+    // 내 병원 요청 객체
+    private func MyHospitalListRequestStruct() throws -> http<Empty?,KPApiStructFrom<Hospital_Data>>{
+        print("✅hospitalListRequestStruct")
+        guard let token = appManager?.jwtToken else{
+            throw TraceUserError.clientError("\(PlistManager.shared.string(forKey: "viewModelSetupFalse")) \(UserVariable.APP_VERSION())")
+        }
+        return http<Empty?,KPApiStructFrom<Hospital_Data>>(
+            method: "GET",
+            urlParse: "v2/users/marks?\(myHospitalStringURL)",
             token: token,
             UUID: UserVariable.GET_UUID()
         )
