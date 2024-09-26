@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-final class NavigationRouter: UserInfomationManager {
+final class NavigationRouter: ChatListManager {
     @Published var routes = [Route]()
     @Published var RootView: DefaultPage = .splash
     @Published var TabViewSelection: TabViewTabs = .home
@@ -26,25 +26,28 @@ final class NavigationRouter: UserInfomationManager {
             return "내 병원"
         case .account:
             return "내 계정"
+        case .chat:
+            return "상담 내역"
         }
     }
-    
     //    자동로그인 후 라우터 설정
     func RouteViewByAutoLogin(){
         Task{
             do{
                 let rootview = try await super.checkAutoLogin()
                 await rootView(change: rootview)
-            }catch let error as TraceUserError {
+            }catch {
                 Authdel()
                 await displayError(ServiceError: error)
-            }catch{
-                Authdel()
-                await displayError(ServiceError: .unowned(PlistManager.shared.string(forKey: "UserInfomation_returnUserData")))
             }
             
         }
     }
+    @MainActor
+    func showToast(message: String){
+        toast = normal_Toast(message: message)
+    }
+    
     @MainActor
     func push(to: Route){
         routes.append(to)
@@ -81,5 +84,17 @@ final class NavigationRouter: UserInfomationManager {
         goToRootView()
         TabViewSelection = .home
         RootView = .splash
+    }
+    
+    func delAccountActor(){
+        Task{
+            do{
+                try await delAccount()
+                await logOut()
+            }catch{
+                await displayError(ServiceError: error)
+            }
+        }
+        
     }
 }

@@ -167,10 +167,10 @@ class RSAKeyManager:WalletKeyStoreKeyChain {
         }
         
     }
-    func savePrivateKeyToKeyChain(privateKeyString: String,account: String) -> Bool{
+    func savePrivateKeyToKeyChain(privateKeyString: String,account: String) throws -> Bool{
         guard let keyData = Data(base64Encoded: privateKeyString)else{
             print("키 데이터 변환 실패")
-            return false
+            throw TraceUserError.clientError("")
         }
         let reGanerateKey: [String: Any] = [
             kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
@@ -179,7 +179,7 @@ class RSAKeyManager:WalletKeyStoreKeyChain {
         var error: Unmanaged<CFError>?
         guard let privateKey = SecKeyCreateWithData(keyData as CFData, reGanerateKey as CFDictionary, &error) else{
             print("개인키 생성 실패 : \(String(describing: error?.takeRetainedValue()))")
-            return false
+            throw TraceUserError.clientError("")
         }
         
         let attributes: [String:Any] = [
@@ -200,7 +200,7 @@ class RSAKeyManager:WalletKeyStoreKeyChain {
         if status == errSecSuccess{
             return true
         }else{
-            return false
+            throw TraceUserError.clientError("")
         }
     }
     //    지갑 복구 해서 저장된 개인키를 활용하여 공개키 암호화 밑 개인키 복호화 테스트

@@ -36,6 +36,9 @@ class WalletHttpRequest: WalletDataSet{
                 if response.data?.status != 201{
                     throw TraceUserError.serverError("")
                 }
+                await MainActor.run {
+                    isLoading = false
+                }
             }else{
                 throw TraceUserError.serverError("")
             }
@@ -46,14 +49,69 @@ class WalletHttpRequest: WalletDataSet{
     
     
     override func setDatas(appManager: NavigationRouter) async {
-        print("Call WalletHttpRequest SetDatas")
-        await super.setDatas(appManager: appManager)
-        if walletState{
-            getTransactionList(appManager: appManager)
+        do{
+            print("Call WalletHttpRequest SetDatas")
+            try await super.setDatas(appManager: appManager)
+            if walletState{
+                try getPubkeyContract()
+                try getTransactionList()
+            }
+        }catch let error as TraceUserError{
+            await appManager.displayError(ServiceError: error)
+        }catch{
+            await appManager.displayError(ServiceError: .unowned(""))
+        }
+        
+    }
+    //    퍼블릭키 및 컨트랙트 요청
+    func getPubkeyContract() throws {
+        Task{
+            do{
+                let request = createGetContractPubKeyRequest()
+                let call = KPWalletAPIManager(httpStructs: request, URLLocations: 1)
+                let response = try await call.performRequest()
+                if response.success{
+                    guard let address = response.data?.data.address else{
+                        throw TraceUserError.clientError("")
+                        
+                    }
+                    guard let contract = response.data?.data.contract else{
+                        throw TraceUserError.clientError("")
+                        
+                    }
+                    if address != PublicKey{
+                        throw TraceUserError.clientError("")
+                    }
+                    await MainActor.run {
+                        PublicKey = address
+                        Contract = contract
+                    }
+                }
+            }catch{
+                throw error
+            }
         }
     }
-    
-    func getTransactionList(appManager: NavigationRouter){
+    //    퍼블릭키 및 컨트랙트 요청
+    func getContract() async throws {
+        Task{
+            do{
+                let request = createGetContractPubKeyRequest()
+                let call = KPWalletAPIManager(httpStructs: request, URLLocations: 1)
+                let response = try await call.performRequest()
+                if response.success{
+                    guard let contract = response.data?.data.contract else{
+                        throw TraceUserError.clientError("")
+                    }
+                    ContractAddress = contract
+                }
+            }catch{
+                throw error
+            }
+        }
+    }
+    // 트랜젝선 리스트 요청
+    func getTransactionList() throws {
         Task{
             do{
                 let request = createFirstGetTransactionListRequest()
@@ -61,8 +119,8 @@ class WalletHttpRequest: WalletDataSet{
                 let response = try await call.performRequest()
                 if response.success{
                     guard let datas = response.data?.data else{
-                        await appManager.displayError(ServiceError: .clientError(""))
-                        return
+                        throw TraceUserError.clientError("")
+                        
                     }
                     var tempItems: [WalletModel.AccessItem] = []
                     for item in datas.transactions {
@@ -80,14 +138,12 @@ class WalletHttpRequest: WalletDataSet{
                     }
                     await super .setTrasactionList(list: tempItems)
                 }
-            }catch let error as TraceUserError{
-                await appManager.displayError(ServiceError: error)
             }catch{
-                await appManager.displayError(ServiceError: .unowned(error.localizedDescription))
+                throw error
             }
         }
     }
-    
+    //    트랜젝션 리스트 페이지네이션
     func pagingGetTransactionList(appManager: NavigationRouter){
         Task{
             do{
@@ -123,6 +179,20 @@ class WalletHttpRequest: WalletDataSet{
             }catch{
                 await appManager.displayError(ServiceError: .unowned(error.localizedDescription))
             }
+        }
+    }
+    
+    func getRSAencryptKey(address: String) async throws -> String{
+        do{
+            let request = getSecKeyInServerRequest(address: address)
+            let call = KPWalletAPIManager(httpStructs: request, URLLocations: 1)
+            let response = try await call.performRequest()
+            guard let encryptRsa = response.data?.data.encrypt_rsa else{
+                throw TraceUserError.serverError("")
+            }
+            return encryptRsa
+        }catch{
+            throw error
         }
     }
     private func datePase(dateString: String) -> String{
@@ -180,7 +250,7 @@ class WalletHttpRequest: WalletDataSet{
         )
         
     }
-    private func createSaveWallettRequest(address: String,encrypt_rsa: String)-> http<WalletModel.SaveWalletData?,KPApiStructFrom<WalletModel.WalletSaveResponseData>>{
+    private func createSaveWallettRequest(address: String,encrypt_rsa: String)-> http<WalletModel.SaveWalletData?,KPApiStructFrom<WalletModel.WalletInfomationResponse>>{
         let body = WalletModel.SaveWalletData(access_token: token, uid: UserVariable.GET_UUID(), address: address, encrypt_rsa: encrypt_rsa, type: 0)
         return http(
             method: "POST",
@@ -190,6 +260,23 @@ class WalletHttpRequest: WalletDataSet{
             requestVal: body
         )
     }
+    private func createGetContractPubKeyRequest() -> http<Empty?, KPApiStructFrom<WalletModel.WalletInfomationResponse>>{
+        return http(
+            method: "GET",
+            urlParse: "v2/users/cryptos",
+            token: token,
+            UUID: UserVariable.GET_UUID())
+    }
+    private func getSecKeyInServerRequest(address: String) -> http<WalletModel.SaveWalletData?,KPApiStructFrom<WalletModel.WalletInfomationResponse>>{
+        let body = WalletModel.SaveWalletData(access_token: token, uid: UserVariable.GET_UUID(), address: address, encrypt_rsa: "", type: 1)
+        return http(
+            method: "POST",
+            urlParse: "users/wallet",
+            token: token,
+            UUID: body.uid,
+            requestVal: body)
+    }
+    
     
     
     

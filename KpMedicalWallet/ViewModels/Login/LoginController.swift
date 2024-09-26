@@ -35,6 +35,7 @@ class LoginController: LoginModel, LoginRequest {
                         await appManager.SetInfo(datas: data)
                         // Env 객체에 FCM 토큰 호출
                         appManager.refreshFCMToken()
+                        try await appManager.fcmTokenToServer(method: "POST")
                         // 뷰 텝뷰로 전환
                         await appManager.rootView(change: .tab)
                     }

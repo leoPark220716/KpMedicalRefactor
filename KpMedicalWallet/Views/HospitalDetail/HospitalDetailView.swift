@@ -13,6 +13,7 @@ struct HospitalDetailView: View {
     @StateObject var viewModel = HospitalReservationModel()
     let hospitalInfo: Hospitals
     var body: some View {
+        
         GeometryReader { geometry in
             VStack{
                 ScrollView{
@@ -26,7 +27,7 @@ struct HospitalDetailView: View {
                 HStack{
                     Spacer()
                     Button{
-                        
+                        appManager.push(to: .userPage(item: UserPage(page: .advice),appManager: appManager,hospitalId:hospitalInfo.hospital_id,hospitalName: hospitalInfo.hospital_name))
                     }label: {
                         Text("상담하기")
                             .modifier(HospitalDetailButtonModify(back: Color.white, fore: Color.blue.opacity(0.5)))
@@ -56,8 +57,6 @@ struct HospitalDetailView: View {
                 viewModel.setManagerHospitalId(hospitalId: hospitalInfo.hospital_id, appManager: appManager)
                 viewModel.setUpDetailView()
             }
-            
-            
         }
     }
 }

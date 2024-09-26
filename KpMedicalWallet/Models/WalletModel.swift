@@ -27,7 +27,7 @@ struct WalletModel{
         let type: Int
     }
     
-    struct WalletSaveResponseData: Codable{
+    struct WalletInfomationResponse: Codable{
         let access_token: String
         let encrypt_rsa: String
         let address: String?
@@ -76,4 +76,5 @@ struct WalletModel{
         let error_code: Int
         let error_stack: String
     }
+    
 }

@@ -20,6 +20,7 @@ enum TraceUserError: Error {
     case unowned(String)
     case managerFunction(String)
     case httpRequestError(String)
+    case socketError(String)
 }
 
 extension TraceUserError: LocalizedError {
@@ -47,6 +48,8 @@ extension TraceUserError: LocalizedError {
             return PlistManager.shared.string(forKey: "managerFunction")
         case .httpRequestError(_):
             return PlistManager.shared.string(forKey: "error_http_request")
+        case .socketError(_):
+            return PlistManager.shared.string(forKey: "error_socket_connection")
         }
     }
     var recoverySuggestion: String? {
@@ -73,6 +76,8 @@ extension TraceUserError: LocalizedError {
             return detailError
         case .httpRequestError(_):
             return PlistManager.shared.string(forKey: "suggestion_http_request_error")
+        case .socketError(let detailError):
+            return detailError
         }
     }
     

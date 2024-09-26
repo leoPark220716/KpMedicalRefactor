@@ -58,7 +58,7 @@ class WalletKeyStoreKeyChain{
         return status == errSecSuccess
     }
     //     키체인 키스토어 비밀번호 가져오기
-    func GetPasswordKeystore(account: String) -> (seccess: Bool, password: String) {
+    func GetPasswordKeystore(account: String) throws -> (seccess: Bool, password: String) {
         let query: [String:Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: "knp.kpmadical_wallet.com.Wallet_Keystore_Password_\(account)",
@@ -68,7 +68,7 @@ class WalletKeyStoreKeyChain{
         var item: CFTypeRef?
         let status = SecItemCopyMatching(query as CFDictionary, &item)
         guard status == errSecSuccess, let passwordData = item as? Data, let savedPassword = String(data: passwordData, encoding: .utf8) else {
-                return (false, "")
+            throw TraceUserError.clientError("GetPasswordKeystore")
             }
         return (true, savedPassword)
     }

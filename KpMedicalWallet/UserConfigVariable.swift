@@ -33,6 +33,7 @@ enum UserVariable {
         return try ConfigVal(for: "LOGIN_FAIL")
     }
     static func GET_UUID() -> String {
+        print("✅ UUID : \(UIDevice.current.identifierForVendor!.uuidString)")
         return UIDevice.current.identifierForVendor!.uuidString
     }
     static func NAVER_MAP_API() throws -> String {
@@ -43,6 +44,9 @@ enum UserVariable {
     }
     static func CBC_NONCE() throws -> String {
         return try ConfigVal(for: "CBC_NONCE")
+    }
+    static func MANAGER_ACCOUNT() throws -> String {
+        return try ConfigVal(for: "MANAGER_ACCOUNT")
     }
     static func APP_VERSION() -> String {
         if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {

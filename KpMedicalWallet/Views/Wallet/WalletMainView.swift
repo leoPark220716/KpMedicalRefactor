@@ -35,7 +35,7 @@ struct WalletMainView: View {
                                 .modifier(WalletViewCreateWalletButton())
                         }
                         Button{
-                            
+                            walletModel.goToRecoverWalletView(appManager: appManager)
                         } label: {
                             Text("지갑찾기")
                                 .modifier(WalletViewFindWalletButton())
@@ -49,11 +49,12 @@ struct WalletMainView: View {
                     Text("Address")
                         .modifier(WalletViewEmptyWalletTitleModifier())
                     HStack {
-                        Text("WalletAddres")
+                        Text(walletModel.PublicKey)
                             .modifier(WalletViewAddress())
                         Spacer()
                         Button{
-                            UIPasteboard.general.string = "WalletAddres"
+                            print("AddressCall")
+                            UIPasteboard.general.string = walletModel.PublicKey
                         }label: {
                             Image(systemName: "doc.on.doc")
                                 .modifier(WalletViewCopyTextImage())
@@ -64,11 +65,11 @@ struct WalletMainView: View {
                     Text("Storage")
                         .modifier(WalletViewEmptyWalletTitleModifier())
                     HStack {
-                        Text("ContractAddres")
+                        Text(walletModel.Contract)
                             .modifier(WalletViewAddress())
                         Spacer()
                         Button{
-                            UIPasteboard.general.string = "ContractAddres"
+                            UIPasteboard.general.string = walletModel.Contract
                         }label: {
                             Image(systemName: "doc.on.doc")
                                 .modifier(WalletViewCopyTextImage())
@@ -116,6 +117,9 @@ struct WalletMainView: View {
                 await walletModel.setDatas(appManager: appManager)
             }
             
+        }
+        .onDisappear{
+            walletModel.TrasactionList = []
         }
         .navigationTitle("KPM Wallet")
         

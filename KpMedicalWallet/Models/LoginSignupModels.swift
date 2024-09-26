@@ -67,3 +67,19 @@ struct OtpResponse: Codable {
     let iat: Int
     let exp: Int
 }
+struct deleteResponse: Codable{
+    let affectedRows: Int
+    let error_code: Int
+    let error_stack: String
+}
+struct FcmToken:Codable{
+    struct FcmTokenSend: Codable{
+        var fcm_token:String
+    }
+    struct FcmTokenResponse: Codable{
+        var affectedRows: Int
+        var error_code: Int
+        var error_stack: String
+    }
+    
+}

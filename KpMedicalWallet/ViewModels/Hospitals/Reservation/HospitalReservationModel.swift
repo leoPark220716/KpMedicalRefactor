@@ -25,10 +25,8 @@ class HospitalReservationModel: HospitalSchedule{
         Task{
             do{
                 try await getHospitalInfomation()
-            }catch let error as TraceUserError{
-                await appManager?.displayError(ServiceError: error)
             }catch{
-                await appManager?.displayError(ServiceError: .unowned("\(PlistManager.shared.string(forKey: "unknownsError")) \(error.localizedDescription)"))
+                await appManager?.displayError(ServiceError: error)
             }
         }
     }

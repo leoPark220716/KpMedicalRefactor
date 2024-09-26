@@ -21,7 +21,7 @@ class WalletDataSet: RSAKeyManager, ObservableObject{
     @Published var PublicKey: String = ""
     @Published var Contract: String = ""
     @Published var TrasactionList: [WalletModel.AccessItem] = []
-    
+    var providerURL: URL?
     var password: String = ""
     var keystoreData: Data?
     var keystore: BIP32Keystore?
@@ -32,71 +32,84 @@ class WalletDataSet: RSAKeyManager, ObservableObject{
     var UserAccount: String = ""
     let ChainID = BigUInt(142537)
     var token: String = ""
-    
+    var ContractAddress: String = ""
     
     //    초기 지갑 유무 확인 지갑 이 존재한다 = keystore 가 저장돼 있다. 를 의미하고
-    func setDatas(appManager: NavigationRouter) async {
-        
-            print("Call setDatas")
-            do{
-                let account = appManager.GetUserAccountString()
-                if !account.status{
-                    throw TraceUserError.clientError("")
-                }else{
-                    UserAccount = account.account
-                }
-                if appManager.jwtToken == "" {
-                    throw TraceUserError.clientError("")
-                }
-                token = appManager.jwtToken
-                
-                guard let _ = loadFromKeychain(account: UserAccount) else{
-                    print("Call GuardLet")
-                    await MainActor.run {
-                        walletState = false
-                        isLoading = false
-                        print(isLoading)
-                    }
-                    return
-                }
-                
+    func setDatas(appManager: NavigationRouter) async throws {
+        do{
+            try SetTokenAndAccount(appManager: appManager)
+            let pubkey = try AccountCheck(appManager: appManager)
+            if !pubkey.success{
+                print("Call GuardLet")
                 await MainActor.run {
+                    walletState = false
                     isLoading = false
-                    walletState = true
+                    print(isLoading)
                 }
-                
-                
-            }catch let error as TraceUserError{
-                await appManager.displayError(ServiceError: error)
-            }catch{
-                await appManager.displayError(ServiceError: .unowned(error.localizedDescription))
+                return
             }
-        
-        
-    }
-    func setUpWeb3Datas() async throws {
-        guard let url = URL(string: try UtilityURLReturn.BLOCKCHAIN_SERVER()) else{
-            throw TraceUserError.clientError("")
+            await MainActor.run {
+                walletState = true
+                PublicKey = pubkey.address
+            }
+        }catch{
+            throw error
         }
+    }
+    
+    func AccountCheck(appManager:NavigationRouter) throws -> (address: String, success:Bool){
         guard let keystoreData = loadFromKeychain(account: UserAccount) else{
-            throw TraceUserError.clientError("")
+            return ("", false)
         }
         guard let keystore = BIP32Keystore(keystoreData) else{
             throw TraceUserError.clientError("")
         }
+        guard let pubkey = keystore.addresses?.first else{
+            throw TraceUserError.clientError("")
+        }
+        self.keystore = keystore
+        return (pubkey.address, true)
+    }
+    
+    func SetTokenAndAccount(appManager:NavigationRouter) throws{
+        if appManager.jwtToken == "" {
+            throw TraceUserError.clientError("SetTokenAndAccount")
+        }
+        let account = appManager.GetUserAccountString()
+        if !account.status{
+            throw TraceUserError.clientError("SetTokenAndAccount")
+        }else{
+            UserAccount = account.account
+        }
+        token = appManager.jwtToken
+    }
+    
+    
+    func setUpWeb3Datas() async throws {
+        guard let url = URL(string: try UtilityURLReturn.BLOCKCHAIN_SERVER()) else{
+            throw TraceUserError.clientError("setUpWeb3Datas")
+        }
+        providerURL = url
+        guard let keystoreData = loadFromKeychain(account: UserAccount) else{
+            throw TraceUserError.clientError("setUpWeb3Datas")
+        }
+        guard let keystore = BIP32Keystore(keystoreData) else{
+            throw TraceUserError.clientError("setUpWeb3Datas")
+        }
         let keystoreManager = KeystoreManager([keystore])
         let provider = try await Web3HttpProvider(url: url, network: .Custom(networkID: ChainID), keystoreManager: keystoreManager)
-        guard let abiUrl = Bundle.main.url(forResource: "PersonalRecords_sol_PersonalRecords", withExtension: "json"),
+        guard let abiUrl = Bundle.main.url(forResource: "PersonalRecords_sol_PersonalRecords", withExtension: "abi"),
               let abiString = try? String(contentsOf: abiUrl) else {
-            throw TraceUserError.clientError("")
+            throw TraceUserError.clientError("setUpWeb3Datas")
         }
         guard let bytecodeUrl = Bundle.main.url(forResource: "PersonalRecords_sol_PersonalRecords", withExtension: "bin"),
               let bytecodeString = try? "0x"+String(contentsOf: bytecodeUrl) else {
-            throw TraceUserError.clientError("")
+            throw TraceUserError.clientError("setUpWeb3Datas")
         }
         guard let accountAddress = keystore.addresses?.first else {
-            throw TraceUserError.clientError("")
+            throw TraceUserError.clientError("setUpWeb3Datas")
         }
+        print("✅✅✅✅✅✅\(String(describing: keystore.addresses?.first))")
         self.keystoreData = keystoreData
         self.keystore = keystore
         self.web3 = Web3(provider: provider)

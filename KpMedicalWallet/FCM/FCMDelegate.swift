@@ -196,7 +196,7 @@ extension FCMDelegate: UNUserNotificationCenterDelegate{
         let msg = extractMessage(from: userInfo)
         let timeStemp = extractTimestamp(from: userInfo)
         print("👀 TimeStemp \(timeStemp)")
-//        app?.authViewModel.UpdateChatItem(hospitalId: id, msg: msg,timestemp: timeStemp)
+        app?.appManager.UpdateChatItem(hospitalId: id, msg: msg,timestemp: timeStemp)
         print("👀👀👀👀👀👀👀👀👀👀👀👀")
 //        let msgType = extractMsgType(from: userInfo) // msg_type 값을 추출
 //        printContent(msgType)

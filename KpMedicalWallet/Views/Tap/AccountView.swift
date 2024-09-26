@@ -55,7 +55,7 @@ struct AccountView: View {
                         .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                     Spacer()
                 }
-                // 와디즈 계좌
+
                 Button{
                     otp.toggle()
                 }label: {
@@ -101,7 +101,24 @@ struct AccountView: View {
                     .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
                     .padding(.top)
                 }
-                
+                Button{
+                    Task{
+                        appManager.delAccountActor()
+                    }
+                } label: {
+                    HStack {
+                        Text("Delete Account")
+                            .foregroundStyle(Color.pink)
+                            .font(.subheadline)
+                            .bold()
+                        Spacer()
+                    }
+                    .padding()
+                    .background(Color.white) // 배경색을 설정하여 테두리가 더 잘 보이게 함
+                    .cornerRadius(10)
+                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
+                    .padding(.top)
+                }
             }
             .padding([.leading, .trailing])
             .onAppear{

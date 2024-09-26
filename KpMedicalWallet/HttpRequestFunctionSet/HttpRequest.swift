@@ -86,7 +86,8 @@ struct KPWalletAPIManager<RequestType: Codable, ReturnType: Codable> {
         if let verify_token = httpStructs.verify_token{
             request.setValue("\(verify_token)", forHTTPHeaderField: "verify-token")
         }
-        if httpStructs.method != "GET" {
+        print("✅Authorization : Bearer \(httpStructs.token)")
+        if httpStructs.requestVal != nil {
             do {
                 let postData = try JSONEncoder().encode(httpStructs.requestVal)
                 request.httpBody = postData
@@ -105,7 +106,7 @@ struct KPWalletAPIManager<RequestType: Codable, ReturnType: Codable> {
         let statusCode = httpResponse.statusCode
         let responseBody = String(data: data, encoding: .utf8) ?? "Unable to decode response body"
         print("✅ response Body \(responseBody)")
-        if 202 == statusCode || 203 == statusCode{
+        if 202 == statusCode || 203 == statusCode || 204 == statusCode{
             return (false, nil, nil)
         }
         else if (400..<500).contains(statusCode) {

@@ -34,9 +34,26 @@ class UserInfomationManager: GlobalErrorHandler,UserManager,HaveJWT,HaveFCMToken
         loginStatus = false
     }
     func logOut() async {
+        do{
+            try await fcmTokenToServer(method: "DELETE")
             Authdel()
             await setDefautl()
+        }catch{
+            await displayError(ServiceError: error)
+        }
+        
     }
+    func delAccount() async throws{
+        do{
+            try await requestAccountDelete()
+            deleteFCMToken()
+        }catch{
+            throw error
+        }
+        
+    }
+    
+    
     func Authdel(){
         let auth = AuthData()
         auth.deleteAllKeyChainItems()
@@ -56,7 +73,11 @@ class UserInfomationManager: GlobalErrorHandler,UserManager,HaveJWT,HaveFCMToken
             guard let datas = userData else{
                 return DefaultPage .login
             }
-            return try await AutoLoginRequest(jwtToken: datas.jwtToken)
+            let rootView = try await AutoLoginRequest(jwtToken: datas.jwtToken)
+            try await fcmTokenToServer(method: "PATCH")
+            refreshFCMToken()
+            
+            return rootView
         }catch {
             throw error
         }
@@ -141,5 +162,97 @@ class UserInfomationManager: GlobalErrorHandler,UserManager,HaveJWT,HaveFCMToken
         print("✅FCM Token DeleteToken Method Call")
     }
     
-    // 자동 로그인
+    func requestAccountDelete() async throws {
+        do{
+            let request = deleteAccountRequest()
+            let call = KPWalletAPIManager(httpStructs: request, URLLocations: 1)
+            let response = try await call.performRequest()
+            guard let datas = response.data?.data.affectedRows else{
+                throw TraceUserError.serverError("")
+            }
+            if datas == 1{
+                return
+            }
+            throw TraceUserError.serverError("")
+        }catch{
+            throw error
+        }
+    }
+    
+    
+    func deleteAccountRequest() -> http<Empty?,KPApiStructFrom<deleteResponse>>{
+        print("✅ UUID : \(UserVariable.GET_UUID())")
+        return http(
+            method: "DELETE",
+            urlParse: "v2/users/\(GetUserAccountString().account)",
+            token: jwtToken,
+            UUID: UserVariable.GET_UUID())
+    }
+    
+    func fcmTokenToServer(method: String) async throws{
+        do{
+            let request = createFcmTokenRequest(method: method)
+            let call = KPWalletAPIManager(httpStructs: request, URLLocations: 1)
+            let response = try await call.performRequest()
+            if response.success, let data = response.data?.data{
+                print("✅ FcmToken Handle By Server : \(data)")
+                return
+            }
+            throw TraceUserError.serverError("")
+        }catch{
+            throw error
+        }
+    }
+    func createFcmTokenRequest(method: String) -> http<FcmToken.FcmTokenSend?,KPApiStructFrom<FcmToken.FcmTokenResponse>>{
+        let body = FcmToken.FcmTokenSend(fcm_token: fcmToken)
+        return http(method: method, urlParse: "v2/fcm", token: jwtToken, UUID: UserVariable.GET_UUID(),requestVal: body)
+    }
+}
+class ChatListManager :UserInfomationManager{
+    @Published var chatItem: [ChatHTTPresponseStruct.ChatListArray] = []
+    
+    
+    func UpdateChatItem(hospitalId: String, msg: String,timestemp: String){
+        for index in chatItem.indices{
+            if chatItem[index].hospital_id == Int(hospitalId){
+                var updatedItem = chatItem[index]
+                // 요소의 필드를 업데이트
+                updatedItem.unread_cnt += 1
+                updatedItem.last_message.message = msg
+                updatedItem.last_message.timestamp = timestemp
+                // 배열에 업데이트된 요소를 다시 할당
+                DispatchQueue.main.async {
+                    self.chatItem[index] = updatedItem
+                }
+                break
+            }
+        }
+    }
+    func GetChatList(){
+        Task{
+            do{
+                let requset = createGetChatListRequest()
+                let call = KPWalletAPIManager(httpStructs: requset, URLLocations: 2)
+                let response = try await call.performRequest()
+                if response.success, let data = response.data?.data.chats{
+                    await MainActor.run {
+                        chatItem = data
+                    }
+                }else{
+                    return
+                }
+            }catch{
+                await displayError(ServiceError: error)
+            }
+        }
+    }
+    func createGetChatListRequest() -> http<Empty?,KPApiStructFrom<ChatHTTPresponseStruct.ChatList>>{
+        
+        return http(
+            method: "GET",
+            urlParse: "v2/chat?service_id=1",
+            token: jwtToken,
+            UUID: UserVariable.GET_UUID())
+    }
+    
 }

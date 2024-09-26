@@ -10,8 +10,12 @@
 		<string>$(APP_IDENTIFY)</string>
 		<key>BLOCKCHAIN_DOMAIN</key>
 		<string>$(BLOCKCHAIN_DOMAIN)</string>
+		<key>CBC_NONCE</key>
+		<string>$(CBC_NONCE)</string>
 		<key>LOGIN_FAIL</key>
 		<string>$(LOGIN_FAIL)</string>
+		<key>MANAGER_ACCOUNT</key>
+		<string>$(MANAGER_ACCOUNT)</string>
 		<key>URL_LOCATION_COMMON</key>
 		<string>$(URL_LOCATION_COMMON)</string>
 		<key>URL_LOCATION_WALLET</key>
@@ -22,8 +26,6 @@
 		<string>$(X_NCP_APIGW_API_KEY)</string>
 		<key>X_NCP_APIGW_API_KEY_ID</key>
 		<string>$(X_NCP_APIGW_API_KEY_ID)</string>
-		<key>CBC_NONCE</key>
-		<string>$(CBC_NONCE)</string>
 	</dict>
 	<key>NMFClientId</key>
 	<string>$(X_NCP_APIGW_API_KEY_ID)</string>

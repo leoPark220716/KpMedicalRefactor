@@ -29,8 +29,13 @@ struct HomeView: View {
                         .padding(.bottom)
                 }
                 HStack{
-                    PillView(geo: geo)
-                        .padding(.leading)
+                    Button{
+                        appManager.push(to: .userPage(item: UserPage(page: .advice),appManager: appManager))
+                    }label: {
+                        PillView(geo: geo)
+                            .padding(.leading)
+                    }
+                    
                     Spacer()
                     Button{
                         appManager.push(to: .userPage(item: UserPage(page: .myReservationView)))

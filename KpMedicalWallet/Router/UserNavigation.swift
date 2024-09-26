@@ -24,7 +24,8 @@ enum UserViewPage{
     case walletMain
     case walletPassword
     case walletMnemonic
-    
+    case walletRecover
+
     case SearchPassword
     case IdCreate
     case Agreement
@@ -33,6 +34,7 @@ enum UserViewPage{
     case PhoneCreate
     case SignUpFinal
     
+    case advice
 }
 enum DefaultPage{
     case login
@@ -42,6 +44,7 @@ enum DefaultPage{
 
 enum TabViewTabs{
     case home
+    case chat
     case hospital
     case account
 }

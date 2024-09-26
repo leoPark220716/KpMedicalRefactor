@@ -16,6 +16,11 @@ struct DefaultTabView: View {
                     Label("메인",systemImage:"house.circle.fill")
                 }
                 .tag(TabViewTabs .home)
+            ChatListView()
+                .tabItem {
+                    Label("상담",systemImage: "message.circle.fill")
+                }
+                .tag(TabViewTabs .chat)
             MyHospitalView()
                 .tabItem {
                     Label("내병원",systemImage:"stethoscope.circle.fill")
@@ -31,6 +36,9 @@ struct DefaultTabView: View {
         .navigationTitle(appManager.TitleString)
         .navigationBarTitleDisplayMode(.inline)
         .padding(.bottom)
+        .onAppear{
+            appManager.GetChatList()
+        }
     }
 }
 

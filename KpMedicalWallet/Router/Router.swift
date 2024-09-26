@@ -12,7 +12,7 @@ import SwiftUI
 
 enum Route:View, Hashable {
     
-    case userPage(item: pages, appManager: NavigationRouter? = nil, signUpManager: IdControl? = nil, pageStatus: Bool? = nil,name: String? = nil,Hospital: Hospitals? = nil, reservationModel: HospitalReservationModel? = nil, reservation: reservationArray? = nil, walletModel: KPHWallet? = nil)
+    case userPage(item: pages, appManager: NavigationRouter? = nil, signUpManager: IdControl? = nil, pageStatus: Bool? = nil,name: String? = nil,Hospital: Hospitals? = nil, reservationModel: HospitalReservationModel? = nil, reservation: reservationArray? = nil, walletModel: KPHWallet? = nil, hospitalId: Int? = nil, hospitalName: String? = nil)
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.hashValue)
@@ -20,13 +20,13 @@ enum Route:View, Hashable {
     
     static func == (lhs: Route, rhs: Route) -> Bool {
             switch (lhs, rhs) {
-            case (.userPage(let lhsItem, _,_,_,_,_,_,_,_), .userPage(let rhsItem, _,_,_,_,_,_,_,_)):
+            case (.userPage(let lhsItem, _,_,_,_,_,_,_,_,_,_), .userPage(let rhsItem, _,_,_,_,_,_,_,_,_,_)):
                 return lhsItem.page == rhsItem.page
             }
     }
     var body: some View{
         switch self {
-        case .userPage(let item, let appManager, let signUpManager,let pageStatus, let name,let hospital, let reservationModel, let reservation,let walletModel):
+        case .userPage(let item, let appManager, let signUpManager,let pageStatus, let name,let hospital, let reservationModel, let reservation,let walletModel, let hospitalId, let HospitalName):
             switch item.page{
             case .SearchHospital:
                 HospitalListMain()
@@ -108,6 +108,14 @@ enum Route:View, Hashable {
                     ErrorView()
                 }
                 
+            case .walletRecover:
+                if let appManager = appManager,let walletModel = walletModel{
+                    WalletRecoverView(appManager: appManager)
+                        .environmentObject(walletModel)
+                }else{
+                    ErrorView()
+                }
+                
             case .SearchPassword:
                 EmptyView()
                 //                회원가입 섹션
@@ -152,7 +160,13 @@ enum Route:View, Hashable {
                 }else{
                     ErrorView()
                 }
-            
+                //                체팅 관련
+            case .advice:
+                if let appManager = appManager, let hospitalId = hospitalId, let HospitalName = HospitalName{
+                    ChatView(appManager: appManager, hospitalId: hospitalId, HospitalName: HospitalName)
+                }else{
+                    ErrorView()
+                }
             }
             
             

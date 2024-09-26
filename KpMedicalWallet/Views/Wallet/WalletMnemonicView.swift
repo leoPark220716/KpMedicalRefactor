@@ -86,17 +86,25 @@ struct WalletMnemonicView: View {
                     message: Text("니모닉 문구는 한 번만 제공되며 다시 확인할 수 없습니다."),
                     primaryButton: .destructive(Text("확인")) {
                         createMnemonics = true
-                        walletModel.OnTapCreateWalletButton(appManager: appManager)
+                        walletModel.TrasactionList = []
+                        Task{
+                            let success = await walletModel.OnTapCreateWalletButton(appManager: appManager)
+                            if success{
+                                appManager.goToRootView()
+                                appManager.push(to: .userPage(item: UserPage(page: .walletMain)))
+                            }
+                        }
+                         
                     },
                     secondaryButton: .cancel()
                 )
             }
             .normalToastView(toast: $appManager.toast)
             .navigationTitle("니모닉 생성")
-//            .navigationBarBackButtonHidden(isLoading ? true : false)
             .navigationBarTitleDisplayMode(.inline)
         }else{
             SomeThingLoadingWithText(text: "지갑을 생성하고 있습니다.")
+                .navigationBarBackButtonHidden(true)
         }
         
     }
