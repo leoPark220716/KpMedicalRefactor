@@ -16,7 +16,13 @@ struct ChatListView: View {
             }else if !appManager.chatItem.isEmpty{
                 List{
                     ForEach(appManager.chatItem.indices, id: \.self){ index in
-                        ChatListItem(item: $appManager.chatItem[index])
+                        Button{
+                            appManager.push(to: .userPage(item: UserPage(page: .advice),appManager: appManager,hospitalId:appManager.chatItem[index].hospital_id,hospitalName: appManager.chatItem[index].hospital_name))
+                        }label: {
+                            ChatListItem(item: $appManager.chatItem[index])
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        
                     }
                 }
             }

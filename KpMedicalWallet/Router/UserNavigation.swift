@@ -35,6 +35,7 @@ enum UserViewPage{
     case SignUpFinal
     
     case advice
+    case images
 }
 enum DefaultPage{
     case login

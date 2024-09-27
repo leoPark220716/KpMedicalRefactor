@@ -66,6 +66,11 @@
 		1E6D1CAC2CA57F85005C6431 /* ConfirmChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6D1CAB2CA57F85005C6431 /* ConfirmChatView.swift */; };
 		1E6D1CAE2CA58015005C6431 /* MyChatItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6D1CAD2CA58013005C6431 /* MyChatItem.swift */; };
 		1E6D1CB02CA5803B005C6431 /* ChatdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6D1CAF2CA5803A005C6431 /* ChatdateView.swift */; };
+		1E7647C82CA681680045CD93 /* SendingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7647C72CA681680045CD93 /* SendingImageView.swift */; };
+		1E7647CA2CA6A0740045CD93 /* ChatImageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7647C92CA6A0740045CD93 /* ChatImageViewer.swift */; };
+		1E7647CC2CA6BF530045CD93 /* OtherChatITem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7647CB2CA6BF530045CD93 /* OtherChatITem.swift */; };
+		1E7647CE2CA6CCA90045CD93 /* NoticeChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7647CD2CA6CCA90045CD93 /* NoticeChatView.swift */; };
+		1E7647D02CA6E3240045CD93 /* ChatDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7647CF2CA6E3240045CD93 /* ChatDataSet.swift */; };
 		1E8FBC6A2C94267900B00909 /* DatePickerDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FBC692C94267900B00909 /* DatePickerDialogView.swift */; };
 		1E8FBC6C2C94835700B00909 /* SignupFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FBC6B2C94835700B00909 /* SignupFinalView.swift */; };
 		1E9136FA2C91667C004F647E /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1E9136F92C91667C004F647E /* FirebaseMessaging */; };
@@ -236,6 +241,11 @@
 		1E6D1CAB2CA57F85005C6431 /* ConfirmChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmChatView.swift; sourceTree = "<group>"; };
 		1E6D1CAD2CA58013005C6431 /* MyChatItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatItem.swift; sourceTree = "<group>"; };
 		1E6D1CAF2CA5803A005C6431 /* ChatdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatdateView.swift; sourceTree = "<group>"; };
+		1E7647C72CA681680045CD93 /* SendingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendingImageView.swift; sourceTree = "<group>"; };
+		1E7647C92CA6A0740045CD93 /* ChatImageViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatImageViewer.swift; sourceTree = "<group>"; };
+		1E7647CB2CA6BF530045CD93 /* OtherChatITem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherChatITem.swift; sourceTree = "<group>"; };
+		1E7647CD2CA6CCA90045CD93 /* NoticeChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeChatView.swift; sourceTree = "<group>"; };
+		1E7647CF2CA6E3240045CD93 /* ChatDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataSet.swift; sourceTree = "<group>"; };
 		1E8FBC692C94267900B00909 /* DatePickerDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerDialogView.swift; sourceTree = "<group>"; };
 		1E8FBC6B2C94835700B00909 /* SignupFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFinalView.swift; sourceTree = "<group>"; };
 		1E9136F72C91654C004F647E /* KpMedicalWallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KpMedicalWallet.entitlements; sourceTree = "<group>"; };
@@ -560,6 +570,7 @@
 				1E6D1C8F2CA55073005C6431 /* ChatViewInputField.swift */,
 				1E6D1C942CA55B1B005C6431 /* ChatHandler.swift */,
 				1E6D1C962CA56645005C6431 /* ChatDataHandler.swift */,
+				1E7647CF2CA6E3240045CD93 /* ChatDataSet.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -589,6 +600,9 @@
 				1E6D1CA02CA57E34005C6431 /* DynamicImageView.swift */,
 				1E6D1CA92CA57F59005C6431 /* ImageProgressView.swift */,
 				1E6D1CAB2CA57F85005C6431 /* ConfirmChatView.swift */,
+				1E7647C72CA681680045CD93 /* SendingImageView.swift */,
+				1E7647CB2CA6BF530045CD93 /* OtherChatITem.swift */,
+				1E7647CD2CA6CCA90045CD93 /* NoticeChatView.swift */,
 			);
 			path = ChatItems;
 			sourceTree = "<group>";
@@ -861,6 +875,7 @@
 				1ED344A02CA2D21B0010C8D8 /* ChatView.swift */,
 				1E6D1C822CA529BD005C6431 /* ChatListView.swift */,
 				1E6D1C982CA57B40005C6431 /* ChatItemList.swift */,
+				1E7647C92CA6A0740045CD93 /* ChatImageViewer.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1200,6 +1215,7 @@
 				1EAD508E2C9058580010F705 /* SignupIdView.swift in Sources */,
 				1ED5B2982C9585E1000DE60B /* HomeViewModel.swift in Sources */,
 				1E6D1CA82CA57ED2005C6431 /* ImageCache.swift in Sources */,
+				1E7647D02CA6E3240045CD93 /* ChatDataSet.swift in Sources */,
 				1EBDD0E32C9AC248002DE858 /* HospitalReservationEditor.swift in Sources */,
 				1E6D1C812CA52638005C6431 /* ChatModel.swift in Sources */,
 				1E66DBEE2CA14B960093A74F /* KPHWalletContract.swift in Sources */,
@@ -1247,6 +1263,7 @@
 				1EAC11302C92BB8D008FFE43 /* SigunUpModifiler.swift in Sources */,
 				1E38D3592C90271D00BB344E /* KpMedicalWalletApp.swift in Sources */,
 				1EAC114B2C93044D008FFE43 /* SignUpMobileView.swift in Sources */,
+				1E7647CA2CA6A0740045CD93 /* ChatImageViewer.swift in Sources */,
 				1ED18CBA2C982D2700C5EE2E /* NeverGeocoder.swift in Sources */,
 				1E6D1C832CA529BD005C6431 /* ChatListView.swift in Sources */,
 				1E19A70A2C9DD23D0060E4AF /* SomeThingLoading.swift in Sources */,
@@ -1255,6 +1272,7 @@
 				1EAE13502C9C1A0C0031C58C /* ReservationDepartmentView.swift in Sources */,
 				1EAD507C2C9042520010F705 /* LoginController.swift in Sources */,
 				1EAC114F2C930661008FFE43 /* ErrorView.swift in Sources */,
+				1E7647C82CA681680045CD93 /* SendingImageView.swift in Sources */,
 				1E6D1CA12CA57E34005C6431 /* DynamicImageView.swift in Sources */,
 				1EAD50A32C9078C60010F705 /* Protocols.swift in Sources */,
 				1E9137052C91999B004F647E /* ErrorDefine.swift in Sources */,
@@ -1283,6 +1301,7 @@
 				1EAC11392C92E8D6008FFE43 /* SignUpDataModel.swift in Sources */,
 				1ED344982CA287720010C8D8 /* WalletRecoverView.swift in Sources */,
 				1ED18CB82C982CDF00C5EE2E /* LocationService.swift in Sources */,
+				1E7647CE2CA6CCA90045CD93 /* NoticeChatView.swift in Sources */,
 				1E0D79CB2C99C8AD0010B767 /* HospitalDetailView.swift in Sources */,
 				1EAC11492C930432008FFE43 /* SignupDobView.swift in Sources */,
 				1E19A7042C9DB3D80060E4AF /* MyReservationViewModel.swift in Sources */,
@@ -1311,6 +1330,7 @@
 				1EAC114D2C93045E008FFE43 /* SignupOtpView.swift in Sources */,
 				1ED5B29C2C958A05000DE60B /* CommonViewModifier.swift in Sources */,
 				1EAC11432C92F4AB008FFE43 /* PhoneNumberControl.swift in Sources */,
+				1E7647CC2CA6BF530045CD93 /* OtherChatITem.swift in Sources */,
 				1EAE13542C9C1A410031C58C /* ReservationDateChooseView.swift in Sources */,
 				1ED5B2952C958543000DE60B /* MyHospitalView.swift in Sources */,
 				1ED18CC72C98655C00C5EE2E /* HospitalListCache.swift in Sources */,

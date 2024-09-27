@@ -85,6 +85,10 @@ struct MyChatItem: View {
             }
         case .unowned, .share, .edit:
             EmptyView()
+        case .move:
+            EmptyView()
+        case .save:
+            EmptyView()
         }
     }
 }

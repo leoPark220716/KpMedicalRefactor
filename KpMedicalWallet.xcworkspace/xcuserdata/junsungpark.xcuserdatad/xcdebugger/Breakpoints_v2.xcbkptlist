@@ -7,79 +7,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7D44E701-34A3-4F4D-AEE7-722A022A64DD"
+            uuid = "E54CF3FE-60C9-41AA-968C-F6199579C47C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KpMedicalWallet/Views/Chat/ChatView.swift"
+            filePath = "KpMedicalWallet/ViewModels/Chat/ChatDataHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C62A8CDF-F4F6-47E4-A821-E1EB017E4A6C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "KpMedicalWallet/Views/HospitalDetail/HospitalDetailView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BFECBE80-8E25-4BA8-8423-B54F148C7A53"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "KpMedicalWallet/Views/Chat/ChatView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "init(appManager:hospitalId:HospitalName:)"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "MyMsg(item:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F5D66942-BD82-4004-8DFE-18FB373A165A"
+            uuid = "ACCD4B75-00AA-459A-9F63-E1F8EC76D914"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KpMedicalWallet/Views/Chat/ChatView.swift"
+            filePath = "KpMedicalWallet/ViewModels/Chat/ChatDataHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "init(appManager:hospitalId:HospitalName:)"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "MyMsg(item:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "18C59CD6-5C2F-4342-B1EC-47F7B6AB68A0"
+            uuid = "8E7B05EF-0D49-404F-80FE-65F466EAEBA4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KpMedicalWallet/Views/Chat/ChatView.swift"
+            filePath = "KpMedicalWallet/ViewModels/Chat/ChatDataHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41">
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "MyMsg(item:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

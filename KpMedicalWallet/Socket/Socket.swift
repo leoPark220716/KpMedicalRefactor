@@ -14,7 +14,7 @@ class Socket: ObservableObject{
     var token: String
     var fcmToken: String
     var appManager: NavigationRouter
-    
+    var isActiveOnChatView: Bool = false
     init(hospitalId: Int, account: String, token: String, fcmToken: String, appManager: NavigationRouter) {
         self.hospitalId = hospitalId
         self.account = account
@@ -58,7 +58,16 @@ class Socket: ObservableObject{
             return (false,[])
         }
     }
-    
+    func SendFileData(data: Data){
+        let message = URLSessionWebSocketTask.Message.data(data)
+        webSocketTask?.send(message, completionHandler: { Error in
+            if let err = Error {
+                print("Message Sending Err \(err.localizedDescription)")
+            }else{
+                print("SendSuccess")
+            }
+        })
+    }
     func sendMessage(
         msg_type: Int,
         from: String,
@@ -147,8 +156,10 @@ class Socket: ObservableObject{
         return await withCheckedContinuation { continuation in
             webSocketTask?.send(message) { error in
                 if let error = error {
-                    DispatchQueue.main.async{
-                        self.appManager.displayError(ServiceError: .clientError(error.localizedDescription))
+                    if self.isActiveOnChatView == true{
+                        DispatchQueue.main.async{
+                            self.appManager.displayError(ServiceError: .clientError(" sendWebSocketMessage \(error.localizedDescription)"))
+                        }
                     }
                 } else {
                     print("✅ 메시지 전송 성공")

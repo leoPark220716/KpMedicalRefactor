@@ -9,6 +9,7 @@ import Foundation
 import Combine
 class SocketHandler: SocketHttpRequest{
     var onMessageReceived: ((String) -> Void)?
+    
     // 소켓 객체 연결
     func Connect() async {
         print("👀WebSocket connect try")
@@ -19,7 +20,6 @@ class SocketHandler: SocketHttpRequest{
             webSocketTask = URLSession.shared.webSocketTask(with: request)
             webSocketTask?.resume()
             print("👀WebSocket connected")
-            
         }catch{
             await appManager.displayError(ServiceError: error)
         }
@@ -36,9 +36,11 @@ class SocketHandler: SocketHttpRequest{
             }
             switch result {
             case .failure(let error):
-                print("❌Receive error: \(error.localizedDescription)")
-                DispatchQueue.main.async {
-                    self.appManager.displayError(ServiceError: .socketError("소켓연결에 실패하셨습니다. 다시 시도해주세요."))
+                if isActiveOnChatView == true {
+                    print("❌Receive error: \(error.localizedDescription)")
+                    DispatchQueue.main.async {
+                        self.appManager.displayError(ServiceError: .socketError("소켓연결에 실패하셨습니다. 다시 시도해주세요."))
+                    }
                 }
             case .success(let message):
                 switch message {

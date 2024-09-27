@@ -34,3 +34,15 @@ struct ChatInputHstackModifier: ViewModifier {
             .padding(.trailing, 10)
     }
 }
+struct SocialLoginButton: View {
+    let systemName: String
+    let color: Color
+    
+    var body: some View {
+        Image(systemName: systemName)
+            .foregroundColor(.white)
+            .padding()
+            .background(color)
+            .clipShape(Circle())
+    }
+}

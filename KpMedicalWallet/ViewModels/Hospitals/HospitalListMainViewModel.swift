@@ -240,8 +240,6 @@ class HospitalListMainViewModel:HospitalListCache, ObservableObject{
             throw error
         }
     }
-    
-    
     // http 요청 객체
     private func hospitalListRequestStruct() throws -> http<Empty?,KPApiStructFrom<Hospital_Data>>{
         print("✅hospitalListRequestStruct")

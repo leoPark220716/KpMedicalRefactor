@@ -101,18 +101,17 @@ struct ChatHandlerDataModel{
         var ImageArray: [URL]?
         var progress: Bool
         var unixTime: Int
-        var noticeMsgNine = false
         var hash: String?
         var departmentCode: Int?
         var pubKey: String?
         var index: Int?
-        var status: String?
+        var status: Int?
         var timeStemp: String?
         enum AmI: Codable{
             case user, other, sepDate
         }
         enum MessageTypes: Codable{
-            case text, photo, file, notice, share,edit, unowned
+            case text, photo, file, notice,move,save, share, edit, unowned
         }
     }
 
@@ -238,4 +237,7 @@ struct SendChatDataModel{
     struct blockData: Codable{
         let hash: String
     }
+}
+struct ImagesSepView{
+    let Images: [URL]
 }

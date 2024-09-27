@@ -64,17 +64,30 @@ class TimeHandler:SocketHandler {
             }
         }
     }
-    func returnReadCheck(hospitalTime: String? = "1000-01-01T01:01:01.000", patientTime: String) -> Bool {
+    func returnReadCheck(hospitalTime: String? = nil, patientTime: String? = nil) -> Bool {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
-        guard let Hdate = dateFormatter.date(from: hospitalTime!) else {
+
+        // 기본값을 사용하여 옵셔널 바인딩
+        let hospitalTimeValue = hospitalTime ?? "1000-01-01T01:01:01.000"
+        
+        // patientTimeValue에서 `#` 이후의 부분을 제거
+        let patientTimeValue = (patientTime ?? "2023-01-01T01:01:01.000").components(separatedBy: "#").first ?? "2023-01-01T01:01:01.000"
+        
+        print("✅✅✅✅ hospitalTimeValue : \(hospitalTimeValue)")
+        print("✅✅✅✅ patientTimeValue : \(patientTimeValue)")
+        
+        guard let Hdate = dateFormatter.date(from: hospitalTimeValue) else {
             return false
         }
-        guard let Pdate = dateFormatter.date(from: patientTime) else {
+
+        guard let Pdate = dateFormatter.date(from: patientTimeValue) else {
             return false
         }
+
         return Hdate >= Pdate
     }
+
     private func isToday(dateString: String) -> Bool {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"

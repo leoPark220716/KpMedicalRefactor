@@ -38,7 +38,8 @@ final class NavigationRouter: ChatListManager {
                 await rootView(change: rootview)
             }catch {
                 Authdel()
-                await displayError(ServiceError: error)
+                deleteFCMToken()
+                await rootView(change: .login)
             }
             
         }
