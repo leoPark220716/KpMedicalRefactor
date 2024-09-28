@@ -9,9 +9,14 @@ import SwiftUI
 
 struct AppOtpView: View {
     @EnvironmentObject var appManager: NavigationRouter
-    @StateObject var viewModel = OtpViewModel()
+    @StateObject var viewModel: OtpViewModel
+    
     let viewCase: OtpViewModel.routeType
     @Environment(\.dismiss) var dismiss
+    init(viewCase: OtpViewModel.routeType, socket: ChatHandler? = nil){
+        self.viewCase = viewCase
+        _viewModel = StateObject(wrappedValue: OtpViewModel(socket: socket, viewCase: viewCase))
+    }
     var body: some View {
         GeometryReader { geo in
             VStack{
@@ -61,7 +66,7 @@ struct AppOtpView: View {
                 }
             }
             .onAppear{
-                viewModel.setOtpStatus(appManager: appManager,viewCase: viewCase)
+                viewModel.setOtpStatus(appManager: appManager)
             }
         }
     }

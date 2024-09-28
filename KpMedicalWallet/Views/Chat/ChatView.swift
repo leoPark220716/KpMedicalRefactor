@@ -14,11 +14,10 @@ struct ChatView: View {
     @StateObject var socket: ChatHandler
     @FocusState var chatField: Bool
     let ChatTitle: String
-    init(appManager: NavigationRouter,hospitalId: Int, HospitalName: String){
+    init(appManager: NavigationRouter,hospitalId: Int, HospitalName: String,hospital_icon: String){
 //        _contractManager = StateObject(wrappedValue: KPHWalletContractManager(appManager: appManager))
         ChatTitle = HospitalName
-        _socket = StateObject(wrappedValue: ChatHandler(hospitalId: hospitalId, account: appManager.GetUserAccountString().account, token: appManager.jwtToken, fcmToken: appManager.jwtToken, appManager: appManager))
-        
+        _socket = StateObject(wrappedValue: ChatHandler(hospitalId: hospitalId, account: appManager.GetUserAccountString().account, token: appManager.jwtToken, fcmToken: appManager.jwtToken, appManager: appManager,hospital_icon: hospital_icon))
     }
     var body: some View {
         VStack{
@@ -27,6 +26,9 @@ struct ChatView: View {
                     chatField = false
                 }
             ChatViewInputField(socket: socket,chatField: _chatField)
+        }
+        .sheet(isPresented: $socket.otp){
+            AppOtpView(viewCase: socket.otpType,socket: socket)
         }
         .onAppear{
             socket.isActiveOnChatView = true
@@ -58,7 +60,6 @@ struct ChatView: View {
     private func handleScenPhaseChange(_ phase: ScenePhase){
         switch phase {
         case .background:
-            socket.isActiveOnChatView = false
             socket.disconnect()
         case .inactive:
             print("App inactive")
@@ -74,6 +75,6 @@ struct ChatView: View {
 }
 #Preview {
     @Previewable @StateObject var appManager = NavigationRouter()
-    ChatView(appManager: appManager,hospitalId: 1,HospitalName:"asdf")
+    ChatView(appManager: appManager,hospitalId: 1,HospitalName:"asdf", hospital_icon: "https://public-kp-medicals-test.s3.ap-northeast-2.amazonaws.com/hospital_icon/default_hospital.png")
         
 }

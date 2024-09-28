@@ -11,8 +11,11 @@ import BigInt
 import UIKit
 class KPHWalletContractManager: KPHWalletContract{
     var appManager: NavigationRouter
-    init(appManager: NavigationRouter) {
+    var socket: ChatHandler
+    var contract: String = ""
+    init(appManager: NavigationRouter,socket: ChatHandler) {
         self.appManager = appManager
+        self.socket = socket
         super.init()
         Task{
             do{
@@ -25,7 +28,8 @@ class KPHWalletContractManager: KPHWalletContract{
             }
         }
     }
-    func SmartContractConfirm(hospitalId: UInt32, date: BigUInt) {
+    
+    func SmartContractConfirm(hospitalId: UInt32, date: BigUInt,stempUUID: String) {
         var backgroundTask: UIBackgroundTaskIdentifier = .invalid
         backgroundTask = UIApplication.shared.beginBackgroundTask() {
             UIApplication.shared.endBackgroundTask(backgroundTask)
@@ -35,30 +39,41 @@ class KPHWalletContractManager: KPHWalletContract{
             Task {
                 do {
                     print("👀 SmartContractConfirm Start")
+                    self.contract =  try await self.getContract()
+                    print("👀 SmartContractConfirm \(self.contract)")
                     let password = try self.GetPasswordKeystore(account: self.UserAccount)
                     print("👀 SmartContractConfirm \(password)")
                     let privateKeyData = try self.GetWalletPrivateKey(password: password.password)
-                    try await self.getContract()
                     print("👀 SmartContractConfirm \(privateKeyData.base64EncodedString())")
                     print("👀 SmartContractConfirm Start confirm")
-                    let confirm = try await self.callConfirmReqeust(privateKey: privateKeyData, hospitalID: hospitalId, date: date, password: password.password)
+                    let confirm = try await self.callConfirmReqeust(privateKey: privateKeyData, hospitalID: hospitalId, date: date, password: password.password,contractAddress: self.contract)
                     if confirm.success{
                         self.scheduleNotification(key: "contract_request_success")
+                        _ = await self.transactionUpdate(hospitalId: hospitalId, msgType: 6, stempUUID: self.socket.stempUUID)
+                        if self.CheckSocketConnect(){
+                            _ = await self.socket.sendTransactionConfirm(message: "저장요청을 수락 하셨습니다.", blockHash: confirm.txHash)
+                        }else{
+                            await self.socket.Connect()
+                            _ = await self.socket.sendTransactionConfirm(message: "저장요청을 수락 하셨습니다.", blockHash: confirm.txHash)
+                            self.socket.disconnect()
+                        }
                     }else{
                         self.scheduleNotification(key: "contract_request_false")
                     }
                     // 추가 작업 수행
                 } catch let error as TraceUserError {
-                    print("❌SmartContract raceUserError")
-                    DispatchQueue.main.async {
-                        self.appManager.displayError(ServiceError: error)
-                    }
+                    print("❌SmartContract raceUserError \(error)")
+                    self.scheduleNotification(key: "contract_request_false")
+//                    DispatchQueue.main.async {
+//                        self.appManager.displayError(ServiceError: error)
+//                    }
                 } catch {
                     print("❌SmartContract error")
                     print(error.localizedDescription)
-                    DispatchQueue.main.async {
-                        self.appManager.displayError(ServiceError: .unowned(error.localizedDescription))
-                    }
+                    self.scheduleNotification(key: "contract_request_false")
+//                    DispatchQueue.main.async {
+//                        self.appManager.displayError(ServiceError: .unowned(error.localizedDescription))
+//                    }
                 }
             }
         }
@@ -81,7 +96,7 @@ class KPHWalletContractManager: KPHWalletContract{
     func scheduleNotification(key: String) {
         let content = UNMutableNotificationContent()
         content.title = "Test"
-        content.body = "컨트랙트 요청 처리가 완료되었습니다."
+        content.body = PlistManager.shared.string(forKey: key)
         content.sound = .default
         content.userInfo = returnUserInfo(title: content.title, body: content.body)
         
@@ -111,6 +126,9 @@ class KPHWalletContractManager: KPHWalletContract{
             ]
         ]
         return userInfo
+    }
+    private func CheckSocketConnect() -> Bool{
+        return socket.webSocketTask?.state == .running
     }
 
 }

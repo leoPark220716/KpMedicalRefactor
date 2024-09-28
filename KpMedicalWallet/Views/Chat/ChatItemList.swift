@@ -19,7 +19,7 @@ struct ChatItemList: View {
                         Button{
                             socket.goToPhotoView(item: socket.ChatData[index])
                         }label: {
-                            ChatItemSwitchs( HospitalName:HospitalName, item: $socket.ChatData[index], items: $socket.ChatData, index:index,Image: "https://public-kp-medicals-test.s3.ap-northeast-2.amazonaws.com/hospital_icon/default_hospital.png")
+                            ChatItemSwitchs( socket: socket, HospitalName:HospitalName, item: $socket.ChatData[index], index:index,Image: socket.HospitalImage)
                         }
                         .onAppear{
                             if socket.chatId != 0 && index == socket.ChatData.count - 3 {
@@ -40,9 +40,10 @@ struct ChatItemList: View {
     }
 }
 struct ChatItemSwitchs: View {
+    @ObservedObject var socket: ChatHandler
     let HospitalName: String
     @Binding var item:ChatHandlerDataModel.ChatMessegeItem
-    @Binding var items:[ChatHandlerDataModel.ChatMessegeItem]
+    
     var index: Int
     let Image: String
     var body: some View {
@@ -50,7 +51,7 @@ struct ChatItemSwitchs: View {
         case .user:
             MyChatItem(item: $item, hospitalName: HospitalName)
         case .other:
-            OthersChatItem(item: $item, items: $items, image: Image, index: index, HospitalName: HospitalName)
+            OthersChatItem(socket: socket, item: $item, image: Image, index: index, HospitalName: HospitalName)
         case .sepDate:
             ChatdateView(time: item.chatDate)
         }

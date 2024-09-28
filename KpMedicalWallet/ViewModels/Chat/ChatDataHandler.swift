@@ -20,7 +20,7 @@ class ChatDataHandler: ChatDataSet{
                 else if decodedData.msg_type == 2 {
                     setAllRead()
                 }else{
-                    MyMsg(item:  decodedData)
+                    MyMsg(receiveItem:  decodedData)
                 }
             }
         }
@@ -33,7 +33,7 @@ class ChatDataHandler: ChatDataSet{
         var ChatDatas: [ChatHandlerDataModel.ChatMessegeItem] = []
         for item in decodedData.reversed(){
             let time = timeChangeToChatTime(time: item.timestamp)
-            let dateChatSet = chatDateViewItem(ChatPreData: ChatDatas, date: time.chatDate)
+            let dateChatSet = chatDateViewItem(ChatPreData: ChatDatas, date: time.chatDate,reversed: true)
             if let dateItem = dateChatSet{
                 ChatDatas.append(dateItem)
             }
@@ -88,35 +88,43 @@ class ChatDataHandler: ChatDataSet{
         }
         return ChatDatas
     }
-    private func MyMsg(item: OpenChatRoomDataModel.ChatMessage){
-        let time = timeChangeToChatTime(time: item.timestamp)
-        let dateChatSet = dateViewAdd(ChatPreData: ChatData, date: time.chatDate)
+    private func MyMsg(receiveItem: OpenChatRoomDataModel.ChatMessage){
+        let time = timeChangeToChatTime(time: receiveItem.timestamp)
+        
+        let dateChatSet = chatDateViewItem(ChatPreData: ChatData, date: time.chatDate,reversed: false)
         // 날짜뷰 세팅
-        if let dateItem = dateChatSet.item{
+        if let dateItem = dateChatSet{
+            if !ChatData.isEmpty{
+                DispatchQueue.main.async {
+                    self.ChatData.removeAll{ date_item in
+                        date_item.amI == .sepDate && date_item.chatDate == dateItem.chatDate
+                    }
+                }
+            }
             DispatchQueue.main.async {
                 self.ChatData.insert(dateItem, at: 0)
             }
         }
-        let timeUpdate = MessegeTimeControl(reversed: false, ChatPreData: ChatData, msg_type: String(item.msg_type), time: time.chatTime, date: time.chatDate)
+        let timeUpdate = MessegeTimeControl(reversed: false, ChatPreData: ChatData, msg_type: String(receiveItem.msg_type), time: time.chatTime, date: time.chatDate)
         if timeUpdate.update,!ChatData.isEmpty{
             DispatchQueue.main.async{
                 self.ChatData[0].showETC = false
             }
         }
-        switch messageType(contentType: item.content_type,fileArray: item.content?.key,bucket: item.content?.bucket,msg_type: item.msg_type ){
+        switch messageType(contentType: receiveItem.content_type,fileArray: receiveItem.content?.key,bucket: receiveItem.content?.bucket,msg_type: receiveItem.msg_type ){
         case .text:
-            let item = textMessageItem(type: .text,messege: item.content?.message, time: time.chatTime, date: time.chatDate, amI: returnItemSide(type: item.msg_type), unix: 0,timeStemp: item.timestamp,show: item.on)
+            let item = textMessageItem(type: .text,messege: receiveItem.content?.message, time: time.chatTime, date: time.chatDate, amI: returnItemSide(type: receiveItem.msg_type), unix: 0,timeStemp: receiveItem.timestamp,show: receiveItem.on)
             DispatchQueue.main.async {
                 self.ChatData.insert(item, at: 0)
             }
         case .photo:
-            guard let key = item.content?.key, let bucket = item.content?.bucket else {
+            guard let key = receiveItem.content?.key, let bucket = receiveItem.content?.bucket else {
                 print("❌ Error  Server 👀 Bucket Key Missing")
                 return
             }
             let images = determineFileType(from: key, bucket: bucket)
             let iamgeArray = returnURIArray(image: images.imageArray)
-            let item = textMessageItem(type: .photo, time: time.chatTime, date: time.chatDate, amI: returnItemSide(type: item.msg_type),imgAr: iamgeArray.imgArray ,unix: 0,timeStemp: item.timestamp,show: item.on)
+            let item = textMessageItem(type: .photo, time: time.chatTime, date: time.chatDate, amI: returnItemSide(type: receiveItem.msg_type),imgAr: iamgeArray.imgArray ,unix: 0,timeStemp: receiveItem.timestamp,show: receiveItem.on)
             if item.amI == .user{
                 for index in ChatData.indices{
                     if ChatData[index].progress == true{
@@ -132,28 +140,28 @@ class ChatDataHandler: ChatDataSet{
                 }
             }
         case .file:
-            guard let key = item.content?.key, let bucket = item.content?.bucket else {
+            guard let key = receiveItem.content?.key, let bucket = receiveItem.content?.bucket else {
                 print("❌ Error  Server 👀 Bucket Key Missing")
                 return
             }
             let fileTuple = determineFileType(from: key, bucket: bucket)
             let file = returnfileArray(image: fileTuple.imageArray)
-            let item = textMessageItem(type: .file, time: time.chatTime, date: time.chatDate, amI: returnItemSide(type: item.msg_type),file:file.file[0] ,unix: 0,timeStemp: item.timestamp,show: item.on)
+            let item = textMessageItem(type: .file, time: time.chatTime, date: time.chatDate, amI: returnItemSide(type: receiveItem.msg_type),file:file.file[0] ,unix: 0,timeStemp: receiveItem.timestamp,show: receiveItem.on)
             DispatchQueue.main.async{
                 self.ChatData.insert(item, at: 0)
             }
         case .notice:
             print("Photo")
         case .share:
-            if let unixTime = item.block_data?.unixtime {
-                let item = textMessageItem(type: .share, messege: item.content?.message, time: time.chatTime, date: time.chatDate, amI: .other, unix: unixTime, timeStemp: item.timestamp,status: item.hospital_data?.status,hash: item.block_data?.hash)
+            if let unixTime = receiveItem.block_data?.unixtime {
+                let item = textMessageItem(type: .share, messege: receiveItem.content?.message, time: time.chatTime, date: time.chatDate, amI: .other, unix: unixTime, timeStemp: receiveItem.timestamp,status: receiveItem.hospital_data?.status,hash: receiveItem.block_data?.hash)
                 DispatchQueue.main.async{
                     self.ChatData.insert(item, at: 0)
                 }
             }
         case .edit:
-            if let unixTime = item.block_data?.unixtime {
-                let item = textMessageItem(type: .edit, messege: item.content?.message, time: time.chatTime, date: time.chatDate, amI: .other, unix: unixTime, timeStemp: item.timestamp,status: item.hospital_data?.status,hash: item.block_data?.hash)
+            if let unixTime = receiveItem.block_data?.unixtime {
+                let item = textMessageItem(type: .edit, messege: receiveItem.content?.message, time: time.chatTime, date: time.chatDate, amI: .other, unix: unixTime, timeStemp: receiveItem.timestamp,status: receiveItem.hospital_data?.status,hash: receiveItem.block_data?.hash)
                 DispatchQueue.main.async{
                     self.ChatData.insert(item, at: 0)
                 }
@@ -161,14 +169,14 @@ class ChatDataHandler: ChatDataSet{
         case .unowned:
             print("Photo")
         case .move:
-            let item = textMessageItem(type: .move, messege: item.content?.message, time: time.chatTime, date: time.chatDate, amI: .other, unix: 0, timeStemp: item.timestamp)
+            let item = textMessageItem(type: .move, messege: receiveItem.content?.message, time: time.chatTime, date: time.chatDate, amI: .other, unix: 0, timeStemp: receiveItem.timestamp)
             DispatchQueue.main.async{
                 self.ChatData.insert(item, at: 0)
             }
         case .save:
             print("✅ Save Check")
-            if let unixTime = item.block_data?.unixtime {
-                let item = textMessageItem(type: .save, messege: item.content?.message, time: time.chatTime, date: time.chatDate, amI: .other, unix: unixTime, timeStemp: item.timestamp,status: item.hospital_data?.status,hash: item.block_data?.hash)
+            if let unixTime = receiveItem.block_data?.unixtime {
+                let item = textMessageItem(type: .save, messege: receiveItem.content?.message, time: time.chatTime, date: time.chatDate, amI: .other, unix: unixTime, timeStemp: receiveItem.timestamp,status: receiveItem.hospital_data?.status,hash: receiveItem.block_data?.hash)
                 DispatchQueue.main.async{
                     self.ChatData.insert(item, at: 0)
                 }
@@ -177,12 +185,13 @@ class ChatDataHandler: ChatDataSet{
     }
     
     //    날짜뷰
-    private func chatDateViewItem(ChatPreData: [ChatHandlerDataModel.ChatMessegeItem],date: String)->(ChatHandlerDataModel.ChatMessegeItem?) {
+    private func chatDateViewItem(ChatPreData: [ChatHandlerDataModel.ChatMessegeItem],date: String,reversed: Bool)->(ChatHandlerDataModel.ChatMessegeItem?) {
         if ChatPreData.isEmpty{
             let item = ChatHandlerDataModel.ChatMessegeItem(type: .text, ReadCount: false, time: "", amI: .sepDate, chatDate: date, showETC: false, progress: false,unixTime: 0)
             return item
         }else{
-            for index in ChatPreData.indices.reversed() {
+            let indices = reversed ? Array(ChatPreData.indices.reversed()) : Array(ChatPreData.indices)
+            for index in indices {
                 if ChatPreData[index].progress == false{
                     if ChatPreData[index].chatDate != date{
                         let item = ChatHandlerDataModel.ChatMessegeItem(type: .text, ReadCount: false, time: "", amI: .sepDate, chatDate: date, showETC: false, progress: false,unixTime: 0)
@@ -195,25 +204,7 @@ class ChatDataHandler: ChatDataSet{
             return nil
         }
     }
-    // 소켓 연결상태에서 날짜뷰 추가.
-    func dateViewAdd(ChatPreData: [ChatHandlerDataModel.ChatMessegeItem],date: String)->(error:Bool, item: ChatHandlerDataModel.ChatMessegeItem?) {
-        if ChatPreData.isEmpty{
-            let item = ChatHandlerDataModel.ChatMessegeItem(type: .text, ReadCount: false, time: "", amI: .sepDate, chatDate: date, showETC: false, progress: false,unixTime: 0)
-            return (false, item)
-        }else{
-            for index in ChatPreData.indices {
-                if ChatPreData[index].progress == false{
-                    if ChatPreData[index].chatDate != date{
-                        let item = ChatHandlerDataModel.ChatMessegeItem(type: .text, ReadCount: false, time: "", amI: .sepDate, chatDate: date, showETC: false, progress: false, unixTime:  0)
-                        return (false, item)
-                    }else{
-                        return (true, nil)
-                    }
-                }
-            }
-            return (true, nil)
-        }
-    }
+    
     
     
     
@@ -507,7 +498,6 @@ class ChatDataHandler: ChatDataSet{
                             DispatchQueue.main.async {
                                 self.appManager.showToast(message: "파일을 성공적으로 전송 했습니다.")
                             }
-                            
                         }
                     }
                 } catch {

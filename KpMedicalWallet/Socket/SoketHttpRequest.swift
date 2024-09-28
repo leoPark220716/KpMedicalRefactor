@@ -63,7 +63,7 @@ class SocketHttpRequest: Socket{
         do{
             let requset = createGetDBChatDatas(chatId: chatId,query: query)
             let call = KPWalletAPIManager(httpStructs: requset, URLLocations: 2)
-            let response = try await call.performRequest()
+            let response = try await call.performRequest(encoded: true)
             if response.success, let data = response.data?.data{
                 return data.messages
             }

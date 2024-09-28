@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct OthersChatItem: View {
+    @ObservedObject var socket: ChatHandler
     @Binding var item: ChatHandlerDataModel.ChatMessegeItem
-    @Binding var items: [ChatHandlerDataModel.ChatMessegeItem]
     let image: String
     var index: Int
     @State var imageUrls: [URL] = []
@@ -51,7 +51,7 @@ struct OthersChatItem: View {
     }
     
     private func shouldShowProfileImage() -> Bool {
-        index < items.count - 1 && items[index + 1].amI != .other
+        index < socket.ChatData.count - 1 && socket.ChatData[index + 1].amI != .other
     }
     
     @ViewBuilder
@@ -91,7 +91,7 @@ struct OthersChatItem: View {
                     NoticeChatView(message: message)
                 }
             case .save:
-                RequestConfirmChatView(hospitalName: HospitalName, item: $item)
+                RequestConfirmChatView(hospitalName: HospitalName, item: $item, socket: socket)
                     .cornerRadius(10)
             }
             if item.showETC {
@@ -103,11 +103,11 @@ struct OthersChatItem: View {
     }
     
     private func topPadding() -> CGFloat {
-        return (index < items.count - 1 && items[index + 1].amI == .other) ? 0 : 10
+        return (index < socket.ChatData.count - 1 && socket.ChatData[index + 1].amI == .other) ? 0 : 10
     }
     
     private func bottomPadding() -> CGFloat {
-        return (!items.isEmpty && index > 0 && index < items.count && items[index - 1].amI == .user) ? 20 : 0
+        return (!socket.ChatData.isEmpty && index > 0 && index < socket.ChatData.count && socket.ChatData[index - 1].amI == .user) ? 20 : 0
     }
 }
 
@@ -119,7 +119,7 @@ struct RequestConfirmChatView: View {
     @Binding var item: ChatHandlerDataModel.ChatMessegeItem
     @State var buttonState = true
     @EnvironmentObject var appManager: NavigationRouter
-    
+    @ObservedObject var socket: ChatHandler
     var body: some View {
         VStack {
             ZStack(alignment: .top) {
@@ -129,7 +129,6 @@ struct RequestConfirmChatView: View {
                             .bold()
                         Spacer()
                     }
-                    
                     if let message = item.messege {
                         Text("\(message)\n\n-요청구분 : 의료데이터 저장\n-요청기관 : \(hospitalName)\n-수신자 : \(appManager.name)")
                             .font(.system(size: 14))
@@ -146,8 +145,24 @@ struct RequestConfirmChatView: View {
                             .padding(.bottom, 10)
                             .padding(.horizontal, 10)
                     }
-                    
                     Button(action: {
+                        switch item.type{
+                        case .save:
+                            if let timestemp = item.timeStemp{
+                                socket.otp.toggle()
+                                socket.setSaveContractData(stemp: timestemp, timeUUID: item.unixTime)
+                                socket.otpType = .save
+                            }
+                            
+                        case .share:
+                            socket.otp.toggle()
+                            socket.otpType = .share
+                        case .edit:
+                            socket.otp.toggle()
+                            socket.otpType = .edit
+                        default:
+                            print("")
+                        }
                         item.status = 1
                     }) {
                         Text("수락")

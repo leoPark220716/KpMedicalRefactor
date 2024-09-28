@@ -9,12 +9,13 @@ import Foundation
 
 class OtpViewModel: ObservableObject{
     var appManager: NavigationRouter?
+    var socket: ChatHandler?
     @Published var password: String = ""
     var checkPassword: String = ""
     @Published var otpStatus: Bool = false
     @Published var Dismiss: Bool = false
     @Published var matchCheck: Bool = true
-    var viewCase: routeType = .walletView
+    var viewCase: routeType
     @Published var rows = [
         ["1", "2", "3"],
         ["4", "5", "6"],
@@ -23,6 +24,10 @@ class OtpViewModel: ObservableObject{
     ]
     @Published var guaidLineString: String = ""
     
+    init(socket: ChatHandler? = nil,viewCase: routeType){
+        self.socket = socket
+        self.viewCase = viewCase
+    }
     @MainActor
     func reArrangeNumbers() {
         var numbers = (1...9).map { String($0) } + ["0"] // 숫자 문자열 배열 생성
@@ -60,7 +65,7 @@ class OtpViewModel: ObservableObject{
             }
         }
     }
-    func setOtpStatus(appManager: NavigationRouter, viewCase: routeType){
+    func setOtpStatus(appManager: NavigationRouter){
         print("Call setOtpStatus")
         Task{
             self.appManager = appManager
@@ -97,16 +102,19 @@ class OtpViewModel: ObservableObject{
         Task{
             let auth = AuthData()
             let state = auth.verifyPassword(password: password,account: account.account)
-            await MainActor.run {
-                if state{
-                    Dismiss = state
-                    routeNextView()
-                }else{
-                    matchCheck = false
-                    password = ""
-                    reArrangeNumbers()
+            if state{
+                DispatchQueue.main.async{
+                    self.Dismiss = state
                 }
+                await routeNextView()
+            }else{
+                DispatchQueue.main.async{
+                    self.matchCheck = false
+                    self.password = ""
+                }
+                await reArrangeNumbers()
             }
+            
         }
     }
     @MainActor
@@ -116,9 +124,24 @@ class OtpViewModel: ObservableObject{
         password = ""
         reArrangeNumbers()
     }
-    @MainActor
-    func routeNextView(){
-        appManager?.push(to: .userPage(item: UserPage(page: .walletMain)))
+    func routeNextView() async {
+        
+        switch viewCase {
+        case .edit:
+            print("")
+        case .save:
+            guard let appManager = appManager, let socket = socket else{
+                return
+            }
+            let walletContract = KPHWalletContractManager(appManager: appManager,socket: socket)
+            walletContract.SmartContractConfirm(hospitalId: UInt32(socket.hospitalId), date: socket.timeUUID,stempUUID: socket.stempUUID)
+        case .share:
+            print("")
+        case .walletView:
+            await MainActor.run {
+                appManager?.push(to: .userPage(item: UserPage(page: .walletMain)))
+            }
+        }
     }
     enum routeType{
         case edit

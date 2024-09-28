@@ -61,8 +61,8 @@ class WalletHttpRequest: WalletDataSet{
         }catch{
             await appManager.displayError(ServiceError: .unowned(""))
         }
-        
     }
+    
     //    퍼블릭키 및 컨트랙트 요청
     func getPubkeyContract() throws {
         Task{
@@ -92,22 +92,38 @@ class WalletHttpRequest: WalletDataSet{
             }
         }
     }
+    
     //    퍼블릭키 및 컨트랙트 요청
-    func getContract() async throws {
-        Task{
+    func getContract() async throws -> (String){
+        
             do{
                 let request = createGetContractPubKeyRequest()
                 let call = KPWalletAPIManager(httpStructs: request, URLLocations: 1)
                 let response = try await call.performRequest()
                 if response.success{
                     guard let contract = response.data?.data.contract else{
-                        throw TraceUserError.clientError("")
+                        throw TraceUserError.clientError("getContract")
                     }
-                    ContractAddress = contract
+                    return contract
                 }
+                throw TraceUserError.clientError("getContract")
             }catch{
                 throw error
             }
+    }
+    func transactionUpdate(hospitalId: UInt32,msgType: Int,stempUUID: String) async -> (Bool) {
+        do{
+            let requset =  updateContractStatus(hospitalId: hospitalId,msgType: msgType,stempUUID: stempUUID)
+            let call = KPWalletAPIManager(httpStructs: requset, URLLocations: 1)
+            let response = try await call.performRequest()
+            if let _ = response.data?.data{
+                return true
+            }else{
+                return false
+            }
+        }catch{
+            print("❌transactionUpdate \(error)")
+            return false
         }
     }
     // 트랜젝선 리스트 요청
@@ -277,7 +293,14 @@ class WalletHttpRequest: WalletDataSet{
             requestVal: body)
     }
     
-    
-    
-    
+    private func updateContractStatus(hospitalId: UInt32,msgType: Int,stempUUID: String)-> http<WalletModel.updateContractBody?,WalletModel.updateContractResponse>{
+        let body = WalletModel.updateContractBody(room_key: "\(hospitalId):\(UserAccount)", msg_type: msgType, timestamp_uuid: stempUUID)
+        return http(
+            method: "PATCH",
+            urlParse: "v2/chat/transactions",
+            token: token,
+            UUID: UserVariable.GET_UUID(),
+            requestVal: body
+        )
+    }
 }

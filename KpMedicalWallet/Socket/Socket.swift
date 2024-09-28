@@ -15,7 +15,8 @@ class Socket: ObservableObject{
     var fcmToken: String
     var appManager: NavigationRouter
     var isActiveOnChatView: Bool = false
-    init(hospitalId: Int, account: String, token: String, fcmToken: String, appManager: NavigationRouter) {
+    
+    init(hospitalId: Int, account: String, token: String, fcmToken: String, appManager: NavigationRouter, hospital_icon: String) {
         self.hospitalId = hospitalId
         self.account = account
         self.token = token

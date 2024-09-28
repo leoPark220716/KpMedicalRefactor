@@ -76,5 +76,20 @@ struct WalletModel{
         let error_code: Int
         let error_stack: String
     }
-    
+    struct updateContractBody: Codable{
+        let room_key:String
+        let msg_type: Int
+        let timestamp_uuid:String
+    }
+    struct updateContractResponse : Codable{
+        let status: Int
+        let success: String
+        let message: String
+        let data: datafiled
+    }
+    struct datafiled: Codable{
+        let affectedRows: Int
+        let error_code: Int
+        let error_stack: String
+    }
 }

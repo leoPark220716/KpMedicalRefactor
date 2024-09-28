@@ -13,8 +13,6 @@ import Security
 import CryptoKit
 import BigInt
 class KPHWalletContract: WalletHttpRequest{
-    
-    
     // 지갑 복구
     func recoverWallet(password: String) throws -> String{
         do {
@@ -152,6 +150,7 @@ class KPHWalletContract: WalletHttpRequest{
         if let firstLog = receipt.logs.first{
             let hexString = firstLog.data.toHexString()
             if let hexValue = BigUInt(hexString, radix: 16) {
+                print("✅ Tx receipt Log : \(firstLog)")
                 let decimalValue = String(hexValue)
                 if decimalValue == "1"{
                     return (success: true, txHash: result.hash)
@@ -164,7 +163,7 @@ class KPHWalletContract: WalletHttpRequest{
     }
     
     // 스마트컨트랙트 작성 (저장 수락)
-    func callConfirmSaveRecode(privateKey: Data,hospitalID: UInt32,date: BigUInt,password: String)  async throws -> (success:Bool,txHash: String) {
+    func callConfirmSaveRecode(privateKey: Data,hospitalID: UInt32,date: BigUInt,password: String,contractAddress: String)  async throws -> (success:Bool,txHash: String) {
         do{
             print("Start callConfirmSaveRecode")
             guard let web3 = web3 else {
@@ -179,7 +178,7 @@ class KPHWalletContract: WalletHttpRequest{
                 print("❌callConfirmSaveRecode accountAddress")
                 throw TraceUserError.clientError("")
             }
-            let contract = Web3.Contract(web3: web3, abiString: abi, at: EthereumAddress("0xb397d0C94D920680D73b31c3e0eCb103d909B69a"), abiVersion: 2)
+            let contract = Web3.Contract(web3: web3, abiString: abi, at: EthereumAddress(contractAddress), abiVersion: 2)
             guard let trasaction = contract?.createWriteOperation(
                 "confirmSaveRecord",
                 parameters: [hospitalID,date] as [AnyObject],
@@ -268,10 +267,10 @@ class KPHWalletContract: WalletHttpRequest{
     }
     
     //    저장요청 컨트랙트 작성
-    func callConfirmReqeust(privateKey: Data, hospitalID: UInt32, date: BigUInt, password: String) async throws -> (success:Bool,txHash:String) {
+    func callConfirmReqeust(privateKey: Data, hospitalID: UInt32, date: BigUInt, password: String, contractAddress: String) async throws -> (success:Bool,txHash:String) {
         do{
-            let tx = await sendTxForConfirm(account: UserAccount, key: privateKey)
-            let result = try await  callConfirmSaveRecode(privateKey: privateKey, hospitalID: hospitalID, date: date, password: password)
+            _ = await sendTxForConfirm(account: UserAccount, key: privateKey)
+            let result = try await  callConfirmSaveRecode(privateKey: privateKey, hospitalID: hospitalID, date: date, password: password,contractAddress: contractAddress)
 //            let result = await callConfirmSaveRecord(key: privateKey, hospitalID: hospitalID, date: date, password: password)
             print("👀 callConfirmSaveRecode 1\(result)")
             if result.success{
@@ -279,7 +278,7 @@ class KPHWalletContract: WalletHttpRequest{
             }
             let tx2 = await sendTxForConfirm(account: UserAccount, key: privateKey)
             if tx2{
-                let Second_result = try await callConfirmSaveRecode(privateKey: privateKey, hospitalID: hospitalID, date: date, password: password)
+                let Second_result = try await callConfirmSaveRecode(privateKey: privateKey, hospitalID: hospitalID, date: date, password: password,contractAddress: contractAddress)
                 return Second_result
             }
             return (false,"false")
