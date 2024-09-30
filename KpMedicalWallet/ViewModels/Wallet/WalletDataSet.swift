@@ -144,18 +144,18 @@ class WalletDataSet: RSAKeyManager, ObservableObject{
     func returnGasNonce() async throws -> (gas: BigUInt, nonce: BigUInt) {
         let maxGasPrice = BigUInt(50) * BigUInt(10).power(9) // 예: 50 Gwei
         guard let gasPrice = try await web3?.eth.gasPrice() else {
-            throw TraceUserError.clientError("")
+            throw TraceUserError.clientError("returnGasNonce")
         }
         guard gasPrice <= maxGasPrice else {
-            throw TraceUserError.clientError("")
+            throw TraceUserError.clientError("returnGasNonce")
         }
         guard let account = accountAddress else {
-            throw TraceUserError.clientError("")
+            throw TraceUserError.clientError("returnGasNonce")
         }
         guard let currentNonce = try await web3?.eth.getTransactionCount(for: account, onBlock: .latest) else {
-            throw TraceUserError.clientError("")
+            throw TraceUserError.clientError("returnGasNonce")
         }
-        let increasedGasPrice = gasPrice * 120 / 100
+        let increasedGasPrice = gasPrice * 150 / 100
         return (gas: increasedGasPrice, nonce: currentNonce)
     }
     // 니모닉 문구 생성
@@ -163,7 +163,7 @@ class WalletDataSet: RSAKeyManager, ObservableObject{
         Task{
             do {
                 guard let newMnemonics = try BIP39.generateMnemonics(bitsOfEntropy: 128, language: .english) else {
-                    throw TraceUserError.clientError("")
+                    throw TraceUserError.clientError("generateMnmonics")
                 }
                 await MainActor.run {
                     Mnemonicse = newMnemonics

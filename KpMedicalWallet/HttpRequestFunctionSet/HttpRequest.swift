@@ -92,6 +92,11 @@ struct KPWalletAPIManager<RequestType: Codable, ReturnType: Codable> {
                 let postData = try JSONEncoder().encode(httpStructs.requestVal)
                 request.httpBody = postData
                 request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                if let jsonString = String(data: postData, encoding: .utf8) {
+                    print("✅ check RequestBody : \(jsonString)")
+                } else {
+                    print("❌ Failed to convert postData to JSON string.")
+                }
             } catch {
                 throw TraceUserError.clientError("\(PlistManager.shared.string(forKey: "clientError")) \(PlistManager.shared.string(forKey: "configureRequest"))")
             }

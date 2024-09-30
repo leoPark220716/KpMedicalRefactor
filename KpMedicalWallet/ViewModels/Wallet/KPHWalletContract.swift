@@ -40,7 +40,6 @@ class KPHWalletContract: WalletHttpRequest{
             throw error
         }
     }
-    
     // 지갑 생성
     func generateWallet() throws -> (success: Bool,privateKey: String, WalletPublicKey: String) {
         guard !Mnemonicse.isEmpty else {
@@ -147,6 +146,7 @@ class KPHWalletContract: WalletHttpRequest{
             print("✅\(result.hash)")
             return (success: false, txHash: result.hash)
         }
+        print("👀 \(receipt)")
         if let firstLog = receipt.logs.first{
             let hexString = firstLog.data.toHexString()
             if let hexValue = BigUInt(hexString, radix: 16) {
@@ -159,6 +159,7 @@ class KPHWalletContract: WalletHttpRequest{
                 }
             }
         }
+        print("❌ reciptCheck")
         return (success: false, txHash: result.hash)
     }
     
@@ -211,6 +212,236 @@ class KPHWalletContract: WalletHttpRequest{
             return (success: false, txHash: "result.hash")
         }
     }
+    
+    
+    
+    
+    
+    //    스마트 컨트랙트 수정 수락
+    func callConfirmEditRecord(key: Data, contractAddress: String, hospitalID: UInt32, date: BigUInt,password: String,index: BigUInt) async -> (success:Bool,txHash: String) {
+        print( "💶 HospitalID \(hospitalID)")
+        print( "💶 unixTime \(date)")
+        guard let keystoreData = loadFromKeychain(account: UserAccount) else {
+            print("Failed to load keystore")
+            return (false,"")
+        }
+        
+        if providerURL == nil{
+            return (false, "")
+        }
+        guard let keystore = BIP32Keystore(keystoreData) else {
+            print("keystore 생성 실패")
+            return (false,"")
+        }
+        let keystoreManager = KeystoreManager([keystore])
+        
+        do {
+            let provider = try await Web3HttpProvider(url: providerURL!, network: .Custom(networkID: ChainID), keystoreManager: keystoreManager)
+            let web3 = Web3(provider: provider)
+            
+            // keystore 에 있는 계정 주소 뽑아옴
+            guard let accountAddress = keystore.addresses?.first else {
+                print("계정 주소를 찾을 수 없습니다.")
+                return (false,"")
+            }
+            print("👀 \(accountAddress.address)")
+            print("👀 \(contractAddress)")
+            // abi 값 추출
+            guard let abiUrl = Bundle.main.url(forResource: "PersonalRecords_sol_PersonalRecords", withExtension: "json"),
+                  let abiString = try? String(contentsOf: abiUrl) else {
+                print("ABI 파일 실패")
+                return (false,"")
+            }
+            let contract = Web3.Contract(web3: web3, abiString: abiString, at: EthereumAddress(contractAddress), abiVersion: 2)
+            print("Create Contract")
+            // 함수 호출 트랜잭션 생성
+            guard let transaction = contract?.createWriteOperation(
+                "confirmEditRecord",
+                parameters: [index,hospitalID,date] as [AnyObject],
+                extraData: Data()
+            ) else {
+                print("트랜잭션 생성 실패")
+                return (false,"")
+            }
+            print("Create Transaction")
+            let maxGasPrice = BigUInt(50) * BigUInt(10).power(9) // 예: 50 Gwei
+            let gasPrice = try await web3.eth.gasPrice()
+            print("Current gas price (\(gasPrice)) exceeds the configured max gas price (\(maxGasPrice))")
+            
+            guard gasPrice <= maxGasPrice else {
+                print("Current gas price (\(gasPrice)) exceeds the configured max gas price (\(maxGasPrice))")
+                return (false,"")
+            }
+            print("Create Nonce")
+            // 트랜잭션 설정
+            let currentNonce = try await web3.eth.getTransactionCount(for: accountAddress, onBlock: .latest)
+            let increasedGasPrice = gasPrice * 120 / 100
+
+            print("Current nonce: \(currentNonce)")
+            transaction.transaction.nonce = currentNonce
+            transaction.transaction.from = accountAddress
+            transaction.transaction.chainID = ChainID
+            transaction.transaction.gasPrice = increasedGasPrice
+            print("Current gas price (\(gasPrice)) exceeds the configured max gas price (\(maxGasPrice))")
+            let estimatedGasLimit = try await web3.eth.estimateGas(for: transaction.transaction, onBlock: .latest)
+            transaction.transaction.gasLimit = estimatedGasLimit
+            try! transaction.transaction.sign(privateKey: key)
+            let result = try await transaction.writeToChain(password: password, sendRaw: true)
+            guard let resultData = Data.fromHex(result.hash) else {
+                return (false,"")
+            }
+            print("Current gas price (\(gasPrice)) exceeds the configured max gas price (\(estimatedGasLimit))")
+            do{
+                print("Transaction Hash")
+                print(result.hash)
+                if let receipt = try await getTransactionReceipt(web3: web3, transactionHash: resultData){
+                    print("트랜잭션 로그: \(String(describing: receipt.logs))")
+                    print("트랜잭션 로그: \(String(describing: receipt.logs[0].data))")
+                    if let firstLog = receipt.logs.first {
+                        print("Address: \(firstLog.address.address)")
+                        print("Block Hash: \(firstLog.blockHash.toHexString())")
+                        print("Block Number: \(firstLog.blockNumber)")
+                        print("Data: \(firstLog.data.toHexString())")
+                        let hexString = firstLog.data.toHexString()
+                        if let hexValue = BigUInt(hexString, radix: 16) {
+                            let decimalValue = String(hexValue)
+                            print("16진수 값: \(hexString)")
+                            print("10진수 값: \(decimalValue)")
+                        } else {
+                            print("잘못된 16진수 값")
+                        }
+                        print("Log Index: \(firstLog.logIndex)")
+                        print("Removed: \(firstLog.removed)")
+                        print("Topics: \(firstLog.topics.map { $0.toHexString()})")
+                        print("Transaction Hash: \(firstLog.transactionHash.toHexString())")
+                        print("Transaction Index: \(firstLog.transactionIndex)")
+                    }
+                    return (true,result.hash)
+                }else{
+                    print("레시피를 받지 못함")
+                    return (false,"")
+                }
+            }
+            catch{
+                print("receipt \(error.localizedDescription)")
+                return (false,"")
+            }
+        } catch {
+            print("트랜잭션 실패 에러: \(error.localizedDescription)")
+            return (false,"")
+        }
+    }
+    // 스마트컨트랙트 작성 (공유 수락)
+    func callConfirmShaerRecode(privateKey: Data, param: [SharedData],password: String,contractAddress: String,nonce: BigUInt)  async throws -> (success:Bool,txHash: String) {
+        do{
+            print("Start callConfirmShaerRecode")
+            guard let web3 = web3 else {
+                print("❌callConfirmSaveRecode web3")
+                throw TraceUserError.clientError("")
+            }
+            guard let abi = abi else {
+                print("❌callConfirmSaveRecode abi")
+                throw TraceUserError.clientError("")
+            }
+            guard let accountAddress = accountAddress else{
+                print("❌callConfirmSaveRecode accountAddress")
+                throw TraceUserError.clientError("")
+            }
+            let paramArray: [[AnyObject]] = param.map { sharedData in
+                print("👀 Check callCOnfirmShaerParam \(param)")
+                return [sharedData.index, sharedData.hospital_id, sharedData.hospital_key] as [AnyObject]
+            }
+            let contract = Web3.Contract(web3: web3, abiString: abi, at: EthereumAddress(contractAddress), abiVersion: 2)
+            guard let trasaction = contract?.createWriteOperation(
+                "setRecordToShare",
+                parameters: [paramArray] as [AnyObject],
+                extraData: Data()
+            )else{
+                print("❌callConfirmSaveRecode contract?.createWriteOperation")
+                throw TraceUserError.clientError("")
+            }
+            let gasNonce = try await returnGasNonce()
+            trasaction.transaction.nonce = gasNonce.nonce+1
+            trasaction.transaction.from = accountAddress
+            trasaction.transaction.chainID = ChainID
+            trasaction.transaction.gasPrice = gasNonce.gas * BigUInt(1.2)
+            let estimatedGasLimit = try await web3.eth.estimateGas(for: trasaction.transaction, onBlock: .pending)
+            trasaction.transaction.gasLimit = estimatedGasLimit
+            try trasaction.transaction.sign(privateKey: privateKey)
+            let result = try await trasaction.writeToChain(password: password,sendRaw: true)
+            let returnVal = try await reciptCheck(result: result)
+            return returnVal
+        }catch let error as TraceUserError{
+            throw error
+        }catch let error as Web3Error{
+            print("❌callConfirmShaerRecode Web3Error")
+            print(error.errorDescription as Any)
+            return (success: false, txHash: "result.hash")
+        }catch{
+            print("❌callConfirmShaerRecode error")
+            return (success: false, txHash: "result.hash")
+        }
+    }
+    
+    
+    // 스마트컨트랙트 읽기 ()
+    func callConfirmReadRecode(privateKey: Data,param1: BigUInt?, param2: BigUInt?,methodName: String,password: String,contractAddress: String)  async throws -> (success:Bool,result: [String: Any],nonce: BigUInt) {
+        do{
+            print("Start callConfirmSaveRecode")
+            guard let web3 = web3 else {
+                print("❌callConfirmSaveRecode web3")
+                throw TraceUserError.clientError("")
+            }
+            guard let abi = abi else {
+                print("❌callConfirmSaveRecode abi")
+                throw TraceUserError.clientError("")
+            }
+            guard let accountAddress = accountAddress else{
+                print("❌callConfirmSaveRecode accountAddress")
+                throw TraceUserError.clientError("")
+            }
+            let contract = Web3.Contract(web3: web3, abiString: abi, at: EthereumAddress(contractAddress), abiVersion: 2)
+            guard let trasaction = contract?.createWriteOperation(
+                methodName,
+                parameters: [param1,param2] as [AnyObject],
+                extraData: Data()
+            )else{
+                print("❌callConfirmSaveRecode contract?.createWriteOperation")
+                throw TraceUserError.clientError("")
+            }
+            let gasNonce = try await returnGasNonce()
+            print("👀 gas : \(gasNonce.gas)")
+            print("👀 nonce : \(gasNonce.nonce)")
+            trasaction.transaction.nonce = gasNonce.nonce
+            trasaction.transaction.from = accountAddress
+            trasaction.transaction.chainID = ChainID
+            trasaction.transaction.gasPrice = gasNonce.gas
+            let estimatedGasLimit = try await web3.eth.estimateGas(for: trasaction.transaction, onBlock: .pending)
+            trasaction.transaction.gasLimit = estimatedGasLimit
+            try trasaction.transaction.sign(privateKey: privateKey)
+            let result: [String: Any]
+            result = try await trasaction.callContractMethod()
+            print("✅ Check Result callConfirmReadRecode \(result)")
+            return (true,result,gasNonce.nonce)
+        }catch let error as TraceUserError{
+            throw error
+        }catch let error as Web3Error{
+            print("❌Web3Error")
+            print(error.errorDescription as Any)
+            return (success: false, result: ["":""],nonce: 0)
+        }catch{
+            print("❌ error")
+            return (success: false, result: ["":""],nonce: 0)
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
     //    트랜젝션 레시피 대기 메서드 200 초 동안 대기
     private func getTransactionReceipt(transactionHash: Data) async throws -> TransactionReceipt? {
@@ -266,83 +497,8 @@ class KPHWalletContract: WalletHttpRequest{
         }
     }
     
-    //    저장요청 컨트랙트 작성
-    func callConfirmReqeust(privateKey: Data, hospitalID: UInt32, date: BigUInt, password: String, contractAddress: String) async throws -> (success:Bool,txHash:String) {
-        do{
-            _ = await sendTxForConfirm(account: UserAccount, key: privateKey)
-            let result = try await  callConfirmSaveRecode(privateKey: privateKey, hospitalID: hospitalID, date: date, password: password,contractAddress: contractAddress)
-//            let result = await callConfirmSaveRecord(key: privateKey, hospitalID: hospitalID, date: date, password: password)
-            print("👀 callConfirmSaveRecode 1\(result)")
-            if result.success{
-                return result
-            }
-            let tx2 = await sendTxForConfirm(account: UserAccount, key: privateKey)
-            if tx2{
-                let Second_result = try await callConfirmSaveRecode(privateKey: privateKey, hospitalID: hospitalID, date: date, password: password,contractAddress: contractAddress)
-                return Second_result
-            }
-            return (false,"false")
-        }catch{
-            throw error
-        }
-    }
-    func sendTxForConfirm(account: String, key: Data) async -> Bool {
-        do {
-            // keystore 에 있는 계정 주소 뽑아옴
-            guard let accountAddress = keystore!.addresses?.first else {
-                print("계정 주소를 찾을 수 없습니다.")
-                return false
-            }
-            print("Create Nonce")
-            // 트랜잭션 설정
-            let gasNonce = try await returnGasNonce()
-            print(gasNonce)
-            let tos = "0x1099530d4F290CcAb9bcdfb059CFF84922827526"
-            var tx: CodableTransaction = .emptyTransaction
-            tx.from = accountAddress
-            tx.value = 0
-            tx.nonce = gasNonce.nonce
-            guard let toAddress = EthereumAddress(tos) else {
-                print("Invalid 'to' address")
-                return false
-            }
-            tx.to = toAddress
-            tx.gasPrice = gasNonce.gas
-            tx.chainID = ChainID
-            let estimatedGasLimit = try await web3!.eth.estimateGas(for: tx, onBlock: .latest)
-            tx.gasLimit = estimatedGasLimit
-            
-            try tx.sign(privateKey: key)
-            print("개인키 데이터 길이: \(key.count) 바이트")
-            guard let transactionEncode = tx.encode() else{
-                print("트렌젝션 인코딩 실패")
-                return false
-            }
-            
-            let result = try await web3!.eth.send(raw: transactionEncode)
-            guard let resultData = Data.fromHex(result.hash) else{
-                return false
-            }
-            do{
-                print("Transaction Hash")
-                print(result.hash)
-                if let receipt = try await getTransactionReceipt(transactionHash: resultData){
-                    print("트랜잭션 로그: \(String(describing: receipt.logs))")
-                    return true
-                }else{
-                    print("레시피를 받지 못함")
-                    return false
-                }
-            }
-            catch{
-                print("receipt \(error.localizedDescription)")
-                return false
-            }
-        } catch {
-            print("트랜잭션 실패 에러: \(error.localizedDescription)")
-            return false
-        }
-    }
+    
+    
     // 스컨 작성시 Nonce 이상 문제 해결을위한 빈 거래 생성
     func sendTransactionEmpty(privateKey: Data) async -> Bool {
         do{
@@ -395,7 +551,7 @@ class KPHWalletContract: WalletHttpRequest{
             print("Failed to load keystore")
             return (false,"")
         }
-
+        
         guard let keystore = BIP32Keystore(keystoreData) else {
             print("keystore 생성 실패")
             return (false,"")
@@ -445,7 +601,7 @@ class KPHWalletContract: WalletHttpRequest{
             // 트랜잭션 설정
             let currentNonce = try await web3.eth.getTransactionCount(for: accountAddress, onBlock: .latest)
             let increasedGasPrice = gasPrice * 120 / 100
-
+            
             print("Current nonce: \(currentNonce)")
             transaction.transaction.nonce = currentNonce
             transaction.transaction.from = accountAddress
@@ -496,6 +652,215 @@ class KPHWalletContract: WalletHttpRequest{
         } catch {
             print("트랜잭션 실패 에러: \(error.localizedDescription)")
             return (false,"")
+        }
+    }
+    //    저장요청 컨트랙트 작성
+    func callConfirmReqeust(privateKey: Data, hospitalID: UInt32, date: BigUInt, password: String, contractAddress: String) async throws -> (success:Bool,txHash:String) {
+        do{
+            let result = try await  callConfirmSaveRecode(privateKey: privateKey, hospitalID: hospitalID, date: date, password: password,contractAddress: contractAddress)
+            return result
+        }catch{
+            throw error
+        }
+    }
+    //    수정 요청 컨트랙트 작성
+    func callEditSmartContract(privateKey: Data, hospitalID: UInt32, date: BigUInt, index: BigUInt,password: String, contractAddress: String) async  -> (success:Bool,txHash:String){
+        
+        let result = await callConfirmEditRecord(key: privateKey, contractAddress: contractAddress, hospitalID: hospitalID, date: date, password: password, index: index)
+        if result.success{
+            return result
+        }
+        let sendTx = await sendTxForConfirm( key: privateKey)
+        if !sendTx{
+            return (false,"")
+        }
+        let result2 = await callConfirmEditRecord(key: privateKey, contractAddress: contractAddress, hospitalID: hospitalID, date: date, password: password, index: index)
+        return result2
+    }
+    
+    //    공유요청 컨트랙트
+    func callShaerReqeust(key: Data, contractAddress: String, param: [SharedData],password: String) async -> (success:Bool,txHash:String) {
+        let firstConfirmSave = await setRecordToShareSaveRecord(key: key, contractAddress: contractAddress, param: param, password: password)
+        if firstConfirmSave.success{
+            return (firstConfirmSave)
+        }
+        let sendTx = await sendTxForConfirm( key: key)
+        if !sendTx{
+            return (false,"")
+        }
+        let secondConfirmSave = await setRecordToShareSaveRecord(key: key, contractAddress: contractAddress, param: param, password: password)
+        return secondConfirmSave
+    }
+    func setRecordToShareSaveRecord(key: Data, contractAddress: String, param: [SharedData], password: String) async -> (success: Bool, txHash: String) {
+        guard let keystoreData = loadFromKeychain(account: UserAccount) else {
+            print("Failed to load keystore")
+            return (false, "")
+        }
+        
+        
+        guard let keystore = BIP32Keystore(keystoreData) else {
+            print("keystore 생성 실패")
+            return (false, "")
+        }
+        let keystoreManager = KeystoreManager([keystore])
+        if providerURL == nil{
+            return (false, "")
+        }
+        do {
+            let provider = try await Web3HttpProvider(url: providerURL!, network: .Custom(networkID: ChainID), keystoreManager: keystoreManager)
+            let web3 = Web3(provider: provider)
+            
+            guard let accountAddress = keystore.addresses?.first else {
+                print("계정 주소를 찾을 수 없습니다.")
+                return (false, "")
+            }
+            guard let abiUrl = Bundle.main.url(forResource: "PersonalRecords_sol_PersonalRecords", withExtension: "json"),
+                  let abiString = try? String(contentsOf: abiUrl) else {
+                print("ABI 파일 실패")
+                return (false, "")
+            }
+            let contract = Web3.Contract(web3: web3, abiString: abiString, at: EthereumAddress(contractAddress), abiVersion: 2)
+            
+            // SharedData 구조체 배열을 스마트 컨트랙트가 기대하는 튜플 형식으로 변환
+            let paramArray: [[AnyObject]] = param.map { sharedData in
+                return [sharedData.index, sharedData.hospital_id, sharedData.hospital_key] as [AnyObject]
+            }
+            
+            guard let transaction = contract?.createWriteOperation(
+                "setRecordToShare",
+                parameters: [paramArray] as [AnyObject],
+                extraData: Data()
+            ) else {
+                print("트랜잭션 생성 실패")
+                return (false, "")
+            }
+            
+            let maxGasPrice = BigUInt(50) * BigUInt(10).power(9) // 예: 50 Gwei
+            let gasPrice = try await web3.eth.gasPrice()
+            
+            guard gasPrice <= maxGasPrice else {
+                print("Current gas price (\(gasPrice)) exceeds the configured max gas price (\(maxGasPrice))")
+                return (false, "")
+            }
+            
+            let currentNonce = try await web3.eth.getTransactionCount(for: accountAddress, onBlock: .latest)
+            let increasedGasPrice = gasPrice * 120 / 100
+            
+            transaction.transaction.nonce = currentNonce
+            transaction.transaction.from = accountAddress
+            transaction.transaction.chainID = ChainID
+            transaction.transaction.gasPrice = increasedGasPrice
+            
+            let estimatedGasLimit = try await web3.eth.estimateGas(for: transaction.transaction, onBlock: .latest)
+            transaction.transaction.gasLimit = estimatedGasLimit
+            try transaction.transaction.sign(privateKey: key)
+            let result = try await transaction.writeToChain(password: password, sendRaw: true)
+            
+            guard let resultData = Data.fromHex(result.hash) else {
+                return (false, "")
+            }
+            
+            if let receipt = try await getTransactionReceipt(web3: web3, transactionHash: resultData) {
+                print("트랜잭션 로그: \(String(describing: receipt.logs))")
+                if let firstLog = receipt.logs.first {
+                    print("Address: \(firstLog.address.address)")
+                    print("Block Hash: \(firstLog.blockHash.toHexString())")
+                    print("Block Number: \(firstLog.blockNumber)")
+                    print("Data: \(firstLog.data.toHexString())")
+                    if let hexValue = BigUInt(firstLog.data.toHexString(), radix: 16) {
+                        print("16진수 값: \(firstLog.data.toHexString())")
+                        print("10진수 값: \(String(hexValue))")
+                    } else {
+                        print("잘못된 16진수 값")
+                    }
+                    print("Log Index: \(firstLog.logIndex)")
+                    print("Removed: \(firstLog.removed)")
+                    print("Topics: \(firstLog.topics.map { $0.toHexString() })")
+                    print("Transaction Hash: \(firstLog.transactionHash.toHexString())")
+                    print("Transaction Index: \(firstLog.transactionIndex)")
+                }
+                return (true, result.hash)
+            } else {
+                print("레시피를 받지 못함")
+                return (false, "")
+            }
+        } catch {
+            print("트랜잭션 실패 에러: \(error.localizedDescription)")
+            return (false, "")
+        }
+    }
+    func sendTxForConfirm(key: Data) async -> Bool {
+        
+        guard let keystoreData = loadFromKeychain(account: UserAccount) else {
+            print("Failed to load keystore")
+            return false
+        }
+        
+        if providerURL == nil{
+            return false
+        }
+        guard let keystore = BIP32Keystore(keystoreData) else {
+            print("keystore 생성 실패")
+            return false
+        }
+        let keystoreManager = KeystoreManager([keystore])
+        
+        do {
+            let provider = try await Web3HttpProvider(url: providerURL!, network: .Custom(networkID: ChainID), keystoreManager: keystoreManager)
+            let web3 = Web3(provider: provider)
+            
+            // keystore 에 있는 계정 주소 뽑아옴
+            guard let accountAddress = keystore.addresses?.first else {
+                print("계정 주소를 찾을 수 없습니다.")
+                return false
+            }
+            
+            print("Create Nonce")
+            // 트랜잭션 설정
+            let currentNonce = try await web3.eth.getTransactionCount(for: accountAddress, onBlock: .latest)
+            
+            let tos = "0x1099530d4F290CcAb9bcdfb059CFF84922827526"
+            var tx: CodableTransaction = .emptyTransaction
+            tx.from = accountAddress
+            tx.value = 0
+            tx.nonce = currentNonce
+            tx.gasLimit = BigUInt(21000)// 기본 가스 한도 (필요 시 조정)
+            tx.gasPrice = BigUInt(2000000000)
+            tx.chainID = ChainID
+            guard let toAddress = EthereumAddress(tos) else {
+                print("Invalid 'to' address")
+                return false
+            }
+            tx.to = toAddress
+            try tx.sign(privateKey: key)
+            print("개인키 데이터 길이: \(key.count) 바이트")
+            guard let transactionEncode = tx.encode() else{
+                print("트렌젝션 인코딩 실패")
+                return false
+            }
+            
+            let result = try await web3.eth.send(raw: transactionEncode)
+            guard let resultData = Data.fromHex(result.hash) else{
+                return false
+            }
+            do{
+                print("Transaction Hash")
+                print(result.hash)
+                if let receipt = try await getTransactionReceipt(web3: web3, transactionHash: resultData){
+                    print("트랜잭션 로그: \(String(describing: receipt.logs))")
+                    return true
+                }else{
+                    print("레시피를 받지 못함")
+                    return false
+                }
+            }
+            catch{
+                print("receipt \(error.localizedDescription)")
+                return false
+            }
+        } catch {
+            print("트랜잭션 실패 에러: \(error.localizedDescription)")
+            return false
         }
     }
 }

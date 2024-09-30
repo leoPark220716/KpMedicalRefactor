@@ -84,8 +84,14 @@ struct OthersChatItem: View {
                 if let fileURI = item.FileURI {
                     FileChatView(urlString: fileURI)
                 }
-            case .notice, .unowned, .share, .edit:
+            case .notice:
                 EmptyView()
+            case .share:
+                RequestConfirmChatView(hospitalName: HospitalName, item: $item, socket: socket)
+                    .cornerRadius(10)
+            case .edit:
+                RequestConfirmChatView(hospitalName: HospitalName, item: $item, socket: socket)
+                    .cornerRadius(10)
             case .move:
                 if let message = item.messege {
                     NoticeChatView(message: message)
@@ -93,6 +99,8 @@ struct OthersChatItem: View {
             case .save:
                 RequestConfirmChatView(hospitalName: HospitalName, item: $item, socket: socket)
                     .cornerRadius(10)
+            case .unowned:
+                EmptyView()
             }
             if item.showETC {
                 Text(item.time)
@@ -153,13 +161,19 @@ struct RequestConfirmChatView: View {
                                 socket.setSaveContractData(stemp: timestemp, timeUUID: item.unixTime)
                                 socket.otpType = .save
                             }
-                            
                         case .share:
-                            socket.otp.toggle()
-                            socket.otpType = .share
+                            if let timestem = item.timeStemp , let departmentCode = item.departmentCode, let pubKey = item.pubKey{
+                                socket.otp.toggle()
+                                socket.setShareData(stemp: timestem,timeUUID: item.unixTime, paramDepartCode: departmentCode, cryptPubkey: pubKey)
+                                socket.otpType = .share
+                            }
                         case .edit:
-                            socket.otp.toggle()
-                            socket.otpType = .edit
+                            print("✅ Call Edit ok")
+                            if let timestem = item.timeStemp , let index = item.index{
+                                socket.otp.toggle()
+                                socket.setEditData(stemp: timestem, timeUUID: item.unixTime,paramIndex: index)
+                                socket.otpType = .edit
+                            }
                         default:
                             print("")
                         }

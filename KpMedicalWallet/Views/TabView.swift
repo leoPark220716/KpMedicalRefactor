@@ -11,7 +11,7 @@ struct DefaultTabView: View {
     @EnvironmentObject private var appManager: NavigationRouter
     var body: some View {
         TabView(selection: $appManager.TabViewSelection){
-            HomeView()
+            HomeView(appManager: appManager)
                 .tabItem {
                     Label("메인",systemImage:"house.circle.fill")
                 }

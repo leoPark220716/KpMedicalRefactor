@@ -10,12 +10,10 @@ import BigInt
 struct ChatView: View {
     @EnvironmentObject var appManager: NavigationRouter
     @Environment(\.scenePhase) private var scenePhase
-//    @StateObject var contractManager: KPHWalletContractManager
     @StateObject var socket: ChatHandler
     @FocusState var chatField: Bool
     let ChatTitle: String
     init(appManager: NavigationRouter,hospitalId: Int, HospitalName: String,hospital_icon: String){
-//        _contractManager = StateObject(wrappedValue: KPHWalletContractManager(appManager: appManager))
         ChatTitle = HospitalName
         _socket = StateObject(wrappedValue: ChatHandler(hospitalId: hospitalId, account: appManager.GetUserAccountString().account, token: appManager.jwtToken, fcmToken: appManager.jwtToken, appManager: appManager,hospital_icon: hospital_icon))
     }
@@ -43,7 +41,7 @@ struct ChatView: View {
             }
         }
         .onChange(of: scenePhase, {
-            
+            handleScenPhaseChange(scenePhase)
         })
         .normalToastView(toast: $appManager.toast)
         .navigationTitle(ChatTitle)

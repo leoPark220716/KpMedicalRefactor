@@ -10,17 +10,29 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject private var appManager: NavigationRouter
     @StateObject var viewModel = HomeViewModel()
+    @StateObject var recodeModel: ReacoderModel
+    init(appManager: NavigationRouter) {
+        _recodeModel = StateObject(wrappedValue: ReacoderModel(appManager: appManager))
+    }
+    @ViewBuilder
+    private func frontCardViewSection(geo: GeometryProxy) -> some View {
+        if let item = recodeModel.combineArray.last {
+            TreatmentCardView(item: item)
+        } else {
+            Button {
+                appManager.push(to: .userPage(item: UserPage(page: .SearchHospital)))
+            } label: {
+                HomeViewSuggestHospitals(geo: geo, viewModel: viewModel)
+                    .padding(.horizontal)
+                    .padding(.bottom)
+            }
+        }
+    }
+    
     var body: some View {
         GeometryReader{ geo in
             VStack{
-                Button{
-                    let test = AuthData()
-                    test.deleteAllKeyChainItems()
-                } label: {
-                    HomeViewSuggestHospitals(geo: geo,viewModel:viewModel)
-                        .padding(.horizontal)
-                        .padding(.bottom)
-                }
+                frontCardViewSection(geo: geo)
                 Button{
                     appManager.push(to: .userPage(item: UserPage(page: .SearchHospital)))
                 } label: {
@@ -35,7 +47,6 @@ struct HomeView: View {
                         PillView(geo: geo)
                             .padding(.leading)
                     }
-                    
                     Spacer()
                     Button{
                         appManager.push(to: .userPage(item: UserPage(page: .myReservationView)))
@@ -55,7 +66,7 @@ struct HomeView: View {
                 }catch{
                     appManager.displayError(ServiceError: .unowned(""))
                 }
-                
+                recodeModel.setRecodeData()
             }
         }
     }
@@ -212,7 +223,7 @@ struct calendarView: View{
 struct HomeView_Priview: PreviewProvider{
     static var previews: some View {
         @StateObject var router = NavigationRouter()
-        HomeView()
+        HomeView(appManager: router)
             .environmentObject(router)
     }
 }

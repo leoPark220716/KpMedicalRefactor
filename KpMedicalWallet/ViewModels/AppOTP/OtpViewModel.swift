@@ -128,7 +128,11 @@ class OtpViewModel: ObservableObject{
         
         switch viewCase {
         case .edit:
-            print("")
+            guard let appManager = appManager, let socket = socket else{
+                return
+            }
+            let walletContract = KPHWalletContractManager(appManager: appManager,socket: socket)
+            walletContract.SmartContractEdit(hospitalId: UInt32(socket.hospitalId), date: socket.timeUUID, index: socket.paramIndex,stempUUID: socket.stempUUID)
         case .save:
             guard let appManager = appManager, let socket = socket else{
                 return
@@ -136,7 +140,11 @@ class OtpViewModel: ObservableObject{
             let walletContract = KPHWalletContractManager(appManager: appManager,socket: socket)
             walletContract.SmartContractConfirm(hospitalId: UInt32(socket.hospitalId), date: socket.timeUUID,stempUUID: socket.stempUUID)
         case .share:
-            print("")
+            guard let appManager = appManager, let socket = socket else{
+                return
+            }
+            let walletContract = KPHWalletContractManager(appManager: appManager,socket: socket)
+            walletContract.SmartContractSharer()
         case .walletView:
             await MainActor.run {
                 appManager?.push(to: .userPage(item: UserPage(page: .walletMain)))

@@ -37,7 +37,7 @@ class HospitalListMainViewModel:HospitalListCache, ObservableObject{
             URLQueryItem(name: "y", value: requestQuery.y_tude),
             URLQueryItem(name: "keyword", value: requestQuery.key_word),
             URLQueryItem(name: "department_id", value: requestQuery.department)
-        ].filter { $0.value != nil } // nil 값 필터링
+        ].filter { $0.value != nil && $0.value != ""} // nil 값 필터링
         // URLComponents를 통해 안전하게 URL 생성
         return components.url?.query ?? ""
     }
@@ -46,7 +46,7 @@ class HospitalListMainViewModel:HospitalListCache, ObservableObject{
         components.queryItems = [
             URLQueryItem(name: "start", value: "\(requestQuery.start)"),
             URLQueryItem(name: "limit", value: "\(requestQuery.limit)")
-        ].filter { $0.value != nil } // nil 값 필터링
+        ].filter { $0.value != nil && $0.value != ""} // nil 값 필터링
         // URLComponents를 통해 안전하게 URL 생성
         return components.url?.query ?? ""
     }
@@ -92,6 +92,7 @@ class HospitalListMainViewModel:HospitalListCache, ObservableObject{
         }
     }
     private func OrderByUpdate(){
+        requestQuery.start = 0
         switch selectedTab{
         case 1:
             changedQuery = true
@@ -101,6 +102,7 @@ class HospitalListMainViewModel:HospitalListCache, ObservableObject{
         }
     }
     private func KeyWordUpdate(){
+        requestQuery.start = 0
         requestQuery.key_word = searchText
     }
     func queryChange(x:String? = nil, y:String? = nil, department: Department? = nil){

@@ -60,17 +60,21 @@ class ChatDataHandler: ChatDataSet{
                 ChatDatas.append(item)
                 
             case .notice:
-                print("asdf")
+                let item = textMessageItem(type: .notice,messege: item.message ,time: time.chatTime, date: time.chatDate, amI: .user, unix: 0,timeStemp: item.timestamp_uuid, hash: item.hash)
+                ChatDatas.append(item)
             case .share:
                 if let unixTime = item.unixtime {
-                    let item = textMessageItem(type: .share, messege: item.message, time: time.chatTime, date: time.chatDate, amI: .other, unix: unixTime, timeStemp: item.timestamp_uuid,status:  item.status,hash: item.hash)
-                    ChatDatas.append(item)
+                    var shareitem = textMessageItem(type: .share, messege: item.message, time: time.chatTime, date: time.chatDate, amI: .other, unix: unixTime, timeStemp: item.timestamp_uuid,status:  item.status,hash: item.hash)
+                    shareitem.pubKey = item.pub_key
+                    shareitem.departmentCode = item.department_code
+                    ChatDatas.append(shareitem)
                 }
                 
             case .edit:
                 if let unixTime = item.unixtime {
-                    let item = textMessageItem(type: .edit, messege: item.message, time: time.chatTime, date: time.chatDate, amI: .other, unix: unixTime, timeStemp: item.timestamp_uuid,status:  item.status,hash: item.hash)
-                    ChatDatas.append(item)
+                    var edititem = textMessageItem(type: .edit, messege: item.message, time: time.chatTime, date: time.chatDate, amI: .other, unix: unixTime, timeStemp: item.timestamp_uuid,status:  item.status,hash: item.hash)
+                    edititem.index = item.index
+                    ChatDatas.append(edititem)
                 }
                 
             case .unowned:
@@ -151,17 +155,23 @@ class ChatDataHandler: ChatDataSet{
                 self.ChatData.insert(item, at: 0)
             }
         case .notice:
-            print("Photo")
+            let item = textMessageItem(type: .notice,messege: receiveItem.content?.message ,time: time.chatTime, date: time.chatDate, amI: .user, unix: 0,timeStemp: receiveItem.timestamp, hash: receiveItem.block_data?.hash)
+            DispatchQueue.main.async{
+                self.ChatData.insert(item, at: 0)
+            }
         case .share:
-            if let unixTime = receiveItem.block_data?.unixtime {
-                let item = textMessageItem(type: .share, messege: receiveItem.content?.message, time: time.chatTime, date: time.chatDate, amI: .other, unix: unixTime, timeStemp: receiveItem.timestamp,status: receiveItem.hospital_data?.status,hash: receiveItem.block_data?.hash)
+            if let unixTime = receiveItem.block_data?.unixtime,let timestamp = receiveItem.timestamp {
+                var shareitem = textMessageItem(type: .share, messege: receiveItem.content?.message, time: time.chatTime, date: time.chatDate, amI: .other, unix: unixTime, timeStemp: "\(timestamp)#temp",status: receiveItem.hospital_data?.status,hash: receiveItem.block_data?.hash)
+                shareitem.departmentCode = receiveItem.block_data?.department_code
+                shareitem.pubKey = receiveItem.block_data?.pub_key
                 DispatchQueue.main.async{
-                    self.ChatData.insert(item, at: 0)
+                    self.ChatData.insert(shareitem, at: 0)
                 }
             }
         case .edit:
-            if let unixTime = receiveItem.block_data?.unixtime {
-                let item = textMessageItem(type: .edit, messege: receiveItem.content?.message, time: time.chatTime, date: time.chatDate, amI: .other, unix: unixTime, timeStemp: receiveItem.timestamp,status: receiveItem.hospital_data?.status,hash: receiveItem.block_data?.hash)
+            if let unixTime = receiveItem.block_data?.unixtime,let timestamp = receiveItem.timestamp {
+                var item = textMessageItem(type: .edit, messege: receiveItem.content?.message, time: time.chatTime, date: time.chatDate, amI: .other, unix: unixTime, timeStemp: "\(timestamp)#temp",status: receiveItem.hospital_data?.status,hash: receiveItem.block_data?.hash)
+                item.index = receiveItem.block_data?.index
                 DispatchQueue.main.async{
                     self.ChatData.insert(item, at: 0)
                 }
@@ -175,8 +185,8 @@ class ChatDataHandler: ChatDataSet{
             }
         case .save:
             print("✅ Save Check")
-            if let unixTime = receiveItem.block_data?.unixtime {
-                let item = textMessageItem(type: .save, messege: receiveItem.content?.message, time: time.chatTime, date: time.chatDate, amI: .other, unix: unixTime, timeStemp: receiveItem.timestamp,status: receiveItem.hospital_data?.status,hash: receiveItem.block_data?.hash)
+            if let unixTime = receiveItem.block_data?.unixtime,let timestamp = receiveItem.timestamp {
+                let item = textMessageItem(type: .save, messege: receiveItem.content?.message, time: time.chatTime, date: time.chatDate, amI: .other, unix: unixTime, timeStemp: "\(timestamp)#temp",status: receiveItem.hospital_data?.status,hash: receiveItem.block_data?.hash)
                 DispatchQueue.main.async{
                     self.ChatData.insert(item, at: 0)
                 }

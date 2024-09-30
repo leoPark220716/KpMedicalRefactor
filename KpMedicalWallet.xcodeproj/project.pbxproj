@@ -66,6 +66,9 @@
 		1E6D1CAC2CA57F85005C6431 /* ConfirmChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6D1CAB2CA57F85005C6431 /* ConfirmChatView.swift */; };
 		1E6D1CAE2CA58015005C6431 /* MyChatItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6D1CAD2CA58013005C6431 /* MyChatItem.swift */; };
 		1E6D1CB02CA5803B005C6431 /* ChatdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6D1CAF2CA5803A005C6431 /* ChatdateView.swift */; };
+		1E72A3892CAA676B00C2348D /* WalletContractCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72A3882CAA676B00C2348D /* WalletContractCrypto.swift */; };
+		1E72A38B2CAAB70800C2348D /* ReacoderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72A38A2CAAB6FE00C2348D /* ReacoderModel.swift */; };
+		1E72A38D2CAACAED00C2348D /* TreatmentCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72A38C2CAACAED00C2348D /* TreatmentCardView.swift */; };
 		1E7647C82CA681680045CD93 /* SendingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7647C72CA681680045CD93 /* SendingImageView.swift */; };
 		1E7647CA2CA6A0740045CD93 /* ChatImageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7647C92CA6A0740045CD93 /* ChatImageViewer.swift */; };
 		1E7647CC2CA6BF530045CD93 /* OtherChatITem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7647CB2CA6BF530045CD93 /* OtherChatITem.swift */; };
@@ -241,6 +244,9 @@
 		1E6D1CAB2CA57F85005C6431 /* ConfirmChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmChatView.swift; sourceTree = "<group>"; };
 		1E6D1CAD2CA58013005C6431 /* MyChatItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatItem.swift; sourceTree = "<group>"; };
 		1E6D1CAF2CA5803A005C6431 /* ChatdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatdateView.swift; sourceTree = "<group>"; };
+		1E72A3882CAA676B00C2348D /* WalletContractCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletContractCrypto.swift; sourceTree = "<group>"; };
+		1E72A38A2CAAB6FE00C2348D /* ReacoderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReacoderModel.swift; sourceTree = "<group>"; };
+		1E72A38C2CAACAED00C2348D /* TreatmentCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentCardView.swift; sourceTree = "<group>"; };
 		1E7647C72CA681680045CD93 /* SendingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendingImageView.swift; sourceTree = "<group>"; };
 		1E7647C92CA6A0740045CD93 /* ChatImageViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatImageViewer.swift; sourceTree = "<group>"; };
 		1E7647CB2CA6BF530045CD93 /* OtherChatITem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherChatITem.swift; sourceTree = "<group>"; };
@@ -517,6 +523,7 @@
 		1E66DBE92CA14B3C0093A74F /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				1E72A38A2CAAB6FE00C2348D /* ReacoderModel.swift */,
 				1E66DBEA2CA14B4C0093A74F /* KPHWallet.swift */,
 				1E66DBED2CA14B960093A74F /* KPHWalletContract.swift */,
 				1E66DBEF2CA14BFB0093A74F /* WalletDataSet.swift */,
@@ -524,6 +531,7 @@
 				1E66DC012CA1796A0093A74F /* RSAKeyManager.swift */,
 				1ED3449B2CA2A9310010C8D8 /* ContractNotification.swift */,
 				1ED3449D2CA2B3270010C8D8 /* KPHWalletContractManager.swift */,
+				1E72A3882CAA676B00C2348D /* WalletContractCrypto.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -708,6 +716,7 @@
 				1E19A7072C9DD0EF0060E4AF /* SomethingEmpty.swift */,
 				1E19A7092C9DD23D0060E4AF /* SomeThingLoading.swift */,
 				1E66DBFA2CA171FC0093A74F /* SomeThingLoadingWithText.swift */,
+				1E72A38C2CAACAED00C2348D /* TreatmentCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1232,6 +1241,7 @@
 				1E6D1CAA2CA57F59005C6431 /* ImageProgressView.swift in Sources */,
 				1EAD508B2C9057610010F705 /* MainView.swift in Sources */,
 				1EAD50822C90439A0010F705 /* HttpRequestModels.swift in Sources */,
+				1E72A38B2CAAB70800C2348D /* ReacoderModel.swift in Sources */,
 				1EAE13522C9C1A2D0031C58C /* ReservationDoctorChooseView.swift in Sources */,
 				1E9137012C918E2A004F647E /* UserConfigVariable.swift in Sources */,
 				1EEEC7222C9EC87500B9B690 /* Tab.swift in Sources */,
@@ -1247,6 +1257,7 @@
 				1EAD509C2C90681A0010F705 /* UserAuth.swift in Sources */,
 				1E19A7082C9DD0EF0060E4AF /* SomethingEmpty.swift in Sources */,
 				1EBDD0DA2C9ABDC4002DE858 /* HospitalDetailViewDataClass.swift in Sources */,
+				1E72A3892CAA676B00C2348D /* WalletContractCrypto.swift in Sources */,
 				1E9136FF2C9166F8004F647E /* FCMDelegate.swift in Sources */,
 				1EAC11332C92CE62008FFE43 /* AgreementViewModel.swift in Sources */,
 				1E38D35B2C90271D00BB344E /* ContentView.swift in Sources */,
@@ -1335,6 +1346,7 @@
 				1ED5B2952C958543000DE60B /* MyHospitalView.swift in Sources */,
 				1ED18CC72C98655C00C5EE2E /* HospitalListCache.swift in Sources */,
 				1E66DBE32CA12E6B0093A74F /* OtpViewModel.swift in Sources */,
+				1E72A38D2CAACAED00C2348D /* TreatmentCardView.swift in Sources */,
 				1EBDD0D82C9ABDAA002DE858 /* ScheduleViewModel.swift in Sources */,
 				1E213CBB2C9B068800A8312D /* HospitalDetailScheduleView.swift in Sources */,
 			);

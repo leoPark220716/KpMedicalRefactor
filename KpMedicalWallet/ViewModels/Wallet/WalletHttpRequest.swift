@@ -8,6 +8,20 @@
 import Foundation
 
 class WalletHttpRequest: WalletDataSet{
+    func getContractLists(bucket: String, key: String) async throws -> String?{
+        do{
+            let requset = createGetRecodeImageURL(bucket: bucket, key: key)
+            guard let requset = requset else{
+                print("❌  getContractLists false")
+                return ""
+            }
+            let call = KPWalletAPIManager.init(httpStructs: requset, URLLocations: 2)
+            let response = try await call.performRequest()
+            return response.data?.data.files[0].url
+        }catch{
+            throw TraceUserError.serverError("getContractLists")
+        }
+    }
     
     // 컨트랙트 저장.
     func saveContractAddress(contract: String) async throws{
@@ -302,5 +316,20 @@ class WalletHttpRequest: WalletDataSet{
             UUID: UserVariable.GET_UUID(),
             requestVal: body
         )
+    }
+    
+    private func createGetRecodeImageURL(bucket: String,key: String
+    )-> http<Empty?,KPApiStructFrom<responseFileStruct>>?{
+        let body = filesReusetBody(
+            bucket: bucket, key: key
+        )
+        guard let bodyJsonData = try? JSONEncoder().encode(body),
+              let bodyJsonString = String(data: bodyJsonData, encoding: .utf8) else {
+            print("Failed to encode body data")
+            return nil
+        }
+        print("CheckBodyString✅")
+        print(bodyJsonString)
+        return http(method: "GET", urlParse: bodyJsonString, token: token, UUID: UserVariable.GET_UUID())
     }
 }
