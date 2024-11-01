@@ -1,6 +1,0 @@
-framework module Pods_KpMedicalWalletTests {
-  umbrella header "Pods-KpMedicalWalletTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
